@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../device/device_utility.dart';
 
-class PAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const PAppbar(
+class JAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const JAppbar(
       {super.key,
         this.title,
         this.showBackArrow = false,
