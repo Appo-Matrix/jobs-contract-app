@@ -10,7 +10,7 @@ class JAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     disabledColor: AppColors.grey,
-    brightness: Brightness.dark,
+    brightness: Brightness.dark ,
     primaryColor: AppColors.primary,
     // textTheme: PTextTheme.textTheme,
     // chipTheme: PChipTheme.chipTheme,
