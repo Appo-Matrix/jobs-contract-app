@@ -1,0 +1,6 @@
+enum Routes{
+
+  splash,
+  startScreen,
+
+}

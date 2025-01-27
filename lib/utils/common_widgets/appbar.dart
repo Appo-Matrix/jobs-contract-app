@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import '../constants/colors.dart';
+import '../device/device_utility.dart';
+
+class PAppbar extends StatelessWidget implements PreferredSizeWidget {
+  const PAppbar(
+      {super.key,
+        this.title,
+        this.showBackArrow = false,
+        this.leadingIcon,
+        this.actions,
+        this.leadingOnPressed,});
+
+  final Widget? title;
+  final bool showBackArrow;
+  final Widget? leadingIcon;
+  final List<Widget>? actions;
+  final VoidCallback? leadingOnPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: true,
+      backgroundColor: AppColors.secondaryBackground,
+      leading: showBackArrow
+          ? IconButton(
+          onPressed: leadingOnPressed,
+          icon: const Icon(Icons.arrow_back, color: AppColors.white))
+          : leadingIcon,
+      title: title,
+      actions: actions,
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(JDeviceUtils.getAppBarHeight());
+}
