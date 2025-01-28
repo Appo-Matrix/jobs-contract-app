@@ -29,35 +29,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView.builder(
-                controller: _controller,
-                itemCount: contents.length,
-                onPageChanged: (int index) {
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
-                itemBuilder: (_, i) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                      top: 35,
-                    ),
+      body: PageView.builder(
+          controller: _controller,
+          itemCount: contents.length,
+          onPageChanged: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          itemBuilder: (_, i) {
+            return Column(
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        if (currentIndex == 0)
+                        TextButton(onPressed: () {}, child: Text('Skip')),
+                        SizedBox(height: 10),
+                        const SizedBox(
+                          height: 16,
+                        ),
                         Image.asset(
-                          contents[i].image,
-                          height: 300,
+                            contents[i].image,
+                          height: MediaQuery.of(context).size.height / 2.5,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.fill,
                         ),
-                        const SizedBox(
-                          height: 40,
-                        ),
+                        Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: List.generate(
@@ -66,81 +72,235 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         const SizedBox(
-                          height: 7,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xffF2F4F7),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(35),
-                                  topRight: Radius.circular(35)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, right: 15, left: 15),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    contents[i].title,
-                                    style: AppWidget.semiBoldTextFieldStyle(),
-                                  ),
-                                  SizedBox(height: 10),
-                                  if (currentIndex == 0) forward_button(),
-                                  if (currentIndex == 1)
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        back_button(),
-                                        SizedBox(width: 7),
-                                        forward_button(),
-                                      ],
-                                    ),
-                                  if (currentIndex == 2)
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Sign Up As'),
-                                        SizedBox(height: 5),
-                                        main_button(
-                                          btn_title:
-                                              'I’m a client, Hiring Professionals',
-                                          btn_radius: 10,
-                                          btn_color: Color(0xff7030F1),
-                                          btn_boarder_color: Color(0xff7030F1),
-                                          title_color: Colors.white,
-                                        ),
-
-                                        SizedBox(height: 10,),
-
-                                        main_button(
-                                          btn_title:
-                                          'I’m a Freelancer, Looking for work',
-                                          btn_radius: 10,
-                                          btn_color: Colors.transparent,
-                                          btn_boarder_color: Color(0xff7030F1),
-                                          title_color: Color(0xff7030F1),
-                                        ),
-                                      ],
-                                    ),
-
-                                ],
-                              ),
-                            ),
-                          ),
+                          height: 3,
                         ),
                       ],
                     ),
-                  );
-                }),
-          ),
-        ],
-      ),
+                  ),
+                ),
+                Expanded(
+                  flex: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Color(0xffF2F4F7),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(35),
+                            topRight: Radius.circular(35)),
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 20, right: 15, left: 15),
+                        child: Column(
+                          children: [
+                            Text(
+                              contents[i].title,
+                              style: AppWidget.semiBoldTextFieldStyle(),
+                            ),
+                            Spacer(),
+                            if (currentIndex == 0) forward_button(),
+                            if (currentIndex == 0)
+                              SizedBox(
+                                height: 40,
+                              ),
+                            if (currentIndex == 1)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  back_button(),
+                                  SizedBox(width: 7),
+                                  forward_button(),
+                                ],
+                              ),
+                            if (currentIndex == 1)
+                              SizedBox(
+                                height: 40,
+                              ),
+                            if (currentIndex == 2)
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text('Sign Up As'),
+                                  SizedBox(height: 5),
+                                  main_button(
+                                    btn_title:
+                                        'I’m a client, Hiring Professionals',
+                                    btn_radius: 10,
+                                    btn_color: Color(0xff7030F1),
+                                    btn_boarder_color: Color(0xff7030F1),
+                                    title_color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  main_button(
+                                    btn_title:
+                                        'I’m a Freelancer, Looking for work',
+                                    btn_radius: 10,
+                                    btn_color: Colors.transparent,
+                                    btn_boarder_color: Color(0xff7030F1),
+                                    title_color: Color(0xff7030F1),
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Already have an account?',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xff667085),
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        ' Log in',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff7030F1),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            );
+
+            // Column(
+            //   children: [
+            //     Container(
+            //       color: Colors.red,
+            //       height: MediaQuery.of(context).size.height,
+            //       width: MediaQuery.of(context).size.width,
+            //       child: PageView.builder(
+            //           controller: _controller,
+            //           itemCount: contents.length,
+            //           onPageChanged: (int index) {
+            //             setState(() {
+            //               currentIndex = index;
+            //             });
+            //           },
+            //           itemBuilder: (_, i) {
+            //             return Padding(
+            //               padding: const EdgeInsets.only(
+            //                 top: 35,
+            //               ),
+            //               child: Column(
+            //                 crossAxisAlignment: CrossAxisAlignment.center,
+            //                 mainAxisAlignment: MainAxisAlignment.center,
+            //                 children: [
+            //                   Container(
+            //                     height: 100,
+            //                     color: Colors.blue,
+            //                     child: Padding(
+            //                       padding: const EdgeInsets.only(left: 15, right: 15),
+            //                       child: Image.asset(
+            //                         contents[i].image,
+            //                         height: 300,
+            //                         width: MediaQuery.of(context).size.width,
+            //                         fit: BoxFit.fill,
+            //                       ),
+            //                     ),
+            //                   ),
+            //                   const SizedBox(
+            //                     height: 40,
+            //                   ),
+            //
+            //                   Row(
+            //                     mainAxisAlignment: MainAxisAlignment.center,
+            //                     children: List.generate(
+            //                       contents.length,
+            //                           (index) => buildDot(index, context),
+            //                     ),
+            //                   ),
+            //                   const SizedBox(
+            //                     height: 7,
+            //                   ),
+            //                   Padding(
+            //                     padding: const EdgeInsets.only(top: 10),
+            //                     child: Container(
+            //                       decoration: BoxDecoration(
+            //                         color: Color(0xffF2F4F7),
+            //                         borderRadius: BorderRadius.only(
+            //                             topLeft: Radius.circular(35),
+            //                             topRight: Radius.circular(35)),
+            //                       ),
+            //                       child: Padding(
+            //                         padding: const EdgeInsets.only(
+            //                             top: 20, right: 15, left: 15),
+            //                         child: Column(
+            //                           children: [
+            //                             Text(
+            //                               contents[i].title,
+            //                               style: AppWidget.semiBoldTextFieldStyle(),
+            //                             ),
+            //                             SizedBox(height: 10),
+            //                             if (currentIndex == 0) forward_button(),
+            //                             if (currentIndex == 1)
+            //                               Row(
+            //                                 mainAxisAlignment:
+            //                                 MainAxisAlignment.center,
+            //                                 children: [
+            //                                   back_button(),
+            //                                   SizedBox(width: 7),
+            //                                   forward_button(),
+            //                                 ],
+            //                               ),
+            //                             if (currentIndex == 2)
+            //                               Column(
+            //                                 mainAxisAlignment:
+            //                                 MainAxisAlignment.center,
+            //                                 crossAxisAlignment:
+            //                                 CrossAxisAlignment.center,
+            //                                 children: [
+            //                                   Text('Sign Up As'),
+            //                                   SizedBox(height: 5),
+            //                                   main_button(
+            //                                     btn_title:
+            //                                     'I’m a client, Hiring Professionals',
+            //                                     btn_radius: 10,
+            //                                     btn_color: Color(0xff7030F1),
+            //                                     btn_boarder_color: Color(0xff7030F1),
+            //                                     title_color: Colors.white,
+            //                                   ),
+            //
+            //                                   SizedBox(height: 10,),
+            //
+            //                                   main_button(
+            //                                     btn_title:
+            //                                     'I’m a Freelancer, Looking for work',
+            //                                     btn_radius: 10,
+            //                                     btn_color: Colors.transparent,
+            //                                     btn_boarder_color: Color(0xff7030F1),
+            //                                     title_color: Color(0xff7030F1),
+            //                                   ),
+            //                                 ],
+            //                               ),
+            //
+            //                           ],
+            //                         ),
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ],
+            //               ),
+            //             );
+            //           }),
+            //     ),
+            //   ],
+            // );
+          }),
     );
   }
 
@@ -177,6 +337,7 @@ class main_button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      height: 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(btn_radius)),
           color: btn_color, //Color(0xff7030F1),
@@ -187,7 +348,7 @@ class main_button extends StatelessWidget {
         child: Center(
             child: Text(
           btn_title,
-          style: TextStyle(color: title_color),
+          style: TextStyle(color: title_color, fontSize: 12),
         )),
       ),
     );
