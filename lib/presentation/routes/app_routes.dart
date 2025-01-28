@@ -8,16 +8,20 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    // initialLocation: '/bottomNamvBar',
-    initialLocation: '/OnboardingScreen',
+    initialLocation: '/homeScreen',
 
     routes: [
+      // User
       GoRoute(
         path: '/OnboardingScreen',
         name: Routes.OnboardingScreen.name,
        builder: (context, state) => const OnboardingScreen(),
       ),
-
+      GoRoute(
+        path: '/homeScreen',
+        name: Routes.homeScreen.name,
+        builder: (context, state) => const OnboardingScreen(),
+      ),
 
     ],
   );
