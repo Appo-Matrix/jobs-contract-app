@@ -53,9 +53,9 @@ dependencies:
   url_launcher: ^6.1.12
   intl: ^0.18.1
   logger: ^2.0.1
-  flutter_native_splash: ^2.4.3
-  loader_overlay: ^4.0.3
+  flutter_native_splash: ^2.4.4
 
+  loader_overlay: ^4.0.3
 
 
 dev_dependencies:
@@ -78,7 +78,10 @@ flutter:
 
 
   assets:
-    - /assets/fonts/
-    - /assets/images/
+    - assets/logos/
+    - assets/icons/
+    - assets/images/
+    - assets/fonts/
+
 
 
