@@ -72,69 +72,100 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                         const SizedBox(
-                          height: 7,
+                          height: 3,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0xffF2F4F7),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(35),
-                                  topRight: Radius.circular(35)),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        color: Color(0xffF2F4F7),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(35),
+                            topRight: Radius.circular(35)),
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(top: 20, right: 15, left: 15),
+                        child: Column(
+                          children: [
+                            Text(
+                              contents[i].title,
+                              style: AppWidget.semiBoldTextFieldStyle(),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 20, right: 15, left: 15),
-                              child: Column(
+                            Spacer(),
+                            if (currentIndex == 0) forward_button(),
+                            if (currentIndex == 0)
+                              SizedBox(
+                                height: 40,
+                              ),
+                            if (currentIndex == 1)
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text(
-                                    contents[i].title,
-                                    style: AppWidget.semiBoldTextFieldStyle(),
+                                  back_button(),
+                                  SizedBox(width: 7),
+                                  forward_button(),
+                                ],
+                              ),
+                            if (currentIndex == 1)
+                              SizedBox(
+                                height: 40,
+                              ),
+                            if (currentIndex == 2)
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text('Sign Up As'),
+                                  SizedBox(height: 5),
+                                  main_button(
+                                    btn_title:
+                                        'I’m a client, Hiring Professionals',
+                                    btn_radius: 10,
+                                    btn_color: Color(0xff7030F1),
+                                    btn_boarder_color: Color(0xff7030F1),
+                                    title_color: Colors.white,
                                   ),
-                                  SizedBox(height: 10),
-                                  if (currentIndex == 0) forward_button(),
-                                  if (currentIndex == 1)
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        back_button(),
-                                        SizedBox(width: 7),
-                                        forward_button(),
-                                      ],
-                                    ),
-                                  if (currentIndex == 2)
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Text('Sign Up As'),
-                                        SizedBox(height: 5),
-                                        main_button(
-                                          btn_title:
-                                              'I’m a client, Hiring Professionals',
-                                          btn_radius: 10,
-                                          btn_color: Color(0xff7030F1),
-                                          btn_boarder_color: Color(0xff7030F1),
-                                          title_color: Colors.white,
-                                        ),
-
-                                        SizedBox(height: 10,),
-
-                                        main_button(
-                                          btn_title:
-                                          'I’m a Freelancer, Looking for work',
-                                          btn_radius: 10,
-                                          btn_color: Colors.transparent,
-                                          btn_boarder_color: Color(0xff7030F1),
-                                          title_color: Color(0xff7030F1),
-                                        ),
-                                      ],
-                                    ),
-
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  main_button(
+                                    btn_title:
+                                        'I’m a Freelancer, Looking for work',
+                                    btn_radius: 10,
+                                    btn_color: Colors.transparent,
+                                    btn_boarder_color: Color(0xff7030F1),
+                                    title_color: Color(0xff7030F1),
+                                  ),
+                                  SizedBox(
+                                    height: 16,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Already have an account?',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            color: Color(0xff667085),
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      Text(
+                                        ' Log in',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Color(0xff7030F1),
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                           ],
