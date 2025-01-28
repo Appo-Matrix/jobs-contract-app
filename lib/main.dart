@@ -1,16 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:job_contracts/config/app_config.dart';
+import 'package:job_contracts/config/dependencies/di.dart';
+import 'package:job_contracts/domain/services/app_services.dart';
+import 'package:job_contracts/presentation/features/auth/screens/onboarding_screen.dart';
+import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-
-  // AppServices.initialize();
-  // registerNotifiersDi();
-  // AppConfig().initialize();
+void main()async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  AppServices.initialize();
+  registerNotifiersDi();
+   AppConfig().initialize();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.delayed(const Duration(seconds: 3));
+  //runApp(const JobContractsApp());
   runApp(const JobContractsApp());
 }
 
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const OnboardingScreen(),
+    );
+  }
+}
 
 class JobContractsApp extends StatefulWidget {
   const JobContractsApp({super.key});
@@ -30,7 +58,7 @@ class _JobContractsState extends State<JobContractsApp> {
   void initialization() async {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
-    debugPrint("un pausing");
+    debugPrint("unpausing");
   //  FlutterNativeSplash.remove();
   }
   @override
@@ -39,12 +67,12 @@ class _JobContractsState extends State<JobContractsApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MultiProvider(
-        providers: [],
-       // providers: registerGlobalNotifiers(),
+
+        providers: registerGlobalNotifiers(),
         child: MaterialApp.router(
           // theme: ,
           debugShowCheckedModeBanner: false,
-          //routerConfig: AppRouter.router,
+          routerConfig: AppRouter.router,
           builder: (context, child) {
             return LoaderOverlay(
               overlayWidgetBuilder: (_) {
