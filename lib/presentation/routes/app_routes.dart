@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
+import 'package:job_contracts/presentation/features/auth/screens/onboarding_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 
@@ -8,19 +9,15 @@ class AppRouter {
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
     // initialLocation: '/bottomNamvBar',
-    initialLocation: '/splashScreen',
+    initialLocation: '/OnboardingScreen',
 
     routes: [
       GoRoute(
-        path: '/splashScreen',
-        name: Routes.splash.name,
-      //  builder: (context, state) => const SplashScreen(),
+        path: '/OnboardingScreen',
+        name: Routes.OnboardingScreen.name,
+       builder: (context, state) => const OnboardingScreen(),
       ),
-      GoRoute(
-        path: '/startScreen',
-        name: Routes.startScreen.name,
-      //  builder: (context, state) => const StartScreen(),
-      ),
+
 
     ],
   );

@@ -1,6 +1,6 @@
 enum Routes{
 
-  splash,
+  OnboardingScreen,
   startScreen,
 
 }
