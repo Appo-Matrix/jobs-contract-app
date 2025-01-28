@@ -30,7 +30,7 @@ class _JobContractsState extends State<JobContractsApp> {
   void initialization() async {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
-    debugPrint("unpausing");
+    debugPrint("un pausing");
   //  FlutterNativeSplash.remove();
   }
   @override
