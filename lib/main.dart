@@ -71,12 +71,12 @@ class _JobContractsState extends State<JobContractsApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MultiProvider(
-
-        providers: registerGlobalNotifiers(),
+        providers: [],
+       // providers: registerGlobalNotifiers(),
         child: MaterialApp.router(
           // theme: ,
           debugShowCheckedModeBanner: false,
-          routerConfig: AppRouter.router,
+          //routerConfig: AppRouter.router,
           builder: (context, child) {
             return LoaderOverlay(
               overlayWidgetBuilder: (_) {

@@ -60,7 +60,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               "Don't worry! It happens. Please enter the email associated with your account.",
               style: TextStyle(
                 fontSize: 16,
-                color:  Colors.grey,
+                color: Colors.grey,
               ),
             ),
             const SizedBox(height: 32),
