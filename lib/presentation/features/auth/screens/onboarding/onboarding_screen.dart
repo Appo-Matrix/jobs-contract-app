@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../data/models/content_model.dart';
-import '../../../../utils/common_widgets/widget_support.dart';
+import '../../../../../data/models/content_model.dart';
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/common_widgets/widget_support.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -52,13 +53,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           height: 25,
                         ),
                         if (currentIndex == 0)
-                        TextButton(onPressed: () {}, child: Text('Skip')),
+                          TextButton(onPressed: () {}, child: Text('Skip')),
                         SizedBox(height: 10),
                         const SizedBox(
                           height: 16,
                         ),
                         Image.asset(
-                            contents[i].image,
+                          contents[i].image,
                           height: MediaQuery.of(context).size.height / 2.5,
                           width: MediaQuery.of(context).size.width,
                           fit: BoxFit.fill,
@@ -96,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           children: [
                             Text(
-                              contents[i].title,
+                              'test hello',
                               style: AppWidget.semiBoldTextFieldStyle(),
                             ),
                             Spacer(),
@@ -125,24 +126,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 children: [
                                   Text('Sign Up As'),
                                   SizedBox(height: 5),
-                                  main_button(
+                                  MainButton(
                                     btn_title:
                                         'I’m a client, Hiring Professionals',
                                     btn_radius: 10,
                                     btn_color: Color(0xff7030F1),
                                     btn_boarder_color: Color(0xff7030F1),
                                     title_color: Colors.white,
+                                    image_value: false,
                                   ),
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  main_button(
+                                  MainButton(
                                     btn_title:
                                         'I’m a Freelancer, Looking for work',
                                     btn_radius: 10,
                                     btn_color: Colors.transparent,
                                     btn_boarder_color: Color(0xff7030F1),
                                     title_color: Color(0xff7030F1),
+                                    image_value: false,
                                   ),
                                   SizedBox(
                                     height: 16,
@@ -176,130 +179,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 )
               ],
             );
-
-            // Column(
-            //   children: [
-            //     Container(
-            //       color: Colors.red,
-            //       height: MediaQuery.of(context).size.height,
-            //       width: MediaQuery.of(context).size.width,
-            //       child: PageView.builder(
-            //           controller: _controller,
-            //           itemCount: contents.length,
-            //           onPageChanged: (int index) {
-            //             setState(() {
-            //               currentIndex = index;
-            //             });
-            //           },
-            //           itemBuilder: (_, i) {
-            //             return Padding(
-            //               padding: const EdgeInsets.only(
-            //                 top: 35,
-            //               ),
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.center,
-            //                 mainAxisAlignment: MainAxisAlignment.center,
-            //                 children: [
-            //                   Container(
-            //                     height: 100,
-            //                     color: Colors.blue,
-            //                     child: Padding(
-            //                       padding: const EdgeInsets.only(left: 15, right: 15),
-            //                       child: Image.asset(
-            //                         contents[i].image,
-            //                         height: 300,
-            //                         width: MediaQuery.of(context).size.width,
-            //                         fit: BoxFit.fill,
-            //                       ),
-            //                     ),
-            //                   ),
-            //                   const SizedBox(
-            //                     height: 40,
-            //                   ),
-            //
-            //                   Row(
-            //                     mainAxisAlignment: MainAxisAlignment.center,
-            //                     children: List.generate(
-            //                       contents.length,
-            //                           (index) => buildDot(index, context),
-            //                     ),
-            //                   ),
-            //                   const SizedBox(
-            //                     height: 7,
-            //                   ),
-            //                   Padding(
-            //                     padding: const EdgeInsets.only(top: 10),
-            //                     child: Container(
-            //                       decoration: BoxDecoration(
-            //                         color: Color(0xffF2F4F7),
-            //                         borderRadius: BorderRadius.only(
-            //                             topLeft: Radius.circular(35),
-            //                             topRight: Radius.circular(35)),
-            //                       ),
-            //                       child: Padding(
-            //                         padding: const EdgeInsets.only(
-            //                             top: 20, right: 15, left: 15),
-            //                         child: Column(
-            //                           children: [
-            //                             Text(
-            //                               contents[i].title,
-            //                               style: AppWidget.semiBoldTextFieldStyle(),
-            //                             ),
-            //                             SizedBox(height: 10),
-            //                             if (currentIndex == 0) forward_button(),
-            //                             if (currentIndex == 1)
-            //                               Row(
-            //                                 mainAxisAlignment:
-            //                                 MainAxisAlignment.center,
-            //                                 children: [
-            //                                   back_button(),
-            //                                   SizedBox(width: 7),
-            //                                   forward_button(),
-            //                                 ],
-            //                               ),
-            //                             if (currentIndex == 2)
-            //                               Column(
-            //                                 mainAxisAlignment:
-            //                                 MainAxisAlignment.center,
-            //                                 crossAxisAlignment:
-            //                                 CrossAxisAlignment.center,
-            //                                 children: [
-            //                                   Text('Sign Up As'),
-            //                                   SizedBox(height: 5),
-            //                                   main_button(
-            //                                     btn_title:
-            //                                     'I’m a client, Hiring Professionals',
-            //                                     btn_radius: 10,
-            //                                     btn_color: Color(0xff7030F1),
-            //                                     btn_boarder_color: Color(0xff7030F1),
-            //                                     title_color: Colors.white,
-            //                                   ),
-            //
-            //                                   SizedBox(height: 10,),
-            //
-            //                                   main_button(
-            //                                     btn_title:
-            //                                     'I’m a Freelancer, Looking for work',
-            //                                     btn_radius: 10,
-            //                                     btn_color: Colors.transparent,
-            //                                     btn_boarder_color: Color(0xff7030F1),
-            //                                     title_color: Color(0xff7030F1),
-            //                                   ),
-            //                                 ],
-            //                               ),
-            //
-            //                           ],
-            //                         ),
-            //                       ),
-            //                     ),
-            //                   ),
-            //                 ],
-            //               ),
-            //             );
-            //           }),
-            //     ),
-            //   ],
-            // );
           }),
     );
   }
@@ -312,44 +191,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6),
         color: currentIndex == index ? Colors.blue : Colors.black38,
-      ),
-    );
-  }
-}
-
-class main_button extends StatelessWidget {
-  final String btn_title;
-  final double btn_radius;
-  final Color btn_color;
-  final Color title_color;
-  final Color btn_boarder_color;
-
-  const main_button({
-    super.key,
-    required this.btn_title,
-    required this.btn_radius,
-    required this.btn_color,
-    required this.btn_boarder_color,
-    required this.title_color,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 50,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(btn_radius)),
-          color: btn_color, //Color(0xff7030F1),
-          border: Border.all(color: btn_boarder_color)),
-      child: Padding(
-        padding:
-            const EdgeInsets.only(left: 10.0, right: 10, top: 15, bottom: 15),
-        child: Center(
-            child: Text(
-          btn_title,
-          style: TextStyle(color: title_color, fontSize: 12),
-        )),
       ),
     );
   }

@@ -50,6 +50,7 @@ flutter:
     - assets/logos/
     - assets/images/
     - assets/fonts/
+    - assets/icons/
   fonts:
     - family: DomaineArrow
       fonts:

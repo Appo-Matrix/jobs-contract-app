@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_contracts/config/app_config.dart';
 import 'package:job_contracts/config/dependencies/di.dart';
 import 'package:job_contracts/domain/services/app_services.dart';
-import 'package:job_contracts/presentation/features/auth/screens/onboarding_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -16,10 +16,10 @@ void main()async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   AppServices.initialize();
   registerNotifiersDi();
-   AppConfig().initialize();
+  AppConfig().initialize();
   WidgetsFlutterBinding.ensureInitialized();
   await Future.delayed(const Duration(seconds: 3));
-  //runApp(const JobContractsApp());
+
   runApp(const JobContractsApp());
 }
 
