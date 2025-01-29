@@ -16,11 +16,11 @@ dependencies:
   # UI
   flutter_screenutil: ^5.9.3
 
-  # State Management
+    # State Management
   get_it: ^8.0.1
   provider: ^6.1.2
 
-  # Services
+    # Services
   shared_preferences: ^2.3.2
   dio: ^5.7.0
 
