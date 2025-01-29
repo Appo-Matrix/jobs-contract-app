@@ -48,4 +48,5 @@ class JAppTheme {
     outlinedButtonTheme: JOutlinedButtonTheme.darkOutlinedButtonTheme,
     inputDecorationTheme: JTextFieldTheme.darkInputDecorationTheme,
   );
+
 }
