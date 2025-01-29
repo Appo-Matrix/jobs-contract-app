@@ -50,10 +50,7 @@ flutter:
     - assets/logos/
     - assets/images/
     - assets/fonts/
-<<<<<<< HEAD
     - assets/icons/
-=======
->>>>>>> cbfcf95 (forget screen)
   fonts:
     - family: DomaineArrow
       fonts:
