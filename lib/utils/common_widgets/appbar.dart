@@ -21,6 +21,7 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: true,
+
       leading: showBackArrow
           ? IconButton(
           onPressed: leadingOnPressed,
