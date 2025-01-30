@@ -40,27 +40,27 @@ class SignupScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopHeader(logo: PImages.mainLogo, title: PText.signUp, subTitle: PText.signupSubtitle,),
+              const TopHeader(logo: JImages.mainLogo, title: JText.signUp, subTitle: JText.signupSubtitle,),
               TextFieldWidget(
-                subTitle: PText.signUpTitle,
-                hintText: PText.signUpName,
+                subTitle: JText.signUpTitle,
+                hintText: JText.signUpName,
                 prefixIcon: Icons.person_outline,
               ),
               SizedBox(height: 20),
               TextFieldWidget(
-                subTitle: PText.email,
-                hintText: PText.enterYourName,
+                subTitle: JText.email,
+                hintText: JText.enterYourName,
                 prefixIcon: Icons.person_outline,
               ),
 
               SizedBox(height: 20),
               TextFieldWidget(
-                hintText: PText.createPassword,
+                hintText: JText.createPassword,
                 prefixIcon: Icons.lock_outline,
-                subTitle: PText.password,
+                subTitle: JText.password,
               ),
               SizedBox(height: 10),
-              Text(PText.passwordMustBe,style: AppTextStyle.dmSans(
+              Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
                 color: JAppColors.lightGray700,
                 fontSize: JSizes.fontSizeSm,
                 weight: FontWeight.w500,
@@ -69,7 +69,7 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               MainButton(
-                btn_title: PText.getStart,
+                btn_title: JText.getStart,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Color(0xff7030F1),
@@ -79,13 +79,13 @@ class SignupScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               MainButton(
-                btn_title: PText.signupWithGoogle,
+                btn_title: JText.signupWithGoogle,
                 btn_radius: 10,
                 btn_color: Colors.transparent,
                 btn_boarder_color: JAppColors.t,
                 title_color: JAppColors.lightGray700,
                 text_fontweight: FontWeight.w600,
-                btn_image: PImages.googleImage,
+                btn_image: JImages.googleImage,
                 image_value: true,
                 text_size: JSizes.fontSizeMd,
               ),
@@ -96,7 +96,7 @@ class SignupScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    PText.alreadyAccount,
+                    JText.alreadyAccount,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.lightGray500,
                       fontSize: JSizes.fontSizeMd,
@@ -105,7 +105,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(
-                    PText.login,
+                    JText.login,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.primary,
                       fontSize: JSizes.fontSizeLg,
