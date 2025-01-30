@@ -3,6 +3,7 @@ import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 
@@ -23,6 +24,10 @@ class AppRouter {
         path: '/forgetPasswordScreen',
         name: Routes.forgetPasswordScreen.name,
        builder: (context, state) => const ForgetPasswordScreen(),
+      ),  GoRoute(
+        path: '/resetPasswordScreen',
+        name: Routes.resetPasswordScreen.name,
+       builder: (context, state) => const ResetPasswordScreen(),
       ),
 
 
