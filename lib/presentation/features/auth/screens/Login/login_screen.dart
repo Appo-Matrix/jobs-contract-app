@@ -42,8 +42,8 @@ class LoginScreen extends StatelessWidget {
             children: [
               const TopHeader(logo: PImages.mainLogo, title: PText.login, subTitle: PText.loginTitle,),
               TextFieldWidget(
-                subTitle: PText.email,
-                hintText: PText.emailEnter,
+                subTitle: JText.email,
+                hintText: JText.emailEnter,
                 prefixIcon: Icons.person_outline,
               ),
 
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                 hintText: '••••••••',
                 prefixIcon: Icons.lock_outline,
                 obscureText: true,
-                subTitle: PText.password,
+                subTitle: JText.password,
               ),
 
               //const TLoginForm(),
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    PText.remember,
+                    JText.remember,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.lightGray700,
                       fontSize: JSizes.fontSizeESm,
@@ -87,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      PText.forgetPassword,
+                      JText.forgetPassword,
                       style: AppTextStyle.dmSans(
                         color: JAppColors.main,
                         fontSize: JSizes.fontSizeEaSm,
@@ -102,7 +102,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               MainButton(
-                btn_title: PText.signIn,
+                btn_title: JText.signIn,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Color(0xff7030F1),
@@ -112,13 +112,13 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               MainButton(
-                btn_title: PText.signInGoogle,
+                btn_title: JText.signInGoogle,
                 btn_radius: 10,
                 btn_color: Colors.transparent,
                 btn_boarder_color: JAppColors.t,
                 title_color: JAppColors.lightGray700,
                 text_fontweight: FontWeight.w600,
-                btn_image: PImages.googleImage,
+                btn_image: JImages.googleImage,
                 image_value: true,
                 text_size: JSizes.fontSizeMd,
               ),
@@ -129,7 +129,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    PText.account,
+                    JText.account,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.lightGray500,
                       fontSize: JSizes.fontSizeMd,
@@ -138,7 +138,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(
-                    PText.signUp,
+                    JText.signUp,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.primary,
                       fontSize: JSizes.fontSizeLg,

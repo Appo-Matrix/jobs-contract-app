@@ -22,13 +22,14 @@ class TopHeader extends StatelessWidget {
         Image(
           height: 52,
           width: 86,
-          image: AssetImage(logo),
+          image: AssetImage(JImages.mainLogo),
         ),
         const SizedBox(
           height: 15,
         ),
         Text(
-          title,
+
+          JText.login,
           style: AppTextStyle.dmSans(
             color: JAppColors.lightGray900,
             fontSize: JSizes.fontSizeLgx,
@@ -39,7 +40,7 @@ class TopHeader extends StatelessWidget {
           height: 7,
         ),
         Text(
-          subTitle,
+          JText.loginTitle,
           style: AppTextStyle.dmSans(
             color: JAppColors.lightGray500,
             fontSize: JSizes.fontSizeMd,
