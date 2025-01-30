@@ -22,7 +22,7 @@ class JAppBarTheme {
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: JAppColors.darkGray800,  // Title text color for light mode
+      color: JAppColors.lightGray800,  // Title text color for light mode
     ),
   );
 

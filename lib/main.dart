@@ -5,9 +5,11 @@ import 'package:job_contracts/config/app_config.dart';
 import 'package:job_contracts/config/dependencies/di.dart';
 import 'package:job_contracts/domain/services/app_services.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
+import 'package:job_contracts/utils/themes/themes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -32,10 +34,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
-      home: const OnboardingScreen(),
+      home: const VerifyPhoneNumber(),
     );
   }
 }
@@ -59,7 +61,9 @@ class _JobContractsState extends State<JobContractsApp> {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
     debugPrint("unpausing");
-  //  FlutterNativeSplash.remove();
+    FlutterNativeSplash.remove(); // This must be called!
+
+    //  FlutterNativeSplash.remove();
   }
   @override
   Widget build(BuildContext context) {
@@ -73,6 +77,9 @@ class _JobContractsState extends State<JobContractsApp> {
           // theme: ,
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
+          theme: JAppTheme.lightTheme,  // Apply your custom light theme
+          darkTheme: JAppTheme.darkTheme,  // Apply your custom dark theme
+          themeMode: ThemeMode.system,
           builder: (context, child) {
             return LoaderOverlay(
               overlayWidgetBuilder: (_) {
