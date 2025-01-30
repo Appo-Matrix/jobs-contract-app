@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopHeader(logo: PImages.mainLogo, title: PText.login, subTitle: PText.loginTitle,),
+              const TopHeader(logo: JImages.mainLogo, title: JText.login, subTitle: JText.loginTitle,),
               TextFieldWidget(
                 subTitle: JText.email,
                 hintText: JText.emailEnter,
