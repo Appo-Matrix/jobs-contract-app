@@ -20,13 +20,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: SignupScreen(),
     );
   }
 }
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,75 +34,42 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 50, right: 15, left: 15),
+          padding: EdgeInsets.only(top: 60, right: 15, left: 15),
           // padding: TSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopHeader(logo: PImages.mainLogo, title: PText.login, subTitle: PText.loginTitle,),
+              const TopHeader(logo: PImages.mainLogo, title: PText.signUp, subTitle: PText.signupSubtitle,),
+              TextFieldWidget(
+                subTitle: PText.signUpTitle,
+                hintText: PText.signUpName,
+                prefixIcon: Icons.person_outline,
+              ),
+              SizedBox(height: 20),
               TextFieldWidget(
                 subTitle: PText.email,
-                hintText: PText.emailEnter,
+                hintText: PText.enterYourName,
                 prefixIcon: Icons.person_outline,
               ),
 
               SizedBox(height: 20),
-
               TextFieldWidget(
-                hintText: '••••••••',
+                hintText: PText.createPassword,
                 prefixIcon: Icons.lock_outline,
-                obscureText: true,
                 subTitle: PText.password,
               ),
+              SizedBox(height: 10),
+              Text(PText.passwordMustBe,style: AppTextStyle.dmSans(
+                color: JAppColors.lightGray700,
+                fontSize: JSizes.fontSizeSm,
+                weight: FontWeight.w500,
+              ),),
 
-              //const TLoginForm(),
-              // TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
-              const SizedBox(
-                height: 12,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (value) {},
-                    side: BorderSide(
-                      color: JAppColors.lightGray400,
-                      // Border color changes based on checkbox state
-                      width: 1.6, // You can adjust the width as well
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5), // Rounded corners
-                    ),
-                  ),
-                  Text(
-                    PText.remember,
-                    style: AppTextStyle.dmSans(
-                      color: JAppColors.lightGray700,
-                      fontSize: JSizes.fontSizeESm,
-                      weight: FontWeight.w500,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      PText.forgetPassword,
-                      style: AppTextStyle.dmSans(
-                        color: JAppColors.main,
-                        fontSize: JSizes.fontSizeEaSm,
-                        weight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
-              ///SignIn Button
-              const SizedBox(height: 20),
+              const SizedBox(height: 25),
 
               MainButton(
-                btn_title: PText.signIn,
+                btn_title: PText.getStart,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Color(0xff7030F1),
@@ -112,7 +79,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               MainButton(
-                btn_title: PText.signInGoogle,
+                btn_title: PText.signupWithGoogle,
                 btn_radius: 10,
                 btn_color: Colors.transparent,
                 btn_boarder_color: JAppColors.t,
@@ -129,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    PText.account,
+                    PText.alreadyAccount,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.lightGray500,
                       fontSize: JSizes.fontSizeMd,
@@ -138,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 5),
                   Text(
-                    PText.signUp,
+                    PText.login,
                     style: AppTextStyle.dmSans(
                       color: JAppColors.primary,
                       fontSize: JSizes.fontSizeLg,
@@ -146,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
