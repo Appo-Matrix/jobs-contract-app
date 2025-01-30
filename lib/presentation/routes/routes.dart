@@ -4,6 +4,7 @@ enum Routes{
   onboardingScreen,
   startScreen,
   homeScreen,
+  resetPasswordScreen,
   verifyProfile,
   verifyPhoneNumber,
   verifyPhoneOtp,

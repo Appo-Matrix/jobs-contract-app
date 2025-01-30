@@ -1,6 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
+import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
@@ -15,7 +17,7 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/verifyPaymentMethod',
+    initialLocation: '/forgetPasswordScreen',
 
     routes: [
       // User
@@ -53,7 +55,18 @@ class AppRouter {
         path: '/verifyPaymentMethod',
         name: Routes.verifyPaymentMethod.name,
        builder: (context, state) => const VerifyPaymentMethod(),
+
       ),
+      GoRoute(
+        path: '/resetPasswordScreen',
+        name: Routes.resetPasswordScreen.name,
+       builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/forgetPasswordScreen',
+        name: Routes.forgetPasswordScreen.name,
+        builder: (context, state) => const ForgetPasswordScreen(),
+      )
 
 
     ],
