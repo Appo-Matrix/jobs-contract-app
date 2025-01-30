@@ -159,4 +159,10 @@ class JDeviceUtils {
       throw 'Could not launch $url';
     }
   }
+
+  /// Check if dark mode is enabled
+  static bool isDarkMode(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark;
+  }
+
 }

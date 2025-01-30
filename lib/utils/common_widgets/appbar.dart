@@ -19,16 +19,18 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: true,
-
-      leading: showBackArrow
-          ? IconButton(
-          onPressed: leadingOnPressed,
-          icon:  Icon(Icons.arrow_back, color: JAppColors.primary))
-          : leadingIcon,
-      title: title,
-      actions: actions,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
+      child: AppBar(
+        automaticallyImplyLeading: true,
+        leading: showBackArrow
+            ? IconButton(
+            onPressed: leadingOnPressed,
+            icon:  Icon(Icons.arrow_back, color: JAppColors.primary))
+            : leadingIcon,
+        title: title,
+        actions: actions,
+      ),
     );
   }
 

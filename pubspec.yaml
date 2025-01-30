@@ -35,6 +35,8 @@ dependencies:
   flutter_native_splash: ^2.4.4
 
   loader_overlay: ^4.0.3
+  dropdown_search: ^6.0.2
+  dropdown_textfield: ^1.2.0
 
 
 dev_dependencies:
@@ -73,7 +75,7 @@ flutter:
           weight: 400
         - asset: assets/fonts/dm_sans/DMSans-Bold.ttf
           weight: 500
-        - asset: assets/fonts/dm_sans/DMSans-ExtraBold.ttf
+        - asset: assets/fonts/dm_sans/DMSans_18pt-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/dm_sans/DMSans-ExtraLight.ttf
           weight: 700

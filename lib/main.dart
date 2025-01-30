@@ -5,9 +5,11 @@ import 'package:job_contracts/config/app_config.dart';
 import 'package:job_contracts/config/dependencies/di.dart';
 import 'package:job_contracts/domain/services/app_services.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
+import 'package:job_contracts/utils/themes/themes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -59,11 +61,9 @@ class _JobContractsState extends State<JobContractsApp> {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
     debugPrint("unpausing");
+    FlutterNativeSplash.remove(); // This must be called!
 
-    // debugPrint("pausing...");
-    // await Future.delayed(const Duration(seconds: 3));
-    // debugPrint("unpausing");
-  //  FlutterNativeSplash.remove();
+    //  FlutterNativeSplash.remove();
   }
   @override
   Widget build(BuildContext context) {
@@ -71,12 +71,15 @@ class _JobContractsState extends State<JobContractsApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MultiProvider(
-        providers: [],
-       // providers: registerGlobalNotifiers(),
+
+        providers: registerGlobalNotifiers(),
         child: MaterialApp.router(
           // theme: ,
           debugShowCheckedModeBanner: false,
-          //routerConfig: AppRouter.router,
+          routerConfig: AppRouter.router,
+          theme: JAppTheme.lightTheme,  // Apply your custom light theme
+          darkTheme: JAppTheme.darkTheme,  // Apply your custom dark theme
+          themeMode: ThemeMode.system,
           builder: (context, child) {
             return LoaderOverlay(
               overlayWidgetBuilder: (_) {
