@@ -6,21 +6,6 @@ import 'package:job_contracts/utils/constants/colors.dart';
 
 import '../../../../utils/constants/sizes.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ForgetPasswordScreen(),
-    );
-  }
-}
-
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 

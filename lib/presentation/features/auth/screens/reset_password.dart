@@ -1,39 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
-      // Uses system theme
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.white,
-        primaryColor: const Color(0xFF6B46C1),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.black),
-          bodyMedium: TextStyle(color: Colors.black54),
-        ),
-      ),
-      darkTheme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF121212),
-        primaryColor: const Color(0xFF6B46C1),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white70),
-        ),
-      ),
-      home: const ResetPasswordScreen(),
-    );
-  }
-}
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});

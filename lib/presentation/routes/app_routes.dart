@@ -3,6 +3,7 @@ import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
