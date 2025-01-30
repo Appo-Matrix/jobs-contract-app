@@ -65,7 +65,7 @@ class AppRouter {
       GoRoute(
         path: '/forgetPasswordScreen',
         name: Routes.forgetPasswordScreen.name,
-        builder: (context, state) => const ForgetPasswordScreen(),
+       builder: (context, state) => const ForgetPasswordScreen(),
       )
 
 
