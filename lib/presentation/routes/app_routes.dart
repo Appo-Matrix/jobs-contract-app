@@ -12,13 +12,14 @@ import '../features/auth/screens/verify_profile/screens/verify_payment_method.da
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/users/add_education/add_education.dart';
 
 
 class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/forgetPasswordScreen',
+    initialLocation: '/addEducation',
 
     routes: [
       // User
@@ -67,6 +68,11 @@ class AppRouter {
         path: '/forgetPasswordScreen',
         name: Routes.forgetPasswordScreen.name,
         builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/addEducation',
+        name: Routes.addEducation.name,
+        builder: (context, state) =>  AddEducation(),
       )
 
 

@@ -11,6 +11,7 @@ enum Routes{
   successScreen,
   verifyIdentity,
   verifyPaymentMethod,
-  forgetPasswordScreen
+  forgetPasswordScreen,
+  addEducation
 
 }

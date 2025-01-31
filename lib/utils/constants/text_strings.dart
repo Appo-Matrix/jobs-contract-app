@@ -65,4 +65,27 @@ class JText {
   static const String cVV = "CVV";
 
 
+  ////add education screen
+
+  static const String addEducation = "Add Education";
+  static const String levelOfEducation = "Level of education";
+  static const String institutionName = "Institution name";
+  static const String startDate = "Start date";
+  static const String endDate = "End date";
+  static const String positionNow = "This is my position now";
+  static const String description = "Description";
+  static const String additionalInformation = "Write additional information here";
+  static const String fieldOfStudy = "Field of study";
+  static const String save = "Save";
+  static const String remove = "Remove";
+  static const String undoChanges = "Undo Changes ?";
+  static const String changeEnterText = "Are you sure you want to change what you entered?";
+  static const String continueFilling = "Continue Filling";
+  static const String unDoChanges = "Undo Changes";
+  static const String removeEducation = "Remove Education?";
+  static const String deleteEducation = "Are you sure you want to delete this education?";
+
+
+
+
 }
