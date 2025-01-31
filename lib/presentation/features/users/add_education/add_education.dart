@@ -192,10 +192,9 @@ class _AddEducationState extends State<AddEducation> {
       },
     );
   }
-}
 
 
-void showBottomSheet(BuildContext context, bool isDark) {
+  void showBottomSheet(BuildContext context, bool isDark) {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -299,4 +298,8 @@ void showBottomSheet(BuildContext context, bool isDark) {
       },
     );
   }
+
+}
+
+
 
