@@ -50,13 +50,12 @@ class JobContractsApp extends StatefulWidget {
 }
 
 class _JobContractsState extends State<JobContractsApp> {
-
   @override
   void initState() {
     super.initState();
     initialization();
-
   }
+
   void initialization() async {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
@@ -64,6 +63,7 @@ class _JobContractsState extends State<JobContractsApp> {
     FlutterNativeSplash.remove(); // This must be called!
 
   }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
