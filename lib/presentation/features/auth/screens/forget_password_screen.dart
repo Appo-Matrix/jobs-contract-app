@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/common_widgets/appbar.dart';
 import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';

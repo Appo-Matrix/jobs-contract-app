@@ -22,6 +22,16 @@ class JText {
   static const String enterYourName = "Enter your email";
   static const String createPassword = "Create a password";
   static const String passwordMustBe = "Must be at least 8 characters.";
+  static const String accountSetting = "Account Settings";
+  static const String profileInfo = "Profile Information";
+  static const String changePassword = "Change Password";
+  static const String changeYourPassword = "Change your password";
+  static const String changeInfo = "Change your account information";
+  static const String paymentMethodTitle = "Payment Methods";
+  static const String addCreditTitle = "Add your credit & debit cards";
+  static const String locationTitle = "Locations";
+  static const String locationSubTitle = "Add or remove your delivery locations";
+  static const String accountSettingText = "Update your settings like notifications, payments, profile edit etc.";
 
 
   ///// KYC Strings

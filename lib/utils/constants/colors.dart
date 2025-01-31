@@ -4,8 +4,6 @@ class JAppColors {
   JAppColors._();
 
 
-
-
   static const Color primary = Color(0xFF7030F1);
 
   // Shades of the Primary Color

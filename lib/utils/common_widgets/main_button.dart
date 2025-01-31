@@ -10,6 +10,7 @@ class MainButton extends StatelessWidget {
   final double? text_size;
   final FontWeight? text_fontweight;
   final bool image_value;
+  final VoidCallback? onTap;
 
   const MainButton({
     super.key,
@@ -22,45 +23,49 @@ class MainButton extends StatelessWidget {
     this.text_fontweight = FontWeight.w600,
     this.btn_image = '',
     required this.image_value,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 50,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(btn_radius)),
-          color: btn_color, //Color(0xff7030F1),
-          border: Border.all(color: btn_boarder_color)),
-      child: Padding(
-        padding:
-            const EdgeInsets.only(left: 10.0, right: 10, top: 10, bottom: 10),
-        child: Center(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (image_value == true)
-              Row(
-                children: [
-                  Image.asset(
-                    btn_image!,
-                    width: 24,
-                    height: 24,
-                  ),
-                  SizedBox(width: 10),
-                ],
-              ),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: 50,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(btn_radius)),
+            color: btn_color, //Color(0xff7030F1),
+            border: Border.all(color: btn_boarder_color)),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 10.0, right: 10, top: 10, bottom: 10),
+          child: Center(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (image_value == true)
+                Row(
+                  children: [
+                    Image.asset(
+                      btn_image!,
+                      width: 24,
+                      height: 24,
+                    ),
+                    SizedBox(width: 10),
+                  ],
+                ),
 
-              Text(
-                btn_title,
-                style: TextStyle(
-                    color: title_color,
-                    fontSize: text_size,
-                    fontWeight: text_fontweight),
-              ),
-          ],
-        )),
+                Text(
+                  btn_title,
+                  style: TextStyle(
+                      color: title_color,
+                      fontSize: text_size,
+                      fontWeight: text_fontweight),
+                ),
+            ],
+          )),
+        ),
       ),
     );
     ;
