@@ -24,6 +24,7 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
   final FocusNode _focusNode = FocusNode();
   DateTime? _selectedDate;
   final TextEditingController _dobController = TextEditingController();
+  late SingleValueDropDownController controller;
 
   final List<String> countries = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Argentina", "Armenia",
@@ -46,7 +47,6 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
       });
     }
   }
-  late SingleValueDropDownController controller;
 
   @override
   void initState() {
