@@ -97,11 +97,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Column(
                           children: [
                             Text(
-                              'test hello',
+                              contents[i].title,
                               style: AppWidget.semiBoldTextFieldStyle(),
                             ),
                             Spacer(),
-                            if (currentIndex == 0) forward_button(),
+                            if (currentIndex == 0)
+                              forward_button(
+                                onClick: () {
+
+                                },
+                              ),
                             if (currentIndex == 0)
                               SizedBox(
                                 height: 40,
@@ -112,7 +117,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 children: [
                                   back_button(),
                                   SizedBox(width: 7),
-                                  forward_button(),
+                                  forward_button(onClick: () {
+
+                                  },),
                                 ],
                               ),
                             if (currentIndex == 1)
@@ -139,6 +146,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                     height: 10,
                                   ),
                                   MainButton(
+                                    onTap:() {
+
+                                    },
                                     btn_title:
                                         'I’m a Freelancer, Looking for work',
                                     btn_radius: 10,
@@ -219,22 +229,33 @@ class back_button extends StatelessWidget {
 }
 
 class forward_button extends StatelessWidget {
+  final VoidCallback onClick;
+
   const forward_button({
     super.key,
+    required this.onClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(100)),
-          color: Color(0xff7030F1)),
-      child: Icon(
-        Icons.arrow_forward,
-        color: Colors.white,
+    return InkWell(
+      onTap: onClick,
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(100)),
+            color: Color(0xff7030F1)),
+        child: Icon(
+          Icons.arrow_forward,
+          color: Colors.white,
+        ),
       ),
     );
+
+
   }
+
 }
+
+

@@ -28,7 +28,7 @@ class AppWidget{
   static TextStyle semiBoldTextFieldStyle(){
     return  const TextStyle(
         color: Color(0xff1E1E1E),
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: FontWeight.w600,
         fontFamily: 'Poppins');
   }
