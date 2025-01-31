@@ -88,4 +88,11 @@ class JText {
 
 
 
+  ///payments screen
+  static const String paymentmethod = "Payment method";
+  static const donotCard    = "Don’t have any card";
+  static const cardDetailText    = "It’s seems like you don’t add any credit or debit card. You may easily add card.";
+  static const String addPaymentMethod = "Add Payment Method";
+
+
 }
