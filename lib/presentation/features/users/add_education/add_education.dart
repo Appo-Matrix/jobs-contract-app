@@ -1,4 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/add_education/searchable_bottomsheet_content.dart';
+import 'package:job_contracts/presentation/features/users/add_education/widgets/text_title_education_widget.dart';
+
+import '../../../../utils/common_widgets/appbar.dart';
+import '../../../../utils/common_widgets/circular_shape.dart';
+import '../../../../utils/constants/app_text_style.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
+import '../../../../utils/device/device_utility.dart';
 
 class AddEducation extends StatefulWidget {
   const AddEducation({super.key});
@@ -43,34 +54,44 @@ class _AddEducationState extends State<AddEducation> {
             crossAxisAlignment: CrossAxisAlignment.start, // Align left
             children: [
               GestureDetector(
-                  onTap: (){
-
-                    showSearchableEducationBottomSheet(context, isDark, JText.levelOfEducation);
+                  onTap: () {
+                    showSearchableEducationBottomSheet(
+                        context, isDark, JText.levelOfEducation);
                   },
-                  child: TextTitleEducationWidget(isDark: isDark, title: JText.levelOfEducation, education: 'ae',)),
+                  child: TextTitleEducationWidget(isDark: isDark,
+                    title: JText.levelOfEducation,
+                    education: 'ae',)),
 
               SizedBox(height: JSizes.spaceBtwInputFields + 8),
-              TextTitleEducationWidget(isDark: isDark, title: JText.institutionName, education: 'ae',),
+              TextTitleEducationWidget(
+                isDark: isDark, title: JText.institutionName, education: 'ae',),
 
               SizedBox(height: JSizes.spaceBtwInputFields + 8),
 
-              TextTitleEducationWidget(isDark: isDark, title: JText.fieldOfStudy, education: 'ae',),
+              TextTitleEducationWidget(
+                isDark: isDark, title: JText.fieldOfStudy, education: 'ae',),
               SizedBox(height: JSizes.spaceBtwInputFields + 8), // Spacing
 
               TextTitleEducationWidget(
                 maxLines: 5,
-                isDark: isDark, title: JText.fieldOfStudy, education: 'My name is basit murad I am mobile app developerI will develop mibile app fro andori dand io i am backed develoep rwiht  year of aasfa hdfjjdsfdf9 ',),
+                isDark: isDark,
+                title: JText.fieldOfStudy,
+                education: 'My name is basit murad I am mobile app developerI will develop mibile app fro andori dand io i am backed develoep rwiht  year of aasfa hdfjjdsfdf9 ',),
               SizedBox(height: JSizes.spaceBtwInputFields + 8), // Spacing
 
               Row(
                 children: [
                   Expanded(
-                      child: TextTitleEducationWidget(isDark: isDark, title: JText.startDate, education: 'education')
+                      child: TextTitleEducationWidget(isDark: isDark,
+                          title: JText.startDate,
+                          education: 'education')
                   ),
                   const SizedBox(width: 16), // Space between columns
 
                   Expanded(
-                      child: TextTitleEducationWidget(isDark: isDark, title: JText.endDate, education: 'education')
+                      child: TextTitleEducationWidget(isDark: isDark,
+                          title: JText.endDate,
+                          education: 'education')
                   ),
                 ],
               ),
@@ -92,7 +113,8 @@ class _AddEducationState extends State<AddEducation> {
                   Text(
                     JText.positionNow,
                     style: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                      color: isDark ? JAppColors.darkGray100 : JAppColors
+                          .lightGray900,
                       fontSize: 14.0,
                       weight: FontWeight.w500,
                     ),
@@ -109,7 +131,8 @@ class _AddEducationState extends State<AddEducation> {
                         onPressed: () {
                           setState(() {
                             isSaveButtonVisible = false; // Hide the Save button
-                            isSecondButtonVisible = true; // Show the Remove button
+                            isSecondButtonVisible =
+                            true; // Show the Remove button
                           });
                         },
                         style: ElevatedButton.styleFrom(
@@ -139,7 +162,8 @@ class _AddEducationState extends State<AddEducation> {
                       child: SizedBox(
                         child: ElevatedButton(
                           onPressed: () {
-                            showBottomSheet(context, isDark); // Show the bottom sheet on button click
+                            showBottomSheet(context,
+                                isDark); // Show the bottom sheet on button click
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: JAppColors.primary,
@@ -168,7 +192,8 @@ class _AddEducationState extends State<AddEducation> {
     );
   }
 
-  void showSearchableEducationBottomSheet(BuildContext context, bool isDark, String educationText) {
+  void showSearchableEducationBottomSheet(BuildContext context, bool isDark,
+      String educationText) {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
@@ -178,7 +203,8 @@ class _AddEducationState extends State<AddEducation> {
         ),
       ),
       builder: (context) {
-        return SearchableBottomSheetContent(isDark: isDark, educationText: educationText);
+        return SearchableBottomSheetContent(
+            isDark: isDark, educationText: educationText);
       },
     );
   }
@@ -197,7 +223,8 @@ class _AddEducationState extends State<AddEducation> {
         return Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisSize: MainAxisSize.min,  // Ensures the bottom sheet takes minimum space needed
+            mainAxisSize: MainAxisSize.min,
+            // Ensures the bottom sheet takes minimum space needed
             children: [
               SizedBox(height: JSizes.spaceBtwSections + 10),
 
@@ -205,24 +232,28 @@ class _AddEducationState extends State<AddEducation> {
               Text(
                 JText.unDoChanges,
                 style: AppTextStyle.dmSans(
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,
                   fontSize: 20.0,
                   weight: FontWeight.w600,
                 ),
               ),
-              SizedBox(height: JSizes.spaceBtwInputFields), // Adds space after title
+              SizedBox(height: JSizes.spaceBtwInputFields),
+              // Adds space after title
 
               // Subtitle
               Text(
                 JText.changeEnterText,
                 style: AppTextStyle.dmSans(
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: JSizes.spaceBtwSections + 15), // Adds space after subtitle
+              SizedBox(height: JSizes.spaceBtwSections + 15),
+              // Adds space after subtitle
 
               // First Button
               SizedBox(
@@ -250,7 +281,8 @@ class _AddEducationState extends State<AddEducation> {
                   ),
                 ),
               ),
-              SizedBox(height: JSizes.spaceBtwSections - 10), // Adds space between buttons
+              SizedBox(height: JSizes.spaceBtwSections - 10),
+              // Adds space between buttons
 
               // Second Button
               SizedBox(
@@ -281,10 +313,12 @@ class _AddEducationState extends State<AddEducation> {
                   ),
                 ),
               ),
-              SizedBox(height: JSizes.spaceBtwSections + 20), // Adds final space after the buttons
+              SizedBox(height: JSizes.spaceBtwSections + 20),
+              // Adds final space after the buttons
             ],
           ),
         );
       },
     );
   }
+}
