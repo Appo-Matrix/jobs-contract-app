@@ -16,6 +16,7 @@ class JSizes {
   static const double fontSizeESm = 12.0;
   static const double fontSizeEaSm = 13.0;
   static const double fontSizeSm = 14.0;
+  static const double fontSizeSmx = 15.0;
   static const double fontSizeMd = 16.0;
   static const double fontSizeLg = 18.0;
   static const double fontSizeLgx = 24.0;

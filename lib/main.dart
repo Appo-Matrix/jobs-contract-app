@@ -63,7 +63,6 @@ class _JobContractsState extends State<JobContractsApp> {
     debugPrint("unpausing");
     FlutterNativeSplash.remove(); // This must be called!
 
-    //  FlutterNativeSplash.remove();
   }
   @override
   Widget build(BuildContext context) {
