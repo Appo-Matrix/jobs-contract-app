@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/add_social_account/widgets/button_widget.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
@@ -41,57 +42,83 @@ class _AddSocialAccountState extends State<AddSocialAccount> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: Column(
+      body: Column(
+        children: [
 
-          children: [
-            Text(
-              JText.addSocialAccount11s,
-              style: AppTextStyle.dmSans(
-                color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                fontSize: 20.0,
-                weight: FontWeight.w600,
-              ),
+
+          SizedBox(height: 8,)
+,          Container(height: 1,color: isDark ?  JAppColors.lightGray200 : JAppColors.grayBlue800,),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+
+                SizedBox(height: JSizes.spaceBtwSections-2,),
+
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    JText.addSocialAccount11s,
+                    style: AppTextStyle.dmSans(
+                      color:
+                          isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                      fontSize: 20.0,
+                      weight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: JSizes.spaceBtwInputFields,
+                ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    JText.addSocialAccountDesc,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800.withValues(alpha: 0.5),
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    JText.addSocialAccountDesc2,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800.withValues(alpha: 0.5),
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: JSizes.spaceBtwSections,
+                ),
+                ButtonWidget(
+                  imagePath: JImages.facebook1,
+                  buttonText: JText.connectWithFacebook,
+                  onPressed: () {},
+                  backColor: JAppColors.darkest12,
+                ),
+                SizedBox(
+                  height: JSizes.spaceBtwInputFields - 2,
+                ),
+                ButtonWidget(
+                  imagePath: JImages.google1,
+                  buttonText: JText.connectWithGoogle,
+                  onPressed: () {},
+                  backColor: JAppColors.darkest1212,
+                ),
+              ],
             ),
-
-            Text(
-
-              JText.addSocialAccountDesc,
-              style: AppTextStyle.dmSans(
-                color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800.withValues(alpha: 0.5),
-                fontSize: 16.0,
-                weight: FontWeight.w400,
-              ),
-            ),
-
-            MainButton(
-              btn_title: JText.connectWithFacebook,
-              btn_radius: 10,
-              btn_color: JAppColors.main,
-              btn_boarder_color: Color(0xff7030F1),
-              title_color: Colors.white,
-              btn_image: JImages.facebook1,
-              text_fontweight: FontWeight.w600,
-              image_value: false,
-            ),
-            const SizedBox(height: 12),
-            MainButton(
-              btn_title: JText.connectWithGoogle,
-              btn_radius: 10,
-              btn_color: Colors.transparent,
-              btn_boarder_color: JAppColors.t,
-              title_color: JAppColors.lightGray700,
-              text_fontweight: FontWeight.w600,
-              btn_image: JImages.google1,
-              image_value: true,
-              text_size: JSizes.fontSizeMd,
-            ),
-
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

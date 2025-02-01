@@ -96,7 +96,9 @@ class JText {
   static const String addPaymentMethod = "Add Payment Method";
   static const String connectWithFacebook = "Connect with Facebook";
   static const String connectWithGoogle = "Connect with Google";
-  static const String addSocialAccountDesc = "Add your social accounts for more security. You will go directly to their site.";
+  static const String addSocialAccountDesc = "Add your social accounts for more security.";
+  static const String addSocialAccountDesc2= " You will go directly to their site..";
+
 
 
 
