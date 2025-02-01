@@ -14,13 +14,14 @@ import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart
 import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
 import '../features/users/add_education/add_education.dart';
+import '../features/users/add_social_account/add_social_account.dart';
 
 
 class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/paymentsMethod',
+    initialLocation: '/addSocialAccount',
 
     routes: [
       // User
@@ -79,7 +80,12 @@ class AppRouter {
         path: '/paymentsMethod',
         name: Routes.paymentsMethod.name,
         builder: (context, state) =>  PaymentsMethod(),
-      )
+      ),
+      GoRoute(
+        path: '/addSocialAccount',
+        name: Routes.addSocialAccount.name,
+        builder: (context, state) =>  AddSocialAccount(),
+      ),
 
 
     ],

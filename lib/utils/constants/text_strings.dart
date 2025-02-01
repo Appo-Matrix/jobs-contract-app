@@ -92,7 +92,13 @@ class JText {
   static const String paymentmethod = "Payment method";
   static const donotCard    = "Don’t have any card";
   static const cardDetailText    = "It’s seems like you don’t add any credit or debit card. You may easily add card.";
+  static const String addSocialAccount11s = "Add social accounts";
   static const String addPaymentMethod = "Add Payment Method";
+  static const String connectWithFacebook = "Connect with Facebook";
+  static const String connectWithGoogle = "Connect with Google";
+  static const String addSocialAccountDesc = "Add your social accounts for more security. You will go directly to their site.";
+
+
 
 
 }

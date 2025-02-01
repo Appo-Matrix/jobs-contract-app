@@ -8,7 +8,6 @@ import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/text_strings.dart';
 
 class PaymentsMethod extends StatefulWidget {

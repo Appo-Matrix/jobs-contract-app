@@ -8,7 +8,6 @@ import 'package:job_contracts/presentation/features/auth/screens/onboarding/onbo
 import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/themes/themes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';

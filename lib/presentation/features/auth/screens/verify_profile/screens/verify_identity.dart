@@ -66,7 +66,8 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
       appBar: JAppbar(
-        title: Text(
+        title:
+        Text(
           JText.verifyIdentity,
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
