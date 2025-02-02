@@ -16,5 +16,6 @@ enum Routes{
   paymentsMethod,
   addSocialAccount,
   notifcationsScreen,
+  bankAccountInfo
 
 }

@@ -112,6 +112,9 @@ class JText {
   static const  minutesAago   = "24 Minutes ago";
   static const  noNotificationsDesc   = "You have no notifications at this time thank you";
 
+////bank account info
+  static const  bankAccountInfo   = "Bank of account info";
+  static const  bankInfo   = "Bank info";
 
 
 

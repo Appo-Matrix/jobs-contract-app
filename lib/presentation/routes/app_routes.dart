@@ -5,6 +5,7 @@ import 'package:job_contracts/presentation/features/auth/screens/forget_password
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
+import 'package:job_contracts/presentation/features/users/bank_account_info/bank_account_info.dart';
 import 'package:job_contracts/presentation/features/users/payments/payments_method.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
@@ -23,7 +24,7 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/notifcationsScreen',
+    initialLocation: '/bankAccountInfo',
 
     routes: [
       // User
@@ -92,6 +93,11 @@ class AppRouter {
         path: '/notifcationsScreen',
         name: Routes.notifcationsScreen.name,
         builder: (context, state) =>  NotifcationsScreen(),
+      ),
+      GoRoute(
+        path: '/bankAccountInfo',
+        name: Routes.bankAccountInfo.name,
+        builder: (context, state) =>  BankAccountInfo(),
       ),
 
 

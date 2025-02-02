@@ -23,7 +23,8 @@ class ButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,  // Capture tap event
-      child: Container(
+      child:
+      Container(
         height: 48,
         width: double.infinity,
         decoration: BoxDecoration(
