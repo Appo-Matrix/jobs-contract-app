@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationDialog.dart';
 import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationsContainer.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
@@ -48,16 +49,11 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
         child: Column(
         
           children: [
-            for (int i = 0; i < 5; i++) // Repeat 5 times
-              NotificationsContainer(
-                isDark: isDark,
-                width: double.infinity,
-                height: 130,
-              ),
-        
-        
-            NotificationsContainer(isDark: isDark, width: double.infinity, height: 130,)
-        
+
+            NotificationsContainer(isDark: isDark, width: double.infinity, height: 130,),
+            NotificationDialog(isDark: isDark),
+
+
           ],
         
         
@@ -66,4 +62,5 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
     );
   }
 }
+
 

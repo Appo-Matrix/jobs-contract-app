@@ -25,5 +25,6 @@ class JImages {
   static const String card = "assets/images/card.png";
   static const String facebook1 = "assets/icons/facebook1.png";
   static const String google1 = "assets/icons/google1.png";
+  static const String notifications = "assets/icons/notifications.png";
 
 }

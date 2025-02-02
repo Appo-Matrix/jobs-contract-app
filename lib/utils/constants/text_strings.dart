@@ -108,7 +108,9 @@ class JText {
   static const  applicationSent   = "Application sent";
   static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
   static const  delete   = "Delete";
+  static const  noNotifications   = "No Notifications";
   static const  minutesAago   = "24 Minutes ago";
+  static const  noNotificationsDesc   = "You have no notifications at this time thank you";
 
 
 
