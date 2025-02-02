@@ -14,6 +14,7 @@ enum Routes{
   forgetPasswordScreen,
   addEducation,
   paymentsMethod,
-  addSocialAccount
+  addSocialAccount,
+  notifcationsScreen,
 
 }

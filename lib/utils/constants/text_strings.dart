@@ -102,5 +102,16 @@ class JText {
 
 
 
+  /////notification screen'
+
+  static const  notifications   = "Notifications";
+  static const  applicationSent   = "Application sent";
+  static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
+  static const  delete   = "Delete";
+  static const  minutesAago   = "24 Minutes ago";
+
+
+
+
 
 }
