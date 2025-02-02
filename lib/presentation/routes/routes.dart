@@ -12,6 +12,10 @@ enum Routes{
   verifyIdentity,
   verifyPaymentMethod,
   forgetPasswordScreen,
-  addEducation
+  addEducation,
+  paymentsMethod,
+  addSocialAccount,
+  notifcationsScreen,
+  bankAccountInfo
 
 }

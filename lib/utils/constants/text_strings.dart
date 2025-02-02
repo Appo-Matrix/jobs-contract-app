@@ -88,4 +88,35 @@ class JText {
 
 
 
+  ///payments screen
+  static const String paymentmethod = "Payment method";
+  static const donotCard    = "Don’t have any card";
+  static const cardDetailText    = "It’s seems like you don’t add any credit or debit card. You may easily add card.";
+  static const String addSocialAccount11s = "Add social accounts";
+  static const String addPaymentMethod = "Add Payment Method";
+  static const String connectWithFacebook = "Connect with Facebook";
+  static const String connectWithGoogle = "Connect with Google";
+  static const String addSocialAccountDesc = "Add your social accounts for more security.";
+  static const String addSocialAccountDesc2= " You will go directly to their site..";
+
+
+
+
+  /////notification screen'
+
+  static const  notifications   = "Notifications";
+  static const  applicationSent   = "Application sent";
+  static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
+  static const  delete   = "Delete";
+  static const  noNotifications   = "No Notifications";
+  static const  minutesAago   = "24 Minutes ago";
+  static const  noNotificationsDesc   = "You have no notifications at this time thank you";
+
+////bank account info
+  static const  bankAccountInfo   = "Bank of account info";
+  static const  bankInfo   = "Bank info";
+
+
+
+
 }
