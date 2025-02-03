@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
+import 'package:job_contracts/presentation/features/users/bank_account_info/bank_account_info.dart';
+import 'package:job_contracts/presentation/features/users/payments/payments_method.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
@@ -11,6 +15,9 @@ import '../features/auth/screens/verify_profile/screens/verify_payment_method.da
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/users/add_education/add_education.dart';
+import '../features/users/add_social_account/add_social_account.dart';
+import '../features/users/notification/notifcations.dart';
 
 
 class AppRouter {
@@ -67,7 +74,31 @@ class AppRouter {
         name: Routes.forgetPasswordScreen.name,
         builder: (context, state) => const ForgetPasswordScreen(),
       ),
-
+      GoRoute(
+        path: '/addEducation',
+        name: Routes.addEducation.name,
+        builder: (context, state) =>  AddEducation(),
+      ),
+      GoRoute(
+        path: '/paymentsMethod',
+        name: Routes.paymentsMethod.name,
+        builder: (context, state) =>  PaymentsMethod(),
+      ),
+      GoRoute(
+        path: '/addSocialAccount',
+        name: Routes.addSocialAccount.name,
+        builder: (context, state) =>  AddSocialAccount(),
+      ),
+      GoRoute(
+        path: '/notifcationsScreen',
+        name: Routes.notifcationsScreen.name,
+        builder: (context, state) =>  NotifcationsScreen(),
+      ),
+      GoRoute(
+        path: '/bankAccountInfo',
+        name: Routes.bankAccountInfo.name,
+        builder: (context, state) =>  BankAccountInfo(),
+      ),
 
 
     ],

@@ -6,6 +6,11 @@ class JImages {
   static const String logoPng = "assets/images/logo_png.png";
   static const String googleImage = "assets/icons/Social icon.png";
   static const String mainLogo = "assets/logos/Logo.png";
+  static const String userIcon = "assets/icons/user_icon.png";
+  static const String lock = "assets/icons/lock.png";
+  static const String location = "assets/icons/location_icon.png";
+  static const String payment = "assets/icons/payment_icon.png";
+  static const String facebook = "assets/icons/facebook_icon.png";
 
 
 
@@ -24,5 +29,12 @@ class JImages {
   static const String profileImage6 = "assets/images/profile_image6.png";
   static const String profileImage7 = "assets/images/profile_image7.png";
   static const String profileImage8 = "assets/images/profile_image8.png";
+
+
+  /// payment icons
+  static const String card = "assets/images/card.png";
+  static const String facebook1 = "assets/icons/facebook1.png";
+  static const String google1 = "assets/icons/google1.png";
+  static const String notifications = "assets/icons/notifications.png";
 
 }

@@ -8,7 +8,6 @@ import 'package:job_contracts/presentation/features/auth/screens/onboarding/onbo
 import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/themes/themes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
@@ -50,21 +49,20 @@ class JobContractsApp extends StatefulWidget {
 }
 
 class _JobContractsState extends State<JobContractsApp> {
-
   @override
   void initState() {
     super.initState();
     initialization();
-
   }
+
   void initialization() async {
     debugPrint("pausing...");
     await Future.delayed(const Duration(seconds: 3));
     debugPrint("unpausing");
     FlutterNativeSplash.remove(); // This must be called!
 
-    //  FlutterNativeSplash.remove();
   }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

@@ -22,6 +22,16 @@ class JText {
   static const String enterYourName = "Enter your email";
   static const String createPassword = "Create a password";
   static const String passwordMustBe = "Must be at least 8 characters.";
+  static const String accountSetting = "Account Settings";
+  static const String profileInfo = "Profile Information";
+  static const String changePassword = "Change Password";
+  static const String changeYourPassword = "Change your password";
+  static const String changeInfo = "Change your account information";
+  static const String paymentMethodTitle = "Payment Methods";
+  static const String addCreditTitle = "Add your credit & debit cards";
+  static const String locationTitle = "Locations";
+  static const String locationSubTitle = "Add or remove your delivery locations";
+  static const String accountSettingText = "Update your settings like notifications, payments, profile edit etc.";
 
 
   ///// KYC Strings
@@ -53,6 +63,60 @@ class JText {
   static const String   accountNo= " Account no";
   static const String   expiraryDate= " Expirary date";
   static const String cVV = "CVV";
+
+
+  ////add education screen
+
+  static const String addEducation = "Add Education";
+  static const String levelOfEducation = "Level of education";
+  static const String institutionName = "Institution name";
+  static const String startDate = "Start date";
+  static const String endDate = "End date";
+  static const String positionNow = "This is my position now";
+  static const String description = "Description";
+  static const String additionalInformation = "Write additional information here";
+  static const String fieldOfStudy = "Field of study";
+  static const String save = "Save";
+  static const String remove = "Remove";
+  static const String undoChanges = "Undo Changes ?";
+  static const String changeEnterText = "Are you sure you want to change what you entered?";
+  static const String continueFilling = "Continue Filling";
+  static const String unDoChanges = "Undo Changes";
+  static const String removeEducation = "Remove Education?";
+  static const String deleteEducation = "Are you sure you want to delete this education?";
+
+
+
+
+  ///payments screen
+  static const String paymentmethod = "Payment method";
+  static const donotCard    = "Don’t have any card";
+  static const cardDetailText    = "It’s seems like you don’t add any credit or debit card. You may easily add card.";
+  static const String addSocialAccount11s = "Add social accounts";
+  static const String addPaymentMethod = "Add Payment Method";
+  static const String connectWithFacebook = "Connect with Facebook";
+  static const String connectWithGoogle = "Connect with Google";
+  static const String addSocialAccountDesc = "Add your social accounts for more security.";
+  static const String addSocialAccountDesc2= " You will go directly to their site..";
+
+
+
+
+  /////notification screen'
+
+  static const  notifications   = "Notifications";
+  static const  applicationSent   = "Application sent";
+  static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
+  static const  delete   = "Delete";
+  static const  noNotifications   = "No Notifications";
+  static const  minutesAago   = "24 Minutes ago";
+  static const  noNotificationsDesc   = "You have no notifications at this time thank you";
+
+////bank account info
+  static const  bankAccountInfo   = "Bank of account info";
+  static const  bankInfo   = "Bank info";
+
+
 
 
 }
