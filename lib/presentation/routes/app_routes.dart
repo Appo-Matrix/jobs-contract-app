@@ -30,6 +30,7 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
+    initialLocation: '/onboardingScreen',
     initialLocation: '/addResumeScreen',
     routes: [
       // User
