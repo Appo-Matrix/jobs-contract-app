@@ -133,7 +133,7 @@ class JText {
 
   /////notification screen'
 
-  static const  notifications   = "Notifications";
+  static const  notifications1   = "Notifications";
   static const  applicationSent   = "Application sent";
   static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
   static const  delete   = "Delete";
