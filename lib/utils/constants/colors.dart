@@ -40,6 +40,7 @@ class JAppColors {
   static const Color darkGray700 = Color(0xFF333741); // Dark gray
   static const Color darkGray800 = Color(0xFF1F242F); // Darker gray (backgrounds)
   static const Color darkGray900 = Color(0xFF161B26); // Deepest dark gray
+  static const Color darkGray1000 = Color(0xFF150A33); // Deepest dark gray
 
 
 

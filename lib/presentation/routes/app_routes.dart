@@ -26,8 +26,7 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/forgetPasswordScreen',
-
+    initialLocation: '/addResumeScreen',
     routes: [
       // User
       GoRoute(
@@ -130,6 +129,23 @@ class AppRouter {
         builder: (context, state) => const ChangeWorkExperienceScreen(),
       ),
 
+      GoRoute(
+        path: '/addSkillsScreen',
+        name: Routes.addSkillsScreen.name,
+        builder: (context, state) => AddSkillsScreen(),
+      ),
+
+      GoRoute(
+        path: '/changeAddSkillScreen',
+        name: Routes.changeAddSkillScreen.name,
+        builder: (context, state) => ChangeAddSkillScreen(),
+      ),
+
+      GoRoute(
+        path: '/addResumeScreen',
+        name: Routes.addResumeScreen.name,
+        builder: (context, state) => AddResumeScreen(),
+      ),
     ],
   );
 }

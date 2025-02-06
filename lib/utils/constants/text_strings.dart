@@ -53,6 +53,11 @@ class JText {
   static const String changedPassword = "Changed Password";
   static const String changedPasswordTitle = "Create a new password that is at least 8 characters long.";
 
+  ///Add Skill Screen
+  static const String addSkill = "Add Skill";
+  static const String skillTitle = "Skill (6)";
+  static const String addResume = "Add Resume";
+
   ///Change work experience
   static const String changeWorkExperience = "Change work experience";
 

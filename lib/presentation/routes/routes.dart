@@ -21,6 +21,10 @@ enum Routes{
   bankAccountInfo,
   addExperienceScreen,
   changeWorkExperienceScreen,
-  changedPasswordScreen
+  changedPasswordScreen,
+  addSkillsScreen,
+  changeAddSkillScreen,
+  addResumeScreen,
+
 
 }
