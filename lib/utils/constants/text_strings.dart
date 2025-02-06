@@ -60,6 +60,8 @@ class JText {
 
   ///Change work experience
   static const String changeWorkExperience = "Change work experience";
+  static const String contractDetail = "Contract detail";
+  static const String feedback = "Feedback";
 
   ///// KYC Strings
   static const String verifyProfile = "Verify Profile";

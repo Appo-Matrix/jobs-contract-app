@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
-import 'package:job_contracts/presentation/features/users/bank_account_info/bank_account_info.dart';
-import 'package:job_contracts/presentation/features/users/payments/payments_method.dart';
+import 'package:job_contracts/presentation/features/users/screen/account_screen/add_experiance_screen.dart';
+import 'package:job_contracts/presentation/features/users/screen/account_screen/change_work_experience_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
@@ -21,6 +19,12 @@ import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
 
+import '../features/users/screen/add_skills/add_resume_screen.dart';
+import '../features/users/screen/add_skills/add_skills_screen.dart';
+import '../features/users/screen/add_skills/chnage_add_skill_screen.dart';
+import '../features/users/screen/contact_detail_screens/contact_details_accepted_screen.dart';
+import '../features/users/screen/contact_detail_screens/contact_details_active_screen.dart';
+import '../features/users/screen/contact_detail_screens/feed_back_screen.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -146,6 +150,25 @@ class AppRouter {
         name: Routes.addResumeScreen.name,
         builder: (context, state) => AddResumeScreen(),
       ),
+
+      GoRoute(
+        path: '/contactDetailsScreen',
+        name: Routes.contactDetailsScreen.name,
+        builder: (context, state) => ContactDetailsAcceptedScreen(),
+      ),
+
+      GoRoute(
+        path: '/contactDetailsActiveScreen',
+        name: Routes.contactDetailsActiveScreen.name,
+        builder: (context, state) => ContactDetailsActiveScreen(),
+      ),
+
+      GoRoute(
+        path: '/feedBackScreen',
+        name: Routes.feedBackScreen.name,
+        builder: (context, state) => FeedBackScreen(),
+      ),
+
     ],
   );
 }

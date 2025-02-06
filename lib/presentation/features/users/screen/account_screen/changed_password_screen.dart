@@ -17,6 +17,7 @@ class ChangedPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.changedPassword,

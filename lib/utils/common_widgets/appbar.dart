@@ -19,9 +19,11 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = JDeviceUtils.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
       child: AppBar(
+        backgroundColor: isDark ? Colors.black : Colors.white,
         automaticallyImplyLeading: true,
         leading: showBackArrow
             ? IconButton(

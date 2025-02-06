@@ -27,6 +27,7 @@ class AddSkillsScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.addSkill,

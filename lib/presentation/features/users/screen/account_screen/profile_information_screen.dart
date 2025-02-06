@@ -21,6 +21,7 @@ class ProfileInformationScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     bool light = true;
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.profileInfo2,

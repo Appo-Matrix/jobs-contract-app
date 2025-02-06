@@ -25,6 +25,10 @@ enum Routes{
   addSkillsScreen,
   changeAddSkillScreen,
   addResumeScreen,
+  contactDetailsScreen,
+  contactDetailsActiveScreen,
+  feedBackScreen
+  addResumeScreen,
 
 
 }

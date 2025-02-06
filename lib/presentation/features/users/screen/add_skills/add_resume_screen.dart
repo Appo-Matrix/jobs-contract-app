@@ -70,6 +70,7 @@ class _AddResumeScreenState extends State<AddResumeScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.addResume,
