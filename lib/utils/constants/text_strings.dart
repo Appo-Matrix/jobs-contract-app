@@ -22,6 +22,8 @@ class JText {
   static const String enterYourName = "Enter your email";
   static const String createPassword = "Create a password";
   static const String passwordMustBe = "Must be at least 8 characters.";
+
+  ////Account Setting
   static const String accountSetting = "Account Settings";
   static const String profileInfo = "Profile Information";
   static const String changePassword = "Change Password";
@@ -32,7 +34,34 @@ class JText {
   static const String locationTitle = "Locations";
   static const String locationSubTitle = "Add or remove your delivery locations";
   static const String accountSettingText = "Update your settings like notifications, payments, profile edit etc.";
+  static const String notifications = "Notifications";
+  static const String notificationsTitle = "Push Notifications";
+  static const String notificationsSMSTitle = " SMS Notifications";
+  static const String notificationsSubTitle = "For daily update you will get it";
+  static const String more = "More";
+  static const String rateUs = "Rate Us";
+  static const String faq = "FAQ";
+  static const String logout = "Logout";
+  static const String rate = "Rate us playstore, appstor";
+  static const String askQuestion = "Frequently asked questions";
 
+  ///Account Information
+  static const String profileInfo2 = "Profile Information";
+  ///Add Experience
+  static const String addWorkExperience = "Add work experience";
+  ///Changed Password
+  static const String changedPassword = "Changed Password";
+  static const String changedPasswordTitle = "Create a new password that is at least 8 characters long.";
+
+  ///Add Skill Screen
+  static const String addSkill = "Add Skill";
+  static const String skillTitle = "Skill (6)";
+  static const String addResume = "Add Resume";
+
+  ///Change work experience
+  static const String changeWorkExperience = "Change work experience";
+  static const String contractDetail = "Contract detail";
+  static const String feedback = "Feedback";
 
   ///// KYC Strings
   static const String verifyProfile = "Verify Profile";
@@ -104,7 +133,7 @@ class JText {
 
   /////notification screen'
 
-  static const  notifications   = "Notifications";
+  static const  notifications1   = "Notifications";
   static const  applicationSent   = "Application sent";
   static const  applicationSentDesc   = "Applications for Google companies have entered for company review";
   static const  delete   = "Delete";

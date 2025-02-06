@@ -13,6 +13,7 @@ class JSizes {
   static const double iconLg = 32.0;
 
   //Font Size
+  static const double fontSizeXESm = 11.0;
   static const double fontSizeESm = 12.0;
   static const double fontSizeEaSm = 13.0;
   static const double fontSizeSm = 14.0;

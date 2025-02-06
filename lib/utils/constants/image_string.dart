@@ -11,6 +11,9 @@ class JImages {
   static const String location = "assets/icons/location_icon.png";
   static const String payment = "assets/icons/payment_icon.png";
   static const String facebook = "assets/icons/facebook_icon.png";
+  static const String notificationBell = "assets/icons/bell.png";
+  static const String star = "assets/icons/eate_star_icon.png";
+  static const String logout = "assets/icons/logout_icon.png";
 
 
 

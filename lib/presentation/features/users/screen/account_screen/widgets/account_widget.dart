@@ -3,25 +3,26 @@ import 'package:flutter/material.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../../utils/device/device_utility.dart';
 import '../../../../../../utils/themes/themes.dart';
 
 class AccountWidgetContainer extends StatelessWidget {
   final String iconsImage;
   final String title;
   final String? subTitle;
-  final IconData lastIcon;
+  final Widget child;
 
   const AccountWidgetContainer({
     super.key,
     required this.iconsImage,
     required this.title,
     this.subTitle,
-    required this.lastIcon,
+    required this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    // var DarkTheme = JAppTheme.darkTheme;
+    final isDark = JDeviceUtils.isDarkMode(context);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -29,6 +30,7 @@ class AccountWidgetContainer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         child: Column(
+
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -38,33 +40,42 @@ class AccountWidgetContainer extends StatelessWidget {
                   iconsImage,
                   width: 24,
                   height: 24,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
                 SizedBox(width: 10),
                 Text(
                   title,
                   overflow: TextOverflow.ellipsis,
                   style: AppTextStyle.dmSans(
-                    color: JAppColors.lightGray800,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                     fontSize: JSizes.fontSizeMd,
                     weight: FontWeight.w500,
                     height: 1.5,
                   ),
                 ),
 
-                //Spacer(),
-                Icon(lastIcon, color: JAppColors.lightGray800),
+                Spacer(),
+                child,
               ],
             ),
-            Text(
-              subTitle!,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: AppTextStyle.dmSans(
-                color: JAppColors.lightGray500,
-                fontSize: JSizes.fontSizeEaSm,
-                weight: FontWeight.w400,
-                height: 1.5,
-              ),
+            Row(
+              children: [
+                SizedBox(height: 24,width: 24),
+                SizedBox(width: 10),
+                Expanded(
+                  child: Text(
+                    subTitle!,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: AppTextStyle.dmSans(
+                      color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray500,
+                      fontSize: JSizes.fontSizeEaSm,
+                      weight: FontWeight.w400,
+                      height: 1.5,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

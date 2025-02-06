@@ -29,6 +29,7 @@ class JAppColors {
   static const Color lightGray700 = Color(0xFF344054); // Darker gray
   static const Color lightGray800 = Color(0xFF182230); // Dark gray (e.g., modal backgrounds)
   static const Color lightGray900 = Color(0xFF101828); // Deepest gray
+  static const Color lightGray1000 = Color(0xFF1F2024); // Deepest gray
 
   // Dark mode grays
   static const Color darkGray100 = Color(0xFFF0F1F1); // Lightest gray for dark mode
@@ -40,6 +41,7 @@ class JAppColors {
   static const Color darkGray700 = Color(0xFF333741); // Dark gray
   static const Color darkGray800 = Color(0xFF1F242F); // Darker gray (backgrounds)
   static const Color darkGray900 = Color(0xFF161B26); // Deepest dark gray
+  static const Color darkGray1000 = Color(0xFF150A33); // Deepest dark gray
 
 
 

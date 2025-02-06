@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
-      home: const VerifyPhoneNumber(),
+      home: const OnboardingScreen(),
     );
   }
 }
@@ -60,9 +60,7 @@ class _JobContractsState extends State<JobContractsApp> {
     await Future.delayed(const Duration(seconds: 3));
     debugPrint("unpausing");
     FlutterNativeSplash.remove(); // This must be called!
-
   }
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
