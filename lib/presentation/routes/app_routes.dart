@@ -15,6 +15,8 @@ import '../features/auth/screens/verify_profile/screens/verify_payment_method.da
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/users/screen/account_screen/account_setting_screen.dart';
+import '../features/users/screen/account_screen/profile_information_screen.dart';
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
@@ -24,7 +26,7 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    initialLocation: '/bankAccountInfo',
+    initialLocation: '/forgetPasswordScreen',
 
     routes: [
       // User
@@ -104,6 +106,18 @@ class AppRouter {
       //   name: Routes.bankAccountInfo.name,
       //   builder: (context, state) =>  BankAccountInfo(),
       // ),
+      ),
+      GoRoute(
+        path: '/accountSettingScreen',
+        name: Routes.accountSettingScreen.name,
+        builder: (context, state) => const AccountSettingScreen(),
+      ),
+      GoRoute(
+        path: '/profileInformationScreen',
+        name: Routes.profileInformationScreen.name,
+        builder: (context, state) => const ProfileInformationScreen(),
+      ),
+
 
     ],
   );

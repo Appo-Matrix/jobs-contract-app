@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/widgets/account_widget.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -6,36 +7,48 @@ import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
+import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/constants/app_text_style.dart';
-
-
+import '../../../../../utils/device/device_utility.dart';
 
 class AccountSettingScreen extends StatelessWidget {
   const AccountSettingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = JDeviceUtils.isDarkMode(context);
+    bool light = true;
     return Scaffold(
       appBar: JAppbar(
         title: Text(
           JText.accountSetting,
           style: AppTextStyle.dmSans(
-            color: Colors.black,
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
         ),
-        showBackArrow: true,
+        leadingIcon: JCircularAvatar(
+          isDark: isDark,
+          radius: 50, // Modify the radius to make it larger
+          child: Icon(
+            CupertinoIcons.back,
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 18, right: 20),
+          padding: const EdgeInsets.only(left: 18, right: 18),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ///Account Section
               Text(
                 JText.accountSettingText,
                 style: AppTextStyle.dmSans(
-                  color: JAppColors.lightGray500,
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
                   fontSize: JSizes.fontSizeMd,
                   weight: FontWeight.w400,
                   height: 1.5,
@@ -45,41 +58,169 @@ class AccountSettingScreen extends StatelessWidget {
               AccountWidgetContainer(
                 iconsImage: JImages.userIcon,
                 title: JText.profileInfo,
-                lastIcon: Icons.arrow_forward_ios_outlined,
                 subTitle: JText.changeInfo,
+                child: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                ),
               ),
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.lock,
                 title: JText.changePassword,
-                lastIcon: Icons.arrow_forward_ios_outlined,
                 subTitle: JText.changeYourPassword,
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
               ),
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.payment,
                 title: JText.paymentMethodTitle,
-                lastIcon: Icons.arrow_forward_ios_outlined,
                 subTitle: JText.addCreditTitle,
+                child: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                ),
               ),
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.location,
                 title: JText.locationTitle,
-                lastIcon: Icons.arrow_forward_ios_outlined,
                 subTitle: JText.locationSubTitle,
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
               ),
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.facebook,
                 title: JText.profileInfo,
-                lastIcon: Icons.arrow_forward_ios_outlined,
                 subTitle: JText.changeInfo,
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
               ),
+              SizedBox(height: 12),
+
+              ///Notification Section
+              Text(
+                JText.notifications,
+                style: AppTextStyle.dmSans(
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  fontSize: JSizes.fontSizeLg,
+                  weight: FontWeight.w600,
+                  height: 1.5,
+                ),
+              ),
+              SizedBox(height: 12),
+              AccountWidgetContainer(
+                iconsImage: JImages.notificationBell,
+                title: JText.profileInfo,
+                subTitle: JText.notificationsSubTitle,
+                  child: SizedBox(
+                    height: 30,
+                    width: 60,
+                    child: Switch(
+                      value: light,
+                      activeColor: Colors.white,
+                      activeTrackColor: JAppColors.primary,
+                      inactiveTrackColor: JAppColors.lightGray300,
+                      onChanged: (bool value) {
+                        // setState(() {
+                        //   light = value;
+                        // });
+                      },
+                    ),
+                  )
+              ),
+              SizedBox(height: 15),
+              AccountWidgetContainer(
+                iconsImage: JImages.notificationBell,
+                title: JText.notificationsSMSTitle,
+                subTitle: JText.notificationsSubTitle,
+                  child: SizedBox(
+                    height: 30,
+                    width: 60,
+                    child: Switch(
+                      // This bool value toggles the switch.
+                      value: light,
+                      activeColor: Colors.white,
+                      activeTrackColor: JAppColors.primary,
+                      inactiveTrackColor: JAppColors.lightGray300,
+                      onChanged: (bool value) {
+                        // setState(() {
+                        //   light = value;
+                        // });
+                      },
+                    ),
+                  )
+              ),
+              SizedBox(height: 15),
+              AccountWidgetContainer(
+                iconsImage: JImages.notificationBell,
+                title: JText.profileInfo,
+                subTitle: JText.changeInfo,
+                child: SizedBox(
+                  height: 30,
+                  width: 60,
+                  child: Switch(
+                    value: light,
+                    activeColor: Colors.white,
+                    activeTrackColor: JAppColors.primary,
+                    inactiveTrackColor: JAppColors.lightGray300,
+                    onChanged: (bool value) {
+                      // setState(() {
+                      //   light = value;
+                      // });
+                    },
+                  ),
+                )
+              ),
+              SizedBox(height: 12),
 
 
-        
-        
+              ///More Section
+              Text(
+                JText.more,
+                style: AppTextStyle.dmSans(
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  fontSize: JSizes.fontSizeLg,
+                  weight: FontWeight.w600,
+                  height: 1.5,
+                ),
+              ),
+              SizedBox(height: 15),
+              AccountWidgetContainer(
+                iconsImage: JImages.star,
+                title: JText.rateUs,
+                subTitle: JText.rate,
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
+              ),
+              SizedBox(height: 15),
+              AccountWidgetContainer(
+                iconsImage: JImages.userIcon,
+                title: JText.faq,
+                subTitle: JText.askQuestion,
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
+              ),
+              SizedBox(height: 15),
+              AccountWidgetContainer(
+                iconsImage: JImages.logout,
+                title: JText.logout,
+                subTitle: '',
+                child: Icon(Icons.arrow_forward_ios_outlined,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors
+                      .lightGray900,),
+              ),
+              SizedBox(height: 25),
             ],
           ),
         ),
