@@ -105,7 +105,6 @@ class AppRouter {
       //   builder: (context, state) =>  BankAccountInfo(),
       // ),
 
-
     ],
   );
 }
