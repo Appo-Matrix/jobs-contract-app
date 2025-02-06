@@ -45,6 +45,17 @@ class JText {
   static const String rate = "Rate us playstore, appstor";
   static const String askQuestion = "Frequently asked questions";
 
+  ///Account Information
+  static const String profileInfo2 = "Profile Information";
+  ///Add Experience
+  static const String addWorkExperience = "Add work experience";
+  ///Changed Password
+  static const String changedPassword = "Changed Password";
+  static const String changedPasswordTitle = "Create a new password that is at least 8 characters long.";
+
+  ///Change work experience
+  static const String changeWorkExperience = "Change work experience";
+
   ///// KYC Strings
   static const String verifyProfile = "Verify Profile";
   static const String verifyPhoneNumber = "Verify Phone Number";

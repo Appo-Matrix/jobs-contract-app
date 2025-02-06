@@ -118,6 +118,17 @@ class AppRouter {
         builder: (context, state) => const ProfileInformationScreen(),
       ),
 
+      GoRoute(
+        path: '/addExperienceScreen',
+        name: Routes.addExperienceScreen.name,
+        builder: (context, state) => const AddExperienceScreen(),
+      ),
+
+      GoRoute(
+        path: '/changeWorkExperienceScreen',
+        name: Routes.changeWorkExperienceScreen.name,
+        builder: (context, state) => const ChangeWorkExperienceScreen(),
+      ),
 
     ],
   );

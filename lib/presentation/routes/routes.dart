@@ -13,12 +13,14 @@ enum Routes{
   verifyPaymentMethod,
   forgetPasswordScreen,
   accountSettingScreen,
-  profileInformationScreen
-  forgetPasswordScreen,
+  profileInformationScreen,
   addEducation,
   paymentsMethod,
   addSocialAccount,
   notifcationsScreen,
-  bankAccountInfo
+  bankAccountInfo,
+  addExperienceScreen,
+  changeWorkExperienceScreen,
+  changedPasswordScreen
 
 }

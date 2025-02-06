@@ -5,7 +5,7 @@ import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class AddExperienceDesWidget extends StatelessWidget {
   final String? hintText;
   final String? subTitle;
   final IconData? prefixIcon;
@@ -14,7 +14,7 @@ class TextFieldWidget extends StatelessWidget {
   final Color? subtitleColor;
   // final TextEditingController? textEditingController;
 
-  const TextFieldWidget({
+  const AddExperienceDesWidget({
     super.key,
     this.hintText,
     this.subTitle,
@@ -42,6 +42,7 @@ class TextFieldWidget extends StatelessWidget {
           ),
         const SizedBox(height: 8),
         TextField(
+          maxLines: 6,
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
             color: isDark? JAppColors.lightGray100 : JAppColors.darkGray800,
