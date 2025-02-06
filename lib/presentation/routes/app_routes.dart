@@ -99,7 +99,11 @@ class AppRouter {
         name: Routes.bankAccountInfo.name,
         builder: (context, state) =>  BankAccountInfo(),
       ),
-
+      // GoRoute(
+      //   path: '/bankAccountInfo',
+      //   name: Routes.bankAccountInfo.name,
+      //   builder: (context, state) =>  BankAccountInfo(),
+      // ),
 
     ],
   );
