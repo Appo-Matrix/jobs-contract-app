@@ -1,6 +1,5 @@
 enum Routes{
 
-
   onboardingScreen,
   startScreen,
   homeScreen,
@@ -27,8 +26,9 @@ enum Routes{
   addResumeScreen,
   contactDetailsScreen,
   contactDetailsActiveScreen,
-  feedBackScreen
-  addResumeScreen,
+  feedBackScreen,
+  loginScreen,
+  signupScreen,
 
 
 }

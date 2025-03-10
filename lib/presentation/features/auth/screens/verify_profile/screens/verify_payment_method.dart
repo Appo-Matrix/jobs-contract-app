@@ -24,6 +24,7 @@ class _VerifyPaymentMethodState extends State<VerifyPaymentMethod> {
 
     return Scaffold(
       appBar: JAppbar(
+
         title: Text(
           JText.verifyPaymentMethod,
           style: AppTextStyle.dmSans(

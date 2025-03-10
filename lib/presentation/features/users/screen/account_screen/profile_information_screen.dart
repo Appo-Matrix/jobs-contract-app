@@ -19,7 +19,6 @@ class ProfileInformationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    bool light = true;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: JAppbar(

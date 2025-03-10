@@ -6,8 +6,9 @@ import '../../../../../../utils/constants/colors.dart';
 class ContactFirstWidget extends StatelessWidget {
   final String title;
   final String subTitle;
+  final bool isDark;
   const ContactFirstWidget({
-    super.key, required this.title, required this.subTitle,
+    super.key, required this.title, required this.subTitle, required this.isDark,
   });
 
   @override

@@ -45,7 +45,7 @@ class ContactDetailsAcceptedScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 15),
-              ContactFirstWidget(title: 'Status', subTitle: 'Accepted',),
+              ContactFirstWidget(title: 'Status', subTitle: 'Accepted', isDark: isDark,),
               SizedBox(height: 10),
               Divider(),
               ContactDetailsWidget(isDark: isDark, title: 'Start date', subTitle: 'Jan 20,2025',),

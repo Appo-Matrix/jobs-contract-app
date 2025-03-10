@@ -7,12 +7,16 @@ import 'package:job_contracts/presentation/features/users/screen/account_screen/
 import 'package:job_contracts/presentation/features/users/screen/account_screen/change_work_experience_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
+import '../features/auth/screens/Login/login_screen.dart';
+import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/users/bank_account_info/bank_account_info.dart';
+import '../features/users/payments/payments_method.dart';
 import '../features/users/screen/account_screen/account_setting_screen.dart';
 import '../features/users/screen/account_screen/profile_information_screen.dart';
 import '../features/users/add_education/add_education.dart';
@@ -30,14 +34,29 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
+    // initialLocation: '/onboardingScreen',
     initialLocation: '/onboardingScreen',
-    initialLocation: '/addResumeScreen',
     routes: [
       // User
       GoRoute(
         path: '/onboardingScreen',
         name: Routes.onboardingScreen.name,
        builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: '/loginScreen',
+        name: Routes.loginScreen.name,
+       builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/forgetPasswordScreen',
+        name: Routes.forgetPasswordScreen.name,
+       builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/signupScreen',
+        name: Routes.signupScreen.name,
+       builder: (context, state) => const SignupScreen(),
       ),
       GoRoute(
         path: '/verifyProfile',
@@ -110,7 +129,7 @@ class AppRouter {
       //   name: Routes.bankAccountInfo.name,
       //   builder: (context, state) =>  BankAccountInfo(),
       // ),
-      ),
+     // ),
       GoRoute(
         path: '/accountSettingScreen',
         name: Routes.accountSettingScreen.name,

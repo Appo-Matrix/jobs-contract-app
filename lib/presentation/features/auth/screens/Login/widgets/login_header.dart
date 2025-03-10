@@ -10,8 +10,9 @@ class TopHeader extends StatelessWidget {
   final String logo;
   final String title;
   final String subTitle;
+  final bool isDark;
 
-  const TopHeader({super.key, required this.logo, required this.title, required this.subTitle});
+  const TopHeader({super.key, required this.logo, required this.title, required this.subTitle, required this.isDark});
 
   @override
   Widget build(BuildContext context) {
@@ -22,16 +23,18 @@ class TopHeader extends StatelessWidget {
         Image(
           height: 52,
           width: 86,
-          image: AssetImage(JImages.mainLogo),
+          image: AssetImage(JImages.mainLogo23),
         ),
         const SizedBox(
           height: 15,
         ),
         Text(
 
-          JText.login,
+          title,
           style: AppTextStyle.dmSans(
-            color: JAppColors.lightGray900,
+            color: isDark
+                ? JAppColors.darkGray100
+                : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLgx,
             weight: FontWeight.w600,
           ),
@@ -40,9 +43,11 @@ class TopHeader extends StatelessWidget {
           height: 7,
         ),
         Text(
-          JText.loginTitle,
+          subTitle,
           style: AppTextStyle.dmSans(
-            color: JAppColors.lightGray500,
+            color: isDark
+            ? JAppColors.darkGray100
+            : JAppColors.lightGray700,
             fontSize: JSizes.fontSizeMd,
             weight: FontWeight.w400,
           ),

@@ -68,6 +68,7 @@ class _JobContractsState extends State<JobContractsApp> {
       minTextAdapt: true,
       child: MultiProvider(
 
+
         providers: registerGlobalNotifiers(),
         child: MaterialApp.router(
           // theme: ,

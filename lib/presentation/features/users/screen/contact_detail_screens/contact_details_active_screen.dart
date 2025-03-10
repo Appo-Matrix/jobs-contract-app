@@ -45,7 +45,7 @@ class ContactDetailsActiveScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 15),
-              ContactFirstWidget(title: 'Status', subTitle: 'Active',),
+              ContactFirstWidget(title: 'Status', subTitle: 'Active', isDark: isDark,),
               SizedBox(height: 10),
               Divider(),
               ContactDetailsWidget(isDark: isDark, title: 'Order ID', subTitle: 'DT-43-JSD8934',),

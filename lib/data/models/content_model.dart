@@ -10,7 +10,7 @@ class OnboardingContext {
 
 List<OnboardingContext> contents = [
   OnboardingContext(
-    image: 'assets/images/onboarding1.png',
+    image: 'assets/images/onboarding1a.png',
     title: 'Simplify and Streamline Your Job Contracts with Ease',
 
   ),
@@ -19,7 +19,7 @@ List<OnboardingContext> contents = [
     title: 'Effortless Collaboration for Smooth Workflows',
     ),
   OnboardingContext(
-    image: 'assets/images/onboarding3.png',
+    image: 'assets/images/onboarding3a.png',
     title: 'Track, Manage, and Stay Organized Anytime',
    ),
 

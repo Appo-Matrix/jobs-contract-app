@@ -23,7 +23,6 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
       child: AppBar(
-        backgroundColor: isDark ? Colors.black : Colors.white,
         automaticallyImplyLeading: true,
         leading: showBackArrow
             ? IconButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../constants/app_text_style.dart';
 
 class MainButton extends StatelessWidget {
   final String btn_title;
@@ -24,6 +25,7 @@ class MainButton extends StatelessWidget {
     this.btn_image = '',
     required this.image_value,
     this.onTap,
+
   });
 
   @override
@@ -55,14 +57,13 @@ class MainButton extends StatelessWidget {
                     SizedBox(width: 10),
                   ],
                 ),
-
-                Text(
-                  btn_title,
-                  style: TextStyle(
-                      color: title_color,
-                      fontSize: text_size,
-                      fontWeight: text_fontweight),
-                ),
+              Text(
+                btn_title,
+                style: AppTextStyle.dmSans(
+                    color: title_color,
+                    fontSize: 16.0,
+                    weight: text_fontweight!),
+              ),
             ],
           )),
         ),

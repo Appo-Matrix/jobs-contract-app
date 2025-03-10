@@ -8,30 +8,64 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 
-void main() {
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignupScreen(),
-    );
-  }
-}
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = JDeviceUtils.isDarkMode(context);
+
     return Scaffold(
-      backgroundColor: Colors.white,
+
+      bottomNavigationBar:SizedBox(
+        height: 50,
+        child: Column(
+          children: [
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  JText.account,
+                  style: AppTextStyle.dmSans(
+                    color: isDark
+                        ? JAppColors.darkGray100
+                        : JAppColors.lightGray700,
+                    fontSize: JSizes.fontSizeMd,
+                    weight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(width: 5),
+
+                GestureDetector(
+                  onTap: (){
+                    AppRouter.router.push('/signupScreen');
+
+
+                  },
+                  child: Text(
+                    JText.signUp,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray200
+                          : JAppColors.primary,
+                      fontSize: JSizes.fontSizeLg,
+                      weight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+
+      backgroundColor: isDark ? JAppColors.darkGray800 : JAppColors.lightGray100,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 60, right: 15, left: 15),
@@ -40,7 +74,7 @@ class SignupScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TopHeader(logo: JImages.mainLogo, title: JText.signUp, subTitle: JText.signupSubtitle,),
+               TopHeader(logo: JImages.mainLogo, title: JText.signUp, subTitle: JText.signupSubtitle, isDark: isDark,),
               TextFieldWidget(
                 subTitle: JText.signUpTitle,
                 hintText: JText.signUpName,
@@ -61,7 +95,9 @@ class SignupScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
-                color: JAppColors.lightGray700,
+                color: isDark
+                    ? JAppColors.darkGray100
+                    : JAppColors.lightGray500,
                 fontSize: JSizes.fontSizeSm,
                 weight: FontWeight.w500,
               ),),
@@ -69,7 +105,7 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               MainButton(
-                btn_title: JText.getStart,
+                btn_title: JText.signUp,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Color(0xff7030F1),
@@ -78,42 +114,20 @@ class SignupScreen extends StatelessWidget {
                 image_value: false,
               ),
               const SizedBox(height: 12),
-              MainButton(
-                btn_title: JText.signupWithGoogle,
-                btn_radius: 10,
-                btn_color: Colors.transparent,
-                btn_boarder_color: JAppColors.t,
-                title_color: JAppColors.lightGray700,
-                text_fontweight: FontWeight.w600,
-                btn_image: JImages.googleImage,
-                image_value: true,
-                text_size: JSizes.fontSizeMd,
-              ),
+              // MainButton(
+              //   btn_title: JText.signupWithGoogle,
+              //   btn_radius: 10,
+              //   btn_color: Colors.transparent,
+              //   btn_boarder_color: JAppColors.t,
+              //   title_color: JAppColors.lightGray700,
+              //   text_fontweight: FontWeight.w600,
+              //   btn_image: JImages.googleImage,
+              //   image_value: true,
+              //   text_size: JSizes.fontSizeMd,
+              // ),
 
               /// Create Account
               const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    JText.alreadyAccount,
-                    style: AppTextStyle.dmSans(
-                      color: JAppColors.lightGray500,
-                      fontSize: JSizes.fontSizeMd,
-                      weight: FontWeight.w400,
-                    ),
-                  ),
-                  SizedBox(width: 5),
-                  Text(
-                    JText.login,
-                    style: AppTextStyle.dmSans(
-                      color: JAppColors.primary,
-                      fontSize: JSizes.fontSizeLg,
-                      weight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
             ],
           ),
         ),

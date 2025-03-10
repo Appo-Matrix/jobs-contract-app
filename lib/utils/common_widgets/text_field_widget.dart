@@ -12,6 +12,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool? obscureText;
   final Widget? suffixIcon;
   final Color? subtitleColor;
+
   // final TextEditingController? textEditingController;
 
   const TextFieldWidget({
@@ -20,7 +21,8 @@ class TextFieldWidget extends StatelessWidget {
     this.subTitle,
     this.prefixIcon,
     this.obscureText = false,
-    this.suffixIcon, this.subtitleColor,
+    this.suffixIcon,
+    this.subtitleColor,
     // required this.textEditingController,
   });
 
@@ -35,23 +37,23 @@ class TextFieldWidget extends StatelessWidget {
           Text(
             subTitle!,
             style: AppTextStyle.dmSans(
-              color: subtitleColor!,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w600,
             ),
           ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
         TextField(
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
-            color: isDark? JAppColors.lightGray100 : JAppColors.darkGray800,
+            color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
             fontSize: JSizes.fontSizeMd,
             weight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: AppTextStyle.dmSans(
-              color: isDark? JAppColors.lightGray100 : JAppColors.darkGray500,
+              color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray500,
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w400,
             ),
