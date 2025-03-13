@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/widgets/buildOtpBox.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
-import '../../../../../../utils/common_widgets/appbar.dart';
-import '../../../../../../utils/common_widgets/circular_shape.dart';
-import '../../../../../../utils/constants/app_text_style.dart';
-import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/constants/text_strings.dart';
-import '../../../../../../utils/device/device_utility.dart';
+import 'package:pinput/pinput.dart';
+import '../../../../../utils/common_widgets/appbar.dart';
+import '../../../../../utils/common_widgets/circular_shape.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 class VerifyPhoneOtp extends StatefulWidget {
   const VerifyPhoneOtp({super.key});
@@ -22,7 +23,33 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+    final defaultPinTheme = PinTheme(
+      width: 60,
+      height: 60,
+      textStyle: AppTextStyle.dmSans(
+        color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+        fontSize: 24.0,
+        weight: FontWeight.w600,
+      ),
+      decoration: BoxDecoration(
+        color: isDark ? Colors.transparent : Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray400,
+          width: 1,
+        ),
+      ),
+    );
 
+    // Define focused theme
+    final focusedPinTheme = defaultPinTheme.copyWith(
+      decoration: defaultPinTheme.decoration!.copyWith(
+        border: Border.all(
+          color: JAppColors.primary,
+          width: 1.5,
+        ),
+      ),
+    );
     return Scaffold(
       appBar: JAppbar(
         title: Text(
@@ -109,7 +136,7 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
                     JText.receivecode,
                     style: AppTextStyle.dmSans(
                       color: isDark
-                          ? JAppColors.lightGray500
+                          ? JAppColors.lightGray400
                           : JAppColors.darkGray600,
                       fontSize: 16.0,
                       weight: FontWeight.w400,
@@ -121,7 +148,9 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
                   Text(
                     JText.sendAgain,
                     style: AppTextStyle.dmSans(
-                      color: JAppColors.primary,
+                      color: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.primary,
                       fontSize: 18.0,
                       weight: FontWeight.w600,
                     ),
@@ -130,6 +159,9 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
               ),
 
               const SizedBox(height: JSizes.spaceBtwSections + 30),
+
+
+  
 
               // Next Button
             ],

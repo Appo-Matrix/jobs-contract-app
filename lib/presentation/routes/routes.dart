@@ -1,8 +1,8 @@
 enum Routes{
 
   onboardingScreen,
-  startScreen,
   homeScreen,
+  navigationMenu,
   resetPasswordScreen,
   verifyProfile,
   verifyPhoneNumber,
@@ -29,6 +29,5 @@ enum Routes{
   feedBackScreen,
   loginScreen,
   signupScreen,
-
 
 }

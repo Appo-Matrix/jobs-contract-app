@@ -5,13 +5,13 @@ import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 
-import '../../../../utils/common_widgets/circular_shape.dart';
-import '../../../../utils/common_widgets/main_button.dart';
-import '../../../../utils/common_widgets/text_field_widget.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/device/device_utility.dart';
-import '../../../routes/app_routes.dart';
+import '../../../../../utils/common_widgets/circular_shape.dart';
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -39,7 +39,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
 
       body: Padding(
-        padding: const EdgeInsets.all(JSizes.defaultSpace),
+        padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 16),
         // Proper spacing
         child: Column(
 
@@ -88,7 +88,12 @@ class ForgetPasswordScreen extends StatelessWidget {
               btn_boarder_color: Color(0xff7030F1),
               title_color: Colors.white,
               text_fontweight: FontWeight.w600,
-              image_value: false,onTap: (){},
+              image_value: false,onTap: (){
+
+
+              AppRouter.router.push('/verifyPhoneOtp');
+
+            },
             ),
 
 
@@ -98,32 +103,32 @@ class ForgetPasswordScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  JText.alreadyAccount,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: JSizes.fontSizeMd,
-                    weight: FontWeight.w400,
-                  ),
+                  'Already have an account?',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: isDark
+                          ? JAppColors.darkGray300
+                          : Color(0xff667085),
+                      fontWeight: FontWeight.w400),
                 ),
-                SizedBox(width: 5),
 
+                SizedBox(width: JSizes.spaceBtwItems-10,),
                 GestureDetector(
-                  onTap: (){
-                    AppRouter.router.push('/loginScreen');
 
+                  onTap: (){
+
+
+                    AppRouter.router.push('/loginScreen');
 
                   },
                   child: Text(
                     JText.login,
                     style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray200
-                          : JAppColors.primary,
-                      fontSize: JSizes.fontSizeLg,
-                      weight: FontWeight.w600,
-                    ),
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.primary,
+                        fontSize: 18.0,
+                        weight: FontWeight.w600),
                   ),
                 ),
               ],

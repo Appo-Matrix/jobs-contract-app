@@ -31,32 +31,30 @@ class SignupScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  JText.account,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: JSizes.fontSizeMd,
-                    weight: FontWeight.w400,
-                  ),
+                  'Already have an account?',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: isDark
+                          ? JAppColors.darkGray300
+                          : Color(0xff667085),
+                      fontWeight: FontWeight.w400),
                 ),
-                SizedBox(width: 5),
-
                 GestureDetector(
-                  onTap: (){
-                    AppRouter.router.push('/signupScreen');
 
+                  onTap: (){
+
+
+                    AppRouter.router.push('/loginScreen');
 
                   },
                   child: Text(
-                    JText.signUp,
+                    ' Log in',
                     style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray200
-                          : JAppColors.primary,
-                      fontSize: JSizes.fontSizeLg,
-                      weight: FontWeight.w600,
-                    ),
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.primary,
+                        fontSize: 18.0,
+                        weight: FontWeight.w600),
                   ),
                 ),
               ],
@@ -76,18 +74,25 @@ class SignupScreen extends StatelessWidget {
             children: [
                TopHeader(logo: JImages.mainLogo, title: JText.signUp, subTitle: JText.signupSubtitle, isDark: isDark,),
               TextFieldWidget(
-                subTitle: JText.signUpTitle,
-                hintText: JText.signUpName,
+                subTitle: JText.firstName,
+                hintText: JText.firstNameText,
                 prefixIcon: Icons.person_outline,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: JSizes.spaceBtwInputFields),
+
+              TextFieldWidget(
+                subTitle: JText.lastName,
+                hintText: JText.lastNameText,
+                prefixIcon: Icons.person_outline,
+              ),
+              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: JText.email,
                 hintText: JText.enterYourName,
                 prefixIcon: Icons.person_outline,
               ),
 
-              SizedBox(height: 20),
+              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 hintText: JText.createPassword,
                 prefixIcon: Icons.lock_outline,
@@ -105,6 +110,11 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(height: 25),
 
               MainButton(
+                onTap: (){
+
+
+                  AppRouter.router.push('/verifyPhoneOtp');
+                },
                 btn_title: JText.signUp,
                 btn_radius: 10,
                 btn_color: JAppColors.main,

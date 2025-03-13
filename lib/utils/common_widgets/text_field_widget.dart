@@ -37,17 +37,17 @@ class TextFieldWidget extends StatelessWidget {
           Text(
             subTitle!,
             style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+              color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray700,
               fontSize: JSizes.fontSizeMd,
-              weight: FontWeight.w600,
+              weight: FontWeight.w500,
             ),
           ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 8),
         TextField(
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-            fontSize: JSizes.fontSizeMd,
+            fontSize: 14.0,
             weight: FontWeight.w400,
           ),
           decoration: InputDecoration(

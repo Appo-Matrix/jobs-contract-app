@@ -174,6 +174,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   ),
                                   SizedBox(height: JSizes.spaceBtwItems),
                                   MainButton(
+                                    onTap: () {
+
+                                      AppRouter.router.push('/loginScreen');
+
+                                    },
                                     btn_title:
                                         "I'm a client, Hiring Professionals ",
                                     btn_radius: 10,
@@ -188,7 +193,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                   MainButton(
                                     onTap: () {
 
-                                      AppRouter.router.push('/loginScreen');
+                                      AppRouter.router.push('/signupScreen');
 
                                     },
                                     btn_title:
@@ -211,20 +216,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       Text(
                                         'Already have an account?',
                                         style: TextStyle(
-                                            fontSize: 15,
+                                            fontSize: 16,
                                             color: isDark
                                                 ? JAppColors.darkGray300
                                                 : Color(0xff667085),
                                             fontWeight: FontWeight.w400),
                                       ),
-                                      Text(
-                                        ' Log in',
-                                        style: AppTextStyle.dmSans(
-                                            color: isDark
-                                                ? JAppColors.darkGray100
-                                                : JAppColors.primary,
-                                            fontSize: 14.0,
-                                            weight: FontWeight.w600),
+                                      GestureDetector(
+
+                                        onTap: (){
+
+
+                                          AppRouter.router.push('/loginScreen');
+
+                                        },
+                                        child: Text(
+                                          ' Log in',
+                                          style: AppTextStyle.dmSans(
+                                              color: isDark
+                                                  ? JAppColors.darkGray100
+                                                  : JAppColors.primary,
+                                              fontSize: 18.0,
+                                              weight: FontWeight.w600),
+                                        ),
                                       ),
                                     ],
                                   ),

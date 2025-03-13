@@ -19,8 +19,11 @@ class JText {
   static const String signInGoogle = "Sign in with Google";
   static const String account = "Don’t have an account ? ";
   static const String signupSubtitle = "Start your 30-day free trial.";
-  static const String signUpName = "Enter your name";
-  static const String signUpTitle = "Name";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
+  static const String firstNameText = "Enter your first name";
+  static const String lastNameText = "Enter your last name";
+  static const String signUpTitle = "First Name";
   static const String enterYourName = "Enter your email";
   static const String createPassword = "Create a password";
   static const String passwordMustBe = "Must be at least 8 characters.";
@@ -64,6 +67,15 @@ class JText {
   static const String changeWorkExperience = "Change work experience";
   static const String contractDetail = "Contract detail";
   static const String feedback = "Feedback";
+
+  ///// reset password
+
+  static const String resetPassword = "Reset Password";
+  static const String newPassword = "Enter New Password";
+  static const String repeatPassword = "Repeat New Password";
+  static const String resetPasswordDec = "Please type something you'll remember";
+
+
 
   ///// KYC Strings
   static const String verifyProfile = "Verify Profile";

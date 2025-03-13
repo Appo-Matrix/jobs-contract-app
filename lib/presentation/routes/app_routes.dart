@@ -1,21 +1,23 @@
 import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
-import 'package:job_contracts/presentation/features/auth/screens/forget_password_screen.dart';
+import 'package:job_contracts/presentation/features/auth/screens/forget_password/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/reset_password.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/add_experiance_screen.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/change_work_experience_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
+import '../features/auth/screens/reset_password/reset_password.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
-import '../features/auth/screens/verify_profile/screens/verify_phone_otp.dart';
+import '../features/auth/screens/otp/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
+import '../features/users/home/home_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/screen/account_screen/account_setting_screen.dart';
 import '../features/users/screen/account_screen/profile_information_screen.dart';
@@ -48,11 +50,7 @@ class AppRouter {
         name: Routes.loginScreen.name,
        builder: (context, state) => const LoginScreen(),
       ),
-      GoRoute(
-        path: '/forgetPasswordScreen',
-        name: Routes.forgetPasswordScreen.name,
-       builder: (context, state) => const ForgetPasswordScreen(),
-      ),
+
       GoRoute(
         path: '/signupScreen',
         name: Routes.signupScreen.name,
@@ -93,6 +91,16 @@ class AppRouter {
         path: '/resetPasswordScreen',
         name: Routes.resetPasswordScreen.name,
        builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/homeScreen',
+        name: Routes.homeScreen.name,
+       builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: '/navigationMenu',
+        name: Routes.navigationMenu.name,
+       builder: (context, state) => const NavigationMenu(),
       ),
       GoRoute(
         path: '/forgetPasswordScreen',

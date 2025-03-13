@@ -28,32 +28,32 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  JText.account,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: JSizes.fontSizeMd,
-                    weight: FontWeight.w400,
-                  ),
+                  'Already have an account?',
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: isDark
+                          ? JAppColors.darkGray300
+                          : Color(0xff667085),
+                      fontWeight: FontWeight.w400),
                 ),
-                SizedBox(width: 5),
 
+                SizedBox(width: JSizes.spaceBtwItems-10,),
                 GestureDetector(
-                  onTap: (){
-                    AppRouter.router.push('/signupScreen');
 
+                  onTap: (){
+
+
+                    AppRouter.router.push('/signupScreen');
 
                   },
                   child: Text(
                     JText.signUp,
                     style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray200
-                          : JAppColors.primary,
-                      fontSize: JSizes.fontSizeLg,
-                      weight: FontWeight.w600,
-                    ),
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.primary,
+                        fontSize: 18.0,
+                        weight: FontWeight.w600),
                   ),
                 ),
               ],
@@ -155,7 +155,11 @@ class LoginScreen extends StatelessWidget {
                 btn_boarder_color: Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
-                image_value: false,onTap: (){},
+                image_value: false,onTap: (){
+                  
+                  AppRouter.router.push('/navigationMenu');
+                  
+              },
               ),
               SizedBox(height: JSizes.spaceBtwItems),
               MainButton(
