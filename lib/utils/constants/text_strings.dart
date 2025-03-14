@@ -37,6 +37,8 @@ class JText {
   static const String paymentMethodTitle = "Payment Methods";
   static const String addCreditTitle = "Add your credit & debit cards";
   static const String locationTitle = "Locations";
+  static const String preferencesTitle = "Preferences";
+  static const String preferencesTitleDe = "Add Filter for Jobs";
   static const String locationSubTitle = "Add or remove your delivery locations";
   static const String accountSettingText = "Update your settings like notifications, payments, profile edit etc.";
   static const String notifications = "Notifications";

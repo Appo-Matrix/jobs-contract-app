@@ -29,5 +29,7 @@ enum Routes{
   feedBackScreen,
   loginScreen,
   signupScreen,
+  preferenceScreen,
+  profileScreen
 
 }

@@ -77,6 +77,10 @@ class SignupScreen extends StatelessWidget {
                 subTitle: JText.firstName,
                 hintText: JText.firstNameText,
                 prefixIcon: Icons.person_outline,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
 
@@ -84,12 +88,20 @@ class SignupScreen extends StatelessWidget {
                 subTitle: JText.lastName,
                 hintText: JText.lastNameText,
                 prefixIcon: Icons.person_outline,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: JText.email,
                 hintText: JText.enterYourName,
                 prefixIcon: Icons.person_outline,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
@@ -97,6 +109,10 @@ class SignupScreen extends StatelessWidget {
                 hintText: JText.createPassword,
                 prefixIcon: Icons.lock_outline,
                 subTitle: JText.password,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: 10),
               Text(JText.passwordMustBe,style: AppTextStyle.dmSans(

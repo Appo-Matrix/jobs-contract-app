@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/main_button.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -16,8 +17,11 @@ class ChangedPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
         title: Text(
           JText.changedPassword,
@@ -43,6 +47,8 @@ class ChangedPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+              SizedBox(height: JSizes.spaceBtwItems,),
               Text(
                 JText.changedPasswordTitle,
                 style: AppTextStyle.dmSans(
@@ -51,26 +57,34 @@ class ChangedPasswordScreen extends StatelessWidget {
                         : JAppColors.darkGray500,
                     fontSize: JSizes.fontSizeSm,
                     weight: FontWeight.w400,
-                    height: 1.5),
+                  height: 1.5
+                ),
               ),
-              SizedBox(height: 25),
+              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: 'Type your current password*',
                 hintText: 'Current Password',
-                subtitleColor: JAppColors.darkGray700,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
-              SizedBox(height: 25),
+              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: 'Type your new password*',
                 hintText: 'New Password',
-                subtitleColor: JAppColors.darkGray700,
-              ),
-              SizedBox(height: 25),
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,              ),
+              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: 'Retype your new password*',
                 hintText: 'Re-type Password',
-                subtitleColor: JAppColors.darkGray700,
-              ),
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,              ),
               SizedBox(height: 55),
               Row(
                 children: [
@@ -96,6 +110,10 @@ class ChangedPasswordScreen extends StatelessWidget {
               ),
               SizedBox(height: 35),
               MainButton(
+                onTap: (){
+                  
+
+                },
                 btn_title: 'Save Password',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
@@ -104,15 +122,7 @@ class ChangedPasswordScreen extends StatelessWidget {
                 image_value: false,
               ),
               SizedBox(height: 20),
-              Center(
-                child: Text('Forget Password',style:  AppTextStyle.dmSans(
-                  color: isDark
-                      ? JAppColors.primary
-                      : JAppColors.primary,
-                  fontSize: JSizes.fontSizeLg,
-                  weight: FontWeight.w600,
-                ),),
-              )
+
             ],
           ),
         ),

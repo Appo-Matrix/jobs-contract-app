@@ -17,9 +17,8 @@ class AddExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    bool light = true;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.addWorkExperience,
@@ -48,13 +47,19 @@ class AddExperienceScreen extends StatelessWidget {
               TextFieldWidget(
                 subTitle: 'Job Title',
                 hintText: '',
-                subtitleColor: JAppColors.darkGray700,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: 25),
               TextFieldWidget(
                 subTitle: 'Company',
                 hintText: '',
-                subtitleColor: JAppColors.darkGray700,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 suffixIcon: Icon(Icons.calendar_month_outlined),
               ),
               SizedBox(height: 25),
@@ -64,16 +69,25 @@ class AddExperienceScreen extends StatelessWidget {
                     child: TextFieldWidget(
                       subTitle: 'Start Date',
                       hintText: '',
-                      subtitleColor: JAppColors.darkGray700,
+                      subtitleColor: isDark
+                          ? JAppColors.lightGray300
+                          : JAppColors.grayBlue800,
+                      titleColor: isDark
+                          ? JAppColors.lightGray300
+                          : JAppColors.grayBlue800,
                     ),
                   ),
                   SizedBox(width: 10),
-        
                   Expanded(
                     child: TextFieldWidget(
                       subTitle: 'End Date',
                       hintText: '',
-                      subtitleColor: JAppColors.darkGray700,
+                      subtitleColor: isDark
+                          ? JAppColors.lightGray300
+                          : JAppColors.grayBlue800,
+                      titleColor: isDark
+                          ? JAppColors.lightGray300
+                          : JAppColors.grayBlue800,
                     ),
                   ),
                 ],
@@ -85,15 +99,12 @@ class AddExperienceScreen extends StatelessWidget {
                 subtitleColor: JAppColors.darkGray700,
               ),
               SizedBox(height: 25),
-        
               MainButton(
-        
                 btn_title: 'Save',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Colors.transparent,
                 title_color: Colors.white,
-        
                 image_value: false,
               ),
               SizedBox(height: 25),

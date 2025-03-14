@@ -53,6 +53,7 @@ class JAppColors {
   static const Color chartreuse400 = Color(0xFFBDF34F);
   static const Color chartreuse500 = Color(0xFFD8F897); // Neutral green (primary accent)
   static const Color chartreuse600 = Color(0xFF96CD29); // Medium green (secondary accent)
+  static const Color chartreuse600a = Color(0xF0BA02C); // Medium green (secondary accent)
   static const Color chartreuse700 = Color(0xFF7CA922);
   static const Color chartreuse800 = Color(0xFF61851A);
   static const Color chartreuse900 = Color(0xFF476013); // Deepest green

@@ -12,6 +12,7 @@ class TextFieldWidget extends StatelessWidget {
   final bool? obscureText;
   final Widget? suffixIcon;
   final Color? subtitleColor;
+  final Color? titleColor;
 
   // final TextEditingController? textEditingController;
 
@@ -23,12 +24,12 @@ class TextFieldWidget extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.subtitleColor,
+    this.titleColor,
     // required this.textEditingController,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isDark = JDeviceUtils.isDarkMode(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,23 +38,23 @@ class TextFieldWidget extends StatelessWidget {
           Text(
             subTitle!,
             style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray700,
+              color:subtitleColor!,
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w500,
             ),
           ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         TextField(
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+            color: titleColor!,
             fontSize: 14.0,
             weight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray500,
+              color: titleColor!,
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w400,
             ),

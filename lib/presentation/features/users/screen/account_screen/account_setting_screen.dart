@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/widgets/account_widget.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -17,10 +18,12 @@ class AccountSettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    bool light = true;
+    bool light = false;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
+
         title: Text(
           JText.accountSetting,
           style: AppTextStyle.dmSans(
@@ -56,55 +59,83 @@ class AccountSettingScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              AccountWidgetContainer(
-                iconsImage: JImages.userIcon,
-                title: JText.profileInfo,
-                subTitle: JText.changeInfo,
-                child: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+              GestureDetector(
+
+                onTap: (){
+                  AppRouter.router.push('/profileInformationScreen');
+
+
+                }
+                ,
+                child: AccountWidgetContainer(
+                  iconsImage: JImages.userIcon,
+                  title: JText.profileInfo,
+                  subTitle: JText.changeInfo,
+                  child: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color:
+                        isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  ),
                 ),
               ),
               SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.lock,
-                title: JText.changePassword,
-                subTitle: JText.changeYourPassword,
-                child: Icon(Icons.arrow_forward_ios_outlined,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors
-                      .lightGray900,),
-              ),
-              SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.payment,
-                title: JText.paymentMethodTitle,
-                subTitle: JText.addCreditTitle,
-                child: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+              GestureDetector(
+                onTap: (){
+
+                  AppRouter.router.push('/ChangedPasswordScreen');
+
+
+                },
+                child: AccountWidgetContainer(
+                  iconsImage: JImages.lock,
+                  title: JText.changePassword,
+                  subTitle: JText.changeYourPassword,
+                  child: Icon(Icons.arrow_forward_ios_outlined,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors
+                        .lightGray900,),
                 ),
               ),
               SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.location,
-                title: JText.locationTitle,
-                subTitle: JText.locationSubTitle,
-                child: Icon(Icons.arrow_forward_ios_outlined,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors
-                      .lightGray900,),
+              GestureDetector(
+                onTap: (){
+                  AppRouter.router.push('/profileInformationScreen');
+
+
+                },
+                child: GestureDetector(
+                  onTap: (){
+
+
+                    AppRouter.router.push('/paymentsMethod');
+
+                  },
+                  child: AccountWidgetContainer(
+                    iconsImage: JImages.payment,
+                    title: JText.paymentMethodTitle,
+                    subTitle: JText.addCreditTitle,
+                    child: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color:
+                          isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                    ),
+                  ),
+                ),
               ),
               SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.facebook,
-                title: JText.profileInfo,
-                subTitle: JText.changeInfo,
-                child: Icon(Icons.arrow_forward_ios_outlined,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors
-                      .lightGray900,),
+              GestureDetector(
+                onTap: (){
+                  AppRouter.router.push('/preferenceScreen');
+                },
+                child: AccountWidgetContainer(
+                  iconsImage: JImages.preference,
+                  title: JText.preferencesTitle,
+                  subTitle: JText.preferencesTitleDe,
+                  child: Icon(Icons.arrow_forward_ios_outlined,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors
+                        .lightGray900,),
+                ),
               ),
-              SizedBox(height: 12),
+              SizedBox(height: JSizes.spaceBtwItems),
 
               ///Notification Section
               Text(
@@ -216,7 +247,7 @@ class AccountSettingScreen extends StatelessWidget {
               AccountWidgetContainer(
                 iconsImage: JImages.logout,
                 title: JText.logout,
-                subTitle: '',
+                subTitle: 'Are you want to logout',
                 child: Icon(Icons.arrow_forward_ios_outlined,
                   color: isDark ? JAppColors.darkGray100 : JAppColors
                       .lightGray900,),

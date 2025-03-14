@@ -22,6 +22,8 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
         title: Text(
           JText.paymentmethod,
@@ -81,5 +83,8 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
       ),
     );
   }
+
 }
+
+
 

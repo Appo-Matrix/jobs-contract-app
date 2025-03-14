@@ -19,6 +19,7 @@ class LoginScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
+
       bottomNavigationBar:SizedBox(
         height: 50,
         child: Column(
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: isDark ? JAppColors.darkGray800 : JAppColors.lightGray100,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 16 ,horizontal: 16),
@@ -79,6 +80,10 @@ class LoginScreen extends StatelessWidget {
                 subTitle: JText.email,
                 hintText: JText.emailEnter,
                 prefixIcon: Icons.person_outline,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
@@ -88,6 +93,10 @@ class LoginScreen extends StatelessWidget {
                 prefixIcon: Icons.lock_outline,
                 obscureText: true,
                 subTitle: JText.password,
+                subtitleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                titleColor:
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
 
               //const TLoginForm(),

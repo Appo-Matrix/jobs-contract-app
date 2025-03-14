@@ -25,10 +25,10 @@ class AccountWidgetContainer extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
           border: Border.all(color: JAppColors.lightGray300)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: Column(
 
           children: [
@@ -60,7 +60,7 @@ class AccountWidgetContainer extends StatelessWidget {
             ),
             Row(
               children: [
-                SizedBox(height: 24,width: 24),
+                SizedBox(height: 32,width: 24),
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(

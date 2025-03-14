@@ -30,5 +30,19 @@ class JImages {
   static const String facebook1 = "assets/icons/facebook1.png";
   static const String google1 = "assets/icons/google1.png";
   static const String notifications = "assets/icons/notifications.png";
+  static const String image = "assets/images/imae.jpg";
+
+
+  ///drawer
+
+
+  static const String helpsupport = "assets/icons/helpsupport.png";
+  static const String language = "assets/icons/language.png";
+  static const String logout_icon = "assets/icons/logout_icon.png";
+  static const String profilesetting = "assets/icons/profilesetting.png";
+  static const String report = "assets/icons/report.png";
+  static const String upgrade = "assets/icons/upgrade.png";
+  static const String preference = "assets/icons/preference.png";
+
 
 }

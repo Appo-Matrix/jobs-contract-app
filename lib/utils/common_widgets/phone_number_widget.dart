@@ -24,12 +24,12 @@ class PhoneNumberWidget extends StatelessWidget {
         Text(
           'Phone Number',
           style: AppTextStyle.dmSans(
-            color: JAppColors.darkGray700,
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeMd,
             weight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: 8),
+         SizedBox(height: JSizes.spaceBtwInputFields),
         Container(
           height: 53,
           decoration: BoxDecoration(

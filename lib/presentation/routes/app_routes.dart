@@ -19,7 +19,10 @@ import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/home/home_screen.dart';
 import '../features/users/payments/payments_method.dart';
+import '../features/users/profile/profile_detail.dart';
 import '../features/users/screen/account_screen/account_setting_screen.dart';
+import '../features/users/screen/account_screen/changed_password_screen.dart';
+import '../features/users/screen/account_screen/preference_screen.dart';
 import '../features/users/screen/account_screen/profile_information_screen.dart';
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
@@ -108,6 +111,11 @@ class AppRouter {
         builder: (context, state) => const ForgetPasswordScreen(),
       ),
       GoRoute(
+        path: '/changedPasswordScreen',
+        name: Routes.changedPasswordScreen.name,
+        builder: (context, state) => const ChangedPasswordScreen(),
+      ),
+      GoRoute(
         path: '/addEducation',
         name: Routes.addEducation.name,
         builder: (context, state) =>  AddEducation(),
@@ -116,6 +124,11 @@ class AppRouter {
         path: '/paymentsMethod',
         name: Routes.paymentsMethod.name,
         builder: (context, state) =>  PaymentsMethod(),
+      ),
+      GoRoute(
+        path: '/preferenceScreen',
+        name: Routes.preferenceScreen.name,
+        builder: (context, state) =>  PreferenceScreen(),
       ),
       GoRoute(
         path: '/addSocialAccount',
@@ -133,11 +146,7 @@ class AppRouter {
         builder: (context, state) =>  BankAccountInfo(),
       ),
       // GoRoute(
-      //   path: '/bankAccountInfo',
-      //   name: Routes.bankAccountInfo.name,
-      //   builder: (context, state) =>  BankAccountInfo(),
-      // ),
-     // ),
+
       GoRoute(
         path: '/accountSettingScreen',
         name: Routes.accountSettingScreen.name,
@@ -147,6 +156,11 @@ class AppRouter {
         path: '/profileInformationScreen',
         name: Routes.profileInformationScreen.name,
         builder: (context, state) => const ProfileInformationScreen(),
+      ),
+      GoRoute(
+        path: '/profileScreen',
+        name: Routes.profileScreen.name,
+        builder: (context, state) => const ProfileScreen(),
       ),
 
       GoRoute(
