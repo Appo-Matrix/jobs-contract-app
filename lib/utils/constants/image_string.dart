@@ -45,4 +45,8 @@ class JImages {
   static const String preference = "assets/icons/preference.png";
 
 
+  static const String chatsupp = "assets/svg/chatsupp.svg";
+  static const String viewreq = "assets/svg/viewreq.svg";
+
+
 }

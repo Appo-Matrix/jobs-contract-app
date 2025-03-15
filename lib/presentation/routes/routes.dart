@@ -1,5 +1,4 @@
-enum Routes{
-
+enum Routes {
   onboardingScreen,
   homeScreen,
   navigationMenu,
@@ -30,6 +29,9 @@ enum Routes{
   loginScreen,
   signupScreen,
   preferenceScreen,
-  profileScreen
-
+  profileScreen,
+  contactSupportScreen,
+  reportScreen,
+  supportRequestsScreen,
+  membershipPlansScreen
 }

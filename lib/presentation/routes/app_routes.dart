@@ -20,6 +20,9 @@ import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/home/home_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
+import '../features/users/reports/contact_support.dart';
+import '../features/users/reports/reports_screen.dart';
+import '../features/users/reports/support_request.dart';
 import '../features/users/screen/account_screen/account_setting_screen.dart';
 import '../features/users/screen/account_screen/changed_password_screen.dart';
 import '../features/users/screen/account_screen/preference_screen.dart';
@@ -34,6 +37,7 @@ import '../features/users/screen/add_skills/chnage_add_skill_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_active_screen.dart';
 import '../features/users/screen/contact_detail_screens/feed_back_screen.dart';
+import '../features/users/upgrade/membership_plans_screen.dart';
 
 class AppRouter {
   static final router = GoRouter(
@@ -209,6 +213,26 @@ class AppRouter {
         path: '/feedBackScreen',
         name: Routes.feedBackScreen.name,
         builder: (context, state) => FeedBackScreen(),
+      ),
+      GoRoute(
+        path: '/contactSupportScreen',
+        name: Routes.contactSupportScreen.name,
+        builder: (context, state) => ContactSupportScreen(),
+      ),
+      GoRoute(
+        path: '/reportScreen',
+        name: Routes.reportScreen.name,
+        builder: (context, state) => ReportScreen(),
+      ),
+      GoRoute(
+        path: '/supportRequestsScreen',
+        name: Routes.supportRequestsScreen.name,
+        builder: (context, state) => SupportRequestsScreen(),
+      ),
+      GoRoute(
+        path: '/membershipPlansScreen',
+        name: Routes.membershipPlansScreen.name,
+        builder: (context, state) => MembershipPlansScreen(),
       ),
 
     ],

@@ -47,6 +47,7 @@ class TextFieldWidget extends StatelessWidget {
         TextField(
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
+
             color: titleColor!,
             fontSize: 14.0,
             weight: FontWeight.w400,

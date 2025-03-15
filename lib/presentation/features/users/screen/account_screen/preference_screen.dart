@@ -31,12 +31,17 @@ class _PreferenceScreenState extends State<PreferenceScreen> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: JCircularAvatar(
-          isDark: isDark,
-          radius: 20,
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+        leadingIcon: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: JCircularAvatar(
+            isDark: isDark,
+            radius: 20,
+            child: Icon(
+              CupertinoIcons.back,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+            ),
           ),
         ),
       ),

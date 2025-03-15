@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   child: CircularAvatar(
                     isDark: isDark,
                     radius: 20,
-                    imageUrl: 'assets/images/profile1.jpg',
+                    imageUrl: JImages.image,
                     // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
                   ),
                 ),
@@ -251,6 +251,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                       onTap: () {
                         // Close the drawer first
 
+                        Navigator.pop(context);
                         // Navigate to profile screen
                         AppRouter.router.push('/profileScreen');
                       },
@@ -310,6 +311,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
+              AppRouter.router.push('/contactSupportScreen');
+
               // Navigate to profile
             },
           ),
@@ -320,6 +323,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
+              AppRouter.router.push('/membershipPlansScreen');
               // Navigate to applications
             },
           ),

@@ -160,6 +160,24 @@ class JText {
 ////bank account info
   static const  bankAccountInfo   = "Bank of account info";
   static const  bankInfo   = "Bank info";
+  static const  submit   = "Submit";
+  static const  reportReason   = "Report Reason";
+  static const  selectReason   = "Select Reason";
+  static const  reportsTitle   = "Reports Title";
+
+
+
+
+  //////report
+  static const  contactSupport   = "Contact Support";
+  static const  chatWithSupport   = "Chat With Support";
+  static const  viewMyRequest   = "View My Request";
+  static const  viewMyRequestDes   = "View updates on submitted Request";
+  static const  chatWithSupportDec   = "Get Immediate Support by Starting a chat";
+
+  ///upgarede
+
+  static const   membershipPlans   = " Membership plans";
 
 
 

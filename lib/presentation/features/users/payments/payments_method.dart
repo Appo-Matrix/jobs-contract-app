@@ -36,9 +36,14 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
         leadingIcon: JCircularAvatar(
           isDark: isDark,
           radius: 20,
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Icon(
+              CupertinoIcons.back,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+            ),
           ),
         ),
       ),

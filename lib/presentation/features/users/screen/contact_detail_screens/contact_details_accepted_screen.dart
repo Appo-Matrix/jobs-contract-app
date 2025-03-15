@@ -32,9 +32,14 @@ class ContactDetailsAcceptedScreen extends StatelessWidget {
         leadingIcon: JCircularAvatar(
           isDark: isDark,
           radius: 50, // Modify the radius to make it larger
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+          child: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Icon(
+              CupertinoIcons.back,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+            ),
           ),
         ),
       ),
