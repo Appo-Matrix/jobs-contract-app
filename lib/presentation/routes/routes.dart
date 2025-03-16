@@ -33,5 +33,9 @@ enum Routes {
   contactSupportScreen,
   reportScreen,
   supportRequestsScreen,
-  membershipPlansScreen
+  membershipPlansScreen,
+  languageScreen,
+  languageSelectionScreen,
+  languageDetailScreen
+
 }

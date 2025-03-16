@@ -180,6 +180,12 @@ class JText {
   static const   membershipPlans   = " Membership plans";
 
 
+  //////language
+
+  static const  language   = "Language";
+
+
+
 
 
 }

@@ -18,6 +18,9 @@ import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
 import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/home/home_screen.dart';
+import '../features/users/language/language_detail_screen.dart';
+import '../features/users/language/language_screen.dart';
+import '../features/users/language/language_selection_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
 import '../features/users/reports/contact_support.dart';
@@ -233,6 +236,21 @@ class AppRouter {
         path: '/membershipPlansScreen',
         name: Routes.membershipPlansScreen.name,
         builder: (context, state) => MembershipPlansScreen(),
+      ),
+      GoRoute(
+        path: '/languageScreen',
+        name: Routes.languageScreen.name,
+        builder: (context, state) => LanguageScreen(),
+      ),
+      GoRoute(
+        path: '/languageSelectionScreen',
+        name: Routes.languageSelectionScreen.name,
+        builder: (context, state) => LanguageSelectionScreen(),
+      ),
+      GoRoute(
+        path: '/languageDetailScreen',
+        name: Routes.languageDetailScreen.name,
+        builder: (context, state) => LanguageDetailScreen(),
       ),
 
     ],

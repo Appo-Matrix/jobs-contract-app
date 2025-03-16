@@ -327,6 +327,16 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               // Navigate to applications
             },
           ),
+          DrawerItem(
+            iconPath: JImages.language,
+            title: 'Language',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/languageScreen');
+              // Navigate to applications
+            },
+          ),
 
           DrawerItem(
             iconPath: JImages.helpsupport,
