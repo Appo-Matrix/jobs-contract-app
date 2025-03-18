@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showEducationBottomSheet.dart';
+import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showResumeBottomSheet.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/main_button.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -13,6 +15,7 @@ import '../../../../../utils/common_widgets/phone_number_widget.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
+import 'bottomsheet/showSkillsBottomSheet.dart';
 
 class ProfileInformationScreen extends StatelessWidget {
   const ProfileInformationScreen({super.key});
