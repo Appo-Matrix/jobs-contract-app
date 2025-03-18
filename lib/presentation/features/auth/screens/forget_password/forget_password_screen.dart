@@ -27,12 +27,13 @@ class ForgetPasswordScreen extends StatelessWidget {
 
       appBar: JAppbar(
 
-        leadingIcon: JCircularAvatar(
-          isDark: isDark,
-          radius: 20,
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
+              Navigator.pop(context);
+            },
           ),
         ),
       ),

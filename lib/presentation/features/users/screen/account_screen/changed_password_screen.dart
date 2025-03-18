@@ -6,6 +6,7 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
+import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -31,18 +32,13 @@ class ChangedPasswordScreen extends StatelessWidget {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: GestureDetector(
-          onTap: (){
-            Navigator.pop(context);
-          },
-          child: JCircularAvatar(
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
             isDark: isDark,
-            radius: 20,
-            // Modify the radius to make it larger
-            child: Icon(
-              CupertinoIcons.back,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            ),
+            onTap: (){
+              Navigator.pop(context);
+            },
           ),
         ),
       ),

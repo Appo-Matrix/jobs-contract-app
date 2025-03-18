@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
+import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
@@ -43,17 +44,13 @@ class SupportRequestsScreen extends StatelessWidget {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: JCircularAvatar(
-          isDark: isDark,
-          radius: 20,
-          child: GestureDetector(
-            onTap: () {
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
               Navigator.pop(context);
             },
-            child: Icon(
-              CupertinoIcons.back,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            ),
           ),
         ),
       ),

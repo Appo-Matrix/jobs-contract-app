@@ -21,23 +21,27 @@ class JCircularAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Calculate total diameter including border
+    final totalDiameter = (radius * 2) + (borderWidth * 2);
+
     return Container(
-      width: radius * 2 + borderWidth * 2,  // Adjust width to include border
-      height: radius * 2 + borderWidth * 2,  // Adjust height to include border
+      width: totalDiameter,
+      height: totalDiameter,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: backColor,  // Set the background color here
+        color: backColor ?? Colors.transparent,
         border: Border.all(
-          color: isDark ? borderColor.withOpacity(0.5) : borderColor,  // Border color
-          width: borderWidth,  // Border width
+          color: isDark ? borderColor.withOpacity(0.5) : borderColor,
+          width: borderWidth,
         ),
       ),
-      // Use Center to position the child properly in the container
       child: Center(
         child: SizedBox(
           width: radius * 2,
           height: radius * 2,
-          child: child,
+          child: Center(
+            child: child,
+          ),
         ),
       ),
     );

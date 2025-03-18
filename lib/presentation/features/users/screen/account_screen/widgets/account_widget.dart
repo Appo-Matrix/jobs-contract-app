@@ -38,8 +38,8 @@ class AccountWidgetContainer extends StatelessWidget {
               children: [
                 Image.asset(
                   iconsImage,
-                  width: 24,
-                  height: 24,
+                  width: 22,
+                  height: 22,
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
                 SizedBox(width: 10),

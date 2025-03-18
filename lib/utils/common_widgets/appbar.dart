@@ -25,7 +25,7 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
           
-        automaticallyImplyLeading: true,
+        automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(
             onPressed: leadingOnPressed,

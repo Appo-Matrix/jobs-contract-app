@@ -28,7 +28,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
 
     return Scaffold(
-
+    backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
 
         leadingIcon: JCircularAvatar(

@@ -185,6 +185,17 @@ class JText {
   static const  language   = "Language";
 
 
+  ///jo
+
+
+  static const  jobDescription   = "Job Description";
+  static const  applyJob   = "Apply Job";
+  static const  backToJobDetail   = "Back To Job Details";
+  static const  submitCoverLetter   = "Submit Cover Letter";
+  static const  titleCoverLetter   = "Cover Letter";
+
+
+
 
 
 

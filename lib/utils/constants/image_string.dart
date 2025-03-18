@@ -49,4 +49,14 @@ class JImages {
   static const String viewreq = "assets/svg/viewreq.svg";
 
 
+
+
+  //////verify
+  static const String verify = "assets/icons/verify.png";
+  static const String locationSvg = "assets/svg/location.svg";
+
+
+
+
+
 }

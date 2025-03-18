@@ -1,3 +1,4 @@
+
 // import 'package:flutter/material.dart';
 // import 'package:job_contracts/presentation/features/users/home/recent_jobs/recent_jobs_screen.dart';
 // import 'package:job_contracts/presentation/features/users/home/saved_jobs/saved_jobs_screen.dart';
@@ -111,6 +112,7 @@
 // }
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/home/recent_jobs/recent_jobs_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/saved_jobs/saved_jobs_screen.dart';
@@ -155,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Scaffold(
       key: _scaffoldKey,
       drawer: _buildNavigationDrawer(context, isDark),
-  backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
 
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),

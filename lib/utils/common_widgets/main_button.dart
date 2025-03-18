@@ -32,7 +32,8 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
+      child:
+      Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
         decoration: BoxDecoration(

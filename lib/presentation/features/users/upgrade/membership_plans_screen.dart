@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/upgrade/widgets/membership_plan_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
+import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
@@ -32,17 +33,13 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: GestureDetector(
-          onTap: (){
-            Navigator.pop(context);
-          },
-          child: JCircularAvatar(
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
             isDark: isDark,
-            radius: 20,
-            child: Icon(
-              CupertinoIcons.back,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            ),
+            onTap: (){
+              Navigator.pop(context);
+            },
           ),
         ),
       ),

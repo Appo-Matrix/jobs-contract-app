@@ -41,25 +41,25 @@ class SavedJobsPage extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
-          child: savedJobs.isEmpty
-              ? _buildEmptyState(isDark)
-              : ListView.builder(
-            itemCount: savedJobs.length,
-            itemBuilder: (context, index) {
-              final job = savedJobs[index];
-              return JobCard1(
-                companyName: job['company'],
-                jobTitle: job['title'],
-                location: job['location'],
-                salary: job['salary'],
-                isRemote: job['isRemote'],
-                postedTime: job['posted'],
-                isSaved: true,
-              );
-            },
-          ),
-        ),
+        // Expanded(
+        //   child: savedJobs.isEmpty
+        //       ? _buildEmptyState(isDark)
+        //       : ListView.builder(
+        //     itemCount: savedJobs.length,
+        //     itemBuilder: (context, index) {
+        //       final job = savedJobs[index];
+        //       return JobCard1(
+        //         companyName: job['company'],
+        //         jobTitle: job['title'],
+        //         location: job['location'],
+        //         salary: job['salary'],
+        //         isRemote: job['isRemote'],
+        //         postedTime: job['posted'],
+        //         isSaved: true,
+        //       );
+        //     },
+        //   ),
+        // ),
       ],
     );
   }

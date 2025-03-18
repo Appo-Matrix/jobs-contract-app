@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
@@ -36,16 +37,13 @@ class RecentJobsPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: 5,
             itemBuilder: (context, index) {
-              return JobCard(
-                title: "Plumbers Construction Specialists",
-                description: "Hands-on Building Tasks.",
+              return JobPostingCard(
+                jobTitle: "Plumbers Construction Specialists",
+                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
                 salary: "\$20,000 - \$25,000",
                 category: "Site Inspections",
-                organization: "Contractors",
-                companyName: "Appo Matrix",
-                location: "Innovatown, Nevada",
-                logoUrl: JImages.google1, // Replace with actual logo URL
-                isVerified: true,
+
+                isVerified: true, isDark: isDark,
               );
             },
           ),
@@ -54,432 +52,517 @@ class RecentJobsPage extends StatelessWidget {
     );
   }
 }
-
-
-class JobCard extends StatelessWidget {
-  final String title;
-  final String description;
+class JobPostingCard extends StatelessWidget {
+  final String jobTitle;
   final String salary;
   final String category;
-  final String organization;
-  final String companyName;
+  final String jobType;
+  final String duration;
+  final String description;
+  final String employerName;
   final String location;
-  final String logoUrl;
-  final bool isVerified;
-
-  const JobCard({
-    Key? key,
-    required this.title,
-    required this.description,
-    required this.salary,
-    required this.category,
-    required this.organization,
-    required this.companyName,
-    required this.location,
-    required this.logoUrl,
-    this.isVerified = false,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isDark = JDeviceUtils.isDarkMode(context);
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        color: isDark ?JAppColors.lightGray600 : JAppColors.darkGray300,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Job Title
-
-
-            Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: AppTextStyle.dmSans(
-                color: isDark
-                    ? JAppColors.darkGray100
-                    : JAppColors.lightGray700,
-                fontSize: JSizes.fontSizeMd,
-                weight: FontWeight.w600,
-              ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // Description Container with Green Background
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
-                  decoration: BoxDecoration(
-
-                    color: JAppColors.chartreuse200.withValues(alpha: 0.7),
-                    borderRadius: BorderRadius.circular(10),
-
-
-                  ),
-                  child: Text(
-                    description,
-                    style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray100
-                          : JAppColors.lightGray700,
-                      fontSize: 12.0,
-                      weight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-
-                SizedBox(width: 8,),
-
-                Text(
-                  "Salary: $salary",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: 12.0,
-                    weight: FontWeight.w400,
-                  ),
-                ),
-
-
-              ],
-            ),
-
-
-            // Salary
-
-            const SizedBox(height: 16),
-
-            // Category and Organization
-            Row(
-              children: [
-                Text(
-                  "Category: ",
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: 10.0,
-                    weight: FontWeight.w400,
-                  ),
-                ),
-                Text(
-                  category,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.primary
-                        : JAppColors.primary,
-                    fontSize: 14.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Text(
-                  "Organization: ",
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray700,
-                    fontSize: 10.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
-                Text(
-                  organization,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.primary
-                        : JAppColors.primary,
-                    fontSize: 12.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 24),
-
-            // Company Logo and Name
-            Row(
-              children: [
-                // Logo container
-                Container(
-                  width: 56,
-                  height: 56,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image(image: AssetImage(logoUrl))
-                    // Image.network(
-                    //   logoUrl,
-                    //   fit: BoxFit.cover,
-                    //   errorBuilder: (context, error, stackTrace) {
-                    //     return Center(
-                    //       child: Icon(
-                    //         Icons.business,
-                    //         color: Colors.white,
-                    //         size: 30,
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
-                  ),
-                ),
-
-                const SizedBox(width: 16),
-
-                // Company name and verification
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          companyName,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF1D2939),
-                          ),
-                        ),
-                        if (isVerified) ...[
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFEF0C7),
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: const Color(0xFFF79009), width: 2),
-                            ),
-                            child: const Icon(
-                              Icons.check,
-                              color: Color(0xFFF79009),
-                              size: 20,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-
-                    const SizedBox(height: 4),
-
-                    // Location
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          color: const Color(0xFF7839EE),
-                          size: 20,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          location,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xFF1D2939),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-// JobCard widget used by all pages
-class JobCard1 extends StatelessWidget {
-  final String companyName;
-  final String jobTitle;
-  final String location;
-  final String salary;
-  final bool isRemote;
   final String postedTime;
-  final bool isSaved;
+  final bool isVerified;
+  final bool isDark;
+  final ImageProvider? employerImage;
 
-  const JobCard1({
+  const JobPostingCard({
     Key? key,
-    required this.companyName,
-    required this.jobTitle,
-    required this.location,
-    required this.salary,
-    required this.isRemote,
-    required this.postedTime,
-    this.isSaved = false,
+    this.jobTitle = "Architects Construction",
+    this.salary = "\$20,000 - \$25,000",
+    this.category = "Electrician",
+    this.jobType = "Onsite",
+    this.duration = "1 Month",
+    this.description = "We are seeking a highly motivated and skilled Architects & Construction Specialis skilled Architects & Construction Specialis",
+    this.employerName = "Amélie Laurent",
+    this.location = "United States",
+    this.postedTime = "1 hr ago",
+    this.isVerified = false,
+    this.employerImage,
+    required this.isDark,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    // Define colors based on dark mode
+    final textColor = isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
+    final subtitleColor = isDark ? JAppColors.darkGray200 : JAppColors.lightGray700;
+    final accentColor = isDark ? JAppColors.lightest  : JAppColors.primary; // Keep accent color consistent
 
+    final dividerColor = isDark ? Colors.grey.shade700.withOpacity(0.2) : Colors.grey.shade300.withOpacity(0.2);
+    final containerColor = isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
+
+    final width = JDeviceUtils.getScreenWidth(context);
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
+      width: double.infinity,
+      padding: const EdgeInsets.all(9.0),
+      margin: EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: isDark ? JAppColors.darkGray800 : Colors.white,
+        color: containerColor,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+          SizedBox(height: 12,),
+          // Job Title
+          Text(
+            jobTitle,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextStyle.dmSans(
+              fontSize: 18.0,
+              weight: FontWeight.w600,
+              color: isDark ? Colors.white : JAppColors.lightGray900,
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Salary
           Row(
             children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray100,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Center(
-                  child: Text(
-                    companyName.substring(0, 1),
-                    style: AppTextStyle.dmSans(
-                      fontSize: JSizes.fontSizeLg,
-                      weight: FontWeight.bold,
-                      color: JAppColors.primary,
-                    ),
-                  ),
+              Text(
+                "Salary: ",
+                style: AppTextStyle.dmSans(
+                  fontSize: JSizes.fontSizeSm,
+                  weight: FontWeight.w600,
+                  color: textColor,
                 ),
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      companyName,
-                      style: AppTextStyle.dmSans(
-                        fontSize: JSizes.fontSizeSm,
-                        color: isDark ? JAppColors.darkGray200 : JAppColors.lightGray600, weight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      jobTitle,
-                      style: AppTextStyle.dmSans(
-                        fontSize: JSizes.fontSizeMd,
-                        weight: FontWeight.w600,
-                        color: isDark ? Colors.white : JAppColors.lightGray900,
-                      ),
-                    ),
-                  ],
+              Text(
+                salary,
+                style: AppTextStyle.dmSans(
+                  fontSize: JSizes.fontSizeSm,
+                  weight: FontWeight.w600,
+                  color: isDark ? Colors.white : JAppColors.lightGray900,
                 ),
-              ),
-              Icon(
-                isSaved ? Icons.bookmark : Icons.bookmark_border,
-                color: isSaved ? JAppColors.primary : (isDark ? JAppColors.darkGray300 : JAppColors.lightGray500),
               ),
             ],
           ),
           const SizedBox(height: 16),
-          Row(
+
+          // Job Details
+          Wrap(
+            spacing: 20,
+            runSpacing: 12,
             children: [
-              _buildInfoChip(
-                isDark,
-                Icons.location_on_outlined,
-                location,
-              ),
-              const SizedBox(width: 8),
-              if (isRemote)
-                _buildInfoChip(
-                  isDark,
-                  Icons.home_outlined,
-                  'Remote',
-                  isHighlighted: true,
-                ),
+              _buildJobDetail("Category", category, textColor, accentColor),
+              _buildJobDetail("Job Type", jobType, textColor, accentColor),
+              _buildJobDetail("Job Duration", duration, textColor, accentColor),
             ],
           ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildInfoChip(
-                isDark,
-                Icons.monetization_on_outlined,
-                salary,
+          const SizedBox(height: 20),
+
+          // Job Description
+          Text(
+            "Job Description",
+            style: AppTextStyle.dmSans(
+              fontSize: JSizes.fontSizeSm,
+              weight: FontWeight.w600,
+              color: isDark ? Colors.white : JAppColors.lightGray900,
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // Description Text
+          Text(
+            description,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: AppTextStyle.dmSans(
+              fontSize: JSizes.fontSizeEaSm,
+              color: textColor.withValues(alpha: 0.9),
+              height: 1.5, weight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 6),
+
+          // See More
+          GestureDetector(
+            onTap: () {
+              // Implement your "See More" action here
+
+              AppRouter.router.push('/jobDetailScreen');
+            },
+            child: Text(
+              "See More...",
+              style: AppTextStyle.dmSans(
+                fontSize: JSizes.fontSizeEaSm,
+                weight: FontWeight.w500,
+                color: accentColor,
               ),
-              Text(
-                postedTime,
-                style: AppTextStyle.dmSans(
-                  fontSize: JSizes.fontSizeEaSm,
-                  color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray500, weight: FontWeight.w400,
+            ),
+          ),
+
+
+          SizedBox(height: 12)
+,          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Employer Avatar
+              ClipRRect(
+                borderRadius: BorderRadius.circular(40),
+                child: employerImage != null
+                    ? Image(
+                  image: employerImage!,
+                  width: 53,
+                  height: 53,
+                  fit: BoxFit.cover,
+                )
+                    : Container(
+                  width: 53,
+                  height: 53,
+                  color: isDark ? Colors.grey[700] : Colors.grey[300],
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                    color: isDark ? Colors.grey[500] : Colors.grey,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+
+              // Employer Details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Employer Name with Verified Badge
+                    Row(
+                      children: [
+                        Text(
+                          employerName,
+                          style: AppTextStyle.dmSans(
+                            fontSize: 16.0,
+                            weight: FontWeight.w500,
+                            color: isDark ? Colors.white : JAppColors.lightGray900,
+                          ),
+                        ),
+
+                        SizedBox(height: 12,),
+                        if (isVerified) ...[
+                          const SizedBox(width: 8),
+                          Image(
+                              height: 24,
+                              width: 24,
+                              image: AssetImage(JImages.verify)),
+                        ],
+                      ],
+                    ),
+
+                    // Location
+                    Row(
+
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          color: accentColor,
+                          size: 20,
+                        ),
+                        Text(
+                          location,
+                          style: AppTextStyle.dmSans(
+                            fontSize: 12.0,
+                            color: textColor.withValues(alpha: 0.8),
+
+                            weight: FontWeight.w400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 18),
+
+          // Posted Time
+          Text(
+            "Posted $postedTime",
+            style: AppTextStyle.dmSans(
+              fontSize: 16.0,
+              weight: FontWeight.w500,
+              color: textColor.withValues(alpha: 0.8),
+
+            ),
+          ),
+
+          SizedBox(height: 12,),
+
         ],
       ),
     );
   }
 
-  Widget _buildInfoChip(bool isDark, IconData icon, String label, {bool isHighlighted = false}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: isHighlighted
-            ? JAppColors.primary.withOpacity(0.1)
-            : (isDark ? JAppColors.darkGray700 : JAppColors.lightGray100),
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: 14,
-            color: isHighlighted
-                ? JAppColors.primary
-                : (isDark ? JAppColors.darkGray300 : JAppColors.lightGray600),
+  Widget _buildJobDetail(String label, String value, Color textColor, Color accentColor) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "$label: ",
+          style: AppTextStyle.dmSans(
+            fontSize: JSizes.fontSizeSm,
+            color: textColor, weight: FontWeight.w400,
           ),
-          const SizedBox(width: 4),
-          Text(
-            label,
-            style: AppTextStyle.dmSans(
-              fontSize: JSizes.fontSizeXESm,
-              weight: FontWeight.w500,
-              color: isHighlighted
-                  ? JAppColors.primary
-                  : (isDark ? JAppColors.darkGray300 : JAppColors.lightGray600),
-            ),
+        ),
+        Text(
+          value,
+          style: AppTextStyle.dmSans(
+            fontSize: JSizes.fontSizeSm,
+            color: accentColor, weight: FontWeight.w400,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
+
+// class JobPostingCard extends StatelessWidget {
+//   final String jobTitle;
+//   final String salary;
+//   final String category;
+//   final String jobType;
+//   final String duration;
+//   final String description;
+//   final String employerName;
+//   final String location;
+//   final String postedTime;
+//   final bool isVerified;
+//   final bool isDark;
+//   final ImageProvider? employerImage;
+//
+//   const JobPostingCard({
+//     Key? key,
+//     this.jobTitle = "Architects Construction",
+//     this.salary = "\$20,000 - \$25,000",
+//     this.category = "Electrician",
+//     this.jobType = "Onsite",
+//     this.duration = "1 Month",
+//     this.description = "We are seeking a highly motivated and skilled Architects & Construction Specialis",
+//     this.employerName = "Amélie Laurent",
+//     this.location = "United States",
+//     this.postedTime = "1 hr ago",
+//     this.isVerified = true,
+//     this.employerImage, required this.isDark,
+//   }) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: double.infinity,
+//       padding: const EdgeInsets.all(9.0),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           // Job Title
+//           Text(
+//             jobTitle,
+//             style: AppTextStyle.dmSans(
+//               fontSize: JSizes.fontSizeMd,
+//               weight: FontWeight.w600,
+//               color:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+//             ),
+//           ),
+//           const SizedBox(height: 16),
+//
+//           // Salary
+//           Text(
+//             "Salary: $salary",
+//             style: const TextStyle(
+//               fontSize: 26,
+//               fontWeight: FontWeight.w600,
+//               color: Color(0xFF24292F),
+//             ),
+//           ),
+//           const SizedBox(height: 20),
+//
+//           // Job Details
+//           Wrap(
+//             spacing: 20,
+//             runSpacing: 12,
+//             children: [
+//               _buildJobDetail("Category", category),
+//               _buildJobDetail("Job Type", jobType),
+//               _buildJobDetail("Job Duration", duration),
+//             ],
+//           ),
+//           const SizedBox(height: 30),
+//
+//           // Job Description
+//           const Text(
+//             "Job Description",
+//             style: TextStyle(
+//               fontSize: 26,
+//               fontWeight: FontWeight.w600,
+//               color: Color(0xFF24292F),
+//             ),
+//           ),
+//           const SizedBox(height: 12),
+//
+//           // Description Text
+//           Text(
+//             description,
+//             style: const TextStyle(
+//               fontSize: 18,
+//               color: Color(0xFF24292F),
+//               height: 1.5,
+//             ),
+//           ),
+//           const SizedBox(height: 6),
+//
+//           // See More
+//           GestureDetector(
+//             onTap: () {
+//               // Implement your "See More" action here
+//               ScaffoldMessenger.of(context).showSnackBar(
+//                 const SnackBar(
+//                   content: Text('See more details clicked'),
+//                   duration: Duration(seconds: 1),
+//                 ),
+//               );
+//             },
+//             child: const Text(
+//               "See More...",
+//               style: TextStyle(
+//                 fontSize: 18,
+//                 fontWeight: FontWeight.w500,
+//                 color: Color(0xFF8957FF),
+//               ),
+//             ),
+//           ),
+//
+//           // Divider
+//           Padding(
+//             padding: const EdgeInsets.symmetric(vertical: 24),
+//             child: Divider(
+//               color: Colors.grey.withOpacity(0.2),
+//               thickness: 1,
+//             ),
+//           ),
+//
+//           // Employer Info
+//           Row(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               // Employer Avatar
+//               ClipRRect(
+//                 borderRadius: BorderRadius.circular(40),
+//                 child: employerImage != null
+//                     ? Image(
+//                   image: employerImage!,
+//                   width: 80,
+//                   height: 80,
+//                   fit: BoxFit.cover,
+//                 )
+//                     : Container(
+//                   width: 80,
+//                   height: 80,
+//                   color: Colors.grey[300],
+//                   child: const Icon(
+//                     Icons.person,
+//                     size: 40,
+//                     color: Colors.grey,
+//                   ),
+//                 ),
+//               ),
+//               const SizedBox(width: 16),
+//
+//               // Employer Details
+//               Expanded(
+//                 child: Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     // Employer Name with Verified Badge
+//                     Row(
+//                       children: [
+//                         Text(
+//                           employerName,
+//                           style: const TextStyle(
+//                             fontSize: 22,
+//                             fontWeight: FontWeight.w600,
+//                             color: Color(0xFF24292F),
+//                           ),
+//                         ),
+//                         if (isVerified) ...[
+//                           const SizedBox(width: 8),
+//                           Container(
+//                             padding: const EdgeInsets.all(2),
+//                             decoration: const BoxDecoration(
+//                               color: Color(0xFFF5A623),
+//                               shape: BoxShape.circle,
+//                             ),
+//                             child: const Icon(
+//                               Icons.check,
+//                               color: Colors.white,
+//                               size: 18,
+//                             ),
+//                           ),
+//                         ],
+//                       ],
+//                     ),
+//                     const SizedBox(height: 8),
+//
+//                     // Location
+//                     Row(
+//                       children: [
+//                         const Icon(
+//                           Icons.location_on,
+//                           color: Color(0xFF8957FF),
+//                           size: 20,
+//                         ),
+//                         const SizedBox(width: 6),
+//                         Text(
+//                           location,
+//                           style: const TextStyle(
+//                             fontSize: 16,
+//                             color: Color(0xFF24292F),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//           const SizedBox(height: 18),
+//
+//           // Posted Time
+//           Text(
+//             "Posted $postedTime",
+//             style: const TextStyle(
+//               fontSize: 18,
+//               fontWeight: FontWeight.w500,
+//               color: Color(0xFF24292F),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+//
+//   Widget _buildJobDetail(String label, String value) {
+//     return Row(
+//       mainAxisSize: MainAxisSize.min,
+//       children: [
+//         Text(
+//           "$label: ",
+//           style: const TextStyle(
+//             fontSize: 18,
+//             color: Color(0xFF24292F),
+//           ),
+//         ),
+//         Text(
+//           value,
+//           style: const TextStyle(
+//             fontSize: 18,
+//             color: Color(0xFF8957FF),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+

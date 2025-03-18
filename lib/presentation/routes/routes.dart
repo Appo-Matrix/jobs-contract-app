@@ -36,6 +36,8 @@ enum Routes {
   membershipPlansScreen,
   languageScreen,
   languageSelectionScreen,
-  languageDetailScreen
+  languageDetailScreen,
+  jobDetailScreen,
+  jobDetailsPage
 
 }

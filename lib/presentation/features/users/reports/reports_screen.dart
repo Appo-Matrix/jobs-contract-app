@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
+import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/common_widgets/main_button.dart';
 import '../../../../utils/constants/app_text_style.dart';
@@ -45,17 +46,13 @@ class _ReportScreenState extends State<ReportScreen> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: JCircularAvatar(
-          isDark: isDark,
-          radius: 20,
-          child: GestureDetector(
-            onTap: () {
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
               Navigator.pop(context);
             },
-            child: Icon(
-              CupertinoIcons.back,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            ),
           ),
         ),
       ),
