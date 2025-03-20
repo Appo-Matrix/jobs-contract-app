@@ -196,6 +196,27 @@ class JText {
 
 
 
+  static const  education   = "Education";
+  static const  educationSubtitle   = "Select Your Education Level & Degree";
+  static const  universityName   = "University Name";
+  static const  degree   = "Degree";
+  static const  exBBA   = "Ex: BBA";
+  static const  graduationDate   = "Graduation Date";
+  static const  selectDate   = "Select Date";
+  static const  addResumeDes   = "Upload Your Resume.";
+  static const  uploadCV   = "Upload CV/Resume";
+  static const  uploadCVDesc   = "Upload files in PDF format up to 5 MB. Just upload it once and you can use it in your next application.";
+
+
+
+  static const    addSkillDesc   = "Add Your Skills & Expertise";
+  static const    searchSkills   = "Search Skills";
+  static const    addWorkExperienceDesc   = "Highlight your skills and career growth by adding your past roles and achievements.";
+  static const    jobTitle   = "Job Title";
+  static const    company   = "Company";
+  static const    writeInformationDetail   = "Write additional information here'";
+
+
 
 
 

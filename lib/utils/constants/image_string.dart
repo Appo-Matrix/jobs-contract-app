@@ -54,6 +54,8 @@ class JImages {
   //////verify
   static const String verify = "assets/icons/verify.png";
   static const String locationSvg = "assets/svg/location.svg";
+  static const String edit_icon = "assets/icons/edit_icon.png";
+  static const String edit_iconSvg = "assets/svg/lucide_edit.svg";
 
 
 

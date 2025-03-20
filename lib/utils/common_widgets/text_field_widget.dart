@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
@@ -14,7 +13,7 @@ class TextFieldWidget extends StatelessWidget {
   final Color? subtitleColor;
   final Color? titleColor;
 
-  // final TextEditingController? textEditingController;
+  final TextEditingController? textEditingController;
 
   const TextFieldWidget({
     super.key,
@@ -25,7 +24,7 @@ class TextFieldWidget extends StatelessWidget {
     this.suffixIcon,
     this.subtitleColor,
     this.titleColor,
-    // required this.textEditingController,
+     this.textEditingController,
   });
 
   @override
