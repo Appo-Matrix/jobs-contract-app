@@ -55,10 +55,12 @@ void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            suffixIcon: const Icon(Icons.calendar_today),
+
           ),
         ),
         const SizedBox(height: 16),
+
+
         Row(
           children: [
             Expanded(
@@ -80,7 +82,16 @@ void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
+                      suffixIcon: Icon(
+                        Icons.calendar_today,
+                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
+                      ),
                     ),
+                    readOnly: true, // Makes the text field clickable but not editable
+                    onTap: () {
+                      // Show date picker when tapped
+                      _selectDate(context, startDateController);
+                    },
                   ),
                 ],
               ),
@@ -105,7 +116,16 @@ void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
+                      suffixIcon: Icon(
+                        Icons.calendar_today,
+                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
+                      ),
                     ),
+                    readOnly: true, // Makes the text field clickable but not editable
+                    onTap: () {
+                      // Show date picker when tapped
+                      _selectDate(context, endDateController);
+                    },
                   ),
                 ],
               ),
@@ -139,4 +159,18 @@ void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
       Navigator.pop(context);
     },
   );
+
+  // Helper function to show date picker
+}
+Future<void> _selectDate(BuildContext context, TextEditingController controller) async {
+  final DateTime? picked = await showDatePicker(
+    context: context,
+    initialDate: DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2101),
+  );
+  if (picked != null) {
+    // Format the date as needed
+    controller.text = "${picked.day}/${picked.month}/${picked.year}";
+  }
 }
