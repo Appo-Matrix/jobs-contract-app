@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 
+import '../../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../../utils/constants/text_strings.dart';
+
 class JBottomSheet extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -66,10 +71,10 @@ class JBottomSheet extends StatelessWidget {
                       // Title
                       Text(
                         title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: textColor,
+                        style: AppTextStyle.dmSans(
+                          fontSize: 18.0,
+                          weight: FontWeight.w600,
+                          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                         ),
                       ),
 
@@ -78,9 +83,10 @@ class JBottomSheet extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 8.0, bottom: 24.0),
                         child: Text(
                           subtitle,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: subtitleColor,
+                          style: AppTextStyle.dmSans(
+                            fontSize: 12.0,
+                            weight: FontWeight.w400,
+                            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -97,31 +103,23 @@ class JBottomSheet extends StatelessWidget {
               ),
             ),
 
-            // Save button (fixed at bottom)
+
             Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: onSave,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: saveButtonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    saveButtonText,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
+              padding: EdgeInsets.symmetric(vertical: 16,horizontal: 16),
+              child: MainButton(
+                btn_title: JText.save,
+                btn_radius: 10,
+                btn_color: JAppColors.main,
+                btn_boarder_color: Color(0xff7030F1),
+                title_color: Colors.white,
+                text_fontweight: FontWeight.w600,
+                image_value: false,onTap: onSave
               ),
             ),
+
+
+            SizedBox(height: JSizes.spaceBtwSections,)
+
           ],
         ),
       ),
