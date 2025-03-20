@@ -5,7 +5,6 @@ class JAppColors {
 
 
   static const Color primary = Color(0xFF7030F1);
-
   // Shades of the Primary Color
   static const Color lightest = Color(0xFFC6ACF9); // Shade 100
   static const Color lighter = Color(0xFFB08DF7); // Shade 200

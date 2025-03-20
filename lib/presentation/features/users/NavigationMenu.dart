@@ -1,40 +1,155 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:job_contracts/presentation/features/users/contract/contract_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/home_screen.dart';
 import 'package:job_contracts/presentation/features/users/notification/notifcations.dart';
+import 'package:job_contracts/presentation/features/users/search_filters/search_filter.dart';
+import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../utils/constants/colors.dart';
 
-
 class NavigationMenu extends StatelessWidget {
-  const NavigationMenu({super.key, });
+  const NavigationMenu({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
-    final bool isDark= JDeviceUtils.isDarkMode(context);
+    final bool isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: Obx(
             () => NavigationBar(
           height: 60,
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
-              backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+          backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
           onDestinationSelected: (index) {
             // Check index bounds before assigning
             if (index >= 0 && index < controller.screens.length) {
               controller.selectedIndex.value = index;
             }
           },
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home, size: 20), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.export, size: 20), label: 'Search'),
-            NavigationDestination(icon: Icon(Iconsax.camera, size: 20), label: 'Contract'),
-            NavigationDestination(icon: Icon(Icons.chat_rounded, size: 20), label: 'Messages'),
-            NavigationDestination(icon: Icon(Icons.notifications, size: 20), label: 'Notification'),
+          destinations: [
+            // Using SVG icons instead of Iconsax
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                JImages.notifications,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.home,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                JImages.searchww,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.searchww,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: 'Search',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                JImages.con,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.con,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: 'Contract',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                JImages.messages,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.messages,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: 'Message',
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset(
+                JImages.notificationsvg,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.notificationsvg,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: 'Notification',
+            ),
+
           ],
         ),
       ),
@@ -48,11 +163,12 @@ class NavigationController extends GetxController {
 
   final List<Widget> screens = [
     const HomeScreen(),
+    SearchFilter(),
+
+    ContractsScreen(),
     Container(
-      color: Colors.red,
+      color: Colors.blue,
     ),
-    Container(color: Colors.blue,),
-    Container(color: Colors.blue,),
     NotifcationsScreen(),
   ];
 }

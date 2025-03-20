@@ -99,8 +99,8 @@ class JobDetailScreen extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               JImages.locationSvg,
-                              height: 24,
-                              width: 24,
+                              height: 20,
+                              width: 20,
                               colorFilter: ColorFilter.mode(
                                 isDark
                                     ? JAppColors.lightGray100

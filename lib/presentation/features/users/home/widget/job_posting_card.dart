@@ -40,12 +40,9 @@ class JobPostingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define colors based on dark mode
     final textColor = isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
-    final subtitleColor = isDark ? JAppColors.darkGray200 : JAppColors.lightGray700;
     final accentColor = isDark ? JAppColors.lightest  : JAppColors.primary; // Keep accent color consistent
 
-    final dividerColor = isDark ? Colors.grey.shade700.withOpacity(0.2) : Colors.grey.shade300.withOpacity(0.2);
     final containerColor = isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
 
     final width = JDeviceUtils.getScreenWidth(context);

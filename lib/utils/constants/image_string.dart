@@ -56,7 +56,18 @@ class JImages {
   static const String locationSvg = "assets/svg/location.svg";
   static const String edit_icon = "assets/icons/edit_icon.png";
   static const String edit_iconSvg = "assets/svg/lucide_edit.svg";
+  static const String search = "assets/svg/search.svg";
 
+
+
+  ////bottom icon
+
+  static const String contractSvg = "aasets/svg/contract.svg";
+  static const String searchww = "assets/svg/searchww.svg";
+  static const String notificationsvg = "assets/svg/notification.svg";
+  static const String messages = "assets/svg/messages.svg";
+  static const String home = "assets/svg/home.svg";
+  static const String con = "assets/svg/con.svg";
 
 
 

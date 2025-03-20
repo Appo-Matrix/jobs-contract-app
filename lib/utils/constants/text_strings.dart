@@ -256,4 +256,8 @@ class JText {
 
 
 
+  //
+  static const String allContract = 'All Contracts';
+
+
 }
