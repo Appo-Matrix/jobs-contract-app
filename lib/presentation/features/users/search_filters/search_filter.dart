@@ -17,6 +17,8 @@ class _SearchFilterState extends State<SearchFilter> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return  Scaffold(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
         leadingIcon: Padding(
           padding: const EdgeInsets.all(3.0),

@@ -23,6 +23,8 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
         title: Text(
           JText.notifications,

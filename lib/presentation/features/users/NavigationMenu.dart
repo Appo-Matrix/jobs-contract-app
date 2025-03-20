@@ -9,6 +9,7 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../utils/constants/colors.dart';
+import 'message/message_screen.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({
@@ -104,7 +105,8 @@ class NavigationMenu extends StatelessWidget {
               label: 'Contract',
             ),
             NavigationDestination(
-              icon: SvgPicture.asset(
+              icon:
+              SvgPicture.asset(
                 JImages.messages,
                 width: 20,
                 height: 20,
@@ -166,9 +168,8 @@ class NavigationController extends GetxController {
     SearchFilter(),
 
     ContractsScreen(),
-    Container(
-      color: Colors.blue,
-    ),
+    MessageScreen(),
+
     NotifcationsScreen(),
   ];
 }
