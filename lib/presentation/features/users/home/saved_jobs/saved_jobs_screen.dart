@@ -5,6 +5,7 @@ import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../recent_jobs/recent_jobs_screen.dart';
+import '../widget/job_posting_card.dart';
 
 
 class SavedJobsPage extends StatelessWidget {
@@ -41,25 +42,22 @@ class SavedJobsPage extends StatelessWidget {
             ],
           ),
         ),
-        // Expanded(
-        //   child: savedJobs.isEmpty
-        //       ? _buildEmptyState(isDark)
-        //       : ListView.builder(
-        //     itemCount: savedJobs.length,
-        //     itemBuilder: (context, index) {
-        //       final job = savedJobs[index];
-        //       return JobCard1(
-        //         companyName: job['company'],
-        //         jobTitle: job['title'],
-        //         location: job['location'],
-        //         salary: job['salary'],
-        //         isRemote: job['isRemote'],
-        //         postedTime: job['posted'],
-        //         isSaved: true,
-        //       );
-        //     },
-        //   ),
-        // ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return JobPostingCard(
+                jobTitle: "Plumbers Construction Specialists",
+                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
+                salary: "\$20,000 - \$25,000",
+                category: "Site Inspections",
+
+                isVerified: true, isDark: isDark,
+              );
+            },
+          ),
+        ),
+
       ],
     );
   }

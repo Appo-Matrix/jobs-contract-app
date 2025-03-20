@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 
+import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/constants/sizes.dart';
 import 'JBottomSheet.dart';
 
-void showWorkExperienceBottomSheet(BuildContext context) {
+void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
   // Form controllers
   final jobTitleController = TextEditingController();
   final companyController = TextEditingController();
@@ -13,12 +17,19 @@ void showWorkExperienceBottomSheet(BuildContext context) {
 
   JBottomSheet.show(
     context: context,
-    title: 'Add Work Experience',
-    subtitle: 'Highlight your skills and career growth by adding your past roles and achievements.',
+    title: JText.addWorkExperience,
+    subtitle: JText.addWorkExperienceDesc,
     content: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Job Title'),
+        Text(
+          JText.jobTitle,
+          style: AppTextStyle.dmSans(
+            fontSize: 16.0,
+            weight: FontWeight.w600,
+            color: isDark ? Colors.white : JAppColors.lightGray700,
+          ),
+        ),
         const SizedBox(height: 8),
         TextField(
           controller: jobTitleController,
@@ -28,9 +39,15 @@ void showWorkExperienceBottomSheet(BuildContext context) {
             ),
           ),
         ),
-
         const SizedBox(height: 16),
-        const Text('Company'),
+        Text(
+          JText.company,
+          style: AppTextStyle.dmSans(
+            fontSize: 16.0,
+            weight: FontWeight.w600,
+            color: isDark ? Colors.white : JAppColors.lightGray700,
+          ),
+        ),
         const SizedBox(height: 8),
         TextField(
           controller: companyController,
@@ -41,7 +58,6 @@ void showWorkExperienceBottomSheet(BuildContext context) {
             suffixIcon: const Icon(Icons.calendar_today),
           ),
         ),
-
         const SizedBox(height: 16),
         Row(
           children: [
@@ -49,7 +65,14 @@ void showWorkExperienceBottomSheet(BuildContext context) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Start Date'),
+                  Text(
+                    JText.startDate,
+                    style: AppTextStyle.dmSans(
+                      fontSize: 16.0,
+                      weight: FontWeight.w600,
+                      color: isDark ? Colors.white : JAppColors.lightGray700,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     controller: startDateController,
@@ -67,7 +90,14 @@ void showWorkExperienceBottomSheet(BuildContext context) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('End Date'),
+                  Text(
+                    JText.endDate,
+                    style: AppTextStyle.dmSans(
+                      fontSize: 16.0,
+                      weight: FontWeight.w600,
+                      color: isDark ? Colors.white : JAppColors.lightGray700,
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   TextField(
                     controller: endDateController,
@@ -82,15 +112,21 @@ void showWorkExperienceBottomSheet(BuildContext context) {
             ),
           ],
         ),
-
         const SizedBox(height: 16),
-        const Text('Description'),
+        Text(
+          JText.description,
+          style: AppTextStyle.dmSans(
+            fontSize: 16.0,
+            weight: FontWeight.w600,
+            color: isDark ? Colors.white : JAppColors.lightGray700,
+          ),
+        ),
         const SizedBox(height: 8),
         TextField(
           controller: descriptionController,
           maxLines: 4,
           decoration: InputDecoration(
-            hintText: 'Write additional information here',
+            hintText: JText.writeInformationDetail,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),

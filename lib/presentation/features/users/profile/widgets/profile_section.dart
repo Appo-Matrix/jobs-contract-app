@@ -1,6 +1,8 @@
 
 // Generic Profile Section Widget
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:job_contracts/utils/constants/image_string.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -9,13 +11,16 @@ class ProfileSection extends StatelessWidget {
   final String title;
   final Widget content;
   final bool isDark;
+  final VoidCallback? voidCallback;
+  final String? iconPath;
+
 
   const ProfileSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.content,
-    required this.isDark,
-  }) : super(key: key);
+    required this.isDark,  this.voidCallback, this.iconPath,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +29,28 @@ class ProfileSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: AppTextStyle.dmSans(
-              fontSize: 18.0,
-              weight: FontWeight.w600,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            ),
+          Row(
+            children: [
+              Text(
+                title,
+                style: AppTextStyle.dmSans(
+                  fontSize: 18.0,
+                  weight: FontWeight.w600,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                ),
+              ),
+              Spacer(),
+              GestureDetector(
+                onTap: voidCallback,
+                child: SvgPicture.asset(
+
+                  color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  iconPath!,
+                  width: 20,
+                  height: 20,
+                ),
+              )
+            ],
           ),
           SizedBox(height: 12),
           content,

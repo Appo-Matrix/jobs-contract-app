@@ -4,6 +4,7 @@ import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../recent_jobs/recent_jobs_screen.dart';
+import '../widget/job_posting_card.dart';
 
 
 class BestMatchesPage extends StatelessWidget {
@@ -27,21 +28,22 @@ class BestMatchesPage extends StatelessWidget {
             ),
           ),
         ),
-        // Expanded(
-        //   child: ListView.builder(
-        //     itemCount: 5,
-        //     itemBuilder: (context, index) {
-        //       return JobCard(
-        //         companyName: 'Company ${index + 1}',
-        //         jobTitle: 'Software Developer',
-        //         location: 'New York, NY',
-        //         salary: '\$80k - \$120k',
-        //         isRemote: index % 2 == 0,
-        //         postedTime: '2 days ago',
-        //       );
-        //     },
-        //   ),
-        // ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return JobPostingCard(
+                jobTitle: "Plumbers Construction Specialists",
+                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
+                salary: "\$20,000 - \$25,000",
+                category: "Site Inspections",
+
+                isVerified: true, isDark: isDark,
+              );
+            },
+          ),
+        ),
+
       ],
     );
   }
