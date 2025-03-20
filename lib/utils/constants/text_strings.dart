@@ -218,6 +218,42 @@ class JText {
 
 
 
+  ////report screen
+  static const String home = 'Home';
+  static const String search = 'Search';
+  static const String saved = 'Saved';
+  static const String profile = 'Profile';
+
+  // Date fields (from previous code)
+
+  // Report Job Screen
+  static const String reportJob = 'Report Job';
+  static const String selectReasonDescription = 'Select a reason to report this job';
+  static const String additionalNotes = 'Additional Notes (optional)';
+  static const String cancel = 'Cancel';
+  static const String submitReport = 'Submit Report';
+  static const String reportSubmitted = 'Report submitted successfully';
+
+  // Report Reasons
+  static const String misleadingInformation = 'Misleading Information';
+  static const String scamOrFraud = 'Scam or Fraud';
+  static const String inappropriateContent = 'Inappropriate Content';
+  static const String duplicatePosting = 'Duplicate Posting';
+  static const String expiredOrFilledPosition = 'Expired or Filled Position';
+  static const String unrealisticRequirements = 'Unrealistic Requirements';
+  static const String violationOfPlatformPolicies = 'Violation of Platform Policies';
+
+  // Report Reason List (for easy iteration)
+  static const List<String> reportReasons = [
+    misleadingInformation,
+    scamOrFraud,
+    inappropriateContent,
+    duplicatePosting,
+    expiredOrFilledPosition,
+    unrealisticRequirements,
+    violationOfPlatformPolicies,
+  ];
+
 
 
 }

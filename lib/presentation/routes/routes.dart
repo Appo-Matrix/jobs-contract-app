@@ -38,6 +38,7 @@ enum Routes {
   languageSelectionScreen,
   languageDetailScreen,
   jobDetailScreen,
-  jobDetailsPage
+  jobDetailsPage,
+  reportJobScreen
 
 }

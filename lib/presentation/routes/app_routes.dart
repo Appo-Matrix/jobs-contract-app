@@ -20,6 +20,7 @@ import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/home/home_screen.dart';
 import '../features/users/home/job_details/JobDetailScreen.dart';
 import '../features/users/home/job_details/job_detail_page.dart';
+import '../features/users/home/job_details/report_job_screen.dart';
 import '../features/users/language/language_detail_screen.dart';
 import '../features/users/language/language_screen.dart';
 import '../features/users/language/language_selection_screen.dart';
@@ -263,6 +264,11 @@ class AppRouter {
         path: '/jobDetailsPage',
         name: Routes.jobDetailsPage.name,
         builder: (context, state) => JobDetailsPage(),
+      ),
+      GoRoute(
+        path: '/reportJobScreen',
+        name: Routes.reportJobScreen.name,
+        builder: (context, state) => ReportJobScreen(),
       ),
 
     ],

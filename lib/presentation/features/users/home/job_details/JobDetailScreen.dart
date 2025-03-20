@@ -1,13 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
-
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/circular_shape.dart';
-import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -16,8 +12,8 @@ import '../../../../../utils/device/device_utility.dart';
 
 class JobDetailScreen extends StatelessWidget {
   const JobDetailScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +27,7 @@ class JobDetailScreen extends StatelessWidget {
           padding: const EdgeInsets.all(3.0),
           child: BackCircle(
             isDark: isDark,
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -155,13 +151,19 @@ class JobDetailScreen extends StatelessWidget {
                       color: isDark ? Colors.white : JAppColors.lightGray900,
                     ),
                   ),
-                  Text(
-                    "Report Job",
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: Colors.red,
+                  TextButton(
+                    onPressed: () {
+                      AppRouter.router.push('/reportJobScreen');
+                    },
+                    child: Text(
+                      "Report Job",
+                      style: AppTextStyle.dmSans(
+                        fontSize: 14.0,
+                        weight: FontWeight.w400,
+                        color: JAppColors.error500,
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
 
@@ -186,9 +188,7 @@ class JobDetailScreen extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){
-
-
+                    onTap: () {
                       AppRouter.router.push('/jobDetailsPage');
                     },
                     child: Container(
