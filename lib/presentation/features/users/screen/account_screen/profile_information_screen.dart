@@ -91,69 +91,9 @@ class ProfileInformationScreen extends StatelessWidget {
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               PhoneNumberWidget(),
-              SizedBox(height: JSizes.spaceBtwInputFields),
-              TextFieldWidget(
-                subTitle: 'Education',
-                hintText: 'e.g BBA',
-                subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                suffixIcon: Image.asset(
-                  'assets/icons/edit_icon.png',
-                ),
+              SizedBox(height: JSizes.spaceBtwInputFields +25
               ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
-              TextFieldWidget(
-                subTitle: 'Add Skill',
-                hintText: 'e.g Electrician',
-                subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                suffixIcon: Image.asset(
-                  'assets/icons/edit_icon.png',
-                ),
-              ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
-              TextFieldWidget(
-                subTitle: 'Add Resume',
-                hintText: 'e.g john resume.pdf',
-                subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                suffixIcon: Image.asset(
-                  'assets/icons/edit_icon.png',
-                ),
-              ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
 
-              TextFieldWidget(
-                subTitle: 'Add Resume',
-                hintText: 'e.g john resume.pdf',
-                subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                suffixIcon: Image.asset(
-                  'assets/icons/edit_icon.png',
-                ),
-              ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
-
-              TextFieldWidget(
-                subTitle: 'Add work experience',
-                hintText: 'e.g john construction',
-                subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                suffixIcon: Image.asset(
-                  'assets/icons/edit_icon.png',
-                ),
-              ),
-              SizedBox(height: 25),
               MainButton(
                 onTap: () {
                   AppRouter.router.push('/addExperienceScreen');

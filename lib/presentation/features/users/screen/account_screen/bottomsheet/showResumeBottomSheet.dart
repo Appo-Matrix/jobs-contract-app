@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 
+import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../../utils/constants/colors.dart';
 import 'JBottomSheet.dart';
 
-void showResumeBottomSheet(BuildContext context) {
+void showResumeBottomSheet(BuildContext context ,bool isDark) {
   JBottomSheet.show(
     context: context,
-    title: 'Add Resume',
-    subtitle: 'Upload Your Resume.',
+    title: JText.addResume,
+    subtitle: JText.addResumeDes,
     content: Column(
       children: [
         // Upload container
@@ -26,7 +29,7 @@ void showResumeBottomSheet(BuildContext context) {
                 onPressed: () {
                   // Implement file picker
                 },
-                child: const Text('Upload CV/Resume'),
+                child: const Text(JText.uploadCV),
               ),
             ],
           ),
@@ -36,10 +39,13 @@ void showResumeBottomSheet(BuildContext context) {
 
         // Help text
         Text(
-          'Upload files in PDF format up to 5 MB. Just upload it once and you can use it in your next application.',
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey.shade600,
+          JText.uploadCVDesc,
+          style: AppTextStyle.dmSans(
+            color: isDark
+                ? JAppColors.darkGray100
+                : JAppColors.lightGray900.withValues(alpha: 0.4),
+            fontSize: 14.0,
+            weight: FontWeight.w400,
           ),
         ),
       ],
