@@ -17,6 +17,7 @@ import '../features/auth/screens/otp/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
 import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
+import '../features/users/contract/contract_detail/contract_detail_screen.dart';
 import '../features/users/home/home_screen.dart';
 import '../features/users/home/job_details/JobDetailScreen.dart';
 import '../features/users/home/job_details/job_detail_page.dart';
@@ -269,6 +270,11 @@ class AppRouter {
         path: '/reportJobScreen',
         name: Routes.reportJobScreen.name,
         builder: (context, state) => ReportJobScreen(),
+      ),
+      GoRoute(
+        path: '/contractDetailScreen',
+        name: Routes.contractDetailScreen.name,
+        builder: (context, state) => ContractDetailScreen(),
       ),
 
     ],

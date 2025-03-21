@@ -259,5 +259,49 @@ class JText {
   //
   static const String allContract = 'All Contracts';
 
+  static const String searchJob = 'Search Jobs';
+
+
+  ///contract detail
+  static const String appBarTitle = 'Contract detail';
+
+  // Contract Title
+  static const String contractTitle = 'Architects Construction Specialist';
+
+  // Contract Description
+  static const String descriptionTitle = 'Contract Description';
+  static const String descriptionText = 'We are seeking a highly motivated and skilled '
+      'Architects & Construction Specialist to join our dynamic team. The ideal candidate '
+      'will be responsible for providing expertise in architectural planning, construction project';
+  static const String seeMore = 'See More...';
+
+  // Activity Log
+  static const String activityLogTitle = 'Activity Log';
+  static const String activityText = 'You Send a File.';
+  static const String activityTime = '12:00 Pm';
+
+  // File Info
+  static const String fileFormat = 'PNG';
+  static const String fileName = 'Design.png';
+  static const String fileSize = '200 KB';
+
+  // Salary and Job Details
+  static const String salaryText = 'Salary: \$20,000 - \$25,000';
+  static const String categoryLabel = 'Category: ';
+  static const String categoryValue = 'Electrician';
+  static const String jobTypeLabel = 'Job Type: ';
+  static const String jobTypeValue = 'Onsite';
+  static const String durationLabel = 'Job Duration: ';
+  static const String durationValue = '1 Month';
+
+  // Contractor
+  static const String contractorName = 'Amélie Laurent';
+  static const String contractorLocation = 'United States';
+
+  // Buttons
+  static const String sendMessageButton = 'Send Message';
+  static const String deliverNowButton = 'Deliver Now';
+  static const String submitWork = 'Submit Work';
+  static const String sendMessage = 'Send Message';
 
 }
