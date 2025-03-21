@@ -1,4 +1,3 @@
-// SavedJobsPage.dart
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -9,7 +8,7 @@ import '../widget/job_posting_card.dart';
 
 
 class SavedJobsPage extends StatelessWidget {
-   SavedJobsPage({Key? key}) : super(key: key);
+   SavedJobsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +28,6 @@ class SavedJobsPage extends StatelessWidget {
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.bold,
                   color: isDark ? Colors.white : JAppColors.lightGray900,
-                ),
-              ),
-              Text(
-                'See all',
-                style: AppTextStyle.dmSans(
-                  fontSize: JSizes.fontSizeSm,
-                  weight: FontWeight.w500,
-                  color: JAppColors.primary,
                 ),
               ),
             ],

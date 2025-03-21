@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/device/device_utility.dart';
-import '../../../../routes/app_routes.dart';
 
-class JobPostingCard extends StatelessWidget {
+class JobPostingCard extends StatefulWidget {
   final String jobTitle;
   final String salary;
   final String category;
@@ -39,17 +37,22 @@ class JobPostingCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<JobPostingCard> createState() => _JobPostingCardState();
+}
+
+class _JobPostingCardState extends State<JobPostingCard> {
+  bool _isExpanded = false;
+
+  @override
   Widget build(BuildContext context) {
-    final textColor = isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
-    final accentColor = isDark ? JAppColors.lightest  : JAppColors.primary; // Keep accent color consistent
+    final textColor = widget.isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
+    final accentColor = widget.isDark ? JAppColors.lightest : JAppColors.primary;
+    final containerColor = widget.isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
 
-    final containerColor = isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
-
-    final width = JDeviceUtils.getScreenWidth(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(9.0),
-      margin: EdgeInsets.only(bottom: 12),
+      margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: containerColor,
         borderRadius: BorderRadius.circular(12),
@@ -57,17 +60,17 @@ class JobPostingCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 12),
 
-          SizedBox(height: 12,),
           // Job Title
           Text(
-            jobTitle,
+            widget.jobTitle,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyle.dmSans(
               fontSize: 18.0,
               weight: FontWeight.w600,
-              color: isDark ? Colors.white : JAppColors.lightGray900,
+              color: widget.isDark ? Colors.white : JAppColors.lightGray900,
             ),
           ),
           const SizedBox(height: 16),
@@ -84,11 +87,11 @@ class JobPostingCard extends StatelessWidget {
                 ),
               ),
               Text(
-                salary,
+                widget.salary,
                 style: AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeSm,
                   weight: FontWeight.w600,
-                  color: isDark ? Colors.white : JAppColors.lightGray900,
+                  color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                 ),
               ),
             ],
@@ -100,9 +103,9 @@ class JobPostingCard extends StatelessWidget {
             spacing: 20,
             runSpacing: 12,
             children: [
-              _buildJobDetail("Category", category, textColor, accentColor),
-              _buildJobDetail("Job Type", jobType, textColor, accentColor),
-              _buildJobDetail("Job Duration", duration, textColor, accentColor),
+              _buildJobDetail("Category", widget.category, textColor, accentColor),
+              _buildJobDetail("Job Type", widget.jobType, textColor, accentColor),
+              _buildJobDetail("Job Duration", widget.duration, textColor, accentColor),
             ],
           ),
           const SizedBox(height: 20),
@@ -113,52 +116,71 @@ class JobPostingCard extends StatelessWidget {
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeSm,
               weight: FontWeight.w600,
-              color: isDark ? Colors.white : JAppColors.lightGray900,
+              color: widget.isDark ? Colors.white : JAppColors.lightGray900,
             ),
           ),
           const SizedBox(height: 12),
 
-          // Description Text
-          Text(
-            description,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-            style: AppTextStyle.dmSans(
-              fontSize: JSizes.fontSizeEaSm,
-              color: textColor.withValues(alpha: 0.9),
-              height: 1.5, weight: FontWeight.w500,
+          // Description Text with AnimatedCrossFade for smooth transition
+          AnimatedCrossFade(
+            firstChild: Text(
+              widget.description,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyle.dmSans(
+                fontSize: JSizes.fontSizeEaSm,
+                color: textColor.withValues(alpha: 0.9),
+                height: 1.5,
+                weight: FontWeight.w500,
+              ),
             ),
+            secondChild: Text(
+              widget.description,
+              style: AppTextStyle.dmSans(
+                fontSize: JSizes.fontSizeEaSm,
+                color: textColor.withValues(alpha: 0.9),
+                height: 1.5,
+                weight: FontWeight.w500,
+              ),
+            ),
+            crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 300),
           ),
           const SizedBox(height: 6),
 
-          // See More
-          GestureDetector(
-            onTap: () {
-              // Implement your "See More" action here
-
-              AppRouter.router.push('/jobDetailScreen');
-            },
-            child: Text(
-              "See More...",
-              style: AppTextStyle.dmSans(
-                fontSize: JSizes.fontSizeEaSm,
-                weight: FontWeight.w500,
-                color: accentColor,
+          // See More Button with animated text transition
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 200),
+            child: GestureDetector(
+              key: ValueKey<bool>(_isExpanded),
+              onTap: () {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+              },
+              child: Text(
+                _isExpanded ? "See Less" : "See More...",
+                style: AppTextStyle.dmSans(
+                  fontSize: JSizes.fontSizeEaSm,
+                  weight: FontWeight.w500,
+                  color: accentColor,
+                ),
               ),
             ),
           ),
 
+          const SizedBox(height: 12),
 
-          SizedBox(height: 12)
-          ,          Row(
+          // Employer section
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Employer Avatar
               ClipRRect(
                 borderRadius: BorderRadius.circular(40),
-                child: employerImage != null
+                child: widget.employerImage != null
                     ? Image(
-                  image: employerImage!,
+                  image: widget.employerImage!,
                   width: 53,
                   height: 53,
                   fit: BoxFit.cover,
@@ -166,11 +188,11 @@ class JobPostingCard extends StatelessWidget {
                     : Container(
                   width: 53,
                   height: 53,
-                  color: isDark ? Colors.grey[700] : Colors.grey[300],
+                  color: widget.isDark ? Colors.grey[700] : Colors.grey[300],
                   child: Icon(
                     Icons.person,
                     size: 40,
-                    color: isDark ? Colors.grey[500] : Colors.grey,
+                    color: widget.isDark ? Colors.grey[500] : Colors.grey,
                   ),
                 ),
               ),
@@ -185,40 +207,48 @@ class JobPostingCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          employerName,
+                          widget.employerName,
                           style: AppTextStyle.dmSans(
                             fontSize: 16.0,
                             weight: FontWeight.w500,
-                            color: isDark ? Colors.white : JAppColors.lightGray900,
+                            color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                           ),
                         ),
-
-                        SizedBox(height: 12,),
-                        if (isVerified) ...[
+                        if (widget.isVerified) ...[
                           const SizedBox(width: 8),
                           Image(
-                              height: 24,
-                              width: 24,
-                              image: AssetImage(JImages.verify)),
+                            height: 24,
+                            width: 24,
+                            image: AssetImage(JImages.verify),
+                          ),
                         ],
                       ],
                     ),
 
+                    SizedBox(width: 12,),
+
+
                     // Location
                     Row(
-
                       children: [
-                        Icon(
-                          Icons.location_on,
-                          color: accentColor,
-                          size: 20,
+                        SvgPicture.asset(
+                          JImages.locationSvg,
+                          width: 20,
+                          height: 20,
+                          colorFilter: ColorFilter.mode(
+                            widget.isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                            BlendMode.srcIn,
+
+                          ),
                         ),
+
+                        SizedBox(width: 5,),
+
                         Text(
-                          location,
+                          widget.location,
                           style: AppTextStyle.dmSans(
                             fontSize: 12.0,
                             color: textColor.withValues(alpha: 0.8),
-
                             weight: FontWeight.w400,
                           ),
                         ),
@@ -233,17 +263,15 @@ class JobPostingCard extends StatelessWidget {
 
           // Posted Time
           Text(
-            "Posted $postedTime",
+            "Posted ${widget.postedTime}",
             style: AppTextStyle.dmSans(
               fontSize: 16.0,
               weight: FontWeight.w500,
               color: textColor.withValues(alpha: 0.8),
-
             ),
           ),
 
-          SizedBox(height: 12,),
-
+          const SizedBox(height: 12),
         ],
       ),
     );
@@ -257,14 +285,16 @@ class JobPostingCard extends StatelessWidget {
           "$label: ",
           style: AppTextStyle.dmSans(
             fontSize: JSizes.fontSizeSm,
-            color: textColor, weight: FontWeight.w400,
+            color: textColor,
+            weight: FontWeight.w400,
           ),
         ),
         Text(
           value,
           style: AppTextStyle.dmSans(
             fontSize: JSizes.fontSizeSm,
-            color: accentColor, weight: FontWeight.w400,
+            color: accentColor,
+            weight: FontWeight.w400,
           ),
         ),
       ],

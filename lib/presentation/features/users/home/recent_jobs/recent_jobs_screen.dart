@@ -40,7 +40,7 @@ class RecentJobsPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return JobPostingCard(
                 jobTitle: "Plumbers Construction Specialists",
-                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
+                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building TasksHands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building TasksHands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
                 salary: "\$20,000 - \$25,000",
                 category: "Site Inspections",
 

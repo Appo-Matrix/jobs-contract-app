@@ -117,6 +117,8 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/home/recent_jobs/recent_jobs_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/saved_jobs/saved_jobs_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contracts/utils/common_widgets/appbar.dart';
+import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
@@ -143,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     // Initialize TabController in initState
     _tabController = TabController(length: 3, vsync: this);
   }
+  
 
   @override
   void dispose() {
@@ -159,31 +162,33 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       drawer: _buildNavigationDrawer(context, isDark),
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
 
+      appBar: JAppbar(
+        leadingIcon: GestureDetector(
+          onTap: ()=>{
+          _scaffoldKey.currentState?.openDrawer()
+
+        },
+          child: CircularAvatar(
+            isDark: isDark,
+            radius: 20,
+            imageUrl: JImages.image,
+            // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
+          ),
+        ),
+
+
+        actions: [
+          IconButton(
+            icon:  Icon(Icons.more_vert, color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
           children: [
-            SizedBox(height: JSizes.appBarHeight - 20),
-            Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    _scaffoldKey.currentState?.openDrawer();
-                  },
-                  child: CircularAvatar(
-                    isDark: isDark,
-                    radius: 20,
-                    imageUrl: JImages.image,
-                    // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
-                  ),
-                ),
-                // Add other elements in the app bar row here if needed
-                Spacer(), // This will push any other elements to the right
-                // You can add notification icons, search button, etc. here
-              ],
-            ),
 
-            const SizedBox(height: 16), // Add some spacing before the tab bar
 
             Container(
               height: 45,
