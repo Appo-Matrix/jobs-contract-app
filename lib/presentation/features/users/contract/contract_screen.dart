@@ -62,7 +62,7 @@ class _ContractsScreenState extends State<ContractsScreen>
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.more_vert, color: Colors.black),
+            icon:  Icon(Icons.more_vert, color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
             onPressed: () {},
           ),
         ],
@@ -70,7 +70,7 @@ class _ContractsScreenState extends State<ContractsScreen>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Search bar
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(

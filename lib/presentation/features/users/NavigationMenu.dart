@@ -129,7 +129,8 @@ class NavigationMenu extends StatelessWidget {
               label: 'Message',
             ),
             NavigationDestination(
-              icon: SvgPicture.asset(
+              icon:
+              SvgPicture.asset(
                 JImages.notificationsvg,
                 width: 20,
                 height: 20,

@@ -20,7 +20,7 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 import '../screen/account_screen/bottomsheet/showEducationBottomSheet.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -85,8 +86,6 @@ class ContractCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-
-
                           SvgPicture.asset(
                             JImages.locationSvg,
                             height: 20,
@@ -261,7 +260,9 @@ class ContractCard extends StatelessWidget {
                       title_color: Colors.white,
                       text_fontweight: FontWeight.w600,
                       image_value: false,
-                      onTap: () {},
+                      onTap: () {
+                        AppRouter.router.push('/contractDetailScreen');
+                      },
                     ),
                   ),
                   const SizedBox(width: 12),
