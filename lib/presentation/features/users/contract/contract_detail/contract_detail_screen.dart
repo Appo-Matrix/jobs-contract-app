@@ -462,8 +462,8 @@ class ContractDetailScreen extends StatelessWidget {
           JText.appBarTitle,
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: 20.0,
-            weight: FontWeight.w600,
+            fontSize: 19.0,
+            weight: FontWeight.w500,
           ),
         ),
         leadingIcon: BackCircle(

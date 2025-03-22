@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
+import '../../../../../utils/common_widgets/bottom_indicator.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -18,23 +20,21 @@ class JobDetailsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
+        leadingIcon: BackCircle(
+          isDark: isDark,
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
-        title: Text(
-          JText.backToJobDetail,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray900,
-          ),
+      title: Text(
+        JText.backToJobDetail,
+        style: AppTextStyle.dmSans(
+          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+          fontSize: 19.0,
+          weight: FontWeight.w500,
         ),
+      ),
+
       ),
       body: Column(
         children: [
@@ -44,15 +44,19 @@ class JobDetailsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 12),
+
                   Text(
                     JText.titleCoverLetter,
                     style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                fontSize: 18.0,
-                weight: FontWeight.w600,
-              ),
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray900,
+                      fontSize: 14.0,
+                      weight: FontWeight.w500,
+                    ),
                   ),
-                  SizedBox(height: 12),
+                  SizedBox(height: JSizes.spaceBtwInputFields),
 
                   // Text input field
                   Expanded(
@@ -94,15 +98,14 @@ class JobDetailsPage extends StatelessWidget {
           ),
 
           // Bottom indicator bar
-          Container(
-            height: 5,
-            width: 60,
-            margin: EdgeInsets.only(bottom: 16),
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(3),
-            ),
-          ),
+
+          SizedBox(
+              width: 100,
+              child: BottomIndicator(
+                isDark: isDark,
+                height: 6,
+              )),
+          SizedBox(height: 24),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -32,13 +33,19 @@ class BestMatchesPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: 5,
             itemBuilder: (context, index) {
-              return JobPostingCard(
-                jobTitle: "Plumbers Construction Specialists",
-                description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
-                salary: "\$20,000 - \$25,000",
-                category: "Site Inspections",
+              return GestureDetector(
+                onTap: (){
 
-                isVerified: true, isDark: isDark,
+                  AppRouter.router.push('/jobDetailScreen');
+                },
+                child: JobPostingCard(
+                  jobTitle: "Plumbers Construction Specialists",
+                  description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
+                  salary: "\$20,000 - \$25,000",
+                  category: "Site Inspections",
+
+                  isVerified: true, isDark: isDark,
+                ),
               );
             },
           ),

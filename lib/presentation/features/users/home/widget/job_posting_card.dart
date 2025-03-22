@@ -236,7 +236,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                           width: 20,
                           height: 20,
                           colorFilter: ColorFilter.mode(
-                            widget.isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                            widget.isDark ? JAppColors.lightGray100 :JAppColors.primary,
                             BlendMode.srcIn,
 
                           ),
