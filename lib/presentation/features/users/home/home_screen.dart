@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
           DrawerItem(
             iconPath: JImages.report,
-            title: 'Report',
+            title: 'Financial Report',
             iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
