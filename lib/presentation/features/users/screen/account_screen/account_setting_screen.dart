@@ -9,7 +9,6 @@ import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
-import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
 
@@ -33,14 +32,11 @@ class AccountSettingScreen extends StatelessWidget {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
+        leadingIcon: BackCircle(
+          isDark: isDark,
+          onTap: (){
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -49,6 +45,8 @@ class AccountSettingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
+              SizedBox(height: 12,),
               ///Account Section
               Text(
                 JText.accountSettingText,

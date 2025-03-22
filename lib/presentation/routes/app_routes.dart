@@ -37,10 +37,6 @@ import '../features/users/screen/account_screen/profile_information_screen.dart'
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
-
-import '../features/users/screen/add_skills/add_resume_screen.dart';
-import '../features/users/screen/add_skills/add_skills_screen.dart';
-import '../features/users/screen/add_skills/chnage_add_skill_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_active_screen.dart';
 import '../features/users/screen/contact_detail_screens/feed_back_screen.dart';
@@ -186,23 +182,7 @@ class AppRouter {
         builder: (context, state) => const ChangeWorkExperienceScreen(),
       ),
 
-      GoRoute(
-        path: '/addSkillsScreen',
-        name: Routes.addSkillsScreen.name,
-        builder: (context, state) => AddSkillsScreen(),
-      ),
 
-      GoRoute(
-        path: '/changeAddSkillScreen',
-        name: Routes.changeAddSkillScreen.name,
-        builder: (context, state) => ChangeAddSkillScreen(),
-      ),
-
-      GoRoute(
-        path: '/addResumeScreen',
-        name: Routes.addResumeScreen.name,
-        builder: (context, state) => AddResumeScreen(),
-      ),
 
       GoRoute(
         path: '/contactDetailsScreen',

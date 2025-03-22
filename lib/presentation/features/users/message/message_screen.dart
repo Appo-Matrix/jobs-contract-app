@@ -8,6 +8,7 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 
 class MessageScreen extends StatefulWidget {
@@ -93,23 +94,15 @@ class _MessageScreenState extends State<MessageScreen> {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
         title: Text(
-          "Messages",
-          style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray900,
+        "Messages",
+          style: AppTextStyle.dmSans(
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+            fontSize: 20.0,
+            weight: FontWeight.w600,
           ),
         ),
+
       ),
       body: Column(
         children: [
