@@ -25,6 +25,7 @@ import '../features/users/home/job_details/report_job_screen.dart';
 import '../features/users/language/language_detail_screen.dart';
 import '../features/users/language/language_screen.dart';
 import '../features/users/language/language_selection_screen.dart';
+import '../features/users/message/chat_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
 import '../features/users/reports/contact_support.dart';
@@ -255,6 +256,11 @@ class AppRouter {
         path: '/contractDetailScreen',
         name: Routes.contractDetailScreen.name,
         builder: (context, state) => ContractDetailScreen(),
+      ),
+      GoRoute(
+        path: '/chatScreen',
+        name: Routes.chatScreen.name,
+        builder: (context, state) => ChatScreen(),
       ),
 
     ],

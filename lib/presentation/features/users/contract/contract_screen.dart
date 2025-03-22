@@ -132,7 +132,8 @@ class _ContractsScreenState extends State<ContractsScreen>
                     isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 padding: const EdgeInsets.all(3),
                 indicatorWeight: 0,
-                labelStyle: AppTextStyle.dmSans(
+                labelStyle:
+                AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeESm,
                   weight: FontWeight.w500,
                   color: Colors.white,

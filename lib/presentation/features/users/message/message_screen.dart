@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
@@ -154,6 +155,8 @@ class _MessageScreenState extends State<MessageScreen> {
                   data: messages[index],
                   isDark: isDark,
                   onTap: () {
+
+                    AppRouter.router.push('/chatScreen');
                     // Navigate to chat detail screen
                     print("Tapped on ${messages[index].name}'s chat");
                   },

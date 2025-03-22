@@ -9,7 +9,7 @@ final bool?  isDark;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -24,7 +24,7 @@ final bool?  isDark;
 
           ),
           child: Icon(
-            size: 22,
+            size: 18,
             weight: 700,
             Iconsax.arrow_left_2,  // Using Iconsax's back arrow icon
             color: isDark! ? JAppColors.lightGray100 :JAppColors.darkGray800,
