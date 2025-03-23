@@ -95,11 +95,14 @@ class _MessageScreenState extends State<MessageScreen> {
       appBar: JAppbar(
         leadingIcon: Padding(
           padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: BackCircle(
+              isDark: isDark,
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
         ),
         title: Text(
