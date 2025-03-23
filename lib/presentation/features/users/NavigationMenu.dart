@@ -36,7 +36,8 @@ class NavigationMenu extends StatelessWidget {
           destinations: [
             // Using SVG icons instead of Iconsax
             NavigationDestination(
-              icon: SvgPicture.asset(
+              icon:
+              SvgPicture.asset(
                 JImages.notifications,
                 width: 20,
                 height: 20,

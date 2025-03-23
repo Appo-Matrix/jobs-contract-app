@@ -5,18 +5,18 @@ import '../constants/colors.dart';
 
 class BottomIndicator extends StatelessWidget {
   final bool isDark;
+  final double height;
 
-  const BottomIndicator({super.key, required this.isDark});
+  const BottomIndicator({super.key, required this.isDark, required this.height});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 60,
-        height: 4,
+        height: height,
         decoration: BoxDecoration(
           color: isDark ? JAppColors.darkGray400 : Colors.black,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );

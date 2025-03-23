@@ -67,8 +67,11 @@ class JImages {
   static const String notificationsvg = "assets/svg/notification.svg";
   static const String messages = "assets/svg/messages.svg";
   static const String home = "assets/svg/home.svg";
-  static const String con = "assets/svg/con.svg";
+  static const String con = "assets/svg/conicon.svg";
   static const String filters = "assets/svg/filters.svg";
+  static const String btnsend = "assets/svg/btnsend.svg";
+  static const String doct = "assets/svg/doct.svg";
+  static const String gallery = "assets/svg/gallery.svg";
 
 
 

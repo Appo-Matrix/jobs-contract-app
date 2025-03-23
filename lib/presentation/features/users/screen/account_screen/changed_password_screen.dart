@@ -32,14 +32,11 @@ class ChangedPasswordScreen extends StatelessWidget {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
+        leadingIcon: BackCircle(
+          isDark: isDark,
+          onTap: (){
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(

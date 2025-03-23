@@ -23,21 +23,18 @@ class JobDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+        leadingIcon: BackCircle(
+          isDark: isDark,
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           "Architects Construction.",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray900,
+          style: AppTextStyle.dmSans(
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+            fontSize: 19.0,
+            weight: FontWeight.w500,
           ),
         ),
       ),
@@ -56,8 +53,10 @@ class JobDetailScreen extends StatelessWidget {
                     height: 53,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+
                       border: Border.all(
-                        width: 3,
+                        width: 1,
+                        color: JAppColors.darkGray400
                       ),
                     ),
                     child: ClipOval(
@@ -84,13 +83,13 @@ class JobDetailScreen extends StatelessWidget {
                                 weight: FontWeight.w500,
                                 color: isDark
                                     ? Colors.white
-                                    : JAppColors.lightGray900,
+                                    : JAppColors.lightGray800,
                               ),
                             ),
                             const SizedBox(width: 6),
                             Image(
-                                height: 24,
-                                width: 24,
+                                height: 20,
+                                width: 20,
                                 image: AssetImage(JImages.verify)),
                           ],
                         ),
@@ -143,13 +142,25 @@ class JobDetailScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Salary: \$20,000 - \$25,000",
-                    style: AppTextStyle.dmSans(
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
-                      color: isDark ? Colors.white : JAppColors.lightGray900,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        "Salary: ",
+                        style: AppTextStyle.dmSans(
+                          fontSize: 14.0,
+                          weight: FontWeight.w400,
+                          color: isDark ? Colors.white : JAppColors.lightGray900,
+                        ),
+                      ),
+                      Text(
+                        "\$20,000 - \$25,000",
+                        style: AppTextStyle.dmSans(
+                          fontSize: 14.0,
+                          weight: FontWeight.w400,
+                          color: isDark ? Colors.white : JAppColors.lightGray900,
+                        ),
+                      ),
+                    ],
                   ),
                   TextButton(
                     onPressed: () {
@@ -178,13 +189,10 @@ class JobDetailScreen extends StatelessWidget {
                   Text(
                     "Job Description",
                     // Using literal text instead of JText.jobDescription
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w600,
-                      color: isDark
-                          ? Colors.white
-                          : JAppColors
-                              .lightGray900, // Using literal color instead of JAppColors
+                    style: AppTextStyle.dmSans(
+                      fontSize: 20.0,
+                      weight: FontWeight.w600,
+                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                     ),
                   ),
                   GestureDetector(
@@ -192,8 +200,9 @@ class JobDetailScreen extends StatelessWidget {
                       AppRouter.router.push('/jobDetailsPage');
                     },
                     child: Container(
+
                       width: MediaQuery.of(context).size.width *
-                          0.4, // Adjust the width as needed
+                          0.4 -20, // Adjust the width as needed
                       height: 36,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -207,7 +216,7 @@ class JobDetailScreen extends StatelessWidget {
                           style: AppTextStyle.dmSans(
                             color: Colors.white,
                             fontSize: 16.0,
-                            weight: FontWeight.w400,
+                            weight: FontWeight.w600,
                           ),
                         ),
                       ),
@@ -219,9 +228,11 @@ class JobDetailScreen extends StatelessWidget {
 
               // Description text
               Text(
+
                 "We are seeking a highly motivated and skilled Architects & Construction Specialist to join our dynamic team. The ideal candidate will be responsible for providing expertise in architectural planning, construction project coordination, and ensuring high-quality project execution. This role involves working closely with contractors, engineers, and clients to ensure compliance with industry standards and best practices while delivering outstanding results.",
                 style: AppTextStyle.dmSans(
                   fontSize: 14.0,
+                  height:   1.2,
                   weight: FontWeight.w400,
                   color: isDark ? Colors.white : JAppColors.lightGray900,
                 ),

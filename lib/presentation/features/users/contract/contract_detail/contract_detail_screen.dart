@@ -462,18 +462,15 @@ class ContractDetailScreen extends StatelessWidget {
           JText.appBarTitle,
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: 20.0,
-            weight: FontWeight.w600,
+            fontSize: 19.0,
+            weight: FontWeight.w500,
           ),
         ),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
+        leadingIcon: BackCircle(
+          isDark: isDark,
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
       ),
       body: SingleChildScrollView(
@@ -484,7 +481,9 @@ class ContractDetailScreen extends StatelessWidget {
             children: [
               // Contract description section
 
-              Divider(),
+
+              const SizedBox(height: 12),
+
               ContractDescription(isDark: isDark),
 
               const SizedBox(height: 16),

@@ -25,6 +25,7 @@ import '../features/users/home/job_details/report_job_screen.dart';
 import '../features/users/language/language_detail_screen.dart';
 import '../features/users/language/language_screen.dart';
 import '../features/users/language/language_selection_screen.dart';
+import '../features/users/message/chat_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
 import '../features/users/reports/contact_support.dart';
@@ -37,10 +38,6 @@ import '../features/users/screen/account_screen/profile_information_screen.dart'
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
-
-import '../features/users/screen/add_skills/add_resume_screen.dart';
-import '../features/users/screen/add_skills/add_skills_screen.dart';
-import '../features/users/screen/add_skills/chnage_add_skill_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/screen/contact_detail_screens/contact_details_active_screen.dart';
 import '../features/users/screen/contact_detail_screens/feed_back_screen.dart';
@@ -186,23 +183,7 @@ class AppRouter {
         builder: (context, state) => const ChangeWorkExperienceScreen(),
       ),
 
-      GoRoute(
-        path: '/addSkillsScreen',
-        name: Routes.addSkillsScreen.name,
-        builder: (context, state) => AddSkillsScreen(),
-      ),
 
-      GoRoute(
-        path: '/changeAddSkillScreen',
-        name: Routes.changeAddSkillScreen.name,
-        builder: (context, state) => ChangeAddSkillScreen(),
-      ),
-
-      GoRoute(
-        path: '/addResumeScreen',
-        name: Routes.addResumeScreen.name,
-        builder: (context, state) => AddResumeScreen(),
-      ),
 
       GoRoute(
         path: '/contactDetailsScreen',
@@ -275,6 +256,11 @@ class AppRouter {
         path: '/contractDetailScreen',
         name: Routes.contractDetailScreen.name,
         builder: (context, state) => ContractDetailScreen(),
+      ),
+      GoRoute(
+        path: '/chatScreen',
+        name: Routes.chatScreen.name,
+        builder: (context, state) => ChatScreen(),
       ),
 
     ],

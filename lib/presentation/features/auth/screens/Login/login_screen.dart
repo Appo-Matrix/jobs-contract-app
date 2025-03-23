@@ -19,6 +19,7 @@ class LoginScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
 
       bottomNavigationBar:SizedBox(
         height: 50,
@@ -62,7 +63,6 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 16 ,horizontal: 16),

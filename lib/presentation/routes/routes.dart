@@ -20,9 +20,6 @@ enum Routes {
   addExperienceScreen,
   changeWorkExperienceScreen,
   changedPasswordScreen,
-  addSkillsScreen,
-  changeAddSkillScreen,
-  addResumeScreen,
   contactDetailsScreen,
   contactDetailsActiveScreen,
   feedBackScreen,
@@ -40,6 +37,7 @@ enum Routes {
   jobDetailScreen,
   jobDetailsPage,
   reportJobScreen,
-  contractDetailScreen
+  contractDetailScreen,
+  chatScreen
 
 }

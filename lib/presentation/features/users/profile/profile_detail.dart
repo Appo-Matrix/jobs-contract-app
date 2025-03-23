@@ -10,6 +10,7 @@ import 'package:job_contracts/presentation/features/users/profile/widgets/skills
 import 'package:job_contracts/presentation/features/users/profile/widgets/work_history_list.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showSkillsBottomSheet.dart';
 import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showWorkExperienceBottomSheet.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -116,6 +117,10 @@ class ProfileScreen extends StatelessWidget {
                 title: 'Languages',
                 content: LanguagesList(isDark: isDark),
                 isDark: isDark,
+                voidCallback: (){
+                  AppRouter.router.push('/languageScreen');
+
+                },
               ),
 
               // Work History and Feedback
