@@ -28,21 +28,18 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-            child: AppBar(
-              backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-              elevation: 0,
-              centerTitle: false,
-              automaticallyImplyLeading: false,
-              leading: showBackArrow
-                  ? IconButton(
-                  onPressed: leadingOnPressed,
-                  icon: Icon(Icons.arrow_back, color: JAppColors.primary))
-                  : leadingIcon,
-              title: title,
-              actions: actions,
-            ),
+          AppBar(
+            backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+            elevation: 0,
+            centerTitle: false,
+            automaticallyImplyLeading: false,
+            leading: showBackArrow
+                ? IconButton(
+                onPressed: leadingOnPressed,
+                icon: Icon(Icons.arrow_back, color: JAppColors.primary))
+                : leadingIcon,
+            title: title,
+            actions: actions,
           ),
           if (showDivider)
             Divider(

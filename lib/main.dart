@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_contracts/config/app_config.dart';
@@ -9,6 +10,7 @@ import 'package:job_contracts/presentation/features/auth/screens/verify_profile/
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/themes/themes.dart';
+import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +20,19 @@ void main()async {
   AppServices.initialize();
   registerNotifiersDi();
   AppConfig().initialize();
-  WidgetsFlutterBinding.ensureInitialized();
+
+  // Set system UI overlay style based on platform brightness
+  final brightness = WidgetsBinding.instance.window.platformBrightness;
+  final isDark = brightness == Brightness.dark;
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // Make status bar transparent
+    statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+    statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+    systemNavigationBarColor: isDark ? JAppColors.darkGray800 : Colors.white,
+    systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+  ));
+
   await Future.delayed(const Duration(seconds: 3));
 
   runApp(const JobContractsApp());
@@ -61,23 +75,24 @@ class _JobContractsState extends State<JobContractsApp> {
     debugPrint("unpausing");
     FlutterNativeSplash.remove(); // This must be called!
   }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MultiProvider(
-
-
         providers: registerGlobalNotifiers(),
         child: MaterialApp.router(
-          // theme: ,
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
-          theme: JAppTheme.lightTheme,  // Apply your custom light theme
-          darkTheme: JAppTheme.darkTheme,  // Apply your custom dark theme
+          theme: _updateThemeWithStatusBar(JAppTheme.lightTheme, false),
+          darkTheme: _updateThemeWithStatusBar(JAppTheme.darkTheme, true),
           themeMode: ThemeMode.system,
           builder: (context, child) {
+            // Update status bar when theme changes
+            _updateStatusBarBasedOnTheme(context);
+
             return LoaderOverlay(
               overlayWidgetBuilder: (_) {
                 return const Center(
@@ -91,7 +106,30 @@ class _JobContractsState extends State<JobContractsApp> {
       ),
     );
   }
+
+  // Update status bar based on current theme
+  void _updateStatusBarBasedOnTheme(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+      statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+      systemNavigationBarColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+    ));
+  }
+
+  // Update theme with status bar settings
+  ThemeData _updateThemeWithStatusBar(ThemeData theme, bool isDark) {
+    return theme.copyWith(
+      appBarTheme: theme.appBarTheme.copyWith(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+          statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+        ),
+      ),
+    );
+  }
 }
-
-
-

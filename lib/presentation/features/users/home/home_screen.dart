@@ -47,18 +47,20 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       key: _scaffoldKey,
       drawer: _buildNavigationDrawer(context, isDark),
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
       appBar: JAppbar(
         leadingIcon: GestureDetector(
           onTap: ()=>{
-          _scaffoldKey.currentState?.openDrawer()
+            _scaffoldKey.currentState?.openDrawer()
 
-        },
-          child: CircularAvatar(
-            isDark: isDark,
-            radius: 20,
-            imageUrl: JImages.image,
-            // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircularAvatar(
+              isDark: isDark,
+              radius: 20,
+              imageUrl: JImages.image,
+              // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
+            ),
           ),
         ),
 
@@ -70,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
         ],
       ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
