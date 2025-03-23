@@ -55,7 +55,8 @@ class ContactSupportScreen extends StatelessWidget {
               isDark: isDark,
             ),
 
-            SizedBox(height: JSizes.spaceBtwSections),
+            // SizedBox(height: JSizes.spaceBtwSections),
+             SizedBox(height: JSizes.spaceBtwSections),
 
 
             SupportOptionWidget(
