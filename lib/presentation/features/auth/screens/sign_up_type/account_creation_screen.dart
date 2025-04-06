@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -17,30 +18,7 @@ class AccountCreationScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-      appBar: AppBar(
-        backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-              Icons.arrow_back,
-              color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray500
-          ),
-          onPressed: () {
-            // Navigation logic to go back to login screen
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          JText.backToLogin,
-          style: AppTextStyle.dmSans(
-            color: isDark
-                ? JAppColors.lightGray100
-                : JAppColors.darkGray500,
-            fontSize: 16.0,
-            weight: FontWeight.w500,
-          ),
-        ),
-      ),
+      appBar: JAppBar2(title: JText.backToLogin),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),

@@ -55,7 +55,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       elevation: elevation,
       backgroundColor: backgroundColor ??
-          (isDark ? JAppColors.darkGray800 : JAppColors.lightGray100),
+          (isDark ? JAppColors.darkGray800 : Colors.white),
       flexibleSpace: flexibleSpace,
       centerTitle: centerTitle,
       automaticallyImplyLeading: showBackButton,

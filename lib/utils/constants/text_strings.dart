@@ -423,4 +423,39 @@ class JText {
   // Error Messages
   static const String pleaseAgreeAndSign = "Please agree to terms and provide your signature";
 
+
+
+
+
+  ////profile
+
+  // Headers
+  static const String profileDetails = 'Profile Details';
+  static const String profilePhoto = 'Profile Photo';
+  static const String uploadResume = 'Upload Resume';
+  static const String certificatesAndLicenses = 'Certificates & Licenses';
+
+  // Form Labels
+  static const String certificateOrLicenseName = 'Certificate Or License Name';
+  static const String awardedBy = 'Awarded By';
+  static const String year = 'Year';
+
+  // Upload Section
+  static const String clickToUpload = 'Click to upload';
+  static const String orDragAndDrop = ' or drag and drop';
+  static const String fileFormats = 'PDF, PNG, JPG (max. 800×400px)';
+
+  // Headers
+  static const String uploadPortfolio = 'Upload Portfolio';
+  static const String choosePreferredOption = 'Choose your preferred option to get started.';
+  static const String uploadPortfolios = 'Upload Portfolios';
+
+  // Section Titles
+  static const String before = 'Before';
+  static const String after = 'After';
+  static const String briefDescription = 'Brief Description';
+  static const String estimatedServiceCost = 'Estimated Service Cost';
+  static const String estimatedCompletionTime = 'Estimated Completion Time';
+
+  // Upload Section
 }

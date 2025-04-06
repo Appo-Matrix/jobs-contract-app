@@ -8,6 +8,8 @@ import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
 import '../features/auth/screens/address_form/address_form_screen.dart';
+import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
+import '../features/auth/screens/profile/profile_detail.dart';
 import '../features/auth/screens/reset_password/reset_password.dart';
 import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
@@ -135,6 +137,16 @@ class AppRouter {
         path: '/termsConditionsScreen',
         name: Routes.termsConditionsScreen.name,
         builder: (context, state) => const TermsConditionsScreen(),
+      ),
+      GoRoute(
+        path: '/uploadPortfolioScreen',
+        name: Routes.uploadPortfolioScreen.name,
+        builder: (context, state) => const UploadPortfolioScreen(),
+      ),
+      GoRoute(
+        path: '/profileDetailsScreen',
+        name: Routes.profileDetailsScreen.name,
+        builder: (context, state) => const ProfileDetailsScreen(),
       ),
       GoRoute(
         path: '/changedPasswordScreen',

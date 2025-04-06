@@ -41,6 +41,8 @@ enum Routes {
   chatScreen,
   accountCreationScreen,
   addressFormScreen,
-  termsConditionsScreen
+  termsConditionsScreen,
+  uploadPortfolioScreen,
+  profileDetailsScreen
 
 }
