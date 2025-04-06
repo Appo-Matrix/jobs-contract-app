@@ -11,6 +11,7 @@ import '../features/auth/screens/address_form/address_form_screen.dart';
 import '../features/auth/screens/reset_password/reset_password.dart';
 import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
+import '../features/auth/screens/terms_condition_screen/terms_conditionsS_screen.dart';
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
@@ -129,6 +130,11 @@ class AppRouter {
         path: '/addressFormScreen',
         name: Routes.addressFormScreen.name,
         builder: (context, state) => const AddressFormScreen(),
+      ),
+      GoRoute(
+        path: '/termsConditionsScreen',
+        name: Routes.termsConditionsScreen.name,
+        builder: (context, state) => const TermsConditionsScreen(),
       ),
       GoRoute(
         path: '/changedPasswordScreen',

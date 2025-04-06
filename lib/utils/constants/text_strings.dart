@@ -361,4 +361,66 @@ class JText {
   static const String customerSupport = 'Customer Support';
 
 
+  /////terms and condition
+  static const String termsAndConditions = "Terms & Conditions";
+  static const String back = "Back";
+  static const String nextStepVerification = "Next Step : Verification";
+
+  // Section Headers
+  static const String section1Title = "1. Acceptance of Terms";
+  static const String section2Title = "2. User Responsibilities";
+  static const String section3Title = "3. Prohibited Activities";
+  static const String section4Title = "4. Payment & Transactions";
+  static const String section5Title = "5. Intellectual Property";
+  static const String section6Title = "6. Limitation of Liability";
+  static const String section7Title = "7. Termination of Services";
+  static const String section8Title = "8. Privacy Policy";
+  static const String section9Title = "9. Changes to Terms";
+  static const String section10Title = "10. Contact Information";
+
+  // Section Content
+  static const String section1Content = "By accessing or using our services, you agree to comply with and be bound by these Terms & Conditions. If you do not agree, please do not use our services.";
+
+  static const String section3Intro = "Users must not:";
+
+  static const String section6Content = "We are not liable for any direct, indirect, incidental, or consequential damages arising from the use of our services.";
+
+  static const String section7Content = "We reserve the right to terminate or suspend access to our services at our discretion, with or without notice.";
+
+  static const String section8Content = "By using our services, you agree to our Privacy Policy regarding the collection and use of personal data.";
+
+  static const String section9Content = "We reserve the right to update these Terms & Conditions at any time. Continued use of our services constitutes acceptance of the revised terms.";
+
+  static const String section10Content = "For any questions or concerns regarding these terms, please contact us at [support@example.com].";
+
+  // Bullet Points
+  // User Responsibilities
+  static const String userResponsibility1 = "You must provide accurate information when registering for an account.";
+  static const String userResponsibility2 = "You are responsible for maintaining the confidentiality of your login credentials.";
+  static const String userResponsibility3 = "Any unauthorized use of your account must be reported immediately.";
+
+  // Prohibited Activities
+  static const String prohibitedActivity1 = "Engage in illegal or fraudulent activities.";
+  static const String prohibitedActivity2 = "Attempt to hack, modify, or interfere with our systems.";
+  static const String prohibitedActivity3 = "Use our platform for spam or malicious purposes.";
+
+  // Payment & Transactions
+  static const String payment1 = "All payments must be made using the accepted payment methods.";
+  static const String payment2 = "We are not responsible for any transaction failures caused by third-party providers.";
+  static const String payment3 = "Refund policies are subject to our discretion and applicable laws.";
+
+  // Intellectual Property
+  static const String intellectualProperty1 = "All content on our platform, including logos, designs, and text, is our property and cannot be used without permission.";
+  static const String intellectualProperty2 = "Unauthorized reproduction or distribution of our content is prohibited.";
+
+  // Consent Checkboxes
+  static const String agreeToTerms = "I Agree the terms and conditions";
+  static const String consentToVisibility = "I consent to my information being visible on the platform";
+
+  // Signature
+  static const String eSignature = "E-Signature";
+
+  // Error Messages
+  static const String pleaseAgreeAndSign = "Please agree to terms and provide your signature";
+
 }

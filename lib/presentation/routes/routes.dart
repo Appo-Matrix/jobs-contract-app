@@ -40,6 +40,7 @@ enum Routes {
   contractDetailScreen,
   chatScreen,
   accountCreationScreen,
-  addressFormScreen
+  addressFormScreen,
+  termsConditionsScreen
 
 }

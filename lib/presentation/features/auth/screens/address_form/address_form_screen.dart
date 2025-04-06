@@ -281,7 +281,10 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,
-                onTap: _onNextStep
+                onTap: (){
+
+                  AppRouter.router.push('/termsConditionsScreen');
+                }
               ),
 
 
