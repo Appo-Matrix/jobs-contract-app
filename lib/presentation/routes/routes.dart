@@ -38,6 +38,8 @@ enum Routes {
   jobDetailsPage,
   reportJobScreen,
   contractDetailScreen,
-  chatScreen
+  chatScreen,
+  accountCreationScreen,
+  addressFormScreen
 
 }

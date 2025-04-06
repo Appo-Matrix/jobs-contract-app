@@ -7,7 +7,9 @@ import 'package:job_contracts/presentation/features/users/screen/account_screen/
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
+import '../features/auth/screens/address_form/address_form_screen.dart';
 import '../features/auth/screens/reset_password/reset_password.dart';
+import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
@@ -60,6 +62,11 @@ class AppRouter {
         path: '/loginScreen',
         name: Routes.loginScreen.name,
        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: '/accountCreationScreen',
+        name: Routes.accountCreationScreen.name,
+       builder: (context, state) => const AccountCreationScreen(),
       ),
 
       GoRoute(
@@ -117,6 +124,11 @@ class AppRouter {
         path: '/forgetPasswordScreen',
         name: Routes.forgetPasswordScreen.name,
         builder: (context, state) => const ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/addressFormScreen',
+        name: Routes.addressFormScreen.name,
+        builder: (context, state) => const AddressFormScreen(),
       ),
       GoRoute(
         path: '/changedPasswordScreen',

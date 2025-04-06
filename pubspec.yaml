@@ -46,6 +46,7 @@ dependencies:
   iconsax: ^0.0.8
   flutter_svg: ^2.0.17
   smooth_page_indicator: ^1.2.1
+  google_maps_flutter: ^2.12.1
 
 dev_dependencies:
   flutter_test:

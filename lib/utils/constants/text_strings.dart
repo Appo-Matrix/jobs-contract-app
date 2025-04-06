@@ -9,6 +9,44 @@ class JText {
   static const String logIn = 'Log in';
   static const String iamFreelancer = "I'm a Freelancer, Looking for work";
 
+  static const String backToLogin = 'Back to log in';
+  static const String createAccount = 'Create An Account';
+  static const String chooseOption = 'Choose your preferred option to get started.';
+  static const String contractor = 'Contractor';
+  static const String professional = 'Professional';
+
+  // Button Actions
+  static const String selected = 'Selected option: ';
+
+  // Other Screen Titles (add as your app grows)
+  static const String homeScreenTitle = 'Home';
+  static const String profileScreenTitle = 'Profile';
+  static const String settingsScreenTitle = 'Settings';
+
+  ////
+
+
+
+
+
+  // Address Form Screen
+  static const String address = 'Address';
+  static const String streetNumber = 'Street & Number';
+  static const String neighborhoodArea = 'Neighborhood Area';
+  static const String city = 'City';
+  static const String stateProvince = 'State/Province';
+  static const String country = 'Country';
+  static const String postalCode = 'Postal Code';
+  static const String mapLocation = 'Map Location';
+  static const String traceMe = 'Trace Me';
+  static const String nextStep = 'Next Step';
+
+
+
+  // Error Messages
+  static const String generalError = 'Something went wrong. Please try again.';
+  static const String connectionError = 'No internet connection.';
+  static const String requiredField = 'This field is required';
 
   static const String title1 = 'Effortless Project Management';
   static const String title2 = 'Simplify Contract & Client Deals';
@@ -116,7 +154,6 @@ class JText {
   static const String  details= "Details";
   static const String  secureCode= "Secure code";
   static const String  fullName= "Full Name";
-  static const String  country= "Country";
   static const String  sendAgain= "Send Again";
   static const String   receivecode = "Didn’t recieved any code?";
   static const String  dateOfBirth= "Date Of Birth";
