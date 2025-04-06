@@ -7,7 +7,6 @@ import '../../../../../utils/constants/sizes.dart';
 import '../recent_jobs/recent_jobs_screen.dart';
 import '../widget/job_posting_card.dart';
 
-
 class BestMatchesPage extends StatelessWidget {
   const BestMatchesPage({Key? key}) : super(key: key);
 
@@ -34,23 +33,22 @@ class BestMatchesPage extends StatelessWidget {
             itemCount: 5,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: (){
-
+                onTap: () {
                   AppRouter.router.push('/jobDetailScreen');
                 },
                 child: JobPostingCard(
                   jobTitle: "Plumbers Construction Specialists",
-                  description: "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
+                  description:
+                      "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
                   salary: "\$20,000 - \$25,000",
                   category: "Site Inspections",
-
-                  isVerified: true, isDark: isDark,
+                  isVerified: true,
+                  isDark: isDark,
                 ),
               );
             },
           ),
         ),
-
       ],
     );
   }

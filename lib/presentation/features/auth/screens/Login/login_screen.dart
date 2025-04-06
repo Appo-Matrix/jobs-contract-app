@@ -5,7 +5,6 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
-
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -189,6 +188,7 @@ class LoginScreen extends StatelessWidget {
 
               /// Create Account
                SizedBox(height: JSizes.spaceBtwSections+10),
+
 
 
             ],

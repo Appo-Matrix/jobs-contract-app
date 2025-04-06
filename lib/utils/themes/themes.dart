@@ -13,10 +13,9 @@ import 'custom_theme/text_theme.dart';
 
 class JAppTheme {
   JAppTheme._();
-
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: 'Domaine Display Narrow',
     disabledColor: JAppColors.darkGray300,
     brightness: Brightness.light,
     primaryColor: JAppColors.primary,
@@ -34,7 +33,7 @@ class JAppTheme {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: 'Domaine Display Narrow',
     disabledColor: JAppColors.lightGray300,
     brightness: Brightness.dark,
     primaryColor: JAppColors.primary,

@@ -2,10 +2,28 @@ library;
 
 class JText {
   static const String appName = "Job Contracts";
+  static const String iamClientHi = "I'm a client, Hiring Professionals";
+  static const String skip = 'Skip';
+  static const String signUpAs = 'Sign Up As';
+  static const String alreadyHaveAnAccount = 'Already have an account?';
+  static const String logIn = 'Log in';
+  static const String iamFreelancer = "I'm a Freelancer, Looking for work";
+
+
+  static const String title1 = 'Effortless Project Management';
+  static const String title2 = 'Simplify Contract & Client Deals';
+  static const String title3 = 'Maximize Your Business Opportunities';
+
+  // Onboarding Subtitles
+  static const String subtitle1 = 'Take control of your construction and real estate projects with intuitive tools designed for professionals';
+  static const String subtitle2 = 'Easily manage contracts, negotiations, and client communications from one central platform';
+  static const String subtitle3 = 'Discover exclusive promotions, connect with industry leaders, and grow your business seamlessly';
+
+
+
   static const String login = "Log in";
   static const String loginTitle = "Welcome back! Please enter your details.";
   static const String email = "Email";
-  static const String skip = "Skip";
   static const String emailEnter = "Enter your email";
   static const String password = "Password";
   static const String remember = "Remember for 30 days";
