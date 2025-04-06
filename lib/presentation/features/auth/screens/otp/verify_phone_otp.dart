@@ -4,6 +4,7 @@ import 'package:job_contracts/presentation/features/auth/screens/verify_profile/
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:pinput/pinput.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
+import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -52,21 +53,11 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
     );
     return Scaffold(
       appBar: JAppbar(
-        title: Text(
-          JText.verifyPhoneNumber,
-          style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            fontSize: 20.0,
-            weight: FontWeight.w600,
-          ),
-        ),
-        leadingIcon: JCircularAvatar(
+        leadingIcon: BackCircle(
           isDark: isDark,
-          radius: 20,
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-          ),
+          onTap: (){
+            Navigator.pop(context);
+          },
         ),
       ),
       bottomNavigationBar: Padding(padding: EdgeInsets.symmetric(vertical: 26,horizontal: 16),child:               SizedBox(

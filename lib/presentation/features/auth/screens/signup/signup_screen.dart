@@ -19,7 +19,12 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-
+    String? _validateRequired(String? value) {
+      if (value == null || value.trim().isEmpty) {
+        return JText.requiredField;
+      }
+      return null;
+    }
     return Scaffold(
 
       bottomNavigationBar:SizedBox(
@@ -78,13 +83,14 @@ class SignupScreen extends StatelessWidget {
                 hintText: JText.firstNameText,
                 prefixIcon: Icons.person_outline,
                 subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                isDark ? JAppColors.lightGray300 : JAppColors.darkGray900,
                 titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                isDark ? JAppColors.lightGray100 : JAppColors.darkGray900,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               TextFieldWidget(
+                validator: _validateRequired,
                 subTitle: JText.lastName,
                 hintText: JText.lastNameText,
                 prefixIcon: Icons.person_outline,
@@ -102,6 +108,8 @@ class SignupScreen extends StatelessWidget {
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                validator: _validateRequired,
+
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
@@ -113,6 +121,8 @@ class SignupScreen extends StatelessWidget {
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                validator: _validateRequired,
+
               ),
               SizedBox(height: 10),
               Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
@@ -129,7 +139,7 @@ class SignupScreen extends StatelessWidget {
                 onTap: (){
 
 
-                  AppRouter.router.push('/verifyPhoneOtp');
+                  AppRouter.router.push('/addressFormScreen');
                 },
                 btn_title: JText.signUp,
                 btn_radius: 10,

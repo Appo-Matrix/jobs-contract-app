@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                   onTap: (){
 
 
-                    AppRouter.router.push('/signupScreen');
+                    AppRouter.router.push('/accountCreationScreen');
 
                   },
                   child: Text(
