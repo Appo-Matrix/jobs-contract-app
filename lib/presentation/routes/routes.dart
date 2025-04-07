@@ -43,6 +43,7 @@ enum Routes {
   addressFormScreen,
   termsConditionsScreen,
   uploadPortfolioScreen,
-  profileDetailsScreen
+  profileDetailsScreen,
+  specializationScreen
 
 }

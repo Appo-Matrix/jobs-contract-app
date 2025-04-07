@@ -37,7 +37,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: AppTextStyle.dmSans(
-          color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+          color: isDark ? Colors.white : JAppColors.darkGray800,
           fontSize: JSizes.fontSizeLg,
           weight: FontWeight.w500,
         ),
@@ -55,7 +55,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       elevation: elevation,
       backgroundColor: backgroundColor ??
-          (isDark ? JAppColors.darkGray800 : Colors.white),
+          (isDark ? JAppColors.darkGray900 : Colors.white),
       flexibleSpace: flexibleSpace,
       centerTitle: centerTitle,
       automaticallyImplyLeading: showBackButton,

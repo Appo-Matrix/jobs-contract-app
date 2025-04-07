@@ -13,6 +13,7 @@ import '../features/auth/screens/profile/profile_detail.dart';
 import '../features/auth/screens/reset_password/reset_password.dart';
 import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
+import '../features/auth/screens/specilization/specialization_screen.dart';
 import '../features/auth/screens/terms_condition_screen/terms_conditionsS_screen.dart';
 import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
@@ -292,6 +293,11 @@ class AppRouter {
         path: '/chatScreen',
         name: Routes.chatScreen.name,
         builder: (context, state) => ChatScreen(),
+      ),
+      GoRoute(
+        path: '/specializationScreen',
+        name: Routes.specializationScreen.name,
+        builder: (context, state) => SpecializationScreen(),
       ),
 
     ],

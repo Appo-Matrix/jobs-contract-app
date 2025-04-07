@@ -56,7 +56,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
       appBar: JAppBar2(title: JText.back),
       body: SingleChildScrollView(
         child: Padding(
@@ -72,7 +72,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                   weight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 24),
               Text(
                 JText.termsAndConditions,
                 style: AppTextStyle.dmSans(
@@ -81,15 +81,15 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                   weight: FontWeight.w500,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 12),
 
               // Terms content
               Container(
                 decoration: BoxDecoration(
-                  color: isDark ? JAppColors.darkGray700 : Colors.white,
+                  color: Colors.transparent,
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
+                    color: Colors.transparent,
                     width: 1,
                   ),
                 ),

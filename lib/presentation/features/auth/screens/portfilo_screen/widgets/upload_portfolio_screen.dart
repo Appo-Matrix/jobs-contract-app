@@ -31,10 +31,10 @@ class UploadContainerWidget extends StatelessWidget {
       child: Container(
         height: height,
         decoration: BoxDecoration(
-          color: cardColor,
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
+            color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
           ),
         ),
         child: Center(

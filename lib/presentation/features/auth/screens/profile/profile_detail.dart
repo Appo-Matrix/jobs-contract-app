@@ -27,7 +27,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray800 : Colors.white;
+    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
     final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
     final secondaryTextColor =
         isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
@@ -131,7 +131,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                 Container(
                   height: 150,
                   decoration: BoxDecoration(
-                    color: isDark ? JAppColors.darkGray800 : Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: isDark

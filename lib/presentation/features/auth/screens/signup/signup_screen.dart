@@ -68,7 +68,7 @@ class SignupScreen extends StatelessWidget {
         ),
       ),
 
-      backgroundColor: isDark ? JAppColors.darkGray800 : JAppColors.lightGray100,
+      backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 60, right: 15, left: 15),

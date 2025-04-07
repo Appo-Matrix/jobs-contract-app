@@ -23,7 +23,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray800 : Colors.white;
+    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
     final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
     final secondaryTextColor = isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
     final cardColor = isDark ? JAppColors.darkGray700 : const Color(0xFFF1F2F6);
@@ -192,7 +192,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     image_value: false,
                     onTap: (){
 
-                      AppRouter.router.push('/termsConditionsScreen');
+                      AppRouter.router.push('/specializationScreen');
                     }
                 ),
 

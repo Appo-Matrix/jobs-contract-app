@@ -458,4 +458,47 @@ class JText {
   static const String estimatedCompletionTime = 'Estimated Completion Time';
 
   // Upload Section
+
+////specilait
+  static const String selectYourSpecialization = "Select Your Specialization";
+  static const String serviceType = "Service Type";
+  static const String yearsOfExperience = "Years Of Experience";
+  static const String serviceRange = "Service Range";
+
+  // Button Labels
+  static const String nextStepProfileDetails = "Next Step : Profile Details";
+
+  // Specialization Options
+  static const List<String> specializationOptions = [
+    "Bricklaying",
+    "Carpentry",
+    "Metal Structures",
+    "Architecture",
+    "Electrical Installations",
+    "Engineering",
+    "General Maintenance",
+    "Hydraulic Installations",
+    "Others"
+  ];
+
+  // Service Type Options
+  static const List<String> serviceTypeOptions = [
+    "Individual / Freelancer",
+    "Company/Agency"
+  ];
+
+  // Experience Options
+  static const List<String> experienceOptions = [
+    "0-2 Years",
+    "3-5 Years",
+    "6-10 years",
+    "Over 10 Years"
+  ];
+
+  // Service Range Options
+  static const List<String> serviceRangeOptions = [
+    "City/State",
+    "Country",
+    "International Service"
+  ];
 }

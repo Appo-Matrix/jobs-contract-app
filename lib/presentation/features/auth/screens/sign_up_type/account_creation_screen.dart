@@ -17,7 +17,7 @@ class AccountCreationScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
       appBar: JAppBar2(title: JText.backToLogin),
       body: SafeArea(
         child: Padding(
