@@ -72,6 +72,7 @@ class AppRouter {
        builder: (context, state) => const AccountCreationScreen(),
       ),
 
+
       GoRoute(
         path: '/signupScreen',
         name: Routes.signupScreen.name,

@@ -124,7 +124,7 @@ class _SignatureSectionState extends State<SignatureSection> {
               child: GestureDetector(
                 onTap: _pickSignatureImage,
                 child: Container(
-                  height: 56, // Match TextFormField height
+                  height: 48, // Match TextFormField height
                   decoration: BoxDecoration(
                     color: widget.isDark ? JAppColors.darkGray700 : Colors.white,
                     borderRadius: BorderRadius.circular(8),

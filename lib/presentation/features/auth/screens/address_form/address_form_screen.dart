@@ -32,9 +32,9 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   final _formKey = GlobalKey<FormState>();
 
   // Map-related variables
-  GoogleMapController? _mapController;
-  LatLng _currentPosition = const LatLng(-37.8136, 144.9631); // Default Melbourne
-  bool _hasSetLocation = false;
+  // GoogleMapController? _mapController;
+  // LatLng _currentPosition = const LatLng(-37.8136, 144.9631); // Default Melbourne
+  // bool _hasSetLocation = false;
 
   @override
   void dispose() {
@@ -44,26 +44,26 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
     _stateController.dispose();
     _countryController.dispose();
     _postalCodeController.dispose();
-    _mapController?.dispose();
+    // _mapController?.dispose();
     super.dispose();
   }
 
   void _onTraceMe() {
     // Here you would implement location tracing functionality
-    setState(() {
-      _hasSetLocation = true;
-    });
+    // setState(() {
+    //   _hasSetLocation = true;
+    // });
     print('Trace Me button pressed');
   }
 
   void _onNextStep() {
-    if (_formKey.currentState?.validate() == true && _hasSetLocation) {
-      // Proceed to next step
-      print('Form is valid, proceeding to next step');
-    } else {
-      // Show validation errors
-      print('Form validation failed');
-    }
+    // if (_formKey.currentState?.validate() == true && _hasSetLocation) {
+    //   // Proceed to next step
+    //   print('Form is valid, proceeding to next step');
+    // } else {
+    //   // Show validation errors
+    //   print('Form validation failed');
+    // }
   }
 
   String? _validateRequired(String? value) {
@@ -208,31 +208,31 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                       borderRadius: BorderRadius.circular(8),
                       child: Stack(
                         children: [
-                          GoogleMap(
-                            initialCameraPosition: CameraPosition(
-                              target: _currentPosition,
-                              zoom: 13,
-                            ),
-                            onMapCreated: (controller) {
-                              _mapController = controller;
-                            },
-                            markers: {
-                              Marker(
-                                markerId: const MarkerId('currentLocation'),
-                                position: _currentPosition,
-                              ),
-                            },
-                            myLocationEnabled: true,
-                            myLocationButtonEnabled: false,
-                            zoomControlsEnabled: false,
-                            mapToolbarEnabled: false,
-                            onTap: (latLng) {
-                              setState(() {
-                                _currentPosition = latLng;
-                                _hasSetLocation = true;
-                              });
-                            },
-                          ),
+                          // GoogleMap(
+                          //   initialCameraPosition: CameraPosition(
+                          //     target: _currentPosition,
+                          //     zoom: 13,
+                          //   ),
+                          //   onMapCreated: (controller) {
+                          //     _mapController = controller;
+                          //   },
+                          //   markers: {
+                          //     Marker(
+                          //       markerId: const MarkerId('currentLocation'),
+                          //       position: _currentPosition,
+                          //     ),
+                          //   },
+                          //   myLocationEnabled: true,
+                          //   myLocationButtonEnabled: false,
+                          //   zoomControlsEnabled: false,
+                          //   mapToolbarEnabled: false,
+                          //   onTap: (latLng) {
+                          //     setState(() {
+                          //       _currentPosition = latLng;
+                          //       _hasSetLocation = true;
+                          //     });
+                          //   },
+                          // ),
                           Positioned(
                             right: 16,
                             bottom: 16,
@@ -258,17 +258,17 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                       ),
                     ),
                   ),
-                  if (!_hasSetLocation)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Text(
-                        'Please select a location on the map',
-                        style: AppTextStyle.dmSans(
-                          color: JAppColors.error600,
-                          fontSize: 12.0, weight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
+                  // if (!_hasSetLocation)
+                  //   Padding(
+                  //     padding: const EdgeInsets.only(top: 8),
+                  //     child: Text(
+                  //       'Please select a location on the map',
+                  //       style: AppTextStyle.dmSans(
+                  //         color: JAppColors.error600,
+                  //         fontSize: 12.0, weight: FontWeight.w500,
+                  //       ),
+                  //     ),
+                  //   ),
                 ],
               ),
 

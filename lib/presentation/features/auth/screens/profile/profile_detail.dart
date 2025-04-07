@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
+import 'package:job_contracts/utils/common_widgets/text_field_widget.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
+
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/constants/sizes.dart';
 // Import the profile text strings extension
 
 class ProfileDetailsScreen extends StatefulWidget {
@@ -17,15 +21,16 @@ class ProfileDetailsScreen extends StatefulWidget {
 
 class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
   String? selectedYear;
-  final List<String> years = List.generate(
-      30, (index) => (DateTime.now().year - index).toString());
+  final List<String> years =
+      List.generate(30, (index) => (DateTime.now().year - index).toString());
 
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     final backgroundColor = isDark ? JAppColors.darkGray800 : Colors.white;
     final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
-    final secondaryTextColor = isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
+    final secondaryTextColor =
+        isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
     final cardColor = isDark ? JAppColors.darkGray700 : const Color(0xFFF1F2F6);
 
     return Scaffold(
@@ -37,13 +42,14 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   JText.profileDetails,
                   style: AppTextStyle.dmSans(
                     color: textColor,
-                    fontSize: 28.0,
-                    weight: FontWeight.w800,
+                    fontSize: 24.0,
+                    weight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 32),
@@ -72,37 +78,43 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Center(
-                  child: Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundColor: cardColor,
+
+                Stack(
+                  children: [
+                    Positioned.fill(
+                      child: CircleAvatar(
+                        backgroundColor: isDark
+                            ? JAppColors.darkGray700
+                            : const Color(0xFFF1F2F6),
+                      ),
+                    ),
+                    CircleAvatar(
+                      radius: 60,
+                      backgroundColor: Colors.transparent,
+                      child: Icon(
+                        Icons.person,
+                        size: 80,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 10,
+                      right: 0,
+                      child: Container(
+                        height: 32,
+                        width: 32,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF6C38FF),
+                          shape: BoxShape.circle,
+                        ),
                         child: Icon(
-                          Icons.person,
-                          size: 80,
-                          color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray300,
+                          Icons.camera_alt_outlined,
+                          color: Colors.white,
+                          size: 16,
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFF6C38FF),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Icon(
-                            Icons.camera_alt,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 32),
 
@@ -119,10 +131,12 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                 Container(
                   height: 150,
                   decoration: BoxDecoration(
-                    color: cardColor,
+                    color: isDark ? JAppColors.darkGray800 : Colors.white,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
+                      color: isDark
+                          ? JAppColors.darkGray600
+                          : JAppColors.lightGray300,
                     ),
                   ),
                   child: Center(
@@ -133,8 +147,8 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                           height: 48,
                           width: 48,
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
                             color: Colors.white,
-                            shape: BoxShape.circle,
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.1),
@@ -145,7 +159,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                           ),
                           child: Icon(
                             Icons.file_upload_outlined,
-                            color: const Color(0xFF6C38FF),
+                            color: JAppColors.primary,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -155,7 +169,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                               TextSpan(
                                 text: JText.clickToUpload,
                                 style: AppTextStyle.dmSans(
-                                  color: const Color(0xFF6C38FF),
+                                  color: JAppColors.primary,
                                   fontSize: 16.0,
                                   weight: FontWeight.w600,
                                 ),
@@ -196,38 +210,14 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Text(
-                  JText.certificateOrLicenseName,
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 16.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
                 const SizedBox(height: 8),
-                TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: cardColor,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: const Color(0xFF6C38FF),
-                      ),
-                    ),
-                  ),
+
+                TextFieldWidget(
+                  subTitle: JText.certificateOrLicenseName,
+                  subtitleColor:
+                  isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                  titleColor:
+                  isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 ),
                 const SizedBox(height: 16),
 
@@ -235,44 +225,21 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            JText.awardedBy,
-                            style: AppTextStyle.dmSans(
-                              color: textColor,
-                              fontSize: 16.0,
-                              weight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: cardColor,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: const Color(0xFF6C38FF),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                      child:    TextFieldWidget(
+                        subTitle:JText.awardedBy ,
+                        subtitleColor:
+                        isDark ? JAppColors.lightGray100 : JAppColors.grayBlue800,
+                        titleColor:
+                        isDark ? Colors.white : JAppColors.grayBlue800,
                       ),
+                      // child: Column(
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: [
+                      //
+                      //     const SizedBox(height: 8),
+                      //
+                      //   ],
+                      // ),
                     ),
                     const SizedBox(width: 16),
                     Expanded(
@@ -288,86 +255,84 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          DropdownButtonFormField<String>(
-                            value: selectedYear,
-                            icon: Icon(
-                              Icons.keyboard_arrow_down,
-                              color: textColor,
-                            ),
-                            dropdownColor: backgroundColor,
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: cardColor,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                                ),
+                          SizedBox(
+                            height: 50,
+                            child: DropdownButtonFormField<String>(
+                              value: selectedYear,
+                              icon: Icon(
+                                Icons.keyboard_arrow_down,
+                                color: textColor,
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide(
-                                  color: const Color(0xFF6C38FF),
-                                ),
-                              ),
-                            ),
-                            items: years.map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: AppTextStyle.dmSans(
-                                    color: textColor,
-                                    fontSize: 16.0,
-                                    weight: FontWeight.w400,
+
+
+
+                              dropdownColor: backgroundColor,
+                              isExpanded: true,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: isDark ? JAppColors.darkGray800 : Colors.white,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    color: isDark ? JAppColors.darkGray800 : Colors.white,
                                   ),
                                 ),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                selectedYear = newValue;
-                              });
-                            },
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    width: 1.5,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                  borderSide: BorderSide(
+                                    color: const Color(0xFF6C38FF),
+                                  ),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+                              ),
+                              items: years
+                                  .map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: AppTextStyle.dmSans(
+                                      color: textColor,
+                                      fontSize: 16.0,
+                                      weight: FontWeight.w400,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedYear = newValue;
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    )                  ],
                 ),
                 const SizedBox(height: 48),
 
-                // Next Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Navigate to verification screen
-                      AppRouter.router.push('/verificationScreen');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6C38FF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      JText.nextStepVerification,
-                      style: AppTextStyle.dmSans(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        weight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                MainButton(
+                  onTap: () {
+                    AppRouter.router.push('/verificationScreen');
+                  },
+                  btn_title: JText.signUp,
+                  btn_radius: 10,
+                  btn_color: JAppColors.main,
+                  btn_boarder_color: Color(0xff7030F1),
+                  title_color: Colors.white,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
                 ),
+
+                // Next Button
               ],
             ),
           ),

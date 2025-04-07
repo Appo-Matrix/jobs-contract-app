@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/terms_condition_screen/widgets/signature_section.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -34,18 +35,20 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
   }
 
   void _onNextStep() {
-    if (_agreeToTerms && _consentToVisibility && _signatureController.text.isNotEmpty) {
-      // Proceed to next step
-      print('Proceeding to verification');
-    } else {
-      // Show error message
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(JText.pleaseAgreeAndSign),
-          backgroundColor: JAppColors.error400,
-        ),
-      );
-    }
+
+    AppRouter.router.push('/profileDetailsScreen');
+    // if (_agreeToTerms && _consentToVisibility && _signatureController.text.isNotEmpty) {
+    //   // Proceed to next step
+    //   print('Proceeding to verification');
+    // } else {
+    //   // Show error message
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       content: Text(JText.pleaseAgreeAndSign),
+    //       backgroundColor: JAppColors.error400,
+    //     ),
+    //   );
+    // }
   }
 
   @override
@@ -204,41 +207,6 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                 signatureController: _signatureController,
                 onSignatureImageSelected: _onSignatureImageSelected,
               ),
-              // TextFormField(
-              //   controller: _signatureController,
-              //   decoration: InputDecoration(
-              //     filled: false,
-              //     contentPadding: const EdgeInsets.symmetric(
-              //       horizontal: 16,
-              //       vertical: 16,
-              //     ),
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(8),
-              //       borderSide: BorderSide(
-              //         color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
-              //         width: 1,
-              //       ),
-              //     ),
-              //     enabledBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(8),
-              //       borderSide: BorderSide(
-              //         color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
-              //         width: 1,
-              //       ),
-              //     ),
-              //     focusedBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(8),
-              //       borderSide: BorderSide(
-              //         color: JAppColors.primary,
-              //         width: 1.5,
-              //       ),
-              //     ),
-              //   ),
-              //   style: AppTextStyle.dmSans(
-              //     color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-              //     fontSize: JSizes.fontSizeMd, weight: FontWeight.w500,
-              //   ),
-              // ),
 
               const SizedBox(height: 40),
 
