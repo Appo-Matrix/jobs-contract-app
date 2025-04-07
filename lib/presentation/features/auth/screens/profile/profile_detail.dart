@@ -321,7 +321,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
 
                 MainButton(
                   onTap: () {
-                    AppRouter.router.push('/verificationScreen');
+                    AppRouter.router.push('/uploadPortfolioScreen');
                   },
                   btn_title: JText.signUp,
                   btn_radius: 10,

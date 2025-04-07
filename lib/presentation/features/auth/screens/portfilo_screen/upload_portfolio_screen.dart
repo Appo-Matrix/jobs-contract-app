@@ -1,4 +1,7 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/auth/screens/portfilo_screen/widgets/upload_portfolio_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
@@ -6,6 +9,8 @@ import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/common_widgets/text_field_widget.dart';
 
 class UploadPortfolioScreen extends StatefulWidget {
   const UploadPortfolioScreen({super.key});
@@ -38,16 +43,16 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   JText.uploadPortfolio,
                   style: AppTextStyle.dmSans(
                     color: textColor,
-                    fontSize: 28.0,
-                    weight: FontWeight.w800,
+                    fontSize: 24.0,
+                    weight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Text(
                   JText.choosePreferredOption,
                   style: AppTextStyle.dmSans(
                     color: secondaryTextColor,
-                    fontSize: 16.0,
+                    fontSize: 14.0,
                     weight: FontWeight.w400,
                   ),
                 ),
@@ -70,16 +75,19 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   style: AppTextStyle.dmSans(
                     color: textColor,
                     fontSize: 16.0,
-                    weight: FontWeight.w500,
+                    weight: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(height: 8),
-                _buildUploadContainer(
-                  context,
+                const SizedBox(height: 12),
+                UploadContainerWidget(
                   isDark: isDark,
-                  cardColor: cardColor,
-                  purpleColor: purpleColor,
+                  cardColor: isDark ? JAppColors.darkGray800 : Colors.white,
+                  accentColor: purpleColor,
                   secondaryTextColor: secondaryTextColor,
+                  onTap: () {
+                    // Handle before image upload
+                    print('Upload before image');
+                  },
                 ),
                 const SizedBox(height: 24),
 
@@ -93,12 +101,15 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                _buildUploadContainer(
-                  context,
+                UploadContainerWidget(
                   isDark: isDark,
-                  cardColor: cardColor,
-                  purpleColor: purpleColor,
+                  cardColor: isDark ? JAppColors.darkGray800 : Colors.white,
+                  accentColor: purpleColor,
                   secondaryTextColor: secondaryTextColor,
+                  onTap: () {
+                    // Handle after image upload
+                    print('Upload after image');
+                  },
                 ),
                 const SizedBox(height: 24),
 
@@ -112,35 +123,25 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
+
                 Container(
-                  height: 150,
+                  height: 200,
                   decoration: BoxDecoration(
-                    color: cardColor,
+                    border: Border.all(color: Colors.grey[300]!),
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                    ),
                   ),
                   child: TextField(
                     maxLines: null,
-                    expands: true,
                     decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(16),
+                      hintText: "Enter a description...",
                       border: InputBorder.none,
-                      hintText: 'Enter description here...',
-                      hintStyle: AppTextStyle.dmSans(
-                        color: secondaryTextColor,
-                        fontSize: 14.0,
-                        weight: FontWeight.w400,
-                      ),
-                    ),
-                    style: AppTextStyle.dmSans(
-                      color: textColor,
-                      fontSize: 16.0,
-                      weight: FontWeight.w400,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.all(16),
                     ),
                   ),
                 ),
+
                 const SizedBox(height: 24),
 
                 // Estimated Service Cost
@@ -152,50 +153,18 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     weight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 8),
-                TextField(
+
+                TextFieldWidget(
+                  subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  isRequired: true,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: cardColor,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: purpleColor,
-                      ),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.attach_money,
-                      color: secondaryTextColor,
-                    ),
-                    hintText: 'Enter amount',
-                    hintStyle: AppTextStyle.dmSans(
-                      color: secondaryTextColor,
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
-                    ),
-                  ),
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 16.0,
-                    weight: FontWeight.w400,
-                  ),
                 ),
+
                 const SizedBox(height: 24),
 
                 // Estimated Completion Time
+
                 Text(
                   JText.estimatedCompletionTime,
                   style: AppTextStyle.dmSans(
@@ -204,154 +173,32 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     weight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 8),
-                TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: cardColor,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
-                        color: purpleColor,
-                      ),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.access_time,
-                      color: secondaryTextColor,
-                    ),
-                    hintText: 'e.g., 2 weeks',
-                    hintStyle: AppTextStyle.dmSans(
-                      color: secondaryTextColor,
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
-                    ),
-                  ),
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 16.0,
-                    weight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 32),
 
-                // Upload Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Navigate to next screen
-                      AppRouter.router.push('/nextScreen');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: purpleColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      JText.uploadPortfolio,
-                      style: AppTextStyle.dmSans(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        weight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                TextFieldWidget(
+                  subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  isRequired: true,
+                  keyboardType: TextInputType.number,
                 ),
+
+                const SizedBox(height: 32),
+                MainButton(
+                    btn_title: JText.uploadPortfolio,
+                    btn_radius: 10,
+                    btn_color: JAppColors.main,
+                    btn_boarder_color: Color(0xff7030F1),
+                    title_color: Colors.white,
+                    text_fontweight: FontWeight.w600,
+                    image_value: false,
+                    onTap: (){
+
+                      AppRouter.router.push('/termsConditionsScreen');
+                    }
+                ),
+
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUploadContainer(
-      BuildContext context, {
-        required bool isDark,
-        required Color cardColor,
-        required Color purpleColor,
-        required Color secondaryTextColor,
-      }) {
-    return Container(
-      height: 120,
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
-        ),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 36,
-              width: 36,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 5,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: Icon(
-                Icons.file_upload_outlined,
-                color: purpleColor,
-                size: 18,
-              ),
-            ),
-            const SizedBox(height: 6),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: JText.clickToUpload,
-                    style: AppTextStyle.dmSans(
-                      color: purpleColor,
-                      fontSize: 14.0,
-                      weight: FontWeight.w600,
-                    ),
-                  ),
-                  TextSpan(
-                    text: JText.orDragAndDrop,
-                    style: AppTextStyle.dmSans(
-                      color: secondaryTextColor,
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              JText.fileFormats,
-              style: AppTextStyle.dmSans(
-                color: secondaryTextColor,
-                fontSize: 12.0,
-                weight: FontWeight.w400,
-              ),
-            ),
-          ],
         ),
       ),
     );
