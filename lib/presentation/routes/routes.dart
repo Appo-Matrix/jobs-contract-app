@@ -45,6 +45,8 @@ enum Routes {
   uploadPortfolioScreen,
   profileDetailsScreen,
   specializationScreen,
-  verificationScreen
+  verificationScreen,
+  checkEmailScreen,
+  emailVerifiedScreen
 
 }

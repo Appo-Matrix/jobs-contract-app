@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 
 import '../../../../utils/common_widgets/appbar2.dart';
@@ -70,6 +71,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         svgPath: JImages.emailsvg,
                         iconSize: 30,
                         onTap: () {
+                          
+                          AppRouter.router.push('/checkEmailScreen');
                           // Handle tap
                         },
                       ),
@@ -85,6 +88,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         svgPath: JImages.phonesvg,
                         iconSize: 30,
                         onTap: () {
+
+                          AppRouter.router.push('/checkEmailScreen');
+
                           // Handle tap
                         },
                       ),

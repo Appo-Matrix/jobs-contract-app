@@ -21,6 +21,8 @@ import '../features/auth/screens/verify_profile/screens/verify_payment_method.da
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/otp/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/auth/verification_screen/check_email_screen.dart';
+import '../features/auth/verification_screen/email_verified_screen.dart';
 import '../features/auth/verification_screen/verification_screen.dart';
 import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
@@ -304,6 +306,16 @@ class AppRouter {
         path: '/verificationScreen',
         name: Routes.verificationScreen.name,
         builder: (context, state) => VerificationScreen(),
+      ),
+      GoRoute(
+        path: '/checkEmailScreen',
+        name: Routes.checkEmailScreen.name,
+        builder: (context, state) => CheckEmailScreen(),
+      ),
+      GoRoute(
+        path: '/emailVerifiedScreen',
+        name: Routes.emailVerifiedScreen.name,
+        builder: (context, state) => EmailVerifiedScreen(),
       ),
 
     ],

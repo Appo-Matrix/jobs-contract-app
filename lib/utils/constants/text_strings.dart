@@ -506,4 +506,27 @@ class JText {
     "Country",
     "International Service"
   ];
+
+
+
+
+  // Email Verification Screen
+  static const String emailVerified = "Email Verified";
+  static const String verificationMessage = "Your email is verified now, You can complete your profile now.";
+
+  // Notification Settings Dialog
+  static const String notificationSettings = "Notification Settings";
+  static const String notificationPreference = "I would Like to received Notifications About:";
+  static const String newJobOpportunities = "New Job Opportunities";
+  static const String promotionsDiscounts = "Promotions & Service Discounts";
+  static const String industryNews = "Construction Industry News";
+
+  // Check Email Screen
+  static const String checkEmail = "Check your email";
+  static const String passwordResetSent = "We sent a password reset link to";
+  static const String openEmailApp = "Open email app";
+  static const String didntReceiveEmail = "Didn't receive the email?";
+  static const String clickToResend = "Click to resend";
+
+
 }
