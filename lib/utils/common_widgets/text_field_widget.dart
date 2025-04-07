@@ -141,9 +141,9 @@ class TextFieldWidget extends StatelessWidget {
             text: TextSpan(
               text: subTitle,
               style: AppTextStyle.dmSans(
-                color: subtitleColor ?? JAppColors.darkGray800,
+                color: subtitleColor ?? JAppColors.darkGray700,
                 fontSize: JSizes.fontSizeMd,
-                weight: FontWeight.w500,
+                weight: FontWeight.w600,
               ),
               children: isRequired
                   ? [
@@ -164,8 +164,8 @@ class TextFieldWidget extends StatelessWidget {
           controller: textEditingController,
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
-            color: titleColor ?? JAppColors.darkGray800,
-            fontSize: 14.0,
+            color: titleColor ?? JAppColors.darkGray500,
+            fontSize: 16.0,
             weight: FontWeight.w400,
           ),
           decoration: InputDecoration(

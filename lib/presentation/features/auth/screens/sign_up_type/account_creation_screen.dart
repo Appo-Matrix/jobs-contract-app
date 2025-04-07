@@ -18,7 +18,14 @@ class AccountCreationScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
-      appBar: JAppBar2(title: JText.backToLogin),
+      appBar: JAppBar2(title: JText.backToLogin,
+
+
+
+        onBackPressed: () {
+          // Custom action when icon is pressed
+        },
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -33,10 +40,10 @@ class AccountCreationScreen extends StatelessWidget {
                       ? JAppColors.lightGray100
                       : JAppColors.darkGray800,
                   fontSize: 24.0,
-                  weight: FontWeight.w800,
+                  weight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 10),
               Text(
                 JText.chooseOption,
                 style: AppTextStyle.dmSans(
@@ -123,7 +130,7 @@ class AccountCreationScreen extends StatelessWidget {
                     ? JAppColors.lightGray100
                     : JAppColors.darkGray800,
                 fontSize: 18.0,
-                weight: FontWeight.w600,
+                weight: FontWeight.w500,
               ),
             ),
           ],

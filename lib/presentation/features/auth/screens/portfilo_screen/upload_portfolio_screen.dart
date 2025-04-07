@@ -11,6 +11,7 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/sizes.dart';
 
 class UploadPortfolioScreen extends StatefulWidget {
   const UploadPortfolioScreen({super.key});
@@ -194,6 +195,21 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                       AppRouter.router.push('/specializationScreen');
                     }
+                ),
+
+                MainButton(
+                  btn_title: JText.skip,
+                  btn_radius: 10,
+                  btn_color: Colors.transparent,
+                  btn_boarder_color: Colors.transparent,
+                  title_color: isDark
+                      ? JAppColors.darkGray100
+                      : JAppColors.lightGray800,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
+                  onTap: (){},
+
+                  text_size:  JSizes.fontSizeMd,
                 ),
 
               ],

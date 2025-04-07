@@ -2,6 +2,7 @@ library;
 
 class JText {
   static const String appName = "Job Contracts";
+  static const String donotHaveAccount = "Don’t have an account?";
   static const String iamClientHi = "I'm a client, Hiring Professionals";
   static const String skip = 'Skip';
   static const String signUpAs = 'Sign Up As';
@@ -17,6 +18,8 @@ class JText {
 
   // Button Actions
   static const String selected = 'Selected option: ';
+  static const String verifyAccount = 'Verify Account';
+  static const String verifyAccountChoose = 'Choose your preferred option to get started.';
 
   // Other Screen Titles (add as your app grows)
   static const String homeScreenTitle = 'Home';
@@ -64,6 +67,7 @@ class JText {
   static const String email = "Email";
   static const String emailEnter = "Enter your email";
   static const String password = "Password";
+  static const String confirmPassword = "Confirm Password";
   static const String remember = "Remember for 30 days";
   static const String forgetPassword = "Forgot password";
   static const String plesdr = "Don’t worry! It happens. Please enter the email associated with your account.";
@@ -148,6 +152,7 @@ class JText {
   static const String next = "Next";
   static const String enterPhoneNumber = "Enter Phone Number";
   static const String phoneNumberVerified = "Phone Number Verified";
+  static const String phone = "Phone";
   static const String phoneNumberVerifiedSuccessfully = "Your Phone number has been verified successfully.";
   static const String sendCode = "Send Code";
   static const String backToVerification = "Back to Verification";

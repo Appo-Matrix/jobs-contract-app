@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/common_widgets/text_field_widget.dart';
@@ -67,7 +68,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                         ),
                       ),
                       TextSpan(
-                        text: '*',
+                        text: ' *',
                         style: AppTextStyle.dmSans(
                           color: Colors.red,
                           fontSize: 20.0,
@@ -157,10 +158,20 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                               ),
                             ],
                           ),
-                          child: Icon(
-                            Icons.file_upload_outlined,
-                            color: JAppColors.primary,
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: SvgPicture.asset(
+                              JImages.upload,
+                              width: 16,
+                              height: 16,
+                              colorFilter: ColorFilter.mode(
+                                JAppColors.primary,
+                                BlendMode.srcIn,
+                              ),
+                            ),
                           ),
+
+
                         ),
                         const SizedBox(height: 8),
                         RichText(
@@ -323,7 +334,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                   onTap: () {
                     AppRouter.router.push('/uploadPortfolioScreen');
                   },
-                  btn_title: JText.signUp,
+                  btn_title: JText.nextStep,
                   btn_radius: 10,
                   btn_color: JAppColors.main,
                   btn_boarder_color: Color(0xff7030F1),
@@ -331,6 +342,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                   text_fontweight: FontWeight.w600,
                   image_value: false,
                 ),
+
 
                 // Next Button
               ],

@@ -44,6 +44,7 @@ enum Routes {
   termsConditionsScreen,
   uploadPortfolioScreen,
   profileDetailsScreen,
-  specializationScreen
+  specializationScreen,
+  verificationScreen
 
 }

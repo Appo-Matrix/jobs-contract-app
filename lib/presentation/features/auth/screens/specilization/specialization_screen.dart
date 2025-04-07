@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/specilization/widgets/selection_chip.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
+import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
 
 // Main Screen
@@ -46,7 +49,7 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
 
                   style: AppTextStyle.dmSans(
                       color: isDark ? JAppColors.lightGray100 : JAppColors
-                          .grayBlue800,
+                          .darkGray900,
                       fontSize: 24.0,
                       weight: FontWeight.w600,
                   ),
@@ -79,7 +82,7 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
                   JText.serviceType,
                   style: AppTextStyle.dmSans(
                     color: isDark ? JAppColors.lightGray100 : JAppColors
-                        .grayBlue800,
+                        .darkGray900,
                     fontSize: 24.0,
                     weight: FontWeight.w600,
                   ),
@@ -112,7 +115,7 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
                   JText.yearsOfExperience,
                   style: AppTextStyle.dmSans(
                     color: isDark ? JAppColors.lightGray100 : JAppColors
-                        .grayBlue800,
+                        .darkGray900,
                     fontSize: 24.0,
                     weight: FontWeight.w600,
                   ),
@@ -173,32 +176,25 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
                 ),
 
                 const SizedBox(height: 40),
+                MainButton(
+                  btn_title: JText.nextStepVerification,
+                  btn_radius: 10,
+                  btn_color: JAppColors.primary,
+                  btn_boarder_color: Colors.transparent,
+                  title_color: Colors.white,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
+                  onTap: (){
+
+
+                    AppRouter.router.push('/verificationScreen');
+
+                  },
+
+                  text_size:  JSizes.fontSizeMd,
+                ),
 
                 // Next Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Navigate to next screen
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileDetailsScreen()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6C38FF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text(
-                      JText.nextStepProfileDetails,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),

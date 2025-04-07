@@ -16,7 +16,12 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-
+    String? _validateRequired(String? value) {
+      if (value == null || value.trim().isEmpty) {
+        return JText.requiredField;
+      }
+      return null;
+    }
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray900 : Colors.white,
 
@@ -29,13 +34,17 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Already have an account?',
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: isDark
-                          ? JAppColors.darkGray300
-                          : Color(0xff667085),
-                      fontWeight: FontWeight.w400),
+                  JText.donotHaveAccount,
+                  style: AppTextStyle.dmSans(
+                    color: isDark
+                        ? JAppColors.darkGray100
+                        : JAppColors.lightGray800,
+                    fontSize: 16.0,
+                    weight: FontWeight.w400,
+
+                  ),
+
+
                 ),
 
                 SizedBox(width: JSizes.spaceBtwItems-10,),
@@ -75,31 +84,27 @@ class LoginScreen extends StatelessWidget {
                TopHeader(logo: JImages.mainLogo, title: JText.login, subTitle: JText.loginTitle, isDark: isDark,),
               SizedBox(height: JSizes.spaceBtwItems -10,),
 
+
               TextFieldWidget(
                 subTitle: JText.email,
                 hintText: JText.emailEnter,
-                prefixIcon: Icons.person_outline,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
+                validator: _validateRequired,
               ),
-
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               TextFieldWidget(
-                hintText: '••••••••',
-                prefixIcon: Icons.lock_outline,
-                obscureText: true,
                 subTitle: JText.password,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                hintText: '******',
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
+                validator: _validateRequired,
               ),
 
-              //const TLoginForm(),
-              // TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
+
               const SizedBox(
                 height: 12,
               ),

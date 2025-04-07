@@ -34,7 +34,7 @@ class TopHeader extends StatelessWidget {
           style: AppTextStyle.dmSans(
             color: isDark
                 ? JAppColors.darkGray100
-                : JAppColors.lightGray800,
+                : JAppColors.lightGray900,
             fontSize: JSizes.fontSizeLgx,
             weight: FontWeight.w600,
           ),
@@ -47,9 +47,9 @@ class TopHeader extends StatelessWidget {
           style: AppTextStyle.dmSans(
             color: isDark
             ? JAppColors.darkGray100
-            : JAppColors.lightGray700,
+            : JAppColors.lightGray500,
             fontSize: JSizes.fontSizeMd,
-            weight: FontWeight.w400,
+            weight: FontWeight.w500,
           ),
         ),
         const SizedBox(

@@ -11,6 +11,7 @@ import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../routes/app_routes.dart';
+import '../Login/widgets/login_header.dart';
 
 class AddressFormScreen extends StatefulWidget {
   const AddressFormScreen({super.key});
@@ -89,17 +90,9 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
             children: [
 
               SizedBox(height: JSizes.appBarHeight,),
-              Text(
-                JText.address,
-                style: AppTextStyle.dmSans(
-                  color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  fontSize: 28.0,
-                  weight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(height: 24),
+              TopHeader(logo: JImages.mainLogo, title: JText.address, subTitle: '', isDark: isDark,),
 
-              // Street & Number Field (Required)
+
               TextFieldWidget(
                 subTitle: JText.streetNumber,
                 hintText: 'Enter street and number',
@@ -109,7 +102,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 isRequired: true,
                 validator: _validateRequired,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // Neighborhood Area Field
               TextFieldWidget(
@@ -119,7 +112,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // City Field (Required)
               TextFieldWidget(
@@ -131,7 +124,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 isRequired: true,
                 validator: _validateRequired,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // State/Province Field (Required)
               TextFieldWidget(
@@ -143,7 +136,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 isRequired: true,
                 validator: _validateRequired,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // Country Field (Required)
               TextFieldWidget(
@@ -155,7 +148,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 isRequired: true,
                 validator: _validateRequired,
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // Postal Code Field (Required)
               TextFieldWidget(
@@ -168,7 +161,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 validator: _validateRequired,
                 keyboardType: TextInputType.number,
               ),
-              const SizedBox(height: 16),
+               SizedBox(height: JSizes.spaceBtwInputFields),
 
               // Map Location (Required)
               Column(

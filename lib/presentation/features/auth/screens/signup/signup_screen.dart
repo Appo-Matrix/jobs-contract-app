@@ -5,6 +5,7 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
+import '../../../../../utils/common_widgets/PhoneInputWidget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -36,12 +37,12 @@ class SignupScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Already have an account?',
+                  JText.alreadyAccount,
                   style: TextStyle(
                       fontSize: 16,
                       color: isDark
-                          ? JAppColors.darkGray300
-                          : Color(0xff667085),
+                          ? JAppColors.darkGray400
+                          :  JAppColors.darkGray600,
                       fontWeight: FontWeight.w400),
                 ),
                 GestureDetector(
@@ -53,7 +54,7 @@ class SignupScreen extends StatelessWidget {
 
                   },
                   child: Text(
-                    ' Log in',
+                    JText.logIn,
                     style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.darkGray100
@@ -71,7 +72,7 @@ class SignupScreen extends StatelessWidget {
       backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 60, right: 15, left: 15),
+          padding: EdgeInsets.only(top: 60, right: 16, left: 16),
           // padding: TSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -81,57 +82,73 @@ class SignupScreen extends StatelessWidget {
               TextFieldWidget(
                 subTitle: JText.firstName,
                 hintText: JText.firstNameText,
-                prefixIcon: Icons.person_outline,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.darkGray900,
-                titleColor:
-                isDark ? JAppColors.lightGray100 : JAppColors.darkGray900,
-              ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
-
-              TextFieldWidget(
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
                 validator: _validateRequired,
+              ),
+
+              SizedBox(height: JSizes.spaceBtwInputFields),
+              TextFieldWidget(
                 subTitle: JText.lastName,
                 hintText: JText.lastNameText,
-                prefixIcon: Icons.person_outline,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
+                validator: _validateRequired,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: JText.email,
-                hintText: JText.enterYourName,
-                prefixIcon: Icons.person_outline,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                hintText: JText.emailEnter,
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
                 validator: _validateRequired,
+              ),
 
+              SizedBox(height: JSizes.spaceBtwInputFields),
+
+              PhoneInputWidget(
+                isRequired: true,
+                onPhoneChanged: (phone) {
+                  // Handle phone number change
+                  print("Phone changed: $phone");
+                },
+                onCountryCodeChanged: (countryCode) {
+                  // Handle country code change
+                  print("Country code changed: $countryCode");
+                },
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                hintText: JText.createPassword,
-                prefixIcon: Icons.lock_outline,
                 subTitle: JText.password,
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                hintText: '*****',
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
                 validator: _validateRequired,
-
               ),
-              SizedBox(height: 10),
-              Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
+              SizedBox(height: 4,)
+,              Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
                 color: isDark
                     ? JAppColors.darkGray100
                     : JAppColors.lightGray500,
                 fontSize: JSizes.fontSizeSm,
                 weight: FontWeight.w500,
               ),),
+
+              SizedBox(height: JSizes.spaceBtwInputFields),
+              TextFieldWidget(
+                subTitle: JText.confirmPassword,
+                hintText: '*****',
+                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
+                validator: _validateRequired,
+              ),
+
 
               const SizedBox(height: 25),
 
@@ -150,19 +167,9 @@ class SignupScreen extends StatelessWidget {
                 image_value: false,
               ),
               const SizedBox(height: 12),
-              // MainButton(
-              //   btn_title: JText.signupWithGoogle,
-              //   btn_radius: 10,
-              //   btn_color: Colors.transparent,
-              //   btn_boarder_color: JAppColors.t,
-              //   title_color: JAppColors.lightGray700,
-              //   text_fontweight: FontWeight.w600,
-              //   btn_image: JImages.googleImage,
-              //   image_value: true,
-              //   text_size: JSizes.fontSizeMd,
-              // ),
-
               /// Create Account
+
+
               const SizedBox(height: 30),
             ],
           ),

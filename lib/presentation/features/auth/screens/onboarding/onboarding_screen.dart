@@ -3,6 +3,7 @@ import 'package:job_contracts/presentation/features/auth/screens/onboarding/widg
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/smooth_page_indicator.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
+import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/device/device_utility.dart';
 import 'models/onboarding_item.dart';
@@ -130,22 +131,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   SizedBox(height: 8),
                   Text(
                     _onboardingItems[_currentPage].title,
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
+                    style: AppTextStyle.dmSans(
                       color: isDark
                           ? JAppColors.darkGray100
                           : JAppColors.lightGray800,
+                      fontSize: 30.0,
+                      weight: FontWeight.w600,
                       height: 1.2,
+
                     ),
+
                   ),
                   SizedBox(height: 16),
                   Text(
                     _onboardingItems[_currentPage].description,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[600],
-                      height: 1.5,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800,
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                      height: 1.2,
+
                     ),
                   ),
                   SizedBox(height: 32),

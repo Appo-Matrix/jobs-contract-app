@@ -6,8 +6,6 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 
 class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final bool showBackButton;
-  final Widget? leading;
   final List<Widget>? actions;
   final double elevation;
   final Widget? flexibleSpace;
@@ -18,8 +16,6 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   const JAppBar2({
     Key? key,
     required this.title,
-    this.showBackButton = true,
-    this.leading,
     this.actions,
     this.elevation = 0,
     this.flexibleSpace,
@@ -33,32 +29,51 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return AppBar(
-      titleSpacing: showBackButton ? 0 : NavigationToolbar.kMiddleSpacing,
-      title: Text(
-        title,
-        style: AppTextStyle.dmSans(
-          color: isDark ? Colors.white : JAppColors.darkGray800,
-          fontSize: JSizes.fontSizeLg,
-          weight: FontWeight.w500,
+      // Use custom title layout
+      title: Align(
+        alignment: Alignment.centerLeft,
+        child: GestureDetector(
+          onTap: onBackPressed ?? () => Navigator.pop(context),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: Row(
+
+              children: [
+
+
+                GestureDetector(
+                  onTap: onBackPressed,
+                  child: Icon(Icons.arrow_back ,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray600,
+                  size: 20,
+
+                  ),
+                ),
+                SizedBox(width: 4,),
+                Text(
+                  title,
+                  style: AppTextStyle.dmSans(
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray600,
+                    fontSize: 14.0,
+                    weight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
-      leading: showBackButton
-          ? leading ??
-          IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-            ),
-            onPressed: onBackPressed ?? () => Navigator.pop(context),
-          )
-          : null,
+      titleSpacing: 0,
+      // Remove default leading widget
+      leading: Container(),
+      leadingWidth: 0,
       actions: actions,
       elevation: elevation,
       backgroundColor: backgroundColor ??
           (isDark ? JAppColors.darkGray900 : Colors.white),
       flexibleSpace: flexibleSpace,
       centerTitle: centerTitle,
-      automaticallyImplyLeading: showBackButton,
+      automaticallyImplyLeading: false,
     );
   }
 

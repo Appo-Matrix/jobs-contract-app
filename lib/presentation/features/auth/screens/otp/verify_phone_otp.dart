@@ -6,10 +6,12 @@ import 'package:pinput/pinput.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/circular_shape.dart';
+import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 
 class VerifyPhoneOtp extends StatefulWidget {
   const VerifyPhoneOtp({super.key});
@@ -52,6 +54,8 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
       ),
     );
     return Scaffold(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+
       appBar: JAppbar(
         leadingIcon: BackCircle(
           isDark: isDark,
@@ -62,25 +66,18 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
       ),
       bottomNavigationBar: Padding(padding: EdgeInsets.symmetric(vertical: 26,horizontal: 16),child:               SizedBox(
         width: double.infinity,
-        child: ElevatedButton(
-          onPressed: () {
-            // Verify OTP logic
+        child:
+        MainButton(
+          btn_title: JText.sendCode,
+          btn_radius: 10,
+          btn_color: JAppColors.main,
+          btn_boarder_color: Color(0xff7030F1),
+          title_color: Colors.white,
+          text_fontweight: FontWeight.w600,
+          image_value: false,
+          onTap: (){
+            AppRouter.router.push('/verifyPhoneOtp');
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: JAppColors.primary,
-            padding: const EdgeInsets.symmetric(vertical: 14),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-          child: Text(
-            JText.next,
-            style: AppTextStyle.dmSans(
-              color: Colors.white,
-              fontSize: 16.0,
-              weight: FontWeight.w600,
-            ),
-          ),
         ),
       ),
           ),

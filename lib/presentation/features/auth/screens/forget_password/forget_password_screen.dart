@@ -67,7 +67,6 @@ class ForgetPasswordScreen extends StatelessWidget {
               TextFieldWidget(
                 subTitle: JText.email,
                 hintText: JText.emailEnter,
-                prefixIcon: Icons.person_outline,
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
@@ -96,13 +95,15 @@ class ForgetPasswordScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Already have an account?',
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: isDark
-                            ? JAppColors.darkGray300
-                            : Color(0xff667085),
-                        fontWeight: FontWeight.w400),
+                    JText.alreadyAccount,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800,
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                    ),
+
                   ),
 
                   SizedBox(width: JSizes.spaceBtwItems - 10),

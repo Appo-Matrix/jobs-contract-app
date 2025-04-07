@@ -41,12 +41,12 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
             title: title,
             actions: actions,
           ),
-          if (showDivider)
-            Divider(
-              height: 1,
-              thickness: 1,
-              color: isDark ? JAppColors.darkGray600 : Colors.grey.shade200,
-            ),
+          // if (showDivider)
+          //   Divider(
+          //     height: 1,
+          //     thickness: 1,
+          //     color: isDark ? JAppColors.darkGray600 : Colors.grey.shade200,
+          //   ),
         ],
       ),
     );

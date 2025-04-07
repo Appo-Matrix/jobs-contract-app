@@ -68,8 +68,8 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                 JText.termsAndConditions,
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  fontSize: 28.0,
-                  weight: FontWeight.w700,
+                  fontSize: 24.0,
+                  weight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 24),
@@ -77,7 +77,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                 JText.termsAndConditions,
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
-                  fontSize: JSizes.fontSizeMd,
+                  fontSize: JSizes.fontSizeSm,
                   weight: FontWeight.w500,
                 ),
               ),
@@ -213,7 +213,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
               // Next Step Button
               MainButton(
                 onTap: _onNextStep,
-                btn_title: JText.nextStepVerification,
+                btn_title: JText.nextStep,
                 btn_radius: 10,
                 btn_color: JAppColors.primary,
                 btn_boarder_color: JAppColors.primary,

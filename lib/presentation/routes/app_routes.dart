@@ -21,6 +21,7 @@ import '../features/auth/screens/verify_profile/screens/verify_payment_method.da
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
 import '../features/auth/screens/otp/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
+import '../features/auth/verification_screen/verification_screen.dart';
 import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/contract/contract_detail/contract_detail_screen.dart';
@@ -298,6 +299,11 @@ class AppRouter {
         path: '/specializationScreen',
         name: Routes.specializationScreen.name,
         builder: (context, state) => SpecializationScreen(),
+      ),
+      GoRoute(
+        path: '/verificationScreen',
+        name: Routes.verificationScreen.name,
+        builder: (context, state) => VerificationScreen(),
       ),
 
     ],
