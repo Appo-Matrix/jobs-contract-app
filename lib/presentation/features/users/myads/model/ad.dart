@@ -6,7 +6,6 @@ class Ad {
   final String title;
   final double price;
   final String category;
-  final AdStatus status;
   final String imageUrl;
   final String? description;
   final String? location;
@@ -17,7 +16,6 @@ class Ad {
     required this.title,
     required this.price,
     required this.category,
-    required this.status,
     required this.imageUrl,
     this.description,
     this.location,
@@ -33,10 +31,7 @@ class Ad {
       title: json['title'],
       price: json['price'].toDouble(),
       category: json['category'],
-      status: AdStatus.values.firstWhere(
-            (e) => e.toString() == 'AdStatus.${json['status']}',
-        orElse: () => AdStatus.draft,
-      ),
+
       imageUrl: json['imageUrl'],
       description: json['description'],
       location: json['location'],
@@ -52,7 +47,6 @@ class Ad {
       'title': title,
       'price': price,
       'category': category,
-      'status': status.toString().split('.').last,
       'imageUrl': imageUrl,
       'description': description,
       'location': location,
