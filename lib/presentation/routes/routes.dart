@@ -32,8 +32,6 @@ enum Routes {
   supportRequestsScreen,
   membershipPlansScreen,
   languageScreen,
-  languageSelectionScreen,
-  languageDetailScreen,
   jobDetailScreen,
   jobDetailsPage,
   reportJobScreen,

@@ -34,9 +34,7 @@ import '../features/users/home/home_screen.dart';
 import '../features/users/home/job_details/JobDetailScreen.dart';
 import '../features/users/home/job_details/job_detail_page.dart';
 import '../features/users/home/job_details/report_job_screen.dart';
-import '../features/users/language/language_detail_screen.dart';
 import '../features/users/language/language_screen.dart';
-import '../features/users/language/language_selection_screen.dart';
 import '../features/users/message/chat_screen.dart';
 import '../features/users/myads/addetails_screen.dart';
 import '../features/users/myads/adupload_screen.dart';
@@ -266,16 +264,7 @@ class AppRouter {
         name: Routes.languageScreen.name,
         builder: (context, state) => LanguageScreen(),
       ),
-      GoRoute(
-        path: '/languageSelectionScreen',
-        name: Routes.languageSelectionScreen.name,
-        builder: (context, state) => LanguageSelectionScreen(),
-      ),
-      GoRoute(
-        path: '/languageDetailScreen',
-        name: Routes.languageDetailScreen.name,
-        builder: (context, state) => LanguageDetailScreen(),
-      ),
+
       GoRoute(
         path: '/jobDetailScreen',
         name: Routes.jobDetailScreen.name,
