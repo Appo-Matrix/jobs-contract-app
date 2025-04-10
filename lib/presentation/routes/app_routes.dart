@@ -27,6 +27,9 @@ import '../features/auth/verification_screen/verification_screen.dart';
 import '../features/users/NavigationMenu.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/contract/contract_detail/contract_detail_screen.dart';
+import '../features/users/helpandsupport/contact_support.dart';
+import '../features/users/helpandsupport/reports_screen.dart';
+import '../features/users/helpandsupport/support_request.dart';
 import '../features/users/home/home_screen.dart';
 import '../features/users/home/job_details/JobDetailScreen.dart';
 import '../features/users/home/job_details/job_detail_page.dart';
@@ -35,11 +38,12 @@ import '../features/users/language/language_detail_screen.dart';
 import '../features/users/language/language_screen.dart';
 import '../features/users/language/language_selection_screen.dart';
 import '../features/users/message/chat_screen.dart';
+import '../features/users/myads/addetails_screen.dart';
+import '../features/users/myads/adupload_screen.dart';
+import '../features/users/myads/create_ad_screen.dart';
+import '../features/users/myads/my_ads_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
-import '../features/users/reports/contact_support.dart';
-import '../features/users/reports/reports_screen.dart';
-import '../features/users/reports/support_request.dart';
 import '../features/users/screen/account_screen/account_setting_screen.dart';
 import '../features/users/screen/account_screen/changed_password_screen.dart';
 import '../features/users/screen/account_screen/preference_screen.dart';
@@ -316,6 +320,26 @@ class AppRouter {
         path: '/emailVerifiedScreen',
         name: Routes.emailVerifiedScreen.name,
         builder: (context, state) => EmailVerifiedScreen(),
+      ),
+      GoRoute(
+        path: '/myAdsScreen',
+        name: Routes.myAdsScreen.name,
+        builder: (context, state) => MyAdsScreen(),
+      ),
+      GoRoute(
+        path: '/createAdScreen',
+        name: Routes.createAdScreen.name,
+        builder: (context, state) => CreateAdScreen(),
+      ),
+      GoRoute(
+        path: '/adUploadScreen',
+        name: Routes.adUploadScreen.name,
+        builder: (context, state) => AdUploadScreen(),
+      ),
+      GoRoute(
+        path: '/adDetailsScreen',
+        name: Routes.adDetailsScreen.name,
+        builder: (context, state) => AdDetailsScreen(),
       ),
 
     ],

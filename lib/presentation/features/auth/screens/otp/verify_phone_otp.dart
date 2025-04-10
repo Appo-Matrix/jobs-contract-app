@@ -76,7 +76,7 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
           text_fontweight: FontWeight.w600,
           image_value: false,
           onTap: (){
-            AppRouter.router.push('/verifyPhoneOtp');
+            AppRouter.router.push('/resetPasswordScreen');
           },
         ),
       ),

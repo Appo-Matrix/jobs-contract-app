@@ -252,7 +252,8 @@ class ContractCard extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child: MainButton(
+                    child:
+                    MainButton(
                       btn_title: "Submit Work",
                       btn_radius: 10,
                       btn_color: JAppColors.main,

@@ -449,6 +449,7 @@ class JText {
   static const String clickToUpload = 'Click to upload';
   static const String orDragAndDrop = ' or drag and drop';
   static const String fileFormats = 'PDF, PNG, JPG (max. 800×400px)';
+  static const String videoFormats = 'MP4, MOV, AVI (max. 800×400px)';
 
   // Headers
   static const String uploadPortfolio = 'Upload Portfolio';
@@ -527,6 +528,55 @@ class JText {
   static const String openEmailApp = "Open email app";
   static const String didntReceiveEmail = "Didn't receive the email?";
   static const String clickToResend = "Click to resend";
+
+
+
+
+  static const String myAds = 'My Ads';
+  static const String createAd = 'Create Ad';
+
+  // Tab Labels
+  static const String active = 'Active';
+  static const String drafts = 'Drafts';
+  static const String paused = 'Paused';
+
+  // Ad Card
+  static const String adTitlePlaceholder = 'Ad Title here';
+  static const String price = 'Price';
+  static const String category = 'Category';
+  static const String labor = 'Labor';
+  static const String viewDetails = 'View Details';
+  static const String editAd = 'Edit Ad';
+
+  // Currency
+  static const String currencySymbol = '\$';
+
+  // Ad Details (for when you expand the functionality)
+  static const String adDetails = 'Ad Details';
+  static const String contactInfo = 'Contact Info';
+  static const String location = 'Location';
+  static const String postedOn = 'Posted on';
+
+  static const String adDescription = 'Ad Description';
+
+
+  // Create Ad Screen
+  static const String adCategory = 'Ad Category';
+  static const String adTitle = 'Ad Title';
+  static const String writeTitleHere = 'Write the Title here';
+
+
+
+  // Upload Ad Screen
+  static const String uploadImages = 'Upload Images';
+  static const String uploadVideos = 'Upload Videos';
+  static const String moveToDrafts = 'Move to Drafts';
+
+
+  static const String publishAd = 'Publish Ad';
+  static const String shareAd = 'Share Ad';
+  static const String deleteAd = 'Delete Ad';
+
 
 
 }

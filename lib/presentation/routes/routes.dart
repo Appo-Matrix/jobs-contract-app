@@ -47,6 +47,10 @@ enum Routes {
   specializationScreen,
   verificationScreen,
   checkEmailScreen,
-  emailVerifiedScreen
+  emailVerifiedScreen,
+  myAdsScreen,
+  createAdScreen,
+  adUploadScreen,
+  adDetailsScreen
 
 }

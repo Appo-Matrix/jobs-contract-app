@@ -149,7 +149,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                           width: 48,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(12)),
-                            color: Colors.white,
+                            color: isDark ? JAppColors.lightGray200 : Colors.white,
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.1),
@@ -180,7 +180,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                               TextSpan(
                                 text: JText.clickToUpload,
                                 style: AppTextStyle.dmSans(
-                                  color: JAppColors.primary,
+                                  color: isDark ? Colors.white :JAppColors.darkGray800,
                                   fontSize: 16.0,
                                   weight: FontWeight.w600,
                                 ),

@@ -191,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           // Drawer items using the custom widget
           DrawerItem(
             iconPath: JImages.profilesetting,
-            title: 'Profile Settings',
+            title: 'Account Settings',
             iconColor:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
@@ -213,6 +213,26 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             },
           ),
 
+          DrawerItem(
+            iconPath: JImages.proposal,
+            title: 'Proposal',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              // AppRouter.router.push('/membershipPlansScreen');
+              // Navigate to applications
+            },
+          ),
+          DrawerItem(
+            iconPath: JImages.proposal,
+            title: 'My Ads',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/myAdsScreen');
+              // Navigate to applications
+            },
+          ),
           DrawerItem(
             iconPath: JImages.upgrade,
             title: 'Upgrade',
@@ -240,6 +260,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
+              AppRouter.router.push('/contactSupportScreen');
+
               // Navigate to notifications
             },
           ),

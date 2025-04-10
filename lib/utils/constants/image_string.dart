@@ -77,6 +77,7 @@ class JImages {
   static const String upload = "assets/svg/upload.svg";
   static const String emailsvg = "assets/svg/emailsvg.svg";
   static const String phonesvg = "assets/svg/phonesvg.svg";
+  static const String proposal = "assets/icons/proposal.png";
 
 
 

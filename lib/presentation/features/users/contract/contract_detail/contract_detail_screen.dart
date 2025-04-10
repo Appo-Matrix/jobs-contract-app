@@ -385,7 +385,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/activity_log_section.dart';
 import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/conractor_profile.dart';
@@ -413,8 +412,7 @@ class ContractDetailScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
-      bottomNavigationBar:               Padding(
+      bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: SizedBox(
           height: 50,
@@ -440,12 +438,10 @@ class ContractDetailScreen extends StatelessWidget {
                   btn_title: JText.sendMessage,
                   btn_radius: 10,
                   btn_color: Colors.transparent,
-                  btn_boarder_color: isDark
-                      ? JAppColors.darkGray100
-                      : JAppColors.primary,
-                  title_color: isDark
-                      ? JAppColors.darkGray100
-                      : JAppColors.primary,
+                  btn_boarder_color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
+                  title_color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
                   text_fontweight: FontWeight.w600,
                   image_value: false,
                   onTap: () {},
@@ -456,7 +452,6 @@ class ContractDetailScreen extends StatelessWidget {
           ),
         ),
       ),
-
       appBar: JAppbar(
         title: Text(
           JText.appBarTitle,
@@ -481,7 +476,6 @@ class ContractDetailScreen extends StatelessWidget {
             children: [
               // Contract description section
 
-
               const SizedBox(height: 12),
 
               ContractDescription(isDark: isDark),
@@ -489,8 +483,7 @@ class ContractDetailScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Activity log section
-            ActivityLogSection(isDark: isDark),
-
+              ActivityLogSection(isDark: isDark),
 
               const SizedBox(height: 16),
 
@@ -499,8 +492,6 @@ class ContractDetailScreen extends StatelessWidget {
               ContractDetailsSection(isDark: isDark),
 
               const SizedBox(height: 24),
-
-
 
               // Bottom indicator
             ],
@@ -512,9 +503,3 @@ class ContractDetailScreen extends StatelessWidget {
 }
 
 // Separate widgets moved to contract_detail_widgets.dart
-
-
-
-
-
-

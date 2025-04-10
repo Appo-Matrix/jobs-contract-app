@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
+import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
@@ -30,16 +31,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     return Scaffold(
     backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
       appBar: JAppbar(
-
-        leadingIcon: JCircularAvatar(
+        leadingIcon: BackCircle(
           isDark: isDark,
-          radius: 20,
-          child: IconButton(onPressed: () {  },
-                  
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900, icon: Icon(   CupertinoIcons.back,),
-            
- 
-          ),
+          onTap: (){
+            Navigator.pop(context);
+          },
         ),
       ),
 
@@ -82,14 +78,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             SizedBox(height: JSizes.spaceBtwSections,),
             TextFieldWidget(
               hintText: JText.newPassword,
-              prefixIcon: Icons.person_outline,
             ),
             SizedBox(height: JSizes.spaceBtwInputFields,),
 
 
             TextFieldWidget(
               hintText: JText.repeatPassword,
-              prefixIcon: Icons.person_outline,
             ),
 
 
