@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
-import '../../../../utils/common_widgets/appbar2.dart';
-import '../../../../utils/common_widgets/main_button.dart';
-import '../../../../utils/constants/app_text_style.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/device/device_utility.dart';
-import '../../../routes/app_routes.dart';
+import '../../../../../utils/common_widgets/appbar2.dart';
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
+
 
 
 class EmailVerifiedScreen extends StatefulWidget {

@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 
-import '../../../../utils/common_widgets/appbar2.dart';
-import '../../../../utils/common_widgets/main_button.dart';
-import '../../../../utils/common_widgets/option_card.dart';
-import '../../../../utils/constants/app_text_style.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/constants/text_strings.dart';
-import '../../../../utils/device/device_utility.dart';
+import '../../../../../utils/common_widgets/appbar2.dart';
+import '../../../../../utils/common_widgets/option_card.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 class VerificationScreen extends StatefulWidget {
   const VerificationScreen({super.key});
