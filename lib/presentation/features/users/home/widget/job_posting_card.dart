@@ -518,31 +518,15 @@ class _JobPostingCardState extends State<JobPostingCard> {
               // ),
             ],
           ),
-          const SizedBox(height: 20),
 
           // Description Section with styled header
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: widget.isDark ? Colors.black.withOpacity(0.2) : Colors.grey.withOpacity(0.05),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: widget.isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
-                width: 1,
-              ),
-            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Job Description",
-                  style: AppTextStyle.dmSans(
-                    fontSize: JSizes.fontSizeSm,
-                    weight: FontWeight.w600,
-                    color: widget.isDark ? Colors.white : JAppColors.lightGray900,
-                  ),
-                ),
+
                 const SizedBox(height: 8),
 
                 // Description Text with AnimatedCrossFade for smooth transition
@@ -602,7 +586,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
             ),
           ),
 
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
 
           // Divider
           Divider(

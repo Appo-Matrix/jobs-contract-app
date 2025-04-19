@@ -1,13 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/home/widget/RealEstateJobCard.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../recent_jobs/recent_jobs_screen.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../routes/app_routes.dart';
+import '../models/job_posting.dart';
 import '../widget/job_posting_card.dart';
 
 class BestMatchesPage extends StatelessWidget {
@@ -15,7 +16,74 @@ class BestMatchesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isDark = JDeviceUtils.isDarkMode(context);
+    final List<JobPosting> jobPostings = [
+      JobPosting(
+        jobTitle: "Plumbers Construction Specialists",
+        description: "Hands-on building and maintenance tasks...",
+        salary: "\$20,000 - \$25,000",
+        category: "Site Inspections",
+        jobType: "Onsite",
+        duration: "1 Month",
+        employerName: "James Smith",
+        location: "New York, USA",
+        postedTime: "2 hrs ago",
+        isVerified: true,
+        employerImage: JImages.image,
+      ),
+      JobPosting(
+        jobTitle: "Electrician for High Rise",
+        description: "Experienced electrician for commercial buildings...",
+        salary: "\$18,000 - \$22,000",
+        category: "Electrical",
+        jobType: "Remote",
+        duration: "3 Months",
+        employerName: "Amélie Laurent",
+        location: "California, USA",
+        postedTime: "4 hrs ago",
+        isVerified: false,
+        employerImage: JImages.image,
+      ),
+      JobPosting(
+        jobTitle: "HVAC Technician",
+        description: "Install and maintain heating, ventilation, and air conditioning systems.",
+        salary: "\$15,000 - \$20,000",
+        category: "Maintenance",
+        jobType: "Hybrid",
+        duration: "2 Months",
+        employerName: "Carlos Gonzalez",
+        location: "Texas, USA",
+        postedTime: "1 day ago",
+        isVerified: true,
+        employerImage: JImages.image,
+      ),
+      JobPosting(
+        jobTitle: "Interior Designer",
+        description: "Create functional and beautiful interior spaces for homes and offices.Create functional and beautiful interior spaces for homes and offices.Create functional and beautiful interior spaces for homes and offices.Create functional and beautiful interior spaces for homes and offices.Create functional and beautiful interior spaces for homes and offices.",
+        salary: "\$25,000 - \$30,000",
+        category: "Design",
+        jobType: "Remote",
+        duration: "6 Weeks",
+        employerName: "Sophie Tan",
+        location: "Toronto, Canada",
+        postedTime: "5 hrs ago",
+        isVerified: false,
+        employerImage: JImages.image,
+      ),
+      JobPosting(
+        jobTitle: "Site Supervisor",
+        description: "Oversee daily operations on construction sites.",
+        salary: "\$30,000 - \$40,000",
+        category: "Supervision",
+        jobType: "Onsite",
+        duration: "3 Months",
+        employerName: "Liam Johnson",
+        location: "Florida, USA",
+        postedTime: "3 days ago",
+        isVerified: true,
+        employerImage: JImages.image,
+      ),
+    ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,31 +99,29 @@ class BestMatchesPage extends StatelessWidget {
             ),
           ),
         ),
+
         Expanded(
           child: ListView.builder(
-            itemCount: 5,
+            itemCount: jobPostings.length,
             itemBuilder: (context, index) {
-              return
-                GestureDetector(
+              final job = jobPostings[index];
+              return GestureDetector(
                 onTap: () {
                   AppRouter.router.push('/jobDetailScreen');
                 },
                 child: JobPostingCard(
-                  jobTitle: "Plumbers Construction Specialists",
-                  description:
-                      "Hands-on Building Tasks. Hands-on Building Tasks. Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.Hands-on Building Tasks.",
-                  salary: "\$20,000 - \$25,000",
-                  category: "Site Inspections",
-                  isVerified: true,
-                  employerImage: JImages.image,
+                  jobTitle: job.jobTitle,
+                  description: job.description,
+                  salary: job.salary,
+                  category: job.category,
+                  isVerified: job.isVerified,
+                  employerImage: job.employerImage,
                   isDark: isDark,
                 ),
               );
             },
           ),
         ),
-
-
       ],
     );
   }
