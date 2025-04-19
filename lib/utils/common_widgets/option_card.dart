@@ -40,7 +40,7 @@ class OptionCard extends StatelessWidget {
 
     // Determine colors based on theme or provided custom colors
     final bgColor = backgroundColor ??
-        (isDark ? JAppColors.darkGray700 : const Color(0xFFF1F2F6));
+        (isDark ? JAppColors.backGroundDarkCard : const Color(0xFFF1F2F6));
 
     final defaultIconColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
     final defaultTextColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;

@@ -1,6 +1,5 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/auth/screens/portfilo_screen/widgets/upload_header.dart';
 import 'package:job_contracts/presentation/features/auth/screens/portfilo_screen/widgets/upload_portfolio_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
@@ -26,9 +25,8 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
     final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
     final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
-    final secondaryTextColor = isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
-    final cardColor = isDark ? JAppColors.darkGray700 : const Color(0xFFF1F2F6);
-    final purpleColor = const Color(0xFF6C38FF);
+    final secondaryTextColor =
+        isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -40,35 +38,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  JText.uploadPortfolio,
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 24.0,
-                    weight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  JText.choosePreferredOption,
-                  style: AppTextStyle.dmSans(
-                    color: secondaryTextColor,
-                    fontSize: 14.0,
-                    weight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 32),
-
-                // Upload Portfolios Section
-                Text(
-                  JText.uploadPortfolios,
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 20.0,
-                    weight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 24),
+                UploadHeader(textColor: textColor),
 
                 // Before Upload Section
                 Text(
@@ -83,7 +53,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                 UploadContainerWidget(
                   isDark: isDark,
                   cardColor: isDark ? JAppColors.darkGray800 : Colors.white,
-                  accentColor: purpleColor,
+                  accentColor: JAppColors.primary,
                   secondaryTextColor: secondaryTextColor,
                   onTap: () {
                     // Handle before image upload
@@ -105,7 +75,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                 UploadContainerWidget(
                   isDark: isDark,
                   cardColor: isDark ? JAppColors.darkGray800 : Colors.white,
-                  accentColor: purpleColor,
+                  accentColor: JAppColors.primary,
                   secondaryTextColor: secondaryTextColor,
                   onTap: () {
                     // Handle after image upload
@@ -145,40 +115,27 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                 const SizedBox(height: 24),
 
-                // Estimated Service Cost
-                Text(
-                  JText.estimatedServiceCost,
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 16.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
-
                 TextFieldWidget(
-                  subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  isRequired: true,
                   keyboardType: TextInputType.number,
+
+                  subTitle: JText.estimatedServiceCost,
+                  hintText: JText.estimatedServiceCost,
+                  subtitleColor:
+                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  titleColor:
+                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 ),
 
                 const SizedBox(height: 24),
 
-                // Estimated Completion Time
-
-                Text(
-                  JText.estimatedCompletionTime,
-                  style: AppTextStyle.dmSans(
-                    color: textColor,
-                    fontSize: 16.0,
-                    weight: FontWeight.w500,
-                  ),
-                ),
 
                 TextFieldWidget(
-                  subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  isRequired: true,
+                  subTitle:  JText.estimatedCompletionTime,
+                  hintText:  JText.estimatedCompletionTime,
+                  subtitleColor:
+                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  titleColor:
+                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   keyboardType: TextInputType.number,
                 ),
 
@@ -191,27 +148,22 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     title_color: Colors.white,
                     text_fontweight: FontWeight.w600,
                     image_value: false,
-                    onTap: (){
-
+                    onTap: () {
                       AppRouter.router.push('/specializationScreen');
-                    }
-                ),
+                    }),
 
                 MainButton(
                   btn_title: JText.skip,
                   btn_radius: 10,
                   btn_color: Colors.transparent,
                   btn_boarder_color: Colors.transparent,
-                  title_color: isDark
-                      ? JAppColors.darkGray100
-                      : JAppColors.lightGray800,
+                  title_color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   text_fontweight: FontWeight.w600,
                   image_value: false,
-                  onTap: (){},
-
-                  text_size:  JSizes.fontSizeMd,
+                  onTap: () {},
+                  text_size: JSizes.fontSizeMd,
                 ),
-
               ],
             ),
           ),

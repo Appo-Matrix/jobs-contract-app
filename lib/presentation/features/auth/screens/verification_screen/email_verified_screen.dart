@@ -53,7 +53,7 @@ class _EmailVerifiedScreenState extends State<EmailVerifiedScreen> {
   Widget build(BuildContext context) {
 
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
+    final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
 
     final secondaryTextColor = isDark ? Colors.white70 : Colors.black54;
 

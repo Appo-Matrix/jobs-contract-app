@@ -28,8 +28,7 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
-    final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
+    final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
 
     return Scaffold(
       backgroundColor: backgroundColor,

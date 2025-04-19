@@ -22,7 +22,7 @@ class CheckEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
+    final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: JAppBar2(title: JText.back),

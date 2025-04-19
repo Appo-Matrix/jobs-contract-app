@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/auth/screens/verification_screen/widgets/verify_header.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 
@@ -18,11 +18,27 @@ class VerificationScreen extends StatefulWidget {
 }
 
 class _VerificationScreenState extends State<VerificationScreen> {
+  bool isEmailVerified = false;
+
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
-    final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
+    final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
+
+    Future<void> _navigateToEmailOtp() async {
+      final result = await AppRouter.router.push('/checkEmailScreen');
+      if (result == true) {
+        setState(() {
+          isEmailVerified = true;
+        });
+      }
+    }
+
+    void _navigateToPhoneOtp() {
+      if (isEmailVerified) {
+        AppRouter.router.push('/checkPhoneScreen');
+      }
+    }
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -34,31 +50,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Specialization Section
-                Text(
-                  JText.verifyAccount,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.lightGray100
-                        : JAppColors.darkGray800,
-                    fontSize: 24.0,
-                    weight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  JText.verifyAccountChoose,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.lightGray300
-                        : JAppColors.darkGray500,
-                    fontSize: 16.0,
-                    weight: FontWeight.w400,
-                  ),
-                ),
-
+                // Header
+                VerifyHeader(isDark: isDark),
                 const SizedBox(height: 40),
 
+                // Email & Phone Verification Options
                 Row(
                   children: [
                     Expanded(
@@ -68,35 +64,28 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         title: JText.email,
                         svgPath: JImages.emailsvg,
                         iconSize: 30,
-                        onTap: () {
-                          
-                          AppRouter.router.push('/checkEmailScreen');
-                          // Handle tap
-                        },
+                        onTap: _navigateToEmailOtp,
                       ),
                     ),
-                    SizedBox(
-                      width: 19,
-                    ),
+                    const SizedBox(width: 19),
                     Expanded(
-                      child: OptionCard(
-                        height: 140,
-                        width: 140,
-                        title: JText.phone,
-                        svgPath: JImages.phonesvg,
-                        iconSize: 30,
-                        onTap: () {
-
-                          AppRouter.router.push('/checkEmailScreen');
-
-                          // Handle tap
-                        },
+                      child: Opacity(
+                        opacity: isEmailVerified ? 1.0 : 0.4,
+                        child: IgnorePointer(
+                          ignoring: !isEmailVerified,
+                          child: OptionCard(
+                            height: 140,
+                            width: 140,
+                            title: JText.phone,
+                            svgPath: JImages.phonesvg,
+                            iconSize: 30,
+                            onTap: _navigateToPhoneOtp,
+                          ),
+                        ),
                       ),
                     )
                   ],
                 ),
-
-                // Next Button
               ],
             ),
           ),

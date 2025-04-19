@@ -41,6 +41,7 @@ class UploadContainerWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+
               Container(
                 height: 36,
                 width: 36,
