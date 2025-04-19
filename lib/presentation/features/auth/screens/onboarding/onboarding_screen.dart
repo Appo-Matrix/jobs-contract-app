@@ -5,6 +5,7 @@ import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
 import 'models/onboarding_item.dart';
 
@@ -23,20 +24,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingItem> _onboardingItems = [
     OnboardingItem(
-      title: "Effortless Project Management",
-      description: "Take control of your construction and real estate projects with intuitive tools designed for professionals",
-      imagePath: "assets/images/immjasda3.png",
+      title: JText.title1,
+      description: JText.subtitle1,
+      imagePath: JImages.image1,
     ),
     OnboardingItem(
-      title: "Simplify Contract & Client Deals",
-      description: "Easily manage contracts, negotiations, and client communications from one central platform",
-      imagePath: "assets/images/onboarding2.png",
+      title: JText.title2,
+      description: JText.subtitle2,
+      imagePath: JImages.image2,
     ),
     OnboardingItem(
-      title: "Maximize Your Business Opportunities",
-      description: "Discover exclusive promotions, connect with industry leaders, and grow your business seamlessly",
-      imagePath: "assets/images/onboarding3a.png",
+      title: JText.title3,
+      description: JText.subtitle3,
+      imagePath: JImages.image3,
     ),
+
   ];
 
   @override
@@ -50,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.lighter : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -69,9 +71,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     child: Text(
                       JText.skip,
-                      style: TextStyle(
-                        color: Colors.grey[500],
-                        fontSize: 16,
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.lightGray800,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                        height: 1.2,
+
                       ),
                     ),
                   ),
@@ -106,8 +113,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 controller: _pageController,
                 count: _onboardingItems.length,
                 effect: ExpandingDotsEffect(
-                  activeDotColor: Color(0xFF6C39FF),
-                  dotColor: Color(0xFFD8C5FF),
+                  activeDotColor: JAppColors.primary,
+                  dotColor: JAppColors.lightGray500,
                   dotHeight: 6,
                   dotWidth: 12,
                   expansionFactor: 2,
@@ -119,7 +126,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color:isDark ? JAppColors.darkGray700 : JAppColors.darkGray100,
+                color:isDark ? JAppColors.backGroundDarkCard : JAppColors.darkGray100,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(28),
                 ),

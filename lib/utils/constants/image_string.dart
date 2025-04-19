@@ -18,7 +18,9 @@ class JImages {
   static const String contractor = "assets/svg/contractor.svg";
   static const String professional = "assets/svg/professional.svg";
 
-
+  static const String image1 = "assets/images/immjasda3.png";
+  static const String image2 = "assets/images/onboarding2.png";
+  static const String image3 = "assets/images/onboarding3a.png";
 
 
   ////KYC Icons

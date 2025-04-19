@@ -87,6 +87,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
@@ -132,6 +133,7 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isDark = JDeviceUtils.isDarkMode(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,16 +163,20 @@ class TextFieldWidget extends StatelessWidget {
           ),
         const SizedBox(height: 8),
         TextFormField(
+
           controller: textEditingController,
           obscureText: obscureText!,
           style: AppTextStyle.dmSans(
-            color: titleColor ?? JAppColors.darkGray500,
+            color: isDark ? Colors.white : JAppColors.darkGray800,
             fontSize: 16.0,
             weight: FontWeight.w400,
           ),
           decoration: InputDecoration(
             hintText: hintText,
+            fillColor:  isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+            filled: true,
             hintStyle: AppTextStyle.dmSans(
+
               color: titleColor?.withOpacity(0.5) ?? JAppColors.darkGray800.withOpacity(0.5),
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w400,
@@ -195,7 +201,7 @@ class TextFieldWidget extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: JAppColors.primary, // Use primary color when focused
+                color: JAppColors.light, // Use primary color when focused
                 width: 1.5,
               ),
             ),

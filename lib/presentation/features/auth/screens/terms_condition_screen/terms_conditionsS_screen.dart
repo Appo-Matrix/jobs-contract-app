@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/auth/screens/terms_condition_screen/widgets/custom_checkbox_widget.dart';
 import 'package:job_contracts/presentation/features/auth/screens/terms_condition_screen/widgets/signature_section.dart';
+import 'package:job_contracts/presentation/features/auth/screens/terms_condition_screen/widgets/term_section_widget.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -56,7 +58,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
+      backgroundColor:  isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppBar2(title: JText.back),
       body: SingleChildScrollView(
         child: Padding(
@@ -83,7 +85,7 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Terms content
+
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -98,105 +100,104 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(16.0),
                   children: [
-                    _buildTermSection(
-                      JText.section1Title,
-                      JText.section1Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section1Title,
+                      content: JText.section1Content,
+                      isDark: isDark,
                     ),
-                    _buildTermSection(
-                      JText.section2Title,
-                      '',
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section2Title,
+                      content: '',
+                      isDark: isDark,
                       bulletPoints: [
                         JText.userResponsibility1,
                         JText.userResponsibility2,
                         JText.userResponsibility3,
                       ],
                     ),
-                    _buildTermSection(
-                      JText.section3Title,
-                      JText.section3Intro,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section3Title,
+                      content: JText.section3Intro,
+                      isDark: isDark,
                       bulletPoints: [
                         JText.prohibitedActivity1,
                         JText.prohibitedActivity2,
                         JText.prohibitedActivity3,
                       ],
                     ),
-                    _buildTermSection(
-                      JText.section4Title,
-                      '',
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section4Title,
+                      content: '',
+                      isDark: isDark,
                       bulletPoints: [
                         JText.payment1,
                         JText.payment2,
                         JText.payment3,
                       ],
                     ),
-                    _buildTermSection(
-                      JText.section5Title,
-                      '',
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section5Title,
+                      content: '',
+                      isDark: isDark,
                       bulletPoints: [
                         JText.intellectualProperty1,
                         JText.intellectualProperty2,
                       ],
                     ),
-                    _buildTermSection(
-                      JText.section6Title,
-                      JText.section6Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section6Title,
+                      content: JText.section6Content,
+                      isDark: isDark,
                     ),
-                    _buildTermSection(
-                      JText.section7Title,
-                      JText.section7Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section7Title,
+                      content: JText.section7Content,
+                      isDark: isDark,
                     ),
-                    _buildTermSection(
-                      JText.section8Title,
-                      JText.section8Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section8Title,
+                      content: JText.section8Content,
+                      isDark: isDark,
                     ),
-                    _buildTermSection(
-                      JText.section9Title,
-                      JText.section9Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section9Title,
+                      content: JText.section9Content,
+                      isDark: isDark,
                     ),
-                    _buildTermSection(
-                      JText.section10Title,
-                      JText.section10Content,
-                      isDark,
+                    TermSectionWidget(
+                      title: JText.section10Title,
+                      content: JText.section10Content,
+                      isDark: isDark,
                     ),
                   ],
                 ),
               ),
 
+
               const SizedBox(height: 24),
-
-              // Checkboxes for agreement
-              _buildCheckbox(
-                JText.agreeToTerms,
-                _agreeToTerms,
-                    (value) {
-                  setState(() {
-                    _agreeToTerms = value!;
-                  });
-                },
-                isDark,
-              ),
-
+            CustomCheckboxWidget(
+              label: JText.agreeToTerms,
+              value: _agreeToTerms,
+              isDark: isDark,
+              onChanged: (bool? newValue) {
+                setState(() {
+                  _agreeToTerms = newValue ?? false;
+                });
+              },
+            ),
               const SizedBox(height: 16),
 
-              _buildCheckbox(
-                JText.consentToVisibility,
-                _consentToVisibility,
-                    (value) {
-                  setState(() {
-                    _consentToVisibility = value!;
-                  });
-                },
-                isDark,
-              ),
+              CustomCheckboxWidget(
+              label: JText.consentToVisibility,
+              value: _consentToVisibility,
+              isDark: isDark,
+              onChanged: (bool? newValue) {
+                setState(() {
+                  _consentToVisibility = newValue ?? false;
+                });
+              },
+            ),
+
 
               const SizedBox(height: 24),
 
@@ -230,99 +231,6 @@ class _TermsConditionsScreenState extends State<TermsConditionsScreen> {
     );
   }
 
-  Widget _buildTermSection(String title, String content, bool isDark, {List<String>? bulletPoints}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-            fontSize: JSizes.fontSizeMd,
-            weight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 8),
-        if (content.isNotEmpty)
-          Text(
-            content,
-            style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
-              fontSize: 14.0,
-              weight: FontWeight.w400,
-            ),
-          ),
-        if (bulletPoints != null && bulletPoints.isNotEmpty) ...[
-          const SizedBox(height: 8),
-          ...bulletPoints.map((point) => _buildBulletPoint(point, isDark)),
-        ],
-        const SizedBox(height: 16),
-      ],
-    );
-  }
 
-  Widget _buildBulletPoint(String text, bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '• ',
-            style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
-              fontSize: 14.0,
-              weight: FontWeight.w400,
-            ),
-          ),
-          Expanded(
-            child: Text(
-              text,
-              style: AppTextStyle.dmSans(
-                color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
-                fontSize: 14.0,
-                weight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCheckbox(String label, bool value, Function(bool?) onChanged, bool isDark) {
-    return Row(
-      children: [
-        SizedBox(
-          width: 24,
-          height: 24,
-          child: Checkbox(
-            value: value,
-            onChanged: onChanged,
-            activeColor: JAppColors.primary,
-            checkColor: Colors.white,
-            side: BorderSide(
-              color: isDark ? JAppColors.lightGray300 : JAppColors.darkGray500,
-              width: 1.5,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text(
-            label,
-            style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-              fontSize: 14.0,
-              weight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 }
 

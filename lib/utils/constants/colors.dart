@@ -4,10 +4,10 @@ class JAppColors {
   JAppColors._();
 
 
-  static const Color primary = Color(0xFF7030F1);
+  static const Color primary = Color(0xFF6841D9);
   // Shades of the Primary Color
   static const Color lightest = Color(0xFFC6ACF9); // Shade 100
-  static const Color lighter = Color(0xFFB08DF7); // Shade 200
+  static const Color lighter = Color(0xFF101828); // Shade 200
   static const Color light = Color(0xFF9B6EF5);   // Shade 300
   static const Color medium = Color(0xFF854FF3);  // Shade 400
   static const Color main = Color(0xFF7030F1);    // Shade 500 (Primary)
@@ -16,6 +16,11 @@ class JAppColors {
   static const Color darkest = Color(0xFF2D1360);
   static const Color darkest12 = Color(0xFF395998);
   static const Color darkest1212 = Color(0xFF4285F4);
+
+
+  static const Color backGroundDark = Color(0xFF101828); // Shade 200
+  static const Color backGroundDarkCard = Color(0xFF1E2939); // Shade 200
+
 
 
 // Light mode grays

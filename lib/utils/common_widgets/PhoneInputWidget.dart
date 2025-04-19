@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
+import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
 
 class PhoneInputWidget extends StatefulWidget {
@@ -81,8 +82,9 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
         // Phone input field with country code selector
         Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300),
+
             borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: Colors.grey.shade300),
           ),
           child: Row(
             children: [
@@ -94,7 +96,11 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
                   decoration: BoxDecoration(
+
+                    color: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(8) ,bottomLeft: Radius.circular(8)),
                     border: Border(
+
                       right: BorderSide(color: Colors.grey.shade300),
                     ),
                   ),
@@ -103,16 +109,17 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
                     children: [
                       Text(
                         _selectedCountryCode,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
+                        style: AppTextStyle.dmSans(
+                          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                          fontSize: 16.0,
+                          weight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(width: 4),
                       Icon(
                         Icons.keyboard_arrow_down,
-                        size: 20,
-                        color: Colors.grey.shade700,
+                        size: 24,
+                        color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800,
                       ),
                     ],
                   ),
@@ -121,25 +128,33 @@ class _PhoneInputWidgetState extends State<PhoneInputWidget> {
 
               // Phone number input
               Expanded(
-                child: TextField(
-                  controller: _phoneController,
-                  keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(
-                    hintText: "Enter phone number",
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                child: Container(
+                  decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(8))),
+                  child: TextField(
+
+
+                    controller: _phoneController,
+                    keyboardType: TextInputType.phone,
+                    decoration:  InputDecoration(
+                      
+                      fillColor:  isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                      filled: true,
+                      hintText: "Enter phone number",
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
+                      border: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16),
                     ),
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                    onChanged: (value) {
+                      if (widget.onPhoneChanged != null) {
+                        widget.onPhoneChanged!(value);
+                      }
+                    },
                   ),
-                  onChanged: (value) {
-                    if (widget.onPhoneChanged != null) {
-                      widget.onPhoneChanged!(value);
-                    }
-                  },
                 ),
               ),
             ],

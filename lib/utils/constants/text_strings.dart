@@ -44,7 +44,9 @@ class JText {
   static const String traceMe = 'Trace Me';
   static const String nextStep = 'Next Step';
 
-
+  static const String enterNewPass = "Enter new Password";
+  static const String repeatNewPass = "Repeat new Password";
+  static const String confirmPassword = "Confirm Password";
 
   // Error Messages
   static const String generalError = 'Something went wrong. Please try again.';
@@ -67,7 +69,6 @@ class JText {
   static const String email = "Email";
   static const String emailEnter = "Enter your email";
   static const String password = "Password";
-  static const String confirmPassword = "Confirm Password";
   static const String remember = "Remember for 30 days";
   static const String forgetPassword = "Forgot password";
   static const String plesdr = "Don’t worry! It happens. Please enter the email associated with your account.";
@@ -577,6 +578,16 @@ class JText {
   static const String shareAd = 'Share Ad';
   static const String deleteAd = 'Delete Ad';
 
+  static const String  verify  =  "Verify";
 
+  static const String passwordChangedTitle = 'Password changed';
+  static const String passwordChangedMessage = 'Your password has been change successfully!';
+  static const String continueButtonText = 'Continue';
+  static const eSignatureTitle = 'E-Signature';
+  static const typeSignatureHint = 'Type your signature';
+  static const uploadButtonText = 'Upload';
+  static const signatureHelperText = 'Type your signature or upload an image';
+
+  static String upload  = "Upload";
 
 }

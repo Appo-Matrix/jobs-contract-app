@@ -5,6 +5,7 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
+import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -23,51 +24,21 @@ class LoginScreen extends StatelessWidget {
       return null;
     }
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray900 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
 
       bottomNavigationBar:SizedBox(
         height: 50,
         child: Column(
           children: [
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  JText.donotHaveAccount,
-                  style: AppTextStyle.dmSans(
-                    color: isDark
-                        ? JAppColors.darkGray100
-                        : JAppColors.lightGray800,
-                    fontSize: 16.0,
-                    weight: FontWeight.w400,
-
-                  ),
-
-
-                ),
-
-                SizedBox(width: JSizes.spaceBtwItems-10,),
-                GestureDetector(
-
-                  onTap: (){
-
-
-                    AppRouter.router.push('/accountCreationScreen');
-
-                  },
-                  child: Text(
-                    JText.signUp,
-                    style: AppTextStyle.dmSans(
-                        color: isDark
-                            ? JAppColors.darkGray100
-                            : JAppColors.primary,
-                        fontSize: 18.0,
-                        weight: FontWeight.w600),
-                  ),
-                ),
-              ],
+            BottomWidget(
+              isDark: isDark,
+              title: JText.donotHaveAccount,
+              titleDes: JText.signUp,
+              onPressed: () {
+                AppRouter.router.push('/accountCreationScreen');
+              },
             ),
+
           ],
         ),
       ),
@@ -108,6 +79,10 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
+
+
+
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -163,16 +138,15 @@ class LoginScreen extends StatelessWidget {
 
               MainButton(
                 btn_title: JText.signIn,
-                btn_radius: 10,
+                btn_radius: 8,
                 btn_color: JAppColors.main,
-                btn_boarder_color: Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,onTap: (){
                   
                   AppRouter.router.push('/navigationMenu');
                   
-              },
+              }, btn_boarder_color: JAppColors.primary,
               ),
               SizedBox(height: JSizes.spaceBtwItems),
               MainButton(

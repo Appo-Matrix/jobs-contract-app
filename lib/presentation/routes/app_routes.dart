@@ -8,17 +8,19 @@ import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
 import '../features/auth/screens/address_form/address_form_screen.dart';
+import '../features/auth/screens/forget_password/forget_password_otp_screen.dart';
+import '../features/auth/screens/forget_password/reset_password.dart';
 import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
 import '../features/auth/screens/profile/profile_detail.dart';
-import '../features/auth/screens/reset_password/reset_password.dart';
 import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/specilization/specialization_screen.dart';
+import '../features/auth/screens/success/model/success_screen_args.dart';
+import '../features/auth/screens/success/success_screen.dart';
 import '../features/auth/screens/terms_condition_screen/terms_conditionsS_screen.dart';
 import '../features/auth/screens/verification_screen/check_email_screen.dart';
 import '../features/auth/screens/verification_screen/email_verified_screen.dart';
 import '../features/auth/screens/verification_screen/verification_screen.dart';
-import '../features/auth/screens/verify_profile/screens/success_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
@@ -100,11 +102,7 @@ class AppRouter {
         name: Routes.verifyPhoneOtp.name,
        builder: (context, state) => const VerifyPhoneOtp(),
       ),
-      GoRoute(
-        path: '/successScreen',
-        name: Routes.successScreen.name,
-       builder: (context, state) => const SuccessScreen(),
-      ),
+
       GoRoute(
         path: '/verifyIdentity',
         name: Routes.verifyIdentity.name,
@@ -120,6 +118,14 @@ class AppRouter {
         path: '/resetPasswordScreen',
         name: Routes.resetPasswordScreen.name,
        builder: (context, state) => const ResetPasswordScreen(),
+      ),
+      GoRoute(
+        path: '/successScreen',
+        name: 'successScreen',
+        builder: (context, state) {
+          final args = state.extra as SuccessScreenArgs;
+          return SuccessScreen(args: args);
+        },
       ),
       GoRoute(
         path: '/homeScreen',
@@ -330,6 +336,11 @@ class AppRouter {
         path: '/adDetailsScreen',
         name: Routes.adDetailsScreen.name,
         builder: (context, state) => AdDetailsScreen(),
+      ),
+      GoRoute(
+        path: '/forgetPasswordOtpScreen',
+        name: Routes.forgetPasswordOtpScreen.name,
+        builder: (context, state) => ForgetPasswordOtpScreen(),
       ),
 
     ],

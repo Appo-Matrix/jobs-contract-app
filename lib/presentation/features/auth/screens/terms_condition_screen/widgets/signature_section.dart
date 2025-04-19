@@ -4,6 +4,10 @@ import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../../utils/constants/image_string.dart';
 
 class SignatureSection extends StatefulWidget {
   final bool isDark;
@@ -11,11 +15,11 @@ class SignatureSection extends StatefulWidget {
   final Function(File?) onSignatureImageSelected;
 
   const SignatureSection({
-    Key? key,
+    super.key,
     required this.isDark,
     required this.signatureController,
     required this.onSignatureImageSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<SignatureSection> createState() => _SignatureSectionState();
@@ -56,7 +60,7 @@ class _SignatureSectionState extends State<SignatureSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'E-Signature',
+      JText.eSignature,
           style: AppTextStyle.dmSans(
             color: widget.isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
             fontSize: JSizes.fontSizeMd,
@@ -73,11 +77,13 @@ class _SignatureSectionState extends State<SignatureSection> {
             // Text signature input
             Expanded(
               flex: 3,
-              child: TextFormField(
+              child:
+              TextFormField(
                 controller: widget.signatureController,
                 decoration: InputDecoration(
-                  filled: false,
-                  hintText: "Type your signature",
+                  fillColor:  widget.isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                  filled: true,
+                  hintText: JText.typeSignatureHint,
                   hintStyle: AppTextStyle.dmSans(
                     color: widget.isDark ? JAppColors.lightGray300.withOpacity(0.5) : JAppColors.darkGray700.withOpacity(0.5),
                     fontSize: 14.0, weight: FontWeight.w500,
@@ -120,13 +126,13 @@ class _SignatureSectionState extends State<SignatureSection> {
 
             // Upload box
             Expanded(
-              flex: 2,
+              flex: 1,
               child: GestureDetector(
                 onTap: _pickSignatureImage,
                 child: Container(
                   height: 48, // Match TextFormField height
                   decoration: BoxDecoration(
-                    color: widget.isDark ? JAppColors.darkGray700 : Colors.white,
+                    color: widget.isDark ? JAppColors.backGroundDarkCard : Colors.white,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: widget.isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
@@ -137,21 +143,18 @@ class _SignatureSectionState extends State<SignatureSection> {
                       ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.upload_file,
-                        color: JAppColors.primary,
-                        size: 20,
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        'Upload',
-                        style: AppTextStyle.dmSans(
-                          color: JAppColors.primary,
-                          fontSize: 12.0,
-                          weight: FontWeight.w500,
+                      SvgPicture.asset(
+                        JImages.upload,
+                        width: 16,
+                        height: 16,
+                        colorFilter: ColorFilter.mode(
+                          widget.isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                          BlendMode.srcIn,
+
                         ),
-                        textAlign: TextAlign.center,
                       ),
+
+
                     ],
                   )
                       : Stack(
@@ -195,7 +198,7 @@ class _SignatureSectionState extends State<SignatureSection> {
 
         // Helper text
         Text(
-          'Type your signature or upload an image',
+       JText.signatureHelperText,
           style: AppTextStyle.dmSans(
             color: widget.isDark ? JAppColors.lightGray300.withOpacity(0.7) : JAppColors.darkGray700.withOpacity(0.7),
             fontSize: 12.0,

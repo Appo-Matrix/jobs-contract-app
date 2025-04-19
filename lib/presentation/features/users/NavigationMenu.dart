@@ -170,6 +170,7 @@ class NavigationController extends GetxController {
     SearchFilter(),
 
     ContractsScreen(),
+    Container(),
     MessageScreen(),
 
     NotifcationsScreen(),

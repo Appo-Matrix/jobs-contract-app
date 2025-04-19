@@ -6,6 +6,7 @@ import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/common_widgets/PhoneInputWidget.dart';
+import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -28,46 +29,7 @@ class SignupScreen extends StatelessWidget {
     }
     return Scaffold(
 
-      bottomNavigationBar:SizedBox(
-        height: 50,
-        child: Column(
-          children: [
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  JText.alreadyAccount,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: isDark
-                          ? JAppColors.darkGray400
-                          :  JAppColors.darkGray600,
-                      fontWeight: FontWeight.w400),
-                ),
-                GestureDetector(
-
-                  onTap: (){
-
-
-                    AppRouter.router.push('/loginScreen');
-
-                  },
-                  child: Text(
-                    JText.logIn,
-                    style: AppTextStyle.dmSans(
-                        color: isDark
-                            ? JAppColors.darkGray100
-                            : JAppColors.primary,
-                        fontSize: 18.0,
-                        weight: FontWeight.w600),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
 
       backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
       body: SingleChildScrollView(
@@ -171,6 +133,17 @@ class SignupScreen extends StatelessWidget {
 
 
               const SizedBox(height: 30),
+
+              BottomWidget(
+                isDark: isDark,
+                title: JText.alreadyAccount,
+                titleDes: JText.logIn,
+                onPressed: () {
+                  AppRouter.router.push('/loginScreen');
+                },
+              ),
+              const SizedBox(height: 30),
+
             ],
           ),
         ),

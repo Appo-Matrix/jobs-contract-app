@@ -34,6 +34,7 @@ class PhoneNumberWidget extends StatelessWidget {
           height: 53,
           decoration: BoxDecoration(
 
+
             borderRadius: BorderRadius.all(Radius.circular(10),),
             border: Border.all(color: JAppColors.lightGray300, width: 1)
           ),

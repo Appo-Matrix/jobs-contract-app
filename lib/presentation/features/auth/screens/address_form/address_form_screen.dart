@@ -21,7 +21,6 @@ class AddressFormScreen extends StatefulWidget {
 }
 
 class _AddressFormScreenState extends State<AddressFormScreen> {
-  // Form controllers
   final _streetController = TextEditingController();
   final _neighborhoodController = TextEditingController();
   final _cityController = TextEditingController();
@@ -29,8 +28,6 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   final _countryController = TextEditingController();
   final _postalCodeController = TextEditingController();
 
-  // Form key for validation
-  final _formKey = GlobalKey<FormState>();
 
   // Map-related variables
   // GoogleMapController? _mapController;
@@ -79,7 +76,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor:  isDark ? JAppColors.darkGray900 : Colors.white,
+      backgroundColor:  isDark ? JAppColors.backGroundDark : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 16),

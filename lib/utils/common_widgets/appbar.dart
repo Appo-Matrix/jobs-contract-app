@@ -29,7 +29,7 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           AppBar(
-            backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+            backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
             elevation: 0,
             centerTitle: false,
             automaticallyImplyLeading: false,

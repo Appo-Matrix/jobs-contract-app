@@ -44,8 +44,8 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 GestureDetector(
                   onTap: onBackPressed,
                   child: Icon(Icons.arrow_back ,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray600,
-                  size: 20,
+                  color: isDark ? JAppColors.darkGray200 : JAppColors.darkGray600,
+                  size: 18,
 
                   ),
                 ),
@@ -53,7 +53,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                 Text(
                   title,
                   style: AppTextStyle.dmSans(
-                    color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray600,
+                    color: isDark ? JAppColors.darkGray300 : JAppColors.darkGray600,
                     fontSize: 14.0,
                     weight: FontWeight.w500,
                   ),
@@ -70,7 +70,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
       actions: actions,
       elevation: elevation,
       backgroundColor: backgroundColor ??
-          (isDark ? JAppColors.darkGray900 : Colors.white),
+          (isDark ? JAppColors.backGroundDark : Colors.white),
       flexibleSpace: flexibleSpace,
       centerTitle: centerTitle,
       automaticallyImplyLeading: false,

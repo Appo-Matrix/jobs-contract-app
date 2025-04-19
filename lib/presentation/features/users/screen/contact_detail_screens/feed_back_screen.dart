@@ -129,45 +129,6 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                 ),
               ),
               SizedBox(height: 10),
-              TextField(
-                maxLines: 6,
-                style: AppTextStyle.dmSans(
-                  color:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  fontSize: JSizes.fontSizeMd,
-                  weight: FontWeight.w400,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'This app is awesome',
-                  hintStyle: AppTextStyle.dmSans(
-                    color:
-                        isDark ? JAppColors.lightGray100 : JAppColors.darkGray500,
-                    fontSize: JSizes.fontSizeMd,
-                    weight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: JAppColors.lightGray300,
-                      width: 1,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: JAppColors.primary, // Use primary color when focused
-                      width: 1.5,
-                    ),
-                  ),
-                ),
-              ),
               SizedBox(height: 28),
               MainButton(
                 btn_title: 'Submit',
