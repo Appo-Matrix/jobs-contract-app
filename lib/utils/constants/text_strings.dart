@@ -588,6 +588,10 @@ class JText {
   static const uploadButtonText = 'Upload';
   static const signatureHelperText = 'Type your signature or upload an image';
 
-  static String upload  = "Upload";
+  static const String upload  = "Upload";
+
+  static const String seeLess  ="See Less";
+
+  static const String recommendedForYou  ="Recommended for you";
 
 }

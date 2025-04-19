@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/home/widget/RealEstateJobCard.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contracts/utils/constants/image_string.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -20,7 +23,7 @@ class BestMatchesPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16, bottom: 12),
           child: Text(
-            'Recommended for you',
+            JText.recommendedForYou,
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeLg,
               weight: FontWeight.bold,
@@ -32,7 +35,8 @@ class BestMatchesPage extends StatelessWidget {
           child: ListView.builder(
             itemCount: 5,
             itemBuilder: (context, index) {
-              return GestureDetector(
+              return
+                GestureDetector(
                 onTap: () {
                   AppRouter.router.push('/jobDetailScreen');
                 },
@@ -43,12 +47,15 @@ class BestMatchesPage extends StatelessWidget {
                   salary: "\$20,000 - \$25,000",
                   category: "Site Inspections",
                   isVerified: true,
+                  employerImage: JImages.image,
                   isDark: isDark,
                 ),
               );
             },
           ),
         ),
+
+
       ],
     );
   }

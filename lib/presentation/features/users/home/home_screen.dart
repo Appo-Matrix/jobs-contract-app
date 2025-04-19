@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Scaffold(
       key: _scaffoldKey,
       drawer: _buildNavigationDrawer(context, isDark),
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: GestureDetector(
           onTap: ()=>{
@@ -82,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             SizedBox(
               height: 35,
               child: TabBar(
+                dividerColor: Colors.transparent,
                 controller: _tabController, // Set the controller
                 // Add rounded indicator with no underline
                 indicator: BoxDecoration(
