@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:job_contracts/presentation/features/users/message/widgets/chat_message_widget.dart';
 
+import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -27,91 +30,73 @@ class _ChatScreenState extends State<ChatScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-      body: SafeArea(
-        child: Column(
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
+      appBar: JAppbar(
+        title: Row(
           children: [
-            // App Bar
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.grey.shade300,
-                    width: 0.5,
-                  ),
-                ),
-              ),
-              child: Column(
-
+            Expanded(
+              child: Row(
                 children: [
-                  const SizedBox(height: 8),
-
-                  Row(
+                  // Profile Picture
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                      color: isDark ? Colors.white : Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: 4),
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundImage: AssetImage(JImages.image),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Icon(Icons.arrow_back_ios, size: 20),
-                      const SizedBox(width: 8),
-                      Container(
-                        width: 48,
-                        height: 48,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.red.shade700,
-                            width: 2,
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                            'https://randomuser.me/api/portraits/women/67.jpg',
-                            fit: BoxFit.cover,
-                          ),
+                      Text(
+                        "Bessie Cooper",
+                        style: AppTextStyle.dmSans(
+                          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                          fontSize: 16.0,
+                          weight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      const SizedBox(height: 4),
+                      Row(
                         children: [
-                          const Text(
-                            'Bessie Cooper',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          Text(
+                            "Online",
+                            style: AppTextStyle.dmSans(
+                              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                              fontSize: 13.0,
+                              weight: FontWeight.w400,
                             ),
                           ),
-                          Row(
-                            children: [
-                              const Text(
-                                'Online',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              const SizedBox(width: 4),
-                              Container(
-                                width: 8,
-                                height: 8,
-                                decoration: const BoxDecoration(
-                                  color: Colors.green,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
-                            ],
+                          const SizedBox(width: 4),
+                          const CircleAvatar(
+                            radius: 4,
+                            backgroundColor: Colors.green,
                           ),
                         ],
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-
+                  Spacer(),
                 ],
               ),
             ),
+          ],
+        ),
+      ),
 
-            // Today label
+      body: SafeArea(
+        child: Column(
+          children: [
+
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: Text(
@@ -124,151 +109,150 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
 
             // Chat messages
+// In your ChatScreen's ListView:
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   // Outgoing message
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:28 AM',
+                  ChatMessageWidget(
+                    message: 'You did your job well!',
+                    time: '09:28 AM',
+                    isOutgoing: true,
                   ),
 
                   // Incoming message
-                  _buildIncomingMessage(
-                    'Hello! Nazrul How are you?',
-                    '09:29 AM',
+                  ChatMessageWidget(
+                    message: 'Hello! Nazrul How are you?',
+                    time: '09:29 AM',
+                    isOutgoing: false,
+                    avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
                   ),
 
-                  // Outgoing message
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
+                  // Add more messages as needed
+                  ChatMessageWidget(
+                    message: 'You did your job well!',
+                    time: '09:30 AM',
+                    isOutgoing: true,
                   ),
 
-                  // Incoming message
-                  _buildIncomingMessage(
-                    'Have a great working week!',
-                    '09:35 AM',
+                  ChatMessageWidget(
+                    message: 'Have a great working week!',
+                    time: '09:35 AM',
+                    isOutgoing: false,
+                    avatarUrl: 'https://randomuser.me/api/portraits/women/67.jpg',
                   ),
 
-                  // Outgoing message
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
-                  ),
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
-                  ),
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
-                  ),
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
-                  ),
-                  _buildOutgoingMessage(
-                    'You did your job well!',
-                    '09:30 AM',
-                  ),
+                  // ...rest of your messages
                 ],
               ),
             ),
-
             // Message input - UPDATED for multi-line expansion
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border(
-                  top: BorderSide(
-                    color: Colors.grey.shade200,
-                    width: 1,
-                  ),
-                ),
-              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SvgPicture.asset(
-                    JImages.doct,
-                    width: 20,
-                    height: 20,
-                    colorFilter: ColorFilter.mode(
-                      isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
-                      BlendMode.srcIn,
-
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset(
-                    JImages.gallery,
-                    width: 20,
-                    height: 20,
-                    colorFilter: ColorFilter.mode(
-                      isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
-                      BlendMode.srcIn,
-
-                    ),
-                  ),
-                  const SizedBox(width: 8),
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         minHeight: 48,
-                        maxHeight: 120, // Set maximum height to prevent too large input
+                        maxHeight: 120,
                       ),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: BorderRadius.circular(20),
+                        color: isDark ? JAppColors.darkGray800 : Colors.transparent,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: isDark ? JAppColors.darkGray400 : JAppColors.darkGray300,
+                        ),
                       ),
-                      child: TextField(
-                        controller: _textController,
-                        maxLines: null, // Allow unlimited lines
-                        keyboardType: TextInputType.multiline, // Enable multiline input
-                        textCapitalization: TextCapitalization.sentences,
-                        style: AppTextStyle.dmSans(
-                          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                          fontSize: 14.0,
-                          weight: FontWeight.w400,
-                        ),
-                        decoration: const InputDecoration(
-                          hintText: 'Type your message...',
-                          hintStyle: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: SvgPicture.asset(
+                              JImages.doct,
+                              width: 18,
+                              height: 18,
+                              colorFilter: ColorFilter.mode(
+                                isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                                BlendMode.srcIn,
+                              ),
+                            ),
                           ),
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(vertical: 14),
-                        ),
+                          const SizedBox(width: 4),
+                          Expanded(
+                            child: TextField(
+                              controller: _textController,
+                              maxLines: 5,
+                              minLines: 1,
+                              keyboardType: TextInputType.multiline,
+                              style: AppTextStyle.dmSans(
+                                height: 1.3,
+                                color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                                fontSize: 16.0,
+                                weight: FontWeight.w400,
+                              ),
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.transparent,
+                                hintText: 'Type your message...',
+                                hintStyle: AppTextStyle.dmSans(
+                                  height: 1.3,
+                                  color: isDark ? JAppColors.darkGray200 : JAppColors.lightGray600,
+                                  fontSize: 16.0,
+                                  weight: FontWeight.w400,
+                                ),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 8,
+                                  horizontal: 8,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: SvgPicture.asset(
+                              JImages.gallery,
+                              width: 18,
+                              height: 18,
+                              colorFilter: ColorFilter.mode(
+                                isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.indigo.shade900,
-                    ),
-                    child:
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset(
-                        JImages.btnsend,
-                        width: 16,
-                        height: 16,
-                        colorFilter: ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
-
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: isDark ? JAppColors.darkGray700 : JAppColors.darkGray800,
+                      ),
+                      child: GestureDetector(
+                        onTap: (){},
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: SvgPicture.asset(
+                            JImages.btnsend,
+                            colorFilter: const ColorFilter.mode(
+                              Colors.white,
+                              BlendMode.srcIn,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -276,111 +260,12 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
+
           ],
         ),
       ),
     );
   }
 
-  Widget _buildOutgoingMessage(String message, String time) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Text(
-                  message,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                time,
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 
-  Widget _buildIncomingMessage(String message, String time) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 30,
-            height: 30,
-            margin: const EdgeInsets.only(right: 8),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.red.shade700,
-                width: 2,
-              ),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(
-                'https://randomuser.me/api/portraits/women/67.jpg',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Text(
-                  message,
-                  style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                time,
-                style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }

@@ -13,7 +13,7 @@ class ActivityLogSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final containerColor =
-    isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
+    isDark ? JAppColors.backGroundDarkCard : JAppColors.lightGray100;
     final textColor =
     isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
     return Container(

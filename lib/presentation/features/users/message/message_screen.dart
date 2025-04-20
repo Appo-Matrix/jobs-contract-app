@@ -1,16 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:job_contracts/presentation/features/users/message/widgets/message_card.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
+import '../../../../utils/common_widgets/circular_avatar.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../home/drawer/widgets/drawer_item.dart';
+import 'model/message_data.dart';
 
 class MessageScreen extends StatefulWidget {
   const MessageScreen({super.key});
@@ -26,7 +30,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Bessie Cooper",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/bessie.jpg",
+      avatar: JImages.image,
       unreadCount: 2,
       isOnline: true,
     ),
@@ -34,7 +38,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Farhan Ullah",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/farhan.jpg",
+      avatar: JImages.image,
       unreadCount: 4,
       isOnline: true,
     ),
@@ -42,7 +46,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Alita ali",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/alita.jpg",
+      avatar: JImages.image,
       unreadCount: 1,
       isOnline: true,
     ),
@@ -50,7 +54,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Sheeza Hamza",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/sheeza.jpg",
+      avatar: JImages.image,
       unreadCount: 5,
       isOnline: true,
     ),
@@ -58,7 +62,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Zakir Hussain",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/zakir.jpg",
+      avatar: JImages.image,
       unreadCount: 1,
       isOnline: true,
     ),
@@ -66,7 +70,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Bessie Cooper",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/bessie.jpg",
+      avatar: JImages.image,
       unreadCount: 2,
       isOnline: true,
     ),
@@ -74,7 +78,7 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Basit Ali",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/basit.jpg",
+      avatar: JImages.image,
       unreadCount: 3,
       isOnline: true,
     ),
@@ -82,28 +86,48 @@ class _MessageScreenState extends State<MessageScreen> {
       name: "Evelyn Harrison",
       message: "Sed ut perspiciatis unde",
       time: "3:50 pm",
-      avatar: "assets/images/avatars/evelyn.jpg",
+      avatar: JImages.image,
       unreadCount: 6,
       isOnline: true,
     ),
   ];
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
+      drawer: _buildNavigationDrawer(context, isDark),
+      key: _scaffoldKey,
+
       appBar: JAppbar(
-        title: Text(
-        "Messages",
-          style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: 20.0,
-            weight: FontWeight.w600,
+        title: Text(JText.message ,style: AppTextStyle.dmSans(color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800, fontSize: 16.0, weight: FontWeight.w500),),
+        leadingIcon: GestureDetector(
+          onTap: ()=>{
+            print('click'),
+            _scaffoldKey.currentState?.openDrawer()
+
+          },
+
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircularAvatar(
+              isDark: isDark,
+              radius: 20,
+              imageUrl: JImages.image,
+              // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
+            ),
           ),
         ),
 
+
+        actions: [
+          IconButton(
+            icon:  Icon(Icons.more_vert, color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -170,135 +194,160 @@ class _MessageScreenState extends State<MessageScreen> {
       ),
     );
   }
-}
+  Widget _buildNavigationDrawer(BuildContext context, bool isDark) {
+    return Drawer(
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
 
-class MessageData {
-  final String name;
-  final String message;
-  final String time;
-  final String avatar;
-  final int unreadCount;
-  final bool isOnline;
+      child: Column(
+        children: [
+          // Custom drawer header with profile in a row
+          Container(
 
-  MessageData({
-    required this.name,
-    required this.message,
-    required this.time,
-    required this.avatar,
-    required this.unreadCount,
-    required this.isOnline,
-  });
-}
-
-class MessageCard extends StatelessWidget {
-  final MessageData data;
-  final bool isDark;
-  final VoidCallback onTap;
-
-  const MessageCard({
-    Key? key,
-    required this.data,
-    required this.isDark,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-        child: Row(
-          children: [
-            // Avatar with online indicator
-            Stack(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 24,
-                  backgroundImage: AssetImage(data.avatar),
-                ),
-                if (data.isOnline)
-                  Positioned(
-                    right: 0,
-                    bottom: 0,
-                    child: Container(
-                      width: 12,
-                      height: 12,
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: isDark ? JAppColors.darkGray800 : Colors.white,
-                          width: 2,
-                        ),
+                SizedBox(height: 40),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        // Close the drawer first
+
+                        Navigator.pop(context);
+                        // Navigate to profile screen
+                        AppRouter.router.push('/profileScreen');
+                      },
+                      child: CircularAvatar(
+                        isDark: isDark,
+                        radius: 30,
+                        imageUrl: JImages.image,
                       ),
+                    ),                    SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'John Doe',
+                          style: AppTextStyle.dmSans(
+                            fontSize: JSizes.fontSizeMd,
+                            weight: FontWeight.w600,
+                            color:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                          ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '@johndoe',
+                          style: AppTextStyle.dmSans(
+                            fontSize: 14.0,
+                            weight: FontWeight.w400,
+                            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                  ],
+                ),
+                SizedBox(height: 16),
               ],
             ),
-            const SizedBox(width: 12),
+          ),
 
-            // Message content
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    data.name,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 16.0,
-                      weight: FontWeight.w500,
-                      color: isDark ? Colors.white : JAppColors.lightGray900,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    data.message,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 12.0,
-                      weight: FontWeight.w400,
-                      color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray600,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            ),
 
-            // Time and unread count
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  data.time,
-                  style: AppTextStyle.dmSans(
-                    fontSize: 12.0,
-                    weight: FontWeight.w300,
-                    color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray600,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    color: JAppColors.primary,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Text(
-                    data.unreadCount.toString(),
-                    style: AppTextStyle.dmSans(
-                      fontSize: 10.0,
-                      weight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          Divider(),
+          // Drawer items using the custom widget
+          DrawerItem(
+            iconPath: JImages.profilesetting,
+            title: 'Account Settings',
+            iconColor:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+
+              AppRouter.router.push('/accountSettingScreen');
+              // Navigate to home
+            },
+          ),
+
+          DrawerItem(
+            iconPath: JImages.report,
+            title: 'Financial Report',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/contactSupportScreen');
+
+              // Navigate to profile
+            },
+          ),
+
+          DrawerItem(
+            iconPath: JImages.proposal,
+            title: 'Proposal',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              // AppRouter.router.push('/membershipPlansScreen');
+              // Navigate to applications
+            },
+          ),
+          DrawerItem(
+            iconPath: JImages.proposal,
+            title: 'My Ads',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/myAdsScreen');
+              // Navigate to applications
+            },
+          ),
+          DrawerItem(
+            iconPath: JImages.upgrade,
+            title: 'Upgrade',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/membershipPlansScreen');
+              // Navigate to applications
+            },
+          ),
+          DrawerItem(
+            iconPath: JImages.language,
+            title: 'Language',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/languageScreen');
+              // Navigate to applications
+            },
+          ),
+
+          DrawerItem(
+            iconPath: JImages.helpsupport,
+            title: 'Help & Support',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              AppRouter.router.push('/contactSupportScreen');
+
+              // Navigate to notifications
+            },
+          ),
+
+
+          DrawerItem(
+            iconPath: JImages.logout_icon,
+            title: 'Logout',
+            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            onTap: () {
+              Navigator.pop(context);
+              // Navigate to settings
+            },
+          ),
+
+        ],
       ),
     );
   }
 }
+
+

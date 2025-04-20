@@ -18,7 +18,7 @@ class JobDetailsPage extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: BackCircle(
           isDark: isDark,
@@ -67,6 +67,7 @@ class JobDetailsPage extends StatelessWidget {
                       ),
                       child: TextField(
                         maxLines: null,
+                        style: AppTextStyle.dmSans(color: isDark ? JAppColors.lightGray100  : JAppColors.lightGray800, fontSize: 14.9, weight: FontWeight.w400),
                         decoration: InputDecoration(
                           hintText: "Enter a description...",
                           border: InputBorder.none,

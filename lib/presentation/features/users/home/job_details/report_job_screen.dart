@@ -34,7 +34,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: BackCircle(
           isDark: isDark,

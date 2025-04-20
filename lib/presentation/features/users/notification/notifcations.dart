@@ -6,6 +6,7 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
+import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
@@ -23,46 +24,37 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.notifications,
           style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            fontSize: 20.0,
-            weight: FontWeight.w600,
-          ),
+              color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800,
+              fontSize: 16.0,
+              weight: FontWeight.w500),
         ),
-        leadingIcon: JCircularAvatar(
+        leadingIcon: BackCircle(
           isDark: isDark,
-          radius: 20, // Modify the radius to make it larger
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              NotificationsContainer(
+                isDark: isDark,
+                width: double.infinity,
+                height: 130,
+              ),
+              NotificationDialog(isDark: isDark),
+            ],
           ),
         ),
       ),
-
-
-      body: Padding(padding: EdgeInsets.symmetric(vertical: 16,horizontal: 16),
-
-      child: SingleChildScrollView(
-        child: Column(
-        
-          children: [
-
-            NotificationsContainer(isDark: isDark, width: double.infinity, height: 130,),
-            NotificationDialog(isDark: isDark),
-
-
-          ],
-        
-        
-        ),
-      ),),
     );
   }
 }
-
-

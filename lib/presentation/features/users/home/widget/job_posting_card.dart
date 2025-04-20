@@ -392,7 +392,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(10.0),
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: containerColor,

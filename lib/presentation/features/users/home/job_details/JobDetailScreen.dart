@@ -15,13 +15,14 @@ class JobDetailScreen extends StatelessWidget {
     super.key,
   });
 
+
   @override
   Widget build(BuildContext context) {
     // Colors
 
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: BackCircle(
           isDark: isDark,

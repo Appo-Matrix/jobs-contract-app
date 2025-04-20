@@ -59,29 +59,7 @@ class NavigationMenu extends StatelessWidget {
               ),
               label: 'Home',
             ),
-            NavigationDestination(
-              icon: SvgPicture.asset(
-                JImages.searchww,
-                width: 20,
-                height: 20,
-                colorFilter: ColorFilter.mode(
-                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
-                  BlendMode.srcIn,
 
-                ),
-              ),
-              selectedIcon: SvgPicture.asset(
-                JImages.searchww,
-                width: 20,
-                height: 20,
-                colorFilter: ColorFilter.mode(
-                  isDark ? Colors.white60 : JAppColors.primary,
-                  BlendMode.srcIn,
-                ),
-
-              ),
-              label: 'Search',
-            ),
             NavigationDestination(
               icon: SvgPicture.asset(
                 JImages.con,
@@ -166,13 +144,10 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final List<Widget> screens = [
-    const HomeScreen(),
-    SearchFilter(),
-
-    ContractsScreen(),
-    Container(),
+     HomeScreen(),
+ContractsScreen(),
     MessageScreen(),
+    NotifcationsScreen()
 
-    NotifcationsScreen(),
   ];
 }

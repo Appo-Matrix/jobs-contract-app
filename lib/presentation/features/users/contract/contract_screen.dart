@@ -51,7 +51,7 @@ class _ContractsScreenState extends State<ContractsScreen>
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.allContract,
@@ -119,6 +119,7 @@ class _ContractsScreenState extends State<ContractsScreen>
               height: 35,
               margin: const EdgeInsets.only(left: 16, right: 16),
               child: TabBar(
+                dividerColor: Colors.transparent,
                 controller: _tabController,
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,

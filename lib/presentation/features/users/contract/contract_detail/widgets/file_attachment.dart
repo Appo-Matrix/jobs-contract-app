@@ -15,7 +15,7 @@ class FileAttachment extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       margin: EdgeInsets.symmetric(vertical: 12,horizontal: 12),
       decoration: BoxDecoration(
-        color: isDark ? JAppColors.darkGray600 : Colors.white,
+        color: isDark ? JAppColors.backGroundDarkCard.withValues(alpha: 0.1): Colors.white,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: isDark ? JAppColors.darkGray500 : Colors.grey.shade200,

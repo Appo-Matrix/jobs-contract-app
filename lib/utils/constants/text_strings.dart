@@ -593,5 +593,9 @@ class JText {
   static const String seeLess  ="See Less";
 
   static const String recommendedForYou  ="Recommended for you";
+  static const String recentPotJob  ="Recently Posted Jobs";
+
+  static const String message  = "Message";
+
 
 }

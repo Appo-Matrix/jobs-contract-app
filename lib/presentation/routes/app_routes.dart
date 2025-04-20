@@ -307,6 +307,8 @@ class AppRouter {
         name: Routes.verificationScreen.name,
         builder: (context, state) => VerificationScreen(),
       ),
+
+
       GoRoute(
         path: '/checkEmailScreen',
         name: Routes.checkEmailScreen.name,
