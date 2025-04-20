@@ -20,7 +20,7 @@ class AccountSettingScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     bool light = false;
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
 
       appBar: JAppbar(
 

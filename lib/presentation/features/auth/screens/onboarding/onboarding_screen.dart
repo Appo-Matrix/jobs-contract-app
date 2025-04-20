@@ -3,10 +3,12 @@ import 'package:job_contracts/presentation/features/auth/screens/onboarding/widg
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/smooth_page_indicator.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:provider/provider.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../theme_controller/ThemeNotifier.dart';
 import 'models/onboarding_item.dart';
 
 
@@ -50,13 +52,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+    final themeNotifier = Provider.of<ThemeNotifier>(context);
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.lighter : Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-
+            SwitchListTile(
+              title: const Text("Dark Mode"),
+              value: themeNotifier.themeMode == ThemeMode.dark,
+              onChanged: (value) => themeNotifier.toggleTheme(value),
+            ),
             // Skip button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:job_contracts/presentation/features/users/home/recent_jobs/recent_jobs_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/saved_jobs/saved_jobs_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
@@ -7,10 +8,13 @@ import 'package:job_contracts/utils/common_widgets/appbar.dart';
 import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
+import 'package:provider/provider.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
+import '../../theme_controller/ThemeNotifier.dart';
 import 'best_match_screen/best_match_screen.dart';
 import 'drawer/widgets/drawer_item.dart';
 
@@ -21,7 +25,8 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -31,7 +36,6 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     // Initialize TabController in initState
     _tabController = TabController(length: 3, vsync: this);
   }
-  
 
   @override
   void dispose() {
@@ -49,10 +53,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: GestureDetector(
-          onTap: ()=>{
-            _scaffoldKey.currentState?.openDrawer()
-
-          },
+          onTap: () => {_scaffoldKey.currentState?.openDrawer()},
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircularAvatar(
@@ -63,49 +64,52 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ),
           ),
         ),
-
-
         actions: [
           IconButton(
-            icon:  Icon(Icons.more_vert, color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
+            icon: Icon(Icons.more_vert,
+                color:
+                    isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
             onPressed: () {},
           ),
         ],
       ),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
           children: [
-
-
             SizedBox(
               height: 35,
               child: TabBar(
                 dividerColor: Colors.transparent,
-                controller: _tabController, // Set the controller
+                controller: _tabController,
+                // Set the controller
                 // Add rounded indicator with no underline
                 indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: JAppColors.primary,
                 ),
                 indicatorSize: TabBarIndicatorSize.tab,
-                labelColor: Colors.white, // Set selected tab text color to white
-                unselectedLabelColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                labelColor: Colors.white,
+                // Set selected tab text color to white
+                unselectedLabelColor:
+                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 padding: EdgeInsets.all(3),
-                indicatorWeight: 0, // Set to 0 to remove the underline
+                indicatorWeight: 0,
+                // Set to 0 to remove the underline
                 labelStyle: AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeESm,
-                  weight: FontWeight.w500, color: Colors.white,
+                  weight: FontWeight.w500,
+                  color: Colors.white,
                 ),
                 unselectedLabelStyle: AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeESm,
-                  weight: FontWeight.w500, color: Colors.white,
+                  weight: FontWeight.w500,
+                  color: Colors.white,
                 ),
                 tabs: [
-                  Tab(text: 'Best matches'),
-                  Tab(text: 'Recent Jobs'),
-                  Tab(text: 'Saved Jobs'),
+                  Tab(text: JText.bestMatch),
+                  Tab(text: JText.recentMatch),
+                  Tab(text: JText.savedMatch),
                 ],
               ),
             ),
@@ -127,16 +131,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       ),
     );
   }
+
 // Usage example for the navigation drawer
   Widget _buildNavigationDrawer(BuildContext context, bool isDark) {
     return Drawer(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
       child: Column(
         children: [
           // Custom drawer header with profile in a row
           Container(
-
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +160,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         radius: 30,
                         imageUrl: JImages.image,
                       ),
-                    ),                    SizedBox(width: 16),
+                    ),
+                    SizedBox(width: 16),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,7 +170,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           style: AppTextStyle.dmSans(
                             fontSize: JSizes.fontSizeMd,
                             weight: FontWeight.w600,
-                            color:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                            color: isDark
+                                ? JAppColors.darkGray100
+                                : JAppColors.lightGray800,
                           ),
                         ),
                         SizedBox(height: 4),
@@ -175,7 +181,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                           style: AppTextStyle.dmSans(
                             fontSize: 14.0,
                             weight: FontWeight.w400,
-                            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                            color: isDark
+                                ? JAppColors.darkGray100
+                                : JAppColors.lightGray800,
                           ),
                         ),
                       ],
@@ -187,13 +195,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ),
           ),
 
-
           Divider(),
           // Drawer items using the custom widget
           DrawerItem(
             iconPath: JImages.profilesetting,
-            title: 'Account Settings',
-            iconColor:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.accountSetting,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
 
@@ -204,8 +212,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
           DrawerItem(
             iconPath: JImages.report,
-            title: 'Financial Report',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.financialReport,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/contactSupportScreen');
@@ -216,8 +225,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
           DrawerItem(
             iconPath: JImages.proposal,
-            title: 'Proposal',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.proposal,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               // AppRouter.router.push('/membershipPlansScreen');
@@ -226,8 +236,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
           DrawerItem(
             iconPath: JImages.proposal,
-            title: 'My Ads',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.myAds,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/myAdsScreen');
@@ -236,8 +247,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
           DrawerItem(
             iconPath: JImages.upgrade,
-            title: 'Upgrade',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.upgrade,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/membershipPlansScreen');
@@ -246,8 +258,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           ),
           DrawerItem(
             iconPath: JImages.language,
-            title: 'Language',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.language,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/languageScreen');
@@ -257,8 +270,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
           DrawerItem(
             iconPath: JImages.helpsupport,
-            title: 'Help & Support',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.helpAndSupport,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/contactSupportScreen');
@@ -267,19 +281,99 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             },
           ),
 
-
           DrawerItem(
             iconPath: JImages.logout_icon,
-            title: 'Logout',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            title: JText.logout,
+            iconColor:
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               // Navigate to settings
             },
           ),
 
+          Spacer(),
+          ListTile(
+            leading: Icon(
+              Icons.brightness_6,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            ),
+            title: Text(
+              JText.changeTheme,
+              style: AppTextStyle.dmSans(
+                fontSize: 16.0,
+                weight: FontWeight.w500,
+                color:
+                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+              _showThemeBottomSheet(context, isDark);
+            },
+          ),
+          SizedBox(height: 20),
         ],
       ),
+    );
+  }
+
+  void _showThemeBottomSheet(BuildContext context, bool isDark) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Choose Theme',
+                style: AppTextStyle.dmSans(
+                  fontSize: 18.0,
+                  weight: FontWeight.bold,
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.light_mode, color: Colors.orange),
+                title: Text('Light Theme'),
+                onTap: () {
+                  // Use ThemeNotifier to change the theme
+                  Provider.of<ThemeNotifier>(context, listen: false)
+                      .toggleTheme(false);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.dark_mode, color: Colors.blueGrey),
+                title: Text('Dark Theme'),
+                onTap: () {
+                  // Use ThemeNotifier to change the theme
+                  Provider.of<ThemeNotifier>(context, listen: false)
+                      .toggleTheme(true);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.brightness_auto, color: Colors.green),
+                title: Text('System Default'),
+                onTap: () {
+                  // Use ThemeNotifier to set the system default theme
+                  Provider.of<ThemeNotifier>(context, listen: false).toggleTheme(
+                      false); // System can fallback to light/dark based on system settings
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

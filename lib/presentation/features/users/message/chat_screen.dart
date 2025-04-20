@@ -10,7 +10,7 @@ import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();

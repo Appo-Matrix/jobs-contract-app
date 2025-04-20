@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
@@ -36,15 +37,6 @@ class _ContractDescriptionState extends State<ContractDescription> {
             weight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 16),
-        Text(
-          'Contract Description',
-          style: AppTextStyle.dmSans(
-            color: widget.isDark ? Colors.white : JAppColors.lightGray900,
-            fontSize: 16.0,
-            weight: FontWeight.w500,
-          ),
-        ),
         const SizedBox(height: 8),
         AnimatedCrossFade(
           firstChild: Text(
@@ -53,7 +45,7 @@ class _ContractDescriptionState extends State<ContractDescription> {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: AppTextStyle.dmSans(
-              color: widget.isDark ? Colors.white : JAppColors.lightGray900,
+              color: widget.isDark ? JAppColors.lightGray400 : JAppColors.lightGray900,
               fontSize: 14.0,
               height: 1.5,
               weight: FontWeight.w400,
@@ -78,19 +70,19 @@ class _ContractDescriptionState extends State<ContractDescription> {
               _isExpanded = !_isExpanded;
             });
           },
-          child: Text(
-            _isExpanded ? 'See Less' : 'See More...',
-            style: AppTextStyle.dmSans(
-              color: JAppColors.primary,
-              fontSize: 16.0,
-              weight: FontWeight.w500,
-            ),
-          ),
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
             alignment: Alignment.centerLeft,
             minimumSize: Size.zero,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
+          child: Text(
+            _isExpanded ? JText.seeLess : '${JText.seeMore}...',
+            style: AppTextStyle.dmSans(
+              color: JAppColors.light,
+              fontSize: 16.0,
+              weight: FontWeight.w400,
+            ),
           ),
         ),
       ],

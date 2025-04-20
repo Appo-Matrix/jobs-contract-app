@@ -39,7 +39,7 @@ class PhoneNumberWidget extends StatelessWidget {
             border: Border.all(color: JAppColors.lightGray300, width: 1)
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),
+            padding: const EdgeInsets.only(left: 12.0),git
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -61,43 +61,7 @@ class PhoneNumberWidget extends StatelessWidget {
             ),
           ),
         )
-        // TextField(
-        //   style: AppTextStyle.dmSans(
-        //     color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-        //     fontSize: JSizes.fontSizeMd,
-        //     weight: FontWeight.w400,
-        //   ),
-        //   decoration: InputDecoration(
-        //     hintText: '',
-        //     hintStyle: AppTextStyle.dmSans(
-        //       color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-        //       fontSize: JSizes.fontSizeMd,
-        //       weight: FontWeight.w400,
-        //     ),
-        //     border: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(12),
-        //       borderSide: BorderSide(
-        //         color: Colors.grey,
-        //         width: 1,
-        //       ),
-        //     ),
-        //     enabledBorder: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(12),
-        //       borderSide: BorderSide(
-        //         color: Colors.grey,
-        //         width: 1,
-        //       ),
-        //     ),
-        //     focusedBorder: OutlineInputBorder(
-        //       borderRadius: BorderRadius.circular(12),
-        //       borderSide: BorderSide(
-        //         color: JAppColors.primary, // Use primary color when focused
-        //         width: 1.5,
-        //       ),
-        //     ),
-        //     contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-        //   ),
-        // ),
+
       ],
     );
   }

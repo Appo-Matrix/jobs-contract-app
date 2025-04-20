@@ -58,7 +58,8 @@ class ContractDetailScreen extends StatelessWidget {
                       isDark ? JAppColors.darkGray100 : JAppColors.primary,
                   text_fontweight: FontWeight.w600,
                   image_value: false,
-                  onTap: () {},
+                  onTap: () {                    AppRouter.router.push('/chatScreen');
+                  },
                   text_size: JSizes.fontSizeMd,
                 ),
               ),

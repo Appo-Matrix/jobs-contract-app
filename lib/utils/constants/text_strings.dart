@@ -597,5 +597,23 @@ class JText {
 
   static const String message  = "Message";
 
+  static const String changeTheme  =  "Change Theme";
+  static const String helpAndSupport  =  "Help & Support";
+
+  static const String upgrade  =  "Upgrade";
+
+  static const String proposal  =  "Proposal";
+
+  static const String financialReport   = "Financial Report";
+
+  static const String bestMatch  ="Best matches";
+  static const String recentMatch  ="Recent Jobs";
+  static const String savedMatch  ="Saved Jobs";
+
+
+
+
+
+
 
 }

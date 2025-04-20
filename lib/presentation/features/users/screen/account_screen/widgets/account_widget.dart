@@ -25,6 +25,7 @@ class AccountWidgetContainer extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Container(
       decoration: BoxDecoration(
+        color: isDark ? JAppColors.backGroundDarkCard : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(12)),
           border: Border.all(color: JAppColors.lightGray300)),
       child: Padding(
