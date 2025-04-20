@@ -39,7 +39,7 @@ class PhoneNumberWidget extends StatelessWidget {
             border: Border.all(color: JAppColors.lightGray300, width: 1)
           ),
           child: Padding(
-            padding: const EdgeInsets.only(left: 12.0),git
+            padding: const EdgeInsets.only(left: 12.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
