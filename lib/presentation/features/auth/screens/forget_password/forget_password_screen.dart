@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
@@ -22,7 +21,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       appBar: JAppbar(
         leadingIcon: BackCircle(
           isDark: isDark,
-          onTap: () {
+          onTap: (){
             Navigator.pop(context);
           },
         ),
@@ -39,8 +38,9 @@ class ForgetPasswordScreen extends StatelessWidget {
               Text(
                 JText.forgetPassword,
                 style: AppTextStyle.dmSans(
-                  color:
-                      isDark ? JAppColors.darkGray200 : JAppColors.lightGray800,
+                  color: isDark
+                      ? JAppColors.darkGray200
+                      : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
                 ),
@@ -52,8 +52,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                 JText.plesdr,
                 style: AppTextStyle.dmSans(
                   height: 1.3,
-                  color:
-                      isDark ? JAppColors.darkGray200 : JAppColors.lightGray600,
+                  color: isDark
+                      ? JAppColors.darkGray200
+                      : JAppColors.lightGray600,
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
@@ -64,35 +65,62 @@ class ForgetPasswordScreen extends StatelessWidget {
                 subTitle: JText.email,
                 hintText: JText.emailEnter,
                 subtitleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
-                    isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
+
 
               SizedBox(height: JSizes.spaceBtwSections - 8),
 
               MainButton(
                 btn_color: JAppColors.primary,
+
                 btn_title: JText.sendCode,
-                btn_radius: 10,
-                isDark: isDark,
+                btn_radius: 10,isDark: isDark,
                 btn_boarder_color: Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,
-                onTap: () {
+                onTap: (){
                   AppRouter.router.push('/forgetPasswordOtpScreen');
                 },
               ),
 
               SizedBox(height: JSizes.spaceBtwSections),
-              BottomWidget(
-                isDark: isDark,
-                title: JText.alreadyAccount,
-                titleDes: JText.logIn,
-                onPressed: () {
-                  AppRouter.router.push('/loginScreen');
-                },
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    JText.alreadyAccount,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800,
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                    ),
+
+                  ),
+
+                  SizedBox(width: JSizes.spaceBtwItems - 10),
+
+                  GestureDetector(
+                    onTap: (){
+                      AppRouter.router.push('/loginScreen');
+                    },
+                    child: Text(
+                      JText.login,
+                      style: AppTextStyle.dmSans(
+                          color: isDark
+                              ? JAppColors.darkGray100
+                              : JAppColors.primary,
+                          fontSize: 18.0,
+                          weight: FontWeight.w600),
+                    ),
+                  ),
+                ],
               ),
 
               // Add some bottom padding to ensure everything is visible

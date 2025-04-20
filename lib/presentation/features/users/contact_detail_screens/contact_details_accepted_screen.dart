@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/screen/contact_detail_screens/widgets/contact_details_widget.dart';
-import 'package:job_contracts/presentation/features/users/screen/contact_detail_screens/widgets/contact_first_widget.dart';
+import 'package:job_contracts/presentation/features/users/contact_detail_screens/widgets/contact_details_widget.dart';
+import 'package:job_contracts/presentation/features/users/contact_detail_screens/widgets/contact_first_widget.dart';
+
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';

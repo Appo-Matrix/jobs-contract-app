@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/screen/account_screen/widgets/account_widget.dart';
+import 'package:job_contracts/presentation/features/users/account_screen/widgets/account_widget.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -12,18 +11,23 @@ import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
 
-class AccountSettingScreen extends StatelessWidget {
+class AccountSettingScreen extends StatefulWidget {
   const AccountSettingScreen({super.key});
+
+  @override
+  State<AccountSettingScreen> createState() => _AccountSettingScreenState();
+}
+
+class _AccountSettingScreenState extends State<AccountSettingScreen> {
+  bool light = false;  // Track the state of the switch
 
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    bool light = false;
+
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-
       appBar: JAppbar(
-
         title: Text(
           JText.accountSetting,
           style: AppTextStyle.dmSans(
@@ -47,12 +51,11 @@ class AccountSettingScreen extends StatelessWidget {
             children: [
 
               SizedBox(height: 12,),
-              ///Account Section
+              // Account Section
               Text(
                 JText.accountSettingText,
                 style: AppTextStyle.dmSans(
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
                   fontSize: JSizes.fontSizeMd,
                   weight: FontWeight.w400,
                   height: 1.5,
@@ -60,13 +63,9 @@ class AccountSettingScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               GestureDetector(
-
                 onTap: (){
                   AppRouter.router.push('/profileInformationScreen');
-
-
-                }
-                ,
+                },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.userIcon,
                   title: JText.profileInfo,
@@ -74,18 +73,14 @@ class AccountSettingScreen extends StatelessWidget {
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
-                    color:
-                        isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                   ),
                 ),
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: (){
-
+                onTap: () {
                   AppRouter.router.push('/ChangedPasswordScreen');
-
-
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.lock,
@@ -94,19 +89,14 @@ class AccountSettingScreen extends StatelessWidget {
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
-                    color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                   ),
-
                 ),
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: (){
-
-
+                onTap: () {
                   AppRouter.router.push('/paymentsMethod');
-
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.payment,
@@ -114,14 +104,13 @@ class AccountSettingScreen extends StatelessWidget {
                   subTitle: JText.addCreditTitle,
                   child: Icon(
                     Icons.arrow_forward_ios_outlined,
-                    color:
-                        isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                   ),
                 ),
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   AppRouter.router.push('/preferenceScreen');
                 },
                 child: AccountWidgetContainer(
@@ -131,19 +120,17 @@ class AccountSettingScreen extends StatelessWidget {
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
-                    color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                   ),
                 ),
               ),
               SizedBox(height: JSizes.spaceBtwItems),
 
-              ///Notification Section
+              // Notification Section
               Text(
                 JText.notifications,
                 style: AppTextStyle.dmSans(
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
                   height: 1.5,
@@ -152,72 +139,34 @@ class AccountSettingScreen extends StatelessWidget {
               SizedBox(height: 12),
               AccountWidgetContainer(
                 iconsImage: JImages.notificationBell,
-                title: JText.profileInfo,
+                title: JText.pushNotifications,
                 subTitle: JText.notificationsSubTitle,
-                  child: SizedBox(
-                    height: 30,
-                    width: 60,
-                    child: Switch(
-                      value: light,
-                      activeColor: Colors.white,
-                      activeTrackColor: JAppColors.primary,
-                      inactiveTrackColor: JAppColors.lightGray300,
-                      onChanged: (bool value) {
-                        // setState(() {
-                        //   light = value;
-                        // });
-                      },
-                    ),
-                  )
-              ),
-              SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.notificationBell,
-                title: JText.notificationsSMSTitle,
-                subTitle: JText.notificationsSubTitle,
-                  child: SizedBox(
-                    height: 30,
-                    width: 60,
-                    child: Switch(
-                      // This bool value toggles the switch.
-                      value: light,
-                      activeColor: Colors.white,
-                      activeTrackColor: JAppColors.primary,
-                      inactiveTrackColor: JAppColors.lightGray300,
-                      onChanged: (bool value) {
-                        // setState(() {
-                        //   light = value;
-                        // });
-                      },
-                    ),
-                  )
-              ),
-              SizedBox(height: 15),
-              AccountWidgetContainer(
-                iconsImage: JImages.notificationBell,
-                title: JText.profileInfo,
-                subTitle: JText.changeInfo,
                 child: SizedBox(
-                  height: 25,
-                  width: 55,
+                  height: 30,
+                  width: 60,
                   child: Switch(
-
-                    value: light,
+                    value: light,  // Bind the switch to the `light` variable
                     activeColor: Colors.white,
                     activeTrackColor: JAppColors.primary,
                     inactiveTrackColor: JAppColors.lightGray300,
                     onChanged: (bool value) {
-                      // setState(() {
-                      //   light = value;
-                      // });
+                      setState(() {
+                        light = value;  // Update the `light` state
+                      });
+
+                      // You can add any action here that should occur when the switch state changes.
+                      if (light) {
+                        print("Notifications enabled");
+                      } else {
+                        print("Notifications disabled");
+                      }
                     },
                   ),
-                )
+                ),
               ),
-              SizedBox(height: 12),
+              SizedBox(height: 15),
 
-
-              ///More Section
+              // More Section
               Text(
                 JText.more,
                 style: AppTextStyle.dmSans(
@@ -235,8 +184,7 @@ class AccountSettingScreen extends StatelessWidget {
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,
-                  color:
-                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
               ),
               SizedBox(height: 15),
@@ -247,8 +195,7 @@ class AccountSettingScreen extends StatelessWidget {
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,
-                  color:
-                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
               ),
               SizedBox(height: 15),
@@ -259,8 +206,7 @@ class AccountSettingScreen extends StatelessWidget {
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,
-                  color:
-                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
               ),
               SizedBox(height: 25),
@@ -271,4 +217,3 @@ class AccountSettingScreen extends StatelessWidget {
     );
   }
 }
-

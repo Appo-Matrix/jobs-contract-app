@@ -2,8 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
-import 'package:job_contracts/presentation/features/users/screen/account_screen/add_experiance_screen.dart';
-import 'package:job_contracts/presentation/features/users/screen/account_screen/change_work_experience_screen.dart';
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
@@ -28,7 +26,16 @@ import '../features/auth/screens/otp/verify_phone_otp.dart';
 import '../features/auth/screens/verify_profile/screens/verify_profile.dart';
 
 import '../features/users/NavigationMenu.dart';
+import '../features/users/account_screen/account_setting_screen.dart';
+import '../features/users/account_screen/add_experiance_screen.dart';
+import '../features/users/account_screen/change_work_experience_screen.dart';
+import '../features/users/account_screen/changed_password_screen.dart';
+import '../features/users/account_screen/preference_screen.dart';
+import '../features/users/account_screen/profile_information_screen.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
+import '../features/users/contact_detail_screens/contact_details_accepted_screen.dart';
+import '../features/users/contact_detail_screens/contact_details_active_screen.dart';
+import '../features/users/contact_detail_screens/feed_back_screen.dart';
 import '../features/users/contract/contract_detail/contract_detail_screen.dart';
 import '../features/users/helpandsupport/contact_support.dart';
 import '../features/users/helpandsupport/reports_screen.dart';
@@ -45,16 +52,10 @@ import '../features/users/myads/create_ad_screen.dart';
 import '../features/users/myads/my_ads_screen.dart';
 import '../features/users/payments/payments_method.dart';
 import '../features/users/profile/profile_detail.dart';
-import '../features/users/screen/account_screen/account_setting_screen.dart';
-import '../features/users/screen/account_screen/changed_password_screen.dart';
-import '../features/users/screen/account_screen/preference_screen.dart';
-import '../features/users/screen/account_screen/profile_information_screen.dart';
+
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
-import '../features/users/screen/contact_detail_screens/contact_details_accepted_screen.dart';
-import '../features/users/screen/contact_detail_screens/contact_details_active_screen.dart';
-import '../features/users/screen/contact_detail_screens/feed_back_screen.dart';
 import '../features/users/upgrade/membership_plans_screen.dart';
 
 class AppRouter {

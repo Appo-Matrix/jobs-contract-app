@@ -8,8 +8,6 @@ import 'package:job_contracts/presentation/features/users/profile/widgets/profil
 import 'package:job_contracts/presentation/features/users/profile/widgets/profile_section.dart';
 import 'package:job_contracts/presentation/features/users/profile/widgets/skills_list.dart';
 import 'package:job_contracts/presentation/features/users/profile/widgets/work_history_list.dart';
-import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showSkillsBottomSheet.dart';
-import 'package:job_contracts/presentation/features/users/screen/account_screen/bottomsheet/showWorkExperienceBottomSheet.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
@@ -18,7 +16,10 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
-import '../screen/account_screen/bottomsheet/showEducationBottomSheet.dart';
+import '../account_screen/bottomsheet/showEducationBottomSheet.dart';
+import '../account_screen/bottomsheet/showSkillsBottomSheet.dart';
+import '../account_screen/bottomsheet/showWorkExperienceBottomSheet.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

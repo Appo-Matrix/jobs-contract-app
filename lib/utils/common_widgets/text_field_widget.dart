@@ -161,7 +161,7 @@ class TextFieldWidget extends StatelessWidget {
                   : [],
             ),
           ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 10),
         TextFormField(
 
           controller: textEditingController,

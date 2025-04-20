@@ -612,7 +612,16 @@ class JText {
 
 
 
+  // static const String changedPassword = 'Changed Password';
+  // static const String changedPasswordTitle = 'Please enter your new password below.';
+  static const String currentPassword = 'Type your current password*';
+  static const String newPasswordTitle = 'Type your new password*';
+  static const String retypePassword = 'Retype your new password*';
+  static const String retypePasswordTitle = 'Re-type Password';
+  static const String requireAllDevices = 'Require all devices to sign in with new password';
+  static const String savePassword = 'Save Password';
 
+  static const String pushNotifications = "Push Notifications";
 
 
 

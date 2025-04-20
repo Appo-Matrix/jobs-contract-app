@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
@@ -69,21 +70,48 @@ class SignupScreen extends StatelessWidget {
                 validator: _validateRequired,
               ),
 
-              SizedBox(height: JSizes.spaceBtwInputFields),
+              SizedBox(height: JSizes.spaceBtwInputFields ),
+              RichText(
+                text: TextSpan(
+                  text: JText.phone,
+                  style: AppTextStyle.dmSans(
+                    color: isDark  ? JAppColors.lightGray100 : JAppColors.lightGray800,
+                    fontSize: JSizes.fontSizeMd,
+                    weight: FontWeight.w600,
+                  ),
+                  children: true
+                      ? [
+                    TextSpan(
+                      text: ' *',
+                      style: AppTextStyle.dmSans(
+                        color: JAppColors.error600,
+                        fontSize: JSizes.fontSizeMd,
+                        weight: FontWeight.w500,
+                      ),
+                    ),
+                  ]
+                      : [],
+                ),
+              ),
+              SizedBox(height: JSizes.spaceBtwInputFields - 8),
 
-              PhoneInputWidget(
-                isRequired: true,
-                onPhoneChanged: (phone) {
-                  // Handle phone number change
-                  print("Phone changed: $phone");
+              IntlPhoneField(
+                decoration: InputDecoration(
+                  fillColor:  isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(),
+                  ),
+                ),
+                initialCountryCode: 'PK', // set your preferred default country
+                onChanged: (phone) {
+                  print('Complete phone number: ${phone.completeNumber}');
                 },
-                onCountryCodeChanged: (countryCode) {
-                  // Handle country code change
-                  print("Country code changed: $countryCode");
+                onCountryChanged: (country) {
+                  print('Country changed to: ${country.name}');
                 },
               ),
 
-              SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
                 subTitle: JText.password,
                 hintText: '*****',

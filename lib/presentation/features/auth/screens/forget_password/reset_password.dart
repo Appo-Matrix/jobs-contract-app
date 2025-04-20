@@ -96,10 +96,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 AppRouter.router.push(
                   '/successScreen',
                   extra: SuccessScreenArgs(
-                    title: JText.passwordChangedTitle,
-                    message: JText.passwordChangedMessage,
+                    title: 'Password changed',
+                    message: 'Your password has been change successfully!',
                     imagePath: JImages.successImage,
-                    buttonText: JText.continueButtonText,
+                    buttonText: 'Continue',
                     onButtonTap: () {
                       AppRouter.router.push('/loginScreen');
                     },

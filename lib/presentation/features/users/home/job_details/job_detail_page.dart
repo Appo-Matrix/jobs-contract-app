@@ -26,14 +26,6 @@ class JobDetailsPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-      title: Text(
-        JText.backToJobDetail,
-        style: AppTextStyle.dmSans(
-          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-          fontSize: 19.0,
-          weight: FontWeight.w500,
-        ),
-      ),
 
       ),
       body: Column(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
@@ -11,7 +10,6 @@ import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
 import '../verify_profile/screens/widgets/buildOtpBox.dart';
 import 'package:pinput/pinput.dart';
-
 class ForgetPasswordOtpScreen extends StatefulWidget {
   const ForgetPasswordOtpScreen({super.key});
 
@@ -67,7 +65,7 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
         width: double.infinity,
         child:
         MainButton(
-          btn_title: JText.verify,
+          btn_title: "Verify",
           btn_radius: 10,
           btn_color: JAppColors.primary,
 
@@ -121,8 +119,34 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
 
               SizedBox(height: JSizes.spaceBtwSections + 30),
 
-              BottomWidget(isDark: isDark, title: JText.receivecode, titleDes: JText.sendAgain, onPressed: () {  } ,),
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    JText.receivecode,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.lightGray400
+                          : JAppColors.darkGray600,
+                      fontSize: 16.0,
+                      weight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(
+                    width: JSizes.xs + 2,
+                  ),
+                  Text(
+                    JText.sendAgain,
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.primary,
+                      fontSize: 18.0,
+                      weight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
 
               const SizedBox(height: JSizes.spaceBtwSections + 30),
 
@@ -137,4 +161,3 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
     );
   }
 }
-

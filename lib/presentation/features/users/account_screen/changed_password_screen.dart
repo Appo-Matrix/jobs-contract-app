@@ -11,21 +11,58 @@ import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../utils/common_widgets/circular_progess_loader.dart';
 
-class ChangedPasswordScreen extends StatelessWidget {
+class ChangedPasswordScreen extends StatefulWidget {
   const ChangedPasswordScreen({super.key});
 
   @override
+  State<ChangedPasswordScreen> createState() => _ChangedPasswordScreenState();
+}
+
+class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
+  @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+    void showProgressDialog(BuildContext context) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        barrierColor: Colors.black.withOpacity(0.2),
+        builder: (_) => const Center(
+          child: FancyCircularLoader(),
+        ),
+      );
+    }
 
+    bool _isLoading = false;
+
+    void _handleSave() async {
+      setState(() {
+        _isLoading = true;
+      });
+
+      showProgressDialog(context);
+
+      // Simulate saving or perform your save logic
+      await Future.delayed(Duration(seconds: 5));
+
+      Navigator.pop(context); // Close the loading dialog
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Profile saved successfully")),
+      );
+    }
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.changedPassword,
+          JText.changedPassword, // Use the constant
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
@@ -34,7 +71,7 @@ class ChangedPasswordScreen extends StatelessWidget {
         ),
         leadingIcon: BackCircle(
           isDark: isDark,
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
         ),
@@ -45,44 +82,45 @@ class ChangedPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               SizedBox(height: JSizes.spaceBtwItems,),
               Text(
-                JText.changedPasswordTitle,
+                JText.changedPasswordTitle, // Use the constant
                 style: AppTextStyle.dmSans(
                     color: isDark
                         ? JAppColors.lightGray100
                         : JAppColors.darkGray500,
                     fontSize: JSizes.fontSizeSm,
                     weight: FontWeight.w400,
-                  height: 1.5
+                    height: 1.5
                 ),
               ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
+              SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: 'Type your current password*',
+                subTitle: JText.currentPassword, // Use the constant
                 hintText: 'Current Password',
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
+              SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: 'Type your new password*',
-                hintText: 'New Password',
+                subTitle: JText.newPasswordTitle, // Use the constant
+                hintText: JText.newPassword,
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,              ),
-              SizedBox(height: JSizes.spaceBtwInputFields),
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+              ),
+              SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: 'Retype your new password*',
-                hintText: 'Re-type Password',
+                subTitle: JText.retypePassword, // Use the constant
+                hintText: JText.retypePasswordTitle,
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,              ),
+                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+              ),
               SizedBox(height: 55),
               Row(
                 children: [
@@ -93,7 +131,7 @@ class ChangedPasswordScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 10),
                   Text(
-                    'Require all devices to sign in with new password',
+                    JText.requireAllDevices, // Use the constant
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyle.dmSans(
@@ -108,19 +146,16 @@ class ChangedPasswordScreen extends StatelessWidget {
               ),
               SizedBox(height: 35),
               MainButton(
-                onTap: (){
-                  
-
-                },
-                btn_title: 'Save Password',
+                onTap: _isLoading ? null : _handleSave,
+                btn_title: JText.savePassword,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Colors.transparent,
                 title_color: Colors.white,
                 image_value: false,
               ),
-              SizedBox(height: 20),
 
+              SizedBox(height: 20),
             ],
           ),
         ),
