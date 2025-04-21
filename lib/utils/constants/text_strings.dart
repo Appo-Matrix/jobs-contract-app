@@ -540,6 +540,7 @@ class JText {
   static const String active = 'Active';
   static const String drafts = 'Drafts';
   static const String paused = 'Paused';
+  static const String pausedContracts= 'Paused Contracts';
 
   // Ad Card
   static const String adTitlePlaceholder = 'Ad Title here';
@@ -623,6 +624,43 @@ class JText {
 
   static const String pushNotifications = "Push Notifications";
 
+  static const String pageTitle = 'Job Application';
+  static const String companyDetails = 'Google Inc. • Full Time';
+  static const String resumeTitle = 'Resume/CV';
+  static const String uploadLabel = 'Upload Resume/CV';
+  static const String uploadFromFiles = 'Select from files';
+  static const String uploadFromCloud = 'Upload from cloud';
+  static const String coverLetterTitle = 'Cover Letter';
+  static const String coverLetterHint = "Describe why you're a good fit for this role...";
+  static const String additionalQuestions = 'Additional Questions';
+  static const String question1 = 'How many years of experience do you have?';
+  static const String question2 = 'Are you willing to relocate?';
+  static const String submitButton = 'Submit Application';
+  static const String submittingMessage = 'Submitting application...';
+  static const String successMessage = 'Application submitted successfully!';
+  static const List<String> feedbackTags = [
+    "Could have more components",
+    "Complex",
+    "Not interactive",
+    "Only English",
+  ];
 
+  static const List<String> skillTags = [
+    "Easy to use",
+    "Complete",
+    "Helpful",
+    "Convenient",
+    "Looks good",
+  ];
+
+  static const String projectFinishText  = "Your project is finished.";
+  static const String rateExperienceText  = "How would you rate the Experience?";
+  static const String leaveAReview  = "Leave a Review?";
+  static const String youLike  = "What did you like?";
+  static const String wasYourExper  = "How was Your Experience?";
+
+  static const String completedContracts  = "Completed Contracts";
+  static const String cancelledContracts  = "Cancelled Contracts";
+  static const String activeContracts  = "Active Contracts";
 
 }

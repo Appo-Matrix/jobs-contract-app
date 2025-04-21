@@ -5,6 +5,7 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
+import '../../../../../utils/common_widgets/dot_progress_indicator.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -32,8 +33,30 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
     final double width = JDeviceUtils.getScreenWidth(context);
 
     final isDark = JDeviceUtils.isDarkMode(context);
+    bool _isLoading = false;
 
-    return Scaffold(
+    void _handleSubmit() {
+      setState(() {
+        _isLoading = true;
+      });
+
+      showDotProgressDialog(
+        context: context,
+        message: "Submitting report...",
+      );
+
+      // Simulate API call or processing
+      Future.delayed(const Duration(seconds: 3), () {
+        Navigator.pop(context); // Close the dialog
+
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+          // Add your actual submission logic here
+        }
+      });
+    }    return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: BackCircle(
@@ -131,6 +154,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                 children: [
                   Expanded(
                     child: MainButton(
+                      onTap: (){Navigator.pop(context);},
                       btn_title: JText.cancel,
                       btn_radius: 10,
                       btn_color: Colors.white.withValues(alpha: 0.4),
@@ -145,6 +169,9 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: MainButton(
+
+                      onTap: _isLoading ? null : _handleSubmit,
+
                       btn_title: JText.submitReport,
                       btn_radius: 10,
                       btn_color: JAppColors.error500,
@@ -154,6 +181,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                       image_value: false,
                     ),
                   ),
+
                 ],
               ),
             ),
@@ -162,12 +190,6 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
 
             SizedBox(height: 12,),
 
-            Container(
-              height: 12,
-              width: 100,
-              child: BottomIndicator(isDark: isDark, height: 8),
-
-            ),
 
 
             SizedBox(height: 12,),

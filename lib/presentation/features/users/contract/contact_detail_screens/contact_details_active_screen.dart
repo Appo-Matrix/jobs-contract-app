@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/contact_detail_screens/widgets/contact_details_widget.dart';
-import 'package:job_contracts/presentation/features/users/contact_detail_screens/widgets/contact_first_widget.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
@@ -10,6 +8,8 @@ import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../widgets/contact_details_widget.dart';
+import '../widgets/contact_first_widget.dart';
 
 class ContactDetailsActiveScreen extends StatelessWidget {
   const ContactDetailsActiveScreen({super.key});
@@ -75,7 +75,7 @@ class ContactDetailsActiveScreen extends StatelessWidget {
                   SizedBox(
                     width: 150,
                     child: MainButton(
-                      btn_title: 'Message',
+                      btn_title: JText.message,
                       btn_radius: 8,
                       btn_color: Colors.transparent,
                       btn_boarder_color: JAppColors.primary,

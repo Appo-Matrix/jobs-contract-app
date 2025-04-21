@@ -190,7 +190,7 @@ class _NotificationSettingsDialogState extends State<NotificationSettingsDialog>
               onTap: (){
                 widget.onSubmit(_selectedOptions);
 
-                AppRouter.router.push('/homeScreen');
+                AppRouter.router.push('/navigationMenu');
               },
             ),
 

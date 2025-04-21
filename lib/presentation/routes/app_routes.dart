@@ -33,10 +33,11 @@ import '../features/users/account_screen/changed_password_screen.dart';
 import '../features/users/account_screen/preference_screen.dart';
 import '../features/users/account_screen/profile_information_screen.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
-import '../features/users/contact_detail_screens/contact_details_accepted_screen.dart';
-import '../features/users/contact_detail_screens/contact_details_active_screen.dart';
-import '../features/users/contact_detail_screens/feed_back_screen.dart';
-import '../features/users/contract/contract_detail/contract_detail_screen.dart';
+
+import '../features/users/contract/contact_detail_screens/contact_details_accepted_screen.dart';
+import '../features/users/contract/contact_detail_screens/contact_details_active_screen.dart';
+import '../features/users/contract/contact_detail_screens/contract_detail_screen.dart';
+import '../features/users/contract/contact_detail_screens/feed_back_screen.dart';
 import '../features/users/helpandsupport/contact_support.dart';
 import '../features/users/helpandsupport/reports_screen.dart';
 import '../features/users/helpandsupport/support_request.dart';

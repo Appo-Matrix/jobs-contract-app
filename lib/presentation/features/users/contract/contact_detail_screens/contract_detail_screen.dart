@@ -1,14 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/activity_log_section.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/conractor_profile.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/contract_description_section.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/contract_detail_section.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_detail/widgets/file_attachment.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/bottom_indicator.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -16,6 +10,9 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
+import '../widgets/activity_log_section.dart';
+import '../widgets/contract_description_section.dart';
+import '../widgets/contract_detail_section.dart';
 
 class ContractDetailScreen extends StatelessWidget {
   const ContractDetailScreen({super.key});
@@ -34,7 +31,7 @@ class ContractDetailScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: MainButton(
-                  btn_title: JText.submitWork,
+                  btn_title: JText.deliverNowButton,
                   btn_radius: 10,
                   btn_color: JAppColors.main,
                   btn_boarder_color: const Color(0xff7030F1),
@@ -42,7 +39,7 @@ class ContractDetailScreen extends StatelessWidget {
                   text_fontweight: FontWeight.w600,
                   image_value: false,
                   onTap: () {
-                    AppRouter.router.push('/contractDetailScreen');
+                    AppRouter.router.push('/feedBackScreen');
                   },
                 ),
               ),
@@ -76,11 +73,14 @@ class ContractDetailScreen extends StatelessWidget {
             weight: FontWeight.w500,
           ),
         ),
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -104,6 +104,7 @@ class ContractDetailScreen extends StatelessWidget {
 
               // Contract details section with salary and contractor info
 
+
               ContractDetailsSection(isDark: isDark),
 
               const SizedBox(height: 24),
@@ -117,4 +118,3 @@ class ContractDetailScreen extends StatelessWidget {
   }
 }
 
-// Separate widgets moved to contract_detail_widgets.dart

@@ -1,4 +1,4 @@
-// lib/widgets/ad_card.dart
+// lib/asdas/ad_card.dart
 
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';

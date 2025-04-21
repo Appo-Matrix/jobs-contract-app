@@ -140,8 +140,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../../utils/constants/app_text_style.dart';
-import '../../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
 import 'conractor_profile.dart';
 
 class ContractDetailsSection extends StatelessWidget {

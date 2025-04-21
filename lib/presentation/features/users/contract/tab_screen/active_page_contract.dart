@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -20,7 +21,7 @@ class ActiveContractsPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
-            'Active Contracts',
+            JText.activeContracts,
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeMd,
               weight: FontWeight.w600,
