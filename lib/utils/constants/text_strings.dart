@@ -603,7 +603,7 @@ class JText {
 
   static const String upgrade  =  "Upgrade";
 
-  static const String proposal  =  "Proposal";
+  static const String proposal  =  "My Proposal";
 
   static const String financialReport   = "Financial Report";
 
@@ -662,5 +662,9 @@ class JText {
   static const String completedContracts  = "Completed Contracts";
   static const String cancelledContracts  = "Cancelled Contracts";
   static const String activeContracts  = "Active Contracts";
+
+  static  const String view  = "View";
+  static  const String closed  = "Closed";
+
 
 }

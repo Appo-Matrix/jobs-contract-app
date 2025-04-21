@@ -57,6 +57,7 @@ import '../features/users/profile/profile_detail.dart';
 import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
+import '../features/users/proposalScreen/proposal_screen.dart';
 import '../features/users/upgrade/membership_plans_screen.dart';
 
 class AppRouter {
@@ -345,6 +346,11 @@ class AppRouter {
         path: '/forgetPasswordOtpScreen',
         name: Routes.forgetPasswordOtpScreen.name,
         builder: (context, state) => ForgetPasswordOtpScreen(),
+      ),
+      GoRoute(
+        path: '/proposalScreen',
+        name: Routes.proposalScreen.name,
+        builder: (context, state) => ProposalScreen(),
       ),
 
     ],

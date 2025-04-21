@@ -24,11 +24,14 @@ class JobDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         title: Text(
           "Architects Construction.",

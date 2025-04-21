@@ -230,7 +230,7 @@ class _HomeScreenState extends State<HomeScreen>
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
-              // AppRouter.router.push('/membershipPlansScreen');
+              AppRouter.router.push('/proposalScreen');
               // Navigate to applications
             },
           ),
