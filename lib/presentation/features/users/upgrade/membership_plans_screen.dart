@@ -23,7 +23,7 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.membershipPlans ,

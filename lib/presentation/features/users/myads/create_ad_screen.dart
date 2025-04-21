@@ -57,7 +57,7 @@ class _CreateAdScreenState extends State<CreateAdScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.createAd,
@@ -67,11 +67,14 @@ class _CreateAdScreenState extends State<CreateAdScreen> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: GestureDetector(
@@ -110,6 +113,7 @@ class _CreateAdScreenState extends State<CreateAdScreen> {
               Container(
                 height: 300 ,
                 decoration: BoxDecoration(
+                  color: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
                   border: Border.all(color: Colors.grey[300]!),
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -206,8 +210,9 @@ class _CreateAdScreenState extends State<CreateAdScreen> {
 
   Widget _buildDropdownField(bool isDark) {
     return Container(
-      height: 56,
+      height: 48,
       decoration: BoxDecoration(
+        color: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray300,
@@ -217,6 +222,7 @@ class _CreateAdScreenState extends State<CreateAdScreen> {
         child: DropdownButton<String>(
           value: _selectedCategory,
           isExpanded: true,
+
           padding: const EdgeInsets.symmetric(horizontal: 16),
           borderRadius: BorderRadius.circular(8),
           dropdownColor: isDark ? JAppColors.darkGray700 : Colors.white,

@@ -41,7 +41,7 @@ class _MyAdsScreenState extends State<MyAdsScreen>
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.myAds,
@@ -80,11 +80,14 @@ class _MyAdsScreenState extends State<MyAdsScreen>
             ),
           ),
         ],
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: Column(
@@ -97,6 +100,7 @@ class _MyAdsScreenState extends State<MyAdsScreen>
               height: 35,
               margin: const EdgeInsets.only(left: 16, right: 16, top: 16),
               child: TabBar(
+                dividerColor: Colors.transparent,
                 controller: _tabController,
                 isScrollable: true,
                 tabAlignment: TabAlignment.start,
