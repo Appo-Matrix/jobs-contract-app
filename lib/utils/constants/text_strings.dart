@@ -666,5 +666,40 @@ class JText {
   static  const String view  = "View";
   static  const String closed  = "Closed";
 
+  static const String financeReport = 'Finance Report';
+  static const String lastTransactions = 'Last transactions';
+  static const String checkTransactions = 'Check your last transactions';
 
+  // Card titles
+  static const String balance = 'Balance';
+  static const String totalSpent = 'Total Spent';
+
+  // Filter options
+  static const String thisMonth = 'This month';
+  static const String lastMonth = 'Last month';
+  static const String last12Months = 'Last 12 months';
+  static const String selectPeriod = 'Select period';
+
+  // Table headers
+  static const String method = 'Method';
+  static const String date = 'Date';
+  static const String amount = 'Amount';
+
+  static const String withdraw = 'Withdraw';
+
+  // Labels and sections
+  static const String availableBalances = 'Available Balances';
+  static const String selectWithdrawalMethod = 'Select Withdrawal Method';
+
+  // Buttons
+  static const String withdrawButton = 'Withdraw';
+  static const String backToHome = 'Back to Home';
+
+  // Success messages
+  static const String withdrawalCompleted = 'Withdrawal Completed';
+  static const String successMessageB = 'Your balance has been withdrawal successfully';
+
+  static const String editDetails   = "Edit details'";
+
+  static String removeMethod  = "Remove method'";
 }
