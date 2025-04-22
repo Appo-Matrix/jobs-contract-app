@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
-import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/common_widgets/main_button.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_string.dart';
+import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 import '../../../routes/app_routes.dart';
@@ -36,7 +33,7 @@ class _ReportScreenState extends State<ReportScreen> {
 
     final height = JDeviceUtils.getScreenHeight(context);
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.contactSupport,
@@ -85,7 +82,7 @@ class _ReportScreenState extends State<ReportScreen> {
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     border: InputBorder.none,
-                    hintText: 'Select Reason',
+                    hintText: JText.selectReason,
                   ),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   value: selectedReason,
@@ -121,6 +118,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
               ),
               const SizedBox(height: 12),
+
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -128,7 +126,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
                 child:  TextField(
                   decoration: InputDecoration(
-                    hintText: 'Write the Title here',
+                    hintText: JText.writeTitleHere,
                     hintStyle: AppTextStyle.dmSans(
                       color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                       fontSize: 16.0,
@@ -136,13 +134,13 @@ class _ReportScreenState extends State<ReportScreen> {
                     ),
                     border: InputBorder.none,
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
                Text(
-                'Reports Description',
+                JText.reportDescription,
                  style: AppTextStyle.dmSans(
               color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 fontSize: 16.0,
@@ -151,30 +149,29 @@ class _ReportScreenState extends State<ReportScreen> {
               ),
               const SizedBox(height: 8),
               Container(
-                height: height/2.5,
-
-                // Height for approximately 5 lines of text
+                height: height / 2.5,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray100, // Very light background color
-                  // No border set here to hide it
+                  color: isDark ? Colors.transparent : Colors.transparent,
+                  border: Border.all(
+                    color: Colors.grey[300]!, // Customize border color
+                    width: 1.5, // Border thickness
+                  ),
                 ),
                 child: TextField(
-                  maxLines: 5, // Setting exactly 5 lines
+                  maxLines: 5,
                   minLines: 5,
-
-                  // Ensures the field keeps a 5-line height
                   style: AppTextStyle.dmSans(
                     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                     fontSize: 16.0,
                     weight: FontWeight.w400,
                   ),
                   decoration: InputDecoration(
-                    hintText: 'What do you want to talk about?',
+                    hintText: JText.whatYouWantToTalk,
                     hintStyle: TextStyle(color: Colors.grey),
-                    border: InputBorder.none, // Hides the default underline
-                    enabledBorder: InputBorder.none, // Ensures border is hidden when enabled
-                    focusedBorder: InputBorder.none, // Ensures border is hidden when focused
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
                     contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   ),
                 ),
@@ -190,9 +187,9 @@ class _ReportScreenState extends State<ReportScreen> {
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,onTap: (){
-        
+
                 AppRouter.router.push('/navigationMenu');
-        
+
               },
               ),
               const SizedBox(height: 20),

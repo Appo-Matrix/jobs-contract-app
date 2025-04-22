@@ -55,7 +55,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.lighter : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SafeArea(
         child: Column(
           children: [

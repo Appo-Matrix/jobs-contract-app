@@ -702,4 +702,8 @@ class JText {
   static const String editDetails   = "Edit details'";
 
   static String removeMethod  = "Remove method'";
+
+  static String reportDescription = "Report Description";
+
+  static var whatYouWantToTalk = "What You Want To Talk";
 }

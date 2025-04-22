@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/users/helpandsupport/widgets/support_request_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
-import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
+// Import the new card component
 
 class SupportRequestsScreen extends StatelessWidget {
   const SupportRequestsScreen({super.key});
@@ -30,11 +30,18 @@ class SupportRequestsScreen extends StatelessWidget {
         'lastActivity': '1 hr ago',
         'status': 'Solved',
       },
+      {
+        'id': '12f4',
+        'subject': 'Thank You Your Account Hash Been Reinstated',
+        'created': '1 hr ago',
+        'lastActivity': '1 hr ago',
+        'status': 'Pending',
+      },
     ];
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
           JText.contactSupport,
@@ -48,7 +55,7 @@ class SupportRequestsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(3.0),
           child: BackCircle(
             isDark: isDark,
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
           ),
@@ -59,58 +66,27 @@ class SupportRequestsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Support Requests',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: requests.length,
+                itemBuilder: (context, index) {
+                  final request = requests[index];
+                  final isLastItem = index == requests.length - 1;
+
+                  return SupportRequestCard(
+                    request: request,
+                    isDark: isDark,
+                    isLastItem: isLastItem,
+                    onTap: () {
+                      // Handle tap on request
+                      print('Tapped on request: ${request['id']}');
+                    },
+                  );
+                },
               ),
             ),
-            const SizedBox(height: 16),
-            // Table header
-            Row(
-              children: [
-                const SizedBox(width: 40, child: Text('ID', style: TextStyle(fontWeight: FontWeight.bold))),
-                const SizedBox(width: 16),
-                const Expanded(child: Text('Subject', style: TextStyle(fontWeight: FontWeight.bold))),
-                SizedBox(width: 80, child: Text('Created', style: TextStyle(fontWeight: FontWeight.bold))),
-                SizedBox(width: 80, child: Text('Last Activity', style: TextStyle(fontWeight: FontWeight.bold))),
-                SizedBox(width: 80, child: Text('Status', style: TextStyle(fontWeight: FontWeight.bold))),
-              ],
-            ),
-            const SizedBox(height: 16),
-            // Table rows
-            ...requests.map((request) => Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: Row(
-                children: [
-                  SizedBox(width: 40, child: Text(request['id'])),
-                  const SizedBox(width: 16),
-                  Expanded(child: Text(request['subject'])),
-                  SizedBox(width: 80, child: Text(request['created'])),
-                  SizedBox(width: 80, child: Text(request['lastActivity'])),
-                  SizedBox(
-                    width: 80,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: request['status'] == 'Solved' ? Colors.deepPurple[100] : Colors.orange[100],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        request['status'],
-                        style: TextStyle(
-                          color: request['status'] == 'Solved' ? Colors.deepPurple : Colors.orange,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )),
           ],
         ),
       ),
