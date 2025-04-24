@@ -493,6 +493,10 @@
   "workHistory": "Work History",
   "skills": "Skills",
   "languages": "Languages",
-  "workFeedback": "Work History and Feedback"
+  "workFeedback": "Work History and Feedback",
+
+  "contract": "Contract",
+
+  "notification": "Notification"
 
 }

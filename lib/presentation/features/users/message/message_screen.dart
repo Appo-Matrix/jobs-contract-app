@@ -11,6 +11,7 @@ import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../home/drawer/custom_navigation_drawer.dart';
 import '../home/drawer/widgets/drawer_item.dart';
 import 'model/message_data.dart';
 
@@ -96,7 +97,7 @@ class _MessageScreenState extends State<MessageScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-      drawer: _buildNavigationDrawer(context, isDark),
+      drawer: CustomNavigationDrawer(isDark: isDark),  // Use the new drawer widget
       key: _scaffoldKey,
 
       appBar: JAppbar(
@@ -187,160 +188,6 @@ class _MessageScreenState extends State<MessageScreen> {
           ),
 
           // Message list
-        ],
-      ),
-    );
-  }
-  Widget _buildNavigationDrawer(BuildContext context, bool isDark) {
-    return Drawer(
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
-
-      child: Column(
-        children: [
-          // Custom drawer header with profile in a row
-          Container(
-
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 40),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        // Close the drawer first
-
-                        Navigator.pop(context);
-                        // Navigate to profile screen
-                        AppRouter.router.push('/profileScreen');
-                      },
-                      child: CircularAvatar(
-                        isDark: isDark,
-                        radius: 30,
-                        imageUrl: JImages.image,
-                      ),
-                    ),                    SizedBox(width: 16),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'John Doe',
-                          style: AppTextStyle.dmSans(
-                            fontSize: JSizes.fontSizeMd,
-                            weight: FontWeight.w600,
-                            color:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '@johndoe',
-                          style: AppTextStyle.dmSans(
-                            fontSize: 14.0,
-                            weight: FontWeight.w400,
-                            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-              ],
-            ),
-          ),
-
-
-          Divider(),
-          // Drawer items using the custom widget
-          DrawerItem(
-            iconPath: JImages.profilesetting,
-            title: 'Account Settings',
-            iconColor:isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-
-              AppRouter.router.push('/accountSettingScreen');
-              // Navigate to home
-            },
-          ),
-
-          DrawerItem(
-            iconPath: JImages.report,
-            title: 'Financial Report',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              AppRouter.router.push('/contactSupportScreen');
-
-              // Navigate to profile
-            },
-          ),
-
-          DrawerItem(
-            iconPath: JImages.proposal,
-            title: 'Proposal',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              // AppRouter.router.push('/membershipPlansScreen');
-              // Navigate to applications
-            },
-          ),
-          DrawerItem(
-            iconPath: JImages.proposal,
-            title: 'My Ads',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              AppRouter.router.push('/myAdsScreen');
-              // Navigate to applications
-            },
-          ),
-          DrawerItem(
-            iconPath: JImages.upgrade,
-            title: 'Upgrade',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              AppRouter.router.push('/membershipPlansScreen');
-              // Navigate to applications
-            },
-          ),
-          DrawerItem(
-            iconPath: JImages.language,
-            title: 'Language',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              AppRouter.router.push('/languageScreen');
-              // Navigate to applications
-            },
-          ),
-
-          DrawerItem(
-            iconPath: JImages.helpsupport,
-            title: 'Help & Support',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              AppRouter.router.push('/contactSupportScreen');
-
-              // Navigate to notifications
-            },
-          ),
-
-
-          DrawerItem(
-            iconPath: JImages.logout_icon,
-            title: 'Logout',
-            iconColor: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-            onTap: () {
-              Navigator.pop(context);
-              // Navigate to settings
-            },
-          ),
-
         ],
       ),
     );

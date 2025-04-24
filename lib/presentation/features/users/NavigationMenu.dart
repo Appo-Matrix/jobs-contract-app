@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -21,7 +22,7 @@ class NavigationMenu extends StatelessWidget {
     final bool isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: Obx(
-            () => NavigationBar(
+        () => NavigationBar(
           height: 60,
           elevation: 0,
           selectedIndex: controller.selectedIndex.value,
@@ -35,15 +36,13 @@ class NavigationMenu extends StatelessWidget {
           destinations: [
             // Using SVG icons instead of Iconsax
             NavigationDestination(
-              icon:
-              SvgPicture.asset(
+              icon: SvgPicture.asset(
                 JImages.notifications,
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   BlendMode.srcIn,
-
                 ),
               ),
               selectedIcon: SvgPicture.asset(
@@ -54,9 +53,8 @@ class NavigationMenu extends StatelessWidget {
                   isDark ? Colors.white60 : JAppColors.primary,
                   BlendMode.srcIn,
                 ),
-
               ),
-              label: 'Home',
+              label: tr('home'),
             ),
 
             NavigationDestination(
@@ -65,9 +63,8 @@ class NavigationMenu extends StatelessWidget {
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   BlendMode.srcIn,
-
                 ),
               ),
               selectedIcon: SvgPicture.asset(
@@ -78,20 +75,17 @@ class NavigationMenu extends StatelessWidget {
                   isDark ? Colors.white60 : JAppColors.primary,
                   BlendMode.srcIn,
                 ),
-
               ),
-              label: 'Contract',
+              label: tr('contract'),
             ),
             NavigationDestination(
-              icon:
-              SvgPicture.asset(
+              icon: SvgPicture.asset(
                 JImages.messages,
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   BlendMode.srcIn,
-
                 ),
               ),
               selectedIcon: SvgPicture.asset(
@@ -102,20 +96,17 @@ class NavigationMenu extends StatelessWidget {
                   isDark ? Colors.white60 : JAppColors.primary,
                   BlendMode.srcIn,
                 ),
-
               ),
-              label: 'Message',
+              label: tr('message'),
             ),
             NavigationDestination(
-              icon:
-              SvgPicture.asset(
+              icon: SvgPicture.asset(
                 JImages.notificationsvg,
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   BlendMode.srcIn,
-
                 ),
               ),
               selectedIcon: SvgPicture.asset(
@@ -126,11 +117,9 @@ class NavigationMenu extends StatelessWidget {
                   isDark ? Colors.white60 : JAppColors.primary,
                   BlendMode.srcIn,
                 ),
-
               ),
-              label: 'Notification',
+              label:tr('notification'),
             ),
-
           ],
         ),
       ),
@@ -143,10 +132,9 @@ class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
   final List<Widget> screens = [
-     HomeScreen(),
-ContractsScreen(),
+    HomeScreen(),
+    ContractsScreen(),
     MessageScreen(),
     NotifcationsScreen()
-
   ];
 }

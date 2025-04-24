@@ -491,5 +491,7 @@
   "Education": "Educación",
   "skills": "Habilidades",
   "languages": "Idiomas",
-  "workFeedback": "Historial laboral y comentarios"
+  "workFeedback": "Historial laboral y comentarios",
+  "contract": "Contrato",
+  "notification": "Notificación"
 }

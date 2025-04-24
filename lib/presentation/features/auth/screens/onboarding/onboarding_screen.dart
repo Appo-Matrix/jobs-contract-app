@@ -65,11 +65,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SwitchListTile(
-              title: const Text("Dark Mode"),
-              value: themeNotifier.themeMode == ThemeMode.dark,
-              onChanged: (value) => themeNotifier.toggleTheme(value),
-            ),
+            // SwitchListTile(
+            //   title: const Text("Dark Mode"),
+            //   value: themeNotifier.themeMode == ThemeMode.dark,
+            //   onChanged: (value) => themeNotifier.toggleTheme(value),
+            // ),
             // Skip button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -79,16 +79,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   TextButton(
                     onPressed: () async {
 
-                      final currentLocale = context.locale;
-                      final newLocale = currentLocale.languageCode == 'en'
-                          ? const Locale('es', 'ES')
-                          : const Locale('en', 'US');
+                      // final currentLocale = context.locale;
+                      // final newLocale = currentLocale.languageCode == 'en'
+                      //     ? const Locale('es', 'ES')
+                      //     : const Locale('en', 'US');
+                      //
+                      // print("Switching from $currentLocale to $newLocale");
+                      // await context.setLocale(newLocale);
+                      // setState(() {});
 
-                      print("Switching from $currentLocale to $newLocale");
-                      await context.setLocale(newLocale);
-                      setState(() {});
-
-                      // AppRouter.router.push('/loginScreen');
+                      AppRouter.router.push('/loginScreen');
 
 
                     },
