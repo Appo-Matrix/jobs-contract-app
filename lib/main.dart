@@ -258,7 +258,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_contracts/config/app_config.dart';
 import 'package:job_contracts/config/dependencies/di.dart';
-import 'package:job_contracts/domain/services/app_services.dart';
 import 'package:job_contracts/presentation/features/theme_controller/ThemeNotifier.dart';
 import 'package:job_contracts/presentation/features/theme_controller/theme_pref_helper.dart';
 import 'package:job_contracts/presentation/global_notifiers/register_notifiers.dart';
@@ -267,7 +266,6 @@ import 'package:job_contracts/utils/themes/themes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 

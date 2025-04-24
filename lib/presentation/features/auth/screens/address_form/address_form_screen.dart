@@ -1,12 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';

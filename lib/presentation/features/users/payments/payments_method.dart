@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/payments/widgets/dialoge_widget.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -6,7 +6,6 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
-import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
@@ -27,18 +26,21 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
 
       appBar: JAppbar(
         title: Text(
-          JText.paymentmethod,
+          'paymentmethod',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: (){
-            Navigator.pop(context);
-          },
+        ).tr(),
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -67,13 +69,13 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
                     ),
                   ),
                   child: Text(
-                    JText.addPaymentMethod,
+                    'addPaymentMethod',
                     style: AppTextStyle.dmSans(
                       color: Colors.white,
                       fontSize: 16.0,
                       weight: FontWeight.w600,
                     ),
-                  ),
+                  ).tr(),
                 ),
               ),
             ],

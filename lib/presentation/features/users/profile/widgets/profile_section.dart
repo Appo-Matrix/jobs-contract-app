@@ -1,8 +1,8 @@
 
 // Generic Profile Section Widget
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -38,7 +38,7 @@ class ProfileSection extends StatelessWidget {
                   weight: FontWeight.w600,
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 ),
-              ),
+              ).tr(),
               Spacer(),
               GestureDetector(
                 onTap: voidCallback,

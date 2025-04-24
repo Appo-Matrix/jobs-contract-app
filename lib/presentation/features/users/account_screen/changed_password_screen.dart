@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/main_button.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
@@ -35,11 +33,11 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
       );
     }
 
-    bool _isLoading = false;
+    bool isLoading = false;
 
-    void _handleSave() async {
+    void handleSave() async {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       showProgressDialog(context);
@@ -50,7 +48,7 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
       Navigator.pop(context); // Close the loading dialog
 
       setState(() {
-        _isLoading = false;
+        isLoading = false;
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
@@ -62,13 +60,13 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.changedPassword, // Use the constant
+          'changedPassword', // Use the constant
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(
@@ -87,7 +85,7 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
             children: [
               SizedBox(height: JSizes.spaceBtwItems,),
               Text(
-                JText.changedPasswordTitle, // Use the constant
+                'changedPasswordTitle', // Use the constant
                 style: AppTextStyle.dmSans(
                     color: isDark
                         ? JAppColors.lightGray100
@@ -96,11 +94,11 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
                     weight: FontWeight.w400,
                     height: 1.5
                 ),
-              ),
+              ).tr(),
               SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: JText.currentPassword, // Use the constant
-                hintText: 'Current Password',
+                subTitle: 'currentPassword', // Use the constant
+                hintText: 'currentPasswordHint',
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
@@ -108,8 +106,8 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
               ),
               SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: JText.newPasswordTitle, // Use the constant
-                hintText: JText.newPassword,
+                subTitle: 'newPasswordTitle', // Use the constant
+                hintText: 'newPassword',
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
@@ -117,8 +115,8 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
               ),
               SizedBox(height: JSizes.spaceBtwInputFields + 4),
               TextFieldWidget(
-                subTitle: JText.retypePassword, // Use the constant
-                hintText: JText.retypePasswordTitle,
+                subTitle: 'retypePassword', // Use the constant
+                hintText: 'retypePasswordTitle',
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
@@ -133,24 +131,27 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
                     height: 18,
                   ),
                   SizedBox(width: 10),
-                  Text(
-                    JText.requireAllDevices, // Use the constant
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.lightGray100
-                          : JAppColors.darkGray500,
-                      fontSize: JSizes.fontSizeXESm,
-                      weight: FontWeight.w400,
-                    ),
+                  Expanded(
+                    child: Text(
+                      'requireAllDevices', // Use the constant
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyle.dmSans(
+                        height: 1.2,
+                        color: isDark
+                            ? JAppColors.lightGray100
+                            : JAppColors.darkGray500,
+                        fontSize: JSizes.fontSizeXESm,
+                        weight: FontWeight.w400,
+                      ),
+                    ).tr(),
                   ),
                 ],
               ),
               SizedBox(height: 35),
               MainButton(
-                onTap: _isLoading ? null : _handleSave,
-                btn_title: JText.savePassword,
+                onTap: isLoading ? null : handleSave,
+                btn_title: 'savePassword',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Colors.transparent,

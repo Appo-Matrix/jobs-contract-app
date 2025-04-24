@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/constants/text_strings.dart';
 
 class VerifyHeader extends StatelessWidget {
   const VerifyHeader({
@@ -18,7 +18,7 @@ class VerifyHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          JText.verifyAccount,
+          'verifyAccount',
           style: AppTextStyle.dmSans(
             color: isDark
                 ? JAppColors.lightGray100
@@ -26,10 +26,10 @@ class VerifyHeader extends StatelessWidget {
             fontSize: 24.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         const SizedBox(height: 10),
         Text(
-          JText.verifyAccountChoose,
+          'verifyAccountChoose',
           style: AppTextStyle.dmSans(
             color: isDark
                 ? JAppColors.lightGray300
@@ -37,7 +37,7 @@ class VerifyHeader extends StatelessWidget {
             fontSize: 16.0,
             weight: FontWeight.w400,
           ),
-        ),
+        ).tr(),
 
       ],
     );

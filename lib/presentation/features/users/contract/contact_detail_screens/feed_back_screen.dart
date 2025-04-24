@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -26,13 +27,13 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.feedback,
+          'feedback',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(3.0),
           child: BackCircle(
@@ -49,7 +50,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              JText.projectFinishText,
+              'projectFinishText',
               style: AppTextStyle.dmSans(
                 color: isDark
                     ? JAppColors.darkGray100
@@ -57,17 +58,17 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
                 fontSize: JSizes.fontSizeLg,
                 weight: FontWeight.w500,
               ),
-            ),
+            ).tr(),
             SizedBox(height: 18),
             Text(
-              JText.rateExperienceText,
+              'rateExperienceText',
               style: AppTextStyle.dmSans(
                 color:
                 isDark ? JAppColors.darkGray100 : JAppColors.darkGray500,
                 fontSize: JSizes.fontSizeSm,
                 weight: FontWeight.w400,
               ),
-            ),
+            ).tr(),
             SizedBox(height: 18),
             RatingBar.builder(
               initialRating: 4,
@@ -86,23 +87,23 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
               },
             ),
             SizedBox(height: 20),
-            FeedbackSection(title: JText.wasYourExper, options: JText.feedbackTags),
+            FeedbackSection(title: 'wasYourExper', options: JText.feedbackTags),
             SizedBox(height: 26),
             FeedbackSection(title: JText.youLike, options: JText.skillTags),
             SizedBox(height: 26),
             Text(
-            JText.leaveAReview,
+            'leaveAReview',
               style: AppTextStyle.dmSans(
                 color:
                 isDark ? JAppColors.darkGray100 : JAppColors.darkGray700,
                 fontSize: JSizes.fontSizeMd,
                 weight: FontWeight.w600,
               ),
-            ),
+            ).tr(),
             SizedBox(height: 10),
             SizedBox(height: 28),
             MainButton(
-              btn_title: JText.submit,
+              btn_title: 'submit',
               btn_radius: 10,
               btn_color: JAppColors.main,
               btn_boarder_color: Colors.transparent,

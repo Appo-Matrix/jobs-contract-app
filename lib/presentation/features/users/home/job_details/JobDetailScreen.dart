@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
@@ -25,7 +26,7 @@ class JobDetailScreen extends StatelessWidget {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(2.0),
           child: BackCircle(
             isDark: isDark,
             onTap: () {
@@ -171,13 +172,13 @@ class JobDetailScreen extends StatelessWidget {
                       AppRouter.router.push('/reportJobScreen');
                     },
                     child: Text(
-                      "Report Job",
+                      "reportJob",
                       style: AppTextStyle.dmSans(
                         fontSize: 14.0,
                         weight: FontWeight.w400,
                         color: JAppColors.error500,
                       ),
-                    ),
+                    ).tr(),
                   )
                 ],
               ),
@@ -191,14 +192,14 @@ class JobDetailScreen extends StatelessWidget {
                 // Center align items vertically if needed
                 children: [
                   Text(
-                    "Job Description",
+                    "jobDescription",
                     // Using literal text instead of JText.jobDescription
                     style: AppTextStyle.dmSans(
-                      fontSize: 20.0,
-                      weight: FontWeight.w600,
+                      fontSize: 16.0,
+                      weight: FontWeight.w500,
                       color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                     ),
-                  ),
+                  ).tr(),
                   GestureDetector(
                     onTap: () {
                       AppRouter.router.push('/jobDetailsPage');
@@ -216,13 +217,13 @@ class JobDetailScreen extends StatelessWidget {
                       child: Center(
                         // Centering the text inside the container
                         child: Text(
-                          JText.applyJob,
+                          'applyJob',
                           style: AppTextStyle.dmSans(
                             color: Colors.white,
-                            fontSize: 16.0,
-                            weight: FontWeight.w600,
+                            fontSize: 14.0,
+                            weight: FontWeight.w500,
                           ),
-                        ),
+                        ).tr(),
                       ),
                     ),
                   ),

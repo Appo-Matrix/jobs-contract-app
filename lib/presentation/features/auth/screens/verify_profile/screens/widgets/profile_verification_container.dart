@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
@@ -18,13 +17,13 @@ class ProfileVerificationContainer extends StatelessWidget {
   final String description;
 
   const ProfileVerificationContainer({
-    Key? key,
+    super.key,
     required this.isChecked,
     required this.onChanged,
     required this.checkboxRadius,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -16,12 +16,12 @@ class FileUploadWidget extends StatefulWidget {
   final String type;
 
   const FileUploadWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.selectedFiles,
     required this.onFilesSelected,
     this.isVideo = false, required this.type,
-  }) : super(key: key);
+  });
 
   @override
   State<FileUploadWidget> createState() => _FileUploadWidgetState();

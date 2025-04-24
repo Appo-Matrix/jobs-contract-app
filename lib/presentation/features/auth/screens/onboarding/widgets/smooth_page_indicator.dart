@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
 import '../models/indicator_effect.dart';
-import '../onboarding_screen.dart';
 import 'expanded_effect.dart';
 
 class SmoothPageIndicator extends StatelessWidget {
@@ -9,7 +8,7 @@ class SmoothPageIndicator extends StatelessWidget {
   final int count;
   final IndicatorEffect effect;
 
-  SmoothPageIndicator({
+  const SmoothPageIndicator({super.key, 
     required this.controller,
     required this.count,
     required this.effect,

@@ -1,5 +1,4 @@
 // Profile Header Widget
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -10,9 +9,9 @@ class ProfileHeader extends StatelessWidget {
   final bool isDark;
 
   const ProfileHeader({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -3,15 +3,14 @@ import 'package:flutter/material.dart'; // Added for FontWeight
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/sizes.dart';
 
 class LanguagesList extends StatelessWidget {
   final bool isDark;
 
   const LanguagesList({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +42,11 @@ class LanguageItem extends StatelessWidget {
   final bool isDark;
 
   const LanguageItem({
-    Key? key,
+    super.key,
     required this.language,
     required this.level,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

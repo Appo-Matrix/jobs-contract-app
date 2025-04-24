@@ -6,7 +6,6 @@ import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
-import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
 
 class ChatScreen extends StatefulWidget {

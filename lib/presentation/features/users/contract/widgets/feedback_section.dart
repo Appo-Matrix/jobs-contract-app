@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
@@ -27,7 +28,7 @@ class FeedbackSection extends StatelessWidget {
             fontSize: JSizes.fontSizeSm,
             weight: FontWeight.w500,
           ),
-        ),
+        ).tr(),
         SizedBox(height: 10),
         Wrap(
           spacing: 10,

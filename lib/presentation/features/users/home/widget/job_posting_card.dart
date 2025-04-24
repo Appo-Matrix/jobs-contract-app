@@ -336,9 +336,9 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -360,7 +360,7 @@ class JobPostingCard extends StatefulWidget {
   final String? employerImage;
 
   const JobPostingCard({
-    Key? key,
+    super.key,
     this.jobTitle = "Architects Construction",
     this.salary = "\$20,000 - \$25,000",
     this.category = "Electrician",
@@ -373,7 +373,7 @@ class JobPostingCard extends StatefulWidget {
     this.isVerified = false,
     this.employerImage,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   State<JobPostingCard> createState() => _JobPostingCardState();
@@ -399,7 +399,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
         borderRadius: BorderRadius.circular(16),
         boxShadow: widget.isDark ? null : [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -416,7 +416,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                 decoration: BoxDecoration(
-                  color: widget.isDark ? Colors.white.withOpacity(0.1) : accentColor.withOpacity(0.15),
+                  color: widget.isDark ? Colors.white.withValues(alpha: 0.1) : accentColor.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -426,14 +426,14 @@ class _JobPostingCardState extends State<JobPostingCard> {
                     fontWeight: FontWeight.w600,
                     color: accentColor,
                   ),
-                ),
+                ).tr(),
               ),
 
               // Salary with styled presentation
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
-                  color: widget.isDark ? Colors.green.withOpacity(0.2) : Colors.green.withOpacity(0.1),
+                  color: widget.isDark ? Colors.green.withValues(alpha: 0.2) : Colors.green.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
@@ -451,7 +451,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                         fontWeight: FontWeight.w600,
                         color: widget.isDark ? Colors.green[300] : Colors.green[700],
                       ),
-                    ),
+                    ).tr(),
                   ],
                 ),
               ),
@@ -470,7 +470,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                     weight: FontWeight.w700,
                     color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                   ),
-                ),
+                ).tr(),
               ),
               IconButton(
                 onPressed: () {
@@ -550,7 +550,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                       height: 1.5,
                       weight: FontWeight.w500,
                     ),
-                  ),
+                  ).tr(),
                   crossFadeState: _isExpanded ? CrossFadeState.showSecond : CrossFadeState.showFirst,
                   duration: const Duration(milliseconds: 300),
                 ),
@@ -567,13 +567,13 @@ class _JobPostingCardState extends State<JobPostingCard> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        _isExpanded ? JText.seeLess : "${JText.seeMore}",
+                        _isExpanded ? 'seeLess' : 'seeMore',
                         style: AppTextStyle.dmSans(
                           fontSize: 16.0,
                           weight: FontWeight.w600,
                           color: accentColor,
                         ),
-                      ),
+                      ).tr(),
                       Icon(
                         _isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
                         size: 16,
@@ -590,7 +590,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
 
           // Divider
           Divider(
-            color: widget.isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.2),
+            color: widget.isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.2),
             thickness: 1,
           ),
 
@@ -661,7 +661,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                         weight: FontWeight.w600,
                         color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(height: 4),
 
                     // Location and Posted Time
@@ -684,7 +684,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                             color: textColor.withValues(alpha: 0.8),
                             weight: FontWeight.w500,
                           ),
-                        ),
+                        ).tr(),
                         const SizedBox(width: 16),
                         Icon(
                           Icons.access_time_filled,
@@ -699,7 +699,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                             color: textColor.withValues(alpha: 0.8),
                             weight: FontWeight.w500,
                           ),
-                        ),
+                        ).tr(),
                       ],
                     ),
                   ],
@@ -718,7 +718,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

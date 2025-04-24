@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
@@ -20,11 +21,11 @@ class ReportScreen extends StatefulWidget {
 class _ReportScreenState extends State<ReportScreen> {
   String? selectedReason;
   final List<String> reasons = [
-    'Technical Issue',
-    'Billing Problem',
-    'Account Access',
-    'Feature Request',
-    'General Inquiry',
+    'technicalIssue',
+    'billingProblem',
+    'accountAccess',
+    'featureRequest',
+    'generalInquiry',
   ];
 
   @override
@@ -36,13 +37,13 @@ class _ReportScreenState extends State<ReportScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.contactSupport,
+          'contactSupport',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(
@@ -63,14 +64,14 @@ class _ReportScreenState extends State<ReportScreen> {
                 height: JSizes.spaceBtwSections - 20,
               ),
               Text(
-                JText.reportReason,
+                'reportReason',
                 style: AppTextStyle.dmSans(
                   color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: 16.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 12),
               Container(
                 decoration: BoxDecoration(
@@ -78,11 +79,11 @@ class _ReportScreenState extends State<ReportScreen> {
                   border: Border.all(color: Colors.grey[300]!),
                 ),
                 child: DropdownButtonFormField<String>(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                     border: InputBorder.none,
-                    hintText: JText.selectReason,
+                    hintText: tr('selectReason'),
                   ),
                   icon: const Icon(Icons.keyboard_arrow_down),
                   value: selectedReason,
@@ -98,7 +99,7 @@ class _ReportScreenState extends State<ReportScreen> {
                           fontSize: 16.0,
                           weight: FontWeight.w400,
                         ),
-                      ),
+                      ).tr(),
                     );
                   }).toList(),
                   onChanged: (value) {
@@ -109,14 +110,14 @@ class _ReportScreenState extends State<ReportScreen> {
                 ),
               ),
               const SizedBox(height: 20),
-               Text(
-                JText.reportsTitle,
+              Text(
+                'reportsTitle',
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                   fontSize: 16.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 12),
 
               Container(
@@ -124,29 +125,29 @@ class _ReportScreenState extends State<ReportScreen> {
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey[300]!),
                 ),
-                child:  TextField(
+                child: TextField(
                   decoration: InputDecoration(
-                    hintText: JText.writeTitleHere,
+                    hintText: tr('writeTitleHere'),
                     hintStyle: AppTextStyle.dmSans(
                       color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                      fontSize: 16.0,
+                      fontSize: 14.0,
                       weight: FontWeight.w400,
                     ),
                     border: InputBorder.none,
                     contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
-               Text(
-                JText.reportDescription,
-                 style: AppTextStyle.dmSans(
-              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                fontSize: 16.0,
-                weight: FontWeight.w600,
-              ),
-              ),
+              Text(
+                'reportDescription',
+                style: AppTextStyle.dmSans(
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  fontSize: 16.0,
+                  weight: FontWeight.w600,
+                ),
+              ).tr(),
               const SizedBox(height: 8),
               Container(
                 height: height / 2.5,
@@ -167,12 +168,12 @@ class _ReportScreenState extends State<ReportScreen> {
                     weight: FontWeight.w400,
                   ),
                   decoration: InputDecoration(
-                    hintText: JText.whatYouWantToTalk,
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintText: tr('whatYouWantToTalk'),
+                    hintStyle: const TextStyle(color: Colors.grey),
                     border: InputBorder.none,
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   ),
                 ),
               ),
@@ -180,17 +181,16 @@ class _ReportScreenState extends State<ReportScreen> {
               const SizedBox(height: 20),
 
               MainButton(
-                btn_title: JText.submit,
+                btn_title: 'submit',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
-                btn_boarder_color: Color(0xff7030F1),
+                btn_boarder_color: const Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
-                image_value: false,onTap: (){
-
-                AppRouter.router.push('/navigationMenu');
-
-              },
+                image_value: false,
+                onTap: () {
+                  AppRouter.router.push('/navigationMenu');
+                },
               ),
               const SizedBox(height: 20),
             ],

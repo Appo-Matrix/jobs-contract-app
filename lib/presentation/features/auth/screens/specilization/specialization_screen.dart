@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/specilization/widgets/selection_chip.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
@@ -32,7 +33,7 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
 
 
       body: SafeArea(
@@ -44,16 +45,16 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
               children: [
                 // Specialization Section
                 Text(
-                  JText.selectYourSpecialization,
+                  'selectYourSpecialization',
 
                   style: AppTextStyle.dmSans(
                       color: isDark ? JAppColors.lightGray100 : JAppColors
                           .darkGray900,
-                      fontSize: 24.0,
+                      fontSize: 22.0,
                       weight: FontWeight.w600,
                   ),
 
-                ),
+                ).tr(),
                 const SizedBox(height: 16),
 
                 // Specialization Options
@@ -78,14 +79,14 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
 
                 // Service Type Section
                 Text(
-                  JText.serviceType,
+                  'serviceType',
                   style: AppTextStyle.dmSans(
                     color: isDark ? JAppColors.lightGray100 : JAppColors
                         .darkGray900,
                     fontSize: 24.0,
                     weight: FontWeight.w600,
                   ),
-                ),
+                ).tr(),
                 const SizedBox(height: 16),
 
                 // Service Type Options

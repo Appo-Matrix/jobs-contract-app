@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/app_text_style.dart';
@@ -10,10 +9,10 @@ class SearchableBottomSheetContent extends StatefulWidget {
   final String educationText;
 
   const SearchableBottomSheetContent({
-    Key? key,
+    super.key,
     required this.isDark,
     required this.educationText,
-  }) : super(key: key);
+  });
 
   @override
   _SearchableBottomSheetContentState createState() =>

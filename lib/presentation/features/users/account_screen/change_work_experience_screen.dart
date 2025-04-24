@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/common_widgets/main_button.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -7,7 +6,6 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/common_widgets/add_experience_des_widget.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';

@@ -5,9 +5,7 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 
 import '../../../../../utils/common_widgets/appbar2.dart';
 import '../../../../../utils/common_widgets/option_card.dart';
-import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -25,7 +23,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
     final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
 
-    Future<void> _navigateToEmailOtp() async {
+    Future<void> navigateToEmailOtp() async {
       final result = await AppRouter.router.push('/checkEmailScreen');
       if (result == true) {
         setState(() {
@@ -34,7 +32,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       }
     }
 
-    void _navigateToPhoneOtp() {
+    void navigateToPhoneOtp() {
       if (isEmailVerified) {
         AppRouter.router.push('/checkPhoneScreen');
       }
@@ -42,7 +40,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -61,10 +59,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       child: OptionCard(
                         height: 140,
                         width: 140,
-                        title: JText.email,
+                        title: 'email',
                         svgPath: JImages.emailsvg,
                         iconSize: 30,
-                        onTap: _navigateToEmailOtp,
+                        onTap: navigateToEmailOtp,
                       ),
                     ),
                     const SizedBox(width: 19),
@@ -76,10 +74,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                           child: OptionCard(
                             height: 140,
                             width: 140,
-                            title: JText.phone,
+                            title: 'phone',
                             svgPath: JImages.phonesvg,
                             iconSize: 30,
-                            onTap: _navigateToPhoneOtp,
+                            onTap: navigateToPhoneOtp,
                           ),
                         ),
                       ),

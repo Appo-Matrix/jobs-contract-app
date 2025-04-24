@@ -1,5 +1,4 @@
 // Feedback List Widget
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -10,9 +9,9 @@ class FeedbackList extends StatelessWidget {
   final bool isDark;
 
   const FeedbackList({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +57,13 @@ class FeedbackItem extends StatelessWidget {
   final bool isDark;
 
   const FeedbackItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
     required this.reviewerName,
     required this.reviewerPosition,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

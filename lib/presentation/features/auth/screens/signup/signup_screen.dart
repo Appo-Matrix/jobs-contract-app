@@ -1,14 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
-import '../../../../../utils/common_widgets/PhoneInputWidget.dart';
 import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
@@ -25,7 +22,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    String? _validateRequired(String? value) {
+    String? validateRequired(String? value) {
       if (value == null || value.trim().isEmpty) {
         return 'requiredField';
       }
@@ -51,7 +48,7 @@ class SignupScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
@@ -61,7 +58,7 @@ class SignupScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
@@ -70,7 +67,7 @@ class SignupScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
 
               SizedBox(height: JSizes.spaceBtwInputFields ),
@@ -121,7 +118,7 @@ class SignupScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
               SizedBox(height: 4,)
 ,              Text('passwordMustBe',style: AppTextStyle.dmSans(
@@ -139,7 +136,7 @@ class SignupScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
 
 

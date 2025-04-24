@@ -1,10 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/device/device_utility.dart';
-import '../../../../../../utils/themes/themes.dart';
 
 class AccountWidgetContainer extends StatelessWidget {
   final String iconsImage;
@@ -53,7 +53,7 @@ class AccountWidgetContainer extends StatelessWidget {
                     weight: FontWeight.w500,
                     height: 1.5,
                   ),
-                ),
+                ).tr(),
 
                 Spacer(),
                 child,
@@ -74,7 +74,7 @@ class AccountWidgetContainer extends StatelessWidget {
                       weight: FontWeight.w400,
                       height: 1.5,
                     ),
-                  ),
+                  ).tr(),
                 ),
               ],
             ),

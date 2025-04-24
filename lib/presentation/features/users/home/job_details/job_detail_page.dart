@@ -1,7 +1,4 @@
-
-
-
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
@@ -76,13 +73,13 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
           onTap: () => Navigator.pop(context),
         ),
         title: Text(
-          JText.pageTitle,
+          'pageTitle',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
       ),
       body: Column(
         children: [
@@ -93,57 +90,64 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    JText.jobTitle,
+                    'jobTitle',
                     style: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray900,
+                      color: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.lightGray900,
                       fontSize: 18.0,
                       weight: FontWeight.w700,
                     ),
-                  ),
+                  ).tr(),
                   const SizedBox(height: 4),
                   Text(
-                    JText.companyDetails,
+                    'companyDetails',
                     style: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray700,
+                      color: isDark
+                          ? JAppColors.darkGray300
+                          : JAppColors.lightGray700,
                       fontSize: 14.0,
                       weight: FontWeight.w400,
                     ),
-                  ),
+                  ).tr(),
                   const SizedBox(height: 24),
-
-
-
 
                   const SizedBox(height: 24),
 
                   // Cover Letter Section
                   Text(
-                    JText.coverLetterTitle,
+                    'coverLetterTitle',
                     style: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray900,
                       fontSize: 14.0,
                       weight: FontWeight.w500,
                     ),
-                  ),
+                  ).tr(),
                   const SizedBox(height: 8),
 
-    Container(
+                  Container(
                     height: 200,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey[300]!),
                       borderRadius: BorderRadius.circular(8),
-                      color: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                      color: isDark
+                          ? JAppColors.backGroundDarkCard
+                          : Colors.transparent,
                     ),
                     child: TextField(
                       controller: _coverLetterController,
                       maxLines: null,
                       style: AppTextStyle.dmSans(
-                          color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800,
+                          color: isDark
+                              ? JAppColors.lightGray100
+                              : JAppColors.lightGray800,
                           fontSize: 14.9,
-                          weight: FontWeight.w400
-                      ),
+                          weight: FontWeight.w400),
                       decoration: InputDecoration(
-                        hintText: "Describe why you're a good fit for this role...",
+                        hintText:
+                            'describeFitForRole'.tr(),
                         hintStyle: TextStyle(
                           color: isDark ? Colors.grey[500] : Colors.grey[400],
                         ),
@@ -159,21 +163,25 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
 
                   // Additional Questions
                   Text(
-                    JText.additionalQuestions,
+                    'additionalQuestions',
                     style: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                      color: isDark
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray900,
                       fontSize: 14.0,
                       weight: FontWeight.w500,
                     ),
-                  ),
-                  const SizedBox(height: 8),
+                  ).tr(),
+                  const SizedBox(height: 12),
+
+
                   QuestionField(
-                    question: JText.question1,
+                    question: 'estimatedServiceCost',
                     isDark: isDark,
                   ),
                   const SizedBox(height: 12),
                   QuestionField(
-                    question: JText.question2,
+                    question: 'estimatedCompletionTime',
                     isDark: isDark,
                   ),
                   const SizedBox(height: 24),
@@ -197,7 +205,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
             ),
             child: MainButton(
               onTap: _isLoading ? null : _handleSubmit,
-              btn_title: JText.submitButton,
+              btn_title: 'submitButton',
               btn_radius: 10,
               btn_color: JAppColors.main,
               btn_boarder_color: const Color(0xff7030F1),
@@ -215,4 +223,3 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
     );
   }
 }
-

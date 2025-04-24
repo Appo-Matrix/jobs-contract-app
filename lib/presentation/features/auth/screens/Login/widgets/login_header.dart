@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../../utils/constants/image_string.dart';
 

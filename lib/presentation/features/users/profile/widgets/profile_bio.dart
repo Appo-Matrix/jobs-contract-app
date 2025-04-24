@@ -7,9 +7,9 @@ class ProfileBio extends StatelessWidget {
   final bool isDark;
 
   const ProfileBio({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

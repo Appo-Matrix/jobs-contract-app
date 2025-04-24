@@ -10,14 +10,14 @@ class JCircularAvatar extends StatelessWidget {
   final Color? backColor;  // Background color
 
   const JCircularAvatar({
-    Key? key,
+    super.key,
     required this.isDark,
     required this.radius,  // Accept radius as a parameter
     required this.child,    // Accept child widget as a parameter
     this.borderColor = JAppColors.lightGray300, // Default border color
     this.borderWidth = 2.0,
     this.backColor,  // Default border width
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

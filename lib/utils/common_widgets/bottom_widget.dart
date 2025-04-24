@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
-import '../constants/text_strings.dart';
 
 class BottomWidget extends StatelessWidget {
   const BottomWidget({

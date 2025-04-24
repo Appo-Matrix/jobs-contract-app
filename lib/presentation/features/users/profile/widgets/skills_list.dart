@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../profile_detail.dart';
 
 
 
@@ -11,9 +10,9 @@ class SkillsList extends StatelessWidget {
   final bool isDark;
 
   const SkillsList({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +43,10 @@ class SkillChip extends StatelessWidget {
   final bool isDark;
 
   const SkillChip({
-    Key? key,
+    super.key,
     required this.skill,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

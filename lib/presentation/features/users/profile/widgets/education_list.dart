@@ -5,9 +5,9 @@ class EducationList extends StatelessWidget {
   final bool isDark;
 
   const EducationList({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

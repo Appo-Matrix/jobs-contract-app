@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/common_widgets/bottom_indicator.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
@@ -33,11 +33,11 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
     final double width = JDeviceUtils.getScreenWidth(context);
 
     final isDark = JDeviceUtils.isDarkMode(context);
-    bool _isLoading = false;
+    bool isLoading = false;
 
-    void _handleSubmit() {
+    void handleSubmit() {
       setState(() {
-        _isLoading = true;
+        isLoading = true;
       });
 
       showDotProgressDialog(
@@ -51,7 +51,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
 
         if (mounted) {
           setState(() {
-            _isLoading = false;
+            isLoading = false;
           });
           // Add your actual submission logic here
         }
@@ -59,20 +59,23 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
     }    return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         title: Text(
-          JText.reportJob,
+          'reportJob',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
       ),
       body: SafeArea(
         child: Column(
@@ -87,7 +90,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      JText.selectReason,
+                      'selectReason',
                       style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.darkGray100
@@ -95,10 +98,10 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                         fontSize: 16.0,
                         weight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(height: 6),
                     Text(
-                      JText.selectReasonDescription,
+                      'selectReasonDescription',
                       style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.darkGray300
@@ -106,7 +109,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                         fontSize: 14.0,
                         weight: FontWeight.w400,
                       ),
-                    ),
+                    ).tr(),
                     const SizedBox(height: 24),
 
                     // Report Reasons
@@ -125,7 +128,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                       child: TextField(
                         maxLines: null,
                         decoration: InputDecoration(
-                          hintText: "Enter a description...",
+                          hintText: 'enterDescription'.tr(),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -155,7 +158,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   Expanded(
                     child: MainButton(
                       onTap: (){Navigator.pop(context);},
-                      btn_title: JText.cancel,
+                      btn_title: 'cancel',
                       btn_radius: 10,
                       btn_color: Colors.white.withValues(alpha: 0.4),
                       btn_boarder_color: JAppColors.grayBlue800,
@@ -170,9 +173,9 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   Expanded(
                     child: MainButton(
 
-                      onTap: _isLoading ? null : _handleSubmit,
+                      onTap: isLoading ? null : handleSubmit,
 
-                      btn_title: JText.submitReport,
+                      btn_title: 'submitReport',
                       btn_radius: 10,
                       btn_color: JAppColors.error500,
                       btn_boarder_color: Colors.transparent,
@@ -220,7 +223,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   fontSize: 14.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
             ),
             Container(
               width: 24,

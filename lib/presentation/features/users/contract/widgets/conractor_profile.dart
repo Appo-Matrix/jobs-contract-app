@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -9,7 +8,7 @@ import '../../../../../utils/constants/image_string.dart';
 class ContractorProfile extends StatelessWidget {
   final bool isDark;
 
-  const ContractorProfile({Key? key, required this.isDark}) : super(key: key);
+  const ContractorProfile({super.key, required this.isDark});
 
   @override
   Widget build(BuildContext context) {

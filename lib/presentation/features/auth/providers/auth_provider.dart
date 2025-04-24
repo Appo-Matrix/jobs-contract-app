@@ -10,11 +10,11 @@ class AuthProvider with ChangeNotifier{
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   bool get isLoading => _isLoading;
 
-  String _errorMessage = '';
+  final String _errorMessage = '';
 
   String get errorMessage => _errorMessage;
 

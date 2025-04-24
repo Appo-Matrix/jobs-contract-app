@@ -1,4 +1,4 @@
-// Main Profile Screen
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/profile/widgets/education_list.dart';
 import 'package:job_contracts/presentation/features/users/profile/widgets/feedback_list.dart';
@@ -32,29 +32,19 @@ class ProfileScreen extends StatelessWidget {
       appBar: JAppbar(
         title: Text(
           textAlign: TextAlign.start,
-          'Profile',
+          'profile',
           style: AppTextStyle.dmSans(
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.bold,
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
           ),
-        ),
+        ).tr(),
         actions: [
-          //
-          // GestureDetector(
-          //   onTap: (){},
-          //   child: SvgPicture.asset(
-          //
-          //     color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-          //     Ji!,
-          //     width: 20,
-          //     height: 20,
-          //   ),
-          // )
+
 
         ],
       ),
-      backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -68,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileSection(
                 iconPath: JImages.edit_iconSvg,
 
-                title: 'Bio',
+                title: 'bio',
                 content: ProfileBio(isDark: isDark),
                 isDark: isDark,
                 voidCallback: () {},
@@ -78,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileSection(
                 iconPath: JImages.edit_iconSvg,
 
-                title: 'Work History',
+                title: 'workHistory',
                 content: WorkHistoryList(isDark: isDark),
                 isDark: isDark,
                 voidCallback: () {
@@ -90,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileSection(
                 iconPath: JImages.edit_iconSvg,
 
-                title: 'Education',
+                title: 'education',
                 content: EducationList(isDark: isDark),
                 isDark: isDark,
                 voidCallback: () {
@@ -103,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileSection(
                 iconPath: JImages.edit_iconSvg,
 
-                title: 'Skills',
+                title: 'skills',
                 content: SkillsList(isDark: isDark),
                 isDark: isDark,
                 voidCallback: () {
@@ -115,7 +105,7 @@ class ProfileScreen extends StatelessWidget {
               ProfileSection(
                 iconPath: JImages.edit_iconSvg,
 
-                title: 'Languages',
+                title: 'languages',
                 content: LanguagesList(isDark: isDark),
                 isDark: isDark,
                 voidCallback: (){
@@ -127,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
               // Work History and Feedback
               ProfileSection(
                 iconPath: "",
-                title: 'Work History and Feedback',
+                title: 'workFeedback',
                 content: FeedbackList(isDark: isDark),
                 isDark: isDark,
               ),

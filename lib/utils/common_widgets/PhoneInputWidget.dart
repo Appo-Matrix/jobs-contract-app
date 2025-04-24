@@ -12,13 +12,13 @@ class PhoneInputWidget extends StatefulWidget {
   final String label;
 
   const PhoneInputWidget({
-    Key? key,
+    super.key,
     this.onPhoneChanged,
     this.onCountryCodeChanged,
     this.initialCountryCode = "US",
     this.isRequired = false,
     this.label = "Phone",
-  }) : super(key: key);
+  });
 
   @override
   State<PhoneInputWidget> createState() => _PhoneInputWidgetState();

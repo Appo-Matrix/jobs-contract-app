@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
@@ -31,7 +32,7 @@ class ContractDetailScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: MainButton(
-                  btn_title: JText.deliverNowButton,
+                  btn_title: 'deliverNowButton',
                   btn_radius: 10,
                   btn_color: JAppColors.main,
                   btn_boarder_color: const Color(0xff7030F1),
@@ -46,7 +47,7 @@ class ContractDetailScreen extends StatelessWidget {
               const SizedBox(width: 12),
               Expanded(
                 child: MainButton(
-                  btn_title: JText.sendMessage,
+                  btn_title: 'sendMessage',
                   btn_radius: 10,
                   btn_color: Colors.transparent,
                   btn_boarder_color:
@@ -66,13 +67,13 @@ class ContractDetailScreen extends StatelessWidget {
       ),
       appBar: JAppbar(
         title: Text(
-          JText.appBarTitle,
+          'appBarTitle',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 19.0,
             weight: FontWeight.w500,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(3.0),
           child: BackCircle(

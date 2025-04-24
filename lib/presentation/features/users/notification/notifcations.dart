@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationDialog.dart';
 import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationsContainer.dart';
@@ -7,9 +6,7 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
-import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
-import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -29,15 +26,15 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-      key: _scaffoldKey,
+      key: scaffoldKey,
       drawer: _buildNavigationDrawer(context, isDark),
       appBar: JAppbar(
         leadingIcon: GestureDetector(
-          onTap: () => {_scaffoldKey.currentState?.openDrawer()},
+          onTap: () => {scaffoldKey.currentState?.openDrawer()},
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircularAvatar(

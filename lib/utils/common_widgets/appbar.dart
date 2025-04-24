@@ -190,5 +190,6 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
+  @override
   Size get preferredSize => Size.fromHeight(JDeviceUtils.getAppBarHeight());
 }

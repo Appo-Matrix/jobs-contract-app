@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/features/users/message/widgets/message_card.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
-import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/app_text_style.dart';
@@ -102,7 +100,6 @@ class _MessageScreenState extends State<MessageScreen> {
       key: _scaffoldKey,
 
       appBar: JAppbar(
-        title: Text(JText.message ,style: AppTextStyle.dmSans(color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800, fontSize: 16.0, weight: FontWeight.w500),),
         leadingIcon: GestureDetector(
           onTap: ()=>{
             print('click'),

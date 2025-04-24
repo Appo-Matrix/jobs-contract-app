@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/portfilo_screen/widgets/upload_header.dart';
 import 'package:job_contracts/presentation/features/auth/screens/portfilo_screen/widgets/upload_portfolio_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
@@ -23,14 +23,14 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final backgroundColor = isDark ? JAppColors.darkGray900 : Colors.white;
+    final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
     final textColor = isDark ? JAppColors.lightGray100 : JAppColors.darkGray800;
     final secondaryTextColor =
         isDark ? JAppColors.lightGray300 : JAppColors.darkGray500;
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -42,13 +42,13 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                 // Before Upload Section
                 Text(
-                  JText.before,
+                  'before',
                   style: AppTextStyle.dmSans(
                     color: textColor,
                     fontSize: 16.0,
                     weight: FontWeight.w600,
                   ),
-                ),
+                ).tr(),
                 const SizedBox(height: 12),
                 UploadContainerWidget(
                   isDark: isDark,
@@ -64,13 +64,13 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                 // After Upload Section
                 Text(
-                  JText.after,
+                  'after',
                   style: AppTextStyle.dmSans(
                     color: textColor,
                     fontSize: 16.0,
                     weight: FontWeight.w500,
                   ),
-                ),
+                ).tr(),
                 const SizedBox(height: 8),
                 UploadContainerWidget(
                   isDark: isDark,
@@ -86,13 +86,13 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                 // Brief Description
                 Text(
-                  JText.briefDescription,
+                  'briefDescription',
                   style: AppTextStyle.dmSans(
                     color: textColor,
                     fontSize: 16.0,
                     weight: FontWeight.w500,
                   ),
-                ),
+                ).tr(),
                 const SizedBox(height: 8),
 
                 Container(
@@ -104,7 +104,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   child: TextField(
                     maxLines: null,
                     decoration: InputDecoration(
-                      hintText: "Enter a description...",
+                      hintText: 'enterDescription'.tr(),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -118,8 +118,8 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                 TextFieldWidget(
                   keyboardType: TextInputType.number,
 
-                  subTitle: JText.estimatedServiceCost,
-                  hintText: JText.estimatedServiceCost,
+                  subTitle: 'estimatedServiceCost',
+                  hintText: 'estimatedServiceCost',
                   subtitleColor:
                       isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   titleColor:
@@ -130,8 +130,8 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
 
                 TextFieldWidget(
-                  subTitle:  JText.estimatedCompletionTime,
-                  hintText:  JText.estimatedCompletionTime,
+                  subTitle:  'estimatedCompletionTime',
+                  hintText:  'estimatedCompletionTime',
                   subtitleColor:
                       isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   titleColor:
@@ -141,7 +141,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
 
                 const SizedBox(height: 32),
                 MainButton(
-                    btn_title: JText.uploadPortfolio,
+                    btn_title: 'uploadPortfolio',
                     btn_radius: 10,
                     btn_color: JAppColors.main,
                     btn_boarder_color: Color(0xff7030F1),
@@ -153,7 +153,7 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     }),
 
                 MainButton(
-                  btn_title: JText.skip,
+                  btn_title: 'skip',
                   btn_radius: 10,
                   btn_color: Colors.transparent,
                   btn_boarder_color: Colors.transparent,

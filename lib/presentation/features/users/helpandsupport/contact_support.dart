@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
@@ -21,13 +22,13 @@ class ContactSupportScreen extends StatelessWidget {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.customerSupport,
+          'customerSupport',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(
@@ -47,8 +48,8 @@ class ContactSupportScreen extends StatelessWidget {
 
             SupportOptionWidget(
               iconAsset: JImages.chatsupp, // Replace with your actual asset path
-              title: JText.chatWithSupport,
-              description: JText.chatWithSupportDec,
+              title: 'chatWithSupport',
+              description: 'chatWithSupportDec',
               onTap: () {
                 
                 AppRouter.router.push('/reportScreen');
@@ -63,8 +64,8 @@ class ContactSupportScreen extends StatelessWidget {
 
             SupportOptionWidget(
               iconAsset: JImages.viewreq, // Replace with your actual asset path
-              title: JText.viewMyRequest,
-              description: JText.viewMyRequestDes,
+              title: 'viewMyRequest',
+              description: 'viewMyRequestDes',
               onTap: () {
 
                 AppRouter.router.push('/supportRequestsScreen');

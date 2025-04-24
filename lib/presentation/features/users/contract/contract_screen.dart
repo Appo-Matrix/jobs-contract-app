@@ -1,4 +1,4 @@
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/features/users/contract/tab_screen/active_page_contract.dart';
@@ -30,7 +30,6 @@ class _ContractsScreenState extends State<ContractsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
-  // final tabs = ['Active', 'Completed', 'Paused', 'Cancelled', 'Pending', 'Under Review'];
 
   final tabs = [
     'Active',
@@ -54,23 +53,23 @@ class _ContractsScreenState extends State<ContractsScreen>
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-      key: _scaffoldKey,
+      key: scaffoldKey,
       drawer: _buildNavigationDrawer(context, isDark),
       appBar: JAppbar(
-
-        title: Text(JText.allContract,                style: AppTextStyle.dmSans(
-          fontSize: 18.0,
-          weight: FontWeight.bold,
-          color:
-          isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-        ),
-        ),
+        title: Text(
+          'allContract',
+          style: AppTextStyle.dmSans(
+            fontSize: 18.0,
+            weight: FontWeight.bold,
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+          ),
+        ).tr(),
         leadingIcon: GestureDetector(
-          onTap: () => {_scaffoldKey.currentState?.openDrawer()},
+          onTap: () => {scaffoldKey.currentState?.openDrawer()},
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircularAvatar(
@@ -85,14 +84,14 @@ class _ContractsScreenState extends State<ContractsScreen>
           IconButton(
             icon: Icon(Icons.more_vert,
                 color:
-                isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
+                    isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
             onPressed: () {},
           ),
         ],
-      ),      body: Column(
+      ),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Container(
@@ -116,7 +115,7 @@ class _ContractsScreenState extends State<ContractsScreen>
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Search Contracts',
+                        hintText: 'searchContracts',
                         border: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -155,8 +154,7 @@ class _ContractsScreenState extends State<ContractsScreen>
                     isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 padding: const EdgeInsets.all(3),
                 indicatorWeight: 0,
-                labelStyle:
-                AppTextStyle.dmSans(
+                labelStyle: AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeESm,
                   weight: FontWeight.w500,
                   color: Colors.white,
@@ -259,7 +257,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.profilesetting,
             title: JText.accountSetting,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
 
@@ -272,7 +270,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.report,
             title: JText.financialReport,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/financeReportScreen');
@@ -285,7 +283,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.proposal,
             title: JText.proposal,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/proposalScreen');
@@ -296,7 +294,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.proposal,
             title: JText.myAds,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/myAdsScreen');
@@ -307,7 +305,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.upgrade,
             title: JText.upgrade,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/membershipPlansScreen');
@@ -318,7 +316,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.language,
             title: JText.language,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/languageScreen');
@@ -330,7 +328,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.helpsupport,
             title: JText.helpAndSupport,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               AppRouter.router.push('/contactSupportScreen');
@@ -343,7 +341,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             iconPath: JImages.logout_icon,
             title: JText.logout,
             iconColor:
-            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
               Navigator.pop(context);
               // Navigate to settings
@@ -362,7 +360,7 @@ class _ContractsScreenState extends State<ContractsScreen>
                 fontSize: 16.0,
                 weight: FontWeight.w500,
                 color:
-                isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
               ),
             ),
             onTap: () {
@@ -375,6 +373,7 @@ class _ContractsScreenState extends State<ContractsScreen>
       ),
     );
   }
+
   void _showThemeBottomSheet(BuildContext context, bool isDark) {
     showModalBottomSheet(
       context: context,
@@ -394,7 +393,7 @@ class _ContractsScreenState extends State<ContractsScreen>
                   fontSize: 18.0,
                   weight: FontWeight.bold,
                   color:
-                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 ),
               ),
               ListTile(
@@ -433,5 +432,4 @@ class _ContractsScreenState extends State<ContractsScreen>
       },
     );
   }
-
 }

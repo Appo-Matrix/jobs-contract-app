@@ -1,6 +1,5 @@
 
 
-import 'package:job_contracts/core/constants/global.dart';
 
 part 'src/ds_di.dart';
 part 'src/notifiers_di.dart';

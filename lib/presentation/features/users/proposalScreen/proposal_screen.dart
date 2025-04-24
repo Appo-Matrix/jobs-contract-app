@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/proposalScreen/tab_screen/active_proposals_screen.dart';
 import 'package:job_contracts/presentation/features/users/proposalScreen/tab_screen/closed_proposals_screen.dart';
@@ -52,13 +52,13 @@ class _ProposalScreenState extends State<ProposalScreen> with SingleTickerProvid
           ),
         ),
         title: Text(
-          JText.proposal,
+          'proposal',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 19.0,
             weight: FontWeight.w500,
           ),
-        ),
+        ).tr(),
       ),
       body: Column(
         children: [
@@ -93,9 +93,9 @@ class _ProposalScreenState extends State<ProposalScreen> with SingleTickerProvid
                 color: Colors.white,
               ),
               tabs: [
-                Tab(text: JText.active),
-                Tab(text: JText.view),
-                Tab(text: JText.closed),
+                Tab(text:tr( 'active')),
+                Tab(text: tr('view')),
+                Tab(text: tr('closed')),
               ],
             ),
           ),

@@ -9,14 +9,14 @@ class JCircularCheckbox extends StatelessWidget {
   final Color fillColor; // Fill color for the circle
 
   const JCircularCheckbox({
-    Key? key,
+    super.key,
     required this.isChecked,
     required this.onChanged,
     required this.radius,
     this.borderColor = Colors.black,  // Default border color
     this.checkColor = Colors.white,   // Default checkmark color
     this.fillColor = Colors.green,    // Default fill color when checked
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

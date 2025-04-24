@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/helpandsupport/widgets/support_request_card.dart';
 
@@ -44,13 +45,13 @@ class SupportRequestsScreen extends StatelessWidget {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.contactSupport,
+          'contactSupport',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(

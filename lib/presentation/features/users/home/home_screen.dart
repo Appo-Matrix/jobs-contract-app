@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get.dart';
 import 'package:job_contracts/presentation/features/users/home/recent_jobs/recent_jobs_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/saved_jobs/saved_jobs_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar.dart';
-import 'package:job_contracts/utils/common_widgets/back_circle.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
@@ -107,9 +106,9 @@ class _HomeScreenState extends State<HomeScreen>
                   color: Colors.white,
                 ),
                 tabs: [
-                  Tab(text: JText.bestMatch),
-                  Tab(text: JText.recentMatch),
-                  Tab(text: JText.savedMatch),
+                  Tab(text: tr('bestMatch')),
+                  Tab(text: tr('recentMatch')),
+                  Tab(text: tr('savedMatch')),
                 ],
               ),
             ),
@@ -199,7 +198,7 @@ class _HomeScreenState extends State<HomeScreen>
           // Drawer items using the custom widget
           DrawerItem(
             iconPath: JImages.profilesetting,
-            title: JText.accountSetting,
+            title: 'accountSetting',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -212,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen>
 
           DrawerItem(
             iconPath: JImages.report,
-            title: JText.financialReport,
+            title: 'financialReport',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -225,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen>
 
           DrawerItem(
             iconPath: JImages.proposal,
-            title: JText.proposal,
+            title: 'proposal',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -236,7 +235,7 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           DrawerItem(
             iconPath: JImages.proposal,
-            title: JText.myAds,
+            title: 'myAds',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -247,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           DrawerItem(
             iconPath: JImages.upgrade,
-            title: JText.upgrade,
+            title: 'upgrade',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -258,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           DrawerItem(
             iconPath: JImages.language,
-            title: JText.language,
+            title: 'language',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -270,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen>
 
           DrawerItem(
             iconPath: JImages.helpsupport,
-            title: JText.helpAndSupport,
+            title: 'helpAndSupport',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -283,7 +282,7 @@ class _HomeScreenState extends State<HomeScreen>
 
           DrawerItem(
             iconPath: JImages.logout_icon,
-            title: JText.logout,
+            title: 'logout',
             iconColor:
                 isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             onTap: () {
@@ -299,14 +298,14 @@ class _HomeScreenState extends State<HomeScreen>
               color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             ),
             title: Text(
-              JText.changeTheme,
+              'changeTheme',
               style: AppTextStyle.dmSans(
                 fontSize: 16.0,
                 weight: FontWeight.w500,
                 color:
                     isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
               ),
-            ),
+            ).tr(),
             onTap: () {
               Navigator.pop(context);
               _showThemeBottomSheet(context, isDark);
@@ -331,20 +330,19 @@ class _HomeScreenState extends State<HomeScreen>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+
               Text(
-                'Choose Theme',
+                'chooseTheme',
                 style: AppTextStyle.dmSans(
                   fontSize: 18.0,
                   weight: FontWeight.bold,
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 ),
-              ),
+              ).tr(),
               ListTile(
                 leading: Icon(Icons.light_mode, color: Colors.orange),
-                title: Text('Light Theme'),
+                title: Text('lightTheme').tr(),
                 onTap: () {
-                  // Use ThemeNotifier to change the theme
                   Provider.of<ThemeNotifier>(context, listen: false)
                       .toggleTheme(false);
                   Navigator.pop(context);
@@ -352,9 +350,8 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               ListTile(
                 leading: Icon(Icons.dark_mode, color: Colors.blueGrey),
-                title: Text('Dark Theme'),
+                title: Text('darkTheme').tr(),
                 onTap: () {
-                  // Use ThemeNotifier to change the theme
                   Provider.of<ThemeNotifier>(context, listen: false)
                       .toggleTheme(true);
                   Navigator.pop(context);
@@ -362,11 +359,10 @@ class _HomeScreenState extends State<HomeScreen>
               ),
               ListTile(
                 leading: Icon(Icons.brightness_auto, color: Colors.green),
-                title: Text('System Default'),
+                title: Text('systemDefault').tr(),
                 onTap: () {
-                  // Use ThemeNotifier to set the system default theme
-                  Provider.of<ThemeNotifier>(context, listen: false).toggleTheme(
-                      false); // System can fallback to light/dark based on system settings
+                  Provider.of<ThemeNotifier>(context, listen: false)
+                      .toggleTheme(false);
                   Navigator.pop(context);
                 },
               ),

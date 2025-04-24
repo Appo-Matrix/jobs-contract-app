@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -7,11 +6,11 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String userAvatar;
 
   const ChatAppBar({
-    Key? key,
+    super.key,
     required this.userName,
     required this.isOnline,
     required this.userAvatar,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

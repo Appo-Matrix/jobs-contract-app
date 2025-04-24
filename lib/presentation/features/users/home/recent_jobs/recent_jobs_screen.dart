@@ -142,13 +142,13 @@
 // }
 //
 //
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:get/get.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -157,7 +157,7 @@ import '../bottom_sheet/FilterSelectionBottomSheet.dart';
 import '../widget/job_posting_card.dart';
 
 class RecentJobsPage extends StatefulWidget {
-  const RecentJobsPage({Key? key}) : super(key: key);
+  const RecentJobsPage({super.key});
 
   @override
   State<RecentJobsPage> createState() => _RecentJobsPageState();
@@ -217,7 +217,7 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
                 Expanded(
                   child: TextField(
                     decoration: InputDecoration(
-                      hintText: JText.searchJob,
+                        hintText:  easy.tr('searchJob'),
                       border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -252,13 +252,13 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
           const SizedBox(height: 12),
 
           Text(
-            JText.recentPotJob,
+            'recentPotJob',
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeLg,
               weight: FontWeight.bold,
               color: isDark ? Colors.white : JAppColors.lightGray900,
             ),
-          ),
+          ).tr(),
 
           const SizedBox(height: 16),
 
@@ -285,7 +285,7 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
                             },
                           )
                       )
-                  ).toList(),
+                  ),
                 ],
               ),
             ),

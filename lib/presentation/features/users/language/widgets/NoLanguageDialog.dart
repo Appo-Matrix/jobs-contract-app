@@ -7,10 +7,10 @@ class NoLanguageDialog extends StatelessWidget {
   final VoidCallback onCancel;
 
   const NoLanguageDialog({
-    Key? key,
+    super.key,
     required this.onAddLanguage,
     required this.onCancel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -23,7 +23,7 @@ class ProposalCard extends StatefulWidget {
   final VoidCallback? onProposalTap; // NEW
 
   const ProposalCard({
-    Key? key,
+    super.key,
     this.jobTitle = "Architects Construction",
     this.salary = "\$20,000 - \$25,000",
     this.category = "Electrician",
@@ -37,7 +37,7 @@ class ProposalCard extends StatefulWidget {
     this.employerImage,
     required this.isDark,
     this.onProposalTap,
-  }) : super(key: key);
+  });
 
   @override
   State<ProposalCard> createState() => _ProposalCardState();
@@ -65,7 +65,7 @@ class _ProposalCardState extends State<ProposalCard> {
             ? null
             : [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -127,7 +127,7 @@ class _ProposalCardState extends State<ProposalCard> {
               overflow: TextOverflow.ellipsis,
               style: AppTextStyle.dmSans(
                 fontSize: JSizes.fontSizeEaSm,
-                color: textColor.withOpacity(0.9),
+                color: textColor.withValues(alpha: 0.9),
                 height: 1.5,
                 weight: FontWeight.w500,
               ),
@@ -136,7 +136,7 @@ class _ProposalCardState extends State<ProposalCard> {
               widget.description,
               style: AppTextStyle.dmSans(
                 fontSize: JSizes.fontSizeEaSm,
-                color: textColor.withOpacity(0.9),
+                color: textColor.withValues(alpha: 0.9),
                 height: 1.5,
                 weight: FontWeight.w500,
               ),
@@ -152,13 +152,13 @@ class _ProposalCardState extends State<ProposalCard> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  _isExpanded ? JText.seeLess : JText.seeMore,
+                  _isExpanded ? 'seeLess' : 'seeMore',
                   style: AppTextStyle.dmSans(
                     fontSize: 16.0,
                     weight: FontWeight.w600,
                     color: accentColor,
                   ),
-                ),
+                ).tr(),
                 Icon(
                   _isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
                   size: 16,
@@ -196,13 +196,13 @@ class _ProposalCardState extends State<ProposalCard> {
                 padding: const EdgeInsets.symmetric(vertical: 14),
               ),
               child: Text(
-                "View Proposal",
+               'viewProposal',
                 style: AppTextStyle.dmSans(
                   color: Colors.white,
                   fontSize: 14.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
             ),
           ),
         ],
@@ -214,7 +214,7 @@ class _ProposalCardState extends State<ProposalCard> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.15),
+        color: color.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -228,7 +228,7 @@ class _ProposalCardState extends State<ProposalCard> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: isDark ? Colors.green.withOpacity(0.2) : Colors.green.withOpacity(0.1),
+        color: isDark ? Colors.green.withValues(alpha: 0.2) : Colors.green.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -252,7 +252,7 @@ class _ProposalCardState extends State<ProposalCard> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.1) : Colors.grey.withOpacity(0.1),
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -330,18 +330,18 @@ class _ProposalCardState extends State<ProposalCard> {
                 widget.location,
                 style: AppTextStyle.dmSans(
                   fontSize: 12.0,
-                  color: textColor.withOpacity(0.8),
+                  color: textColor.withValues(alpha: 0.8),
                   weight: FontWeight.w400,
                 ),
               ),
               const SizedBox(width: 12),
-              Icon(Icons.access_time_filled, size: 14, color: textColor.withOpacity(0.8)),
+              Icon(Icons.access_time_filled, size: 14, color: textColor.withValues(alpha: 0.8)),
               const SizedBox(width: 4),
               Text(
                 "Posted ${widget.postedTime}",
                 style: AppTextStyle.dmSans(
                   fontSize: 12.0,
-                  color: textColor.withOpacity(0.8),
+                  color: textColor.withValues(alpha: 0.8),
                   weight: FontWeight.w400,
                 ),
               ),

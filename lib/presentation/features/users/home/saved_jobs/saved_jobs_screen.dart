@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../recent_jobs/recent_jobs_screen.dart';
 import '../widget/job_posting_card.dart';
 
 
@@ -23,13 +23,13 @@ class SavedJobsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Saved Jobs',
+                'savedJobs',
                 style: AppTextStyle.dmSans(
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.bold,
                   color: isDark ? Colors.white : JAppColors.lightGray900,
                 ),
-              ),
+              ).tr(),
             ],
           ),
         ),

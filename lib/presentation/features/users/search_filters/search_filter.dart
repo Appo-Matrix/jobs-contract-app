@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../utils/common_widgets/appbar.dart';
-import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/account_screen/widgets/account_widget.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
@@ -29,13 +30,13 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.accountSetting,
+          'accountSetting',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(
@@ -56,14 +57,14 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               SizedBox(height: 12,),
               // Account Section
               Text(
-                JText.accountSettingText,
+                'accountSettingText',
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
                   fontSize: JSizes.fontSizeMd,
                   weight: FontWeight.w400,
                   height: 1.5,
                 ),
-              ),
+              ).tr(),
               SizedBox(height: 10),
               GestureDetector(
                 onTap: (){
@@ -71,8 +72,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.userIcon,
-                  title: JText.profileInfo,
-                  subTitle: JText.changeInfo,
+                  title: 'profileInfo',
+                  subTitle: 'changeInfo',
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
@@ -87,8 +88,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.lock,
-                  title: JText.changePassword,
-                  subTitle: JText.changeYourPassword,
+                  title: 'changePassword',
+                  subTitle: 'changeYourPassword',
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
@@ -103,8 +104,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.payment,
-                  title: JText.paymentMethodTitle,
-                  subTitle: JText.addCreditTitle,
+                  title: 'paymentMethodTitle',
+                  subTitle: 'addCreditTitle',
                   child: Icon(
                     Icons.arrow_forward_ios_outlined,
                     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
@@ -118,8 +119,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
                 },
                 child: AccountWidgetContainer(
                   iconsImage: JImages.preference,
-                  title: JText.preferencesTitle,
-                  subTitle: JText.preferencesTitleDe,
+                  title: 'preferencesTitle',
+                  subTitle: 'preferencesTitleDe',
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
@@ -131,19 +132,19 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
 
               // Notification Section
               Text(
-                JText.notifications,
+                'notifications',
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
                   height: 1.5,
                 ),
-              ),
+              ).tr(),
               SizedBox(height: 12),
               AccountWidgetContainer(
                 iconsImage: JImages.notificationBell,
-                title: JText.pushNotifications,
-                subTitle: JText.notificationsSubTitle,
+                title: 'pushNotifications',
+                subTitle: 'notificationsSubTitle',
                 child: SizedBox(
                   height: 30,
                   width: 60,
@@ -171,19 +172,19 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
 
               // More Section
               Text(
-                JText.more,
+                'more',
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
                   height: 1.5,
                 ),
-              ),
+              ).tr(),
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.star,
-                title: JText.rateUs,
-                subTitle: JText.rate,
+                title: 'rateUs',
+                subTitle: 'rate',
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,
@@ -193,8 +194,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.userIcon,
-                title: JText.faq,
-                subTitle: JText.askQuestion,
+                title: 'faq',
+                subTitle: 'askQuestion',
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,
@@ -204,8 +205,8 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               SizedBox(height: 15),
               AccountWidgetContainer(
                 iconsImage: JImages.logout,
-                title: JText.logout,
-                subTitle: 'Are you want to logout',
+                title: 'logout',
+                subTitle: 'logoutConfirmation',
                 child: Icon(
                   size: 20,
                   Icons.arrow_forward_ios_outlined,

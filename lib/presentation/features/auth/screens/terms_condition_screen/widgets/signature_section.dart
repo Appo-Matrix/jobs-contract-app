@@ -5,7 +5,6 @@ import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../../utils/constants/image_string.dart';

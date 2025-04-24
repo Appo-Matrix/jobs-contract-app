@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; // Make sure to add this package to pubspec.yaml
 
@@ -51,7 +52,7 @@ class SupportOptionWidget extends StatelessWidget {
                 fontSize: 18.0,
                 weight: FontWeight.w600,
               ),
-            ),
+            ).tr(),
             const SizedBox(height: 8),
             Text(
               description,
@@ -60,7 +61,7 @@ class SupportOptionWidget extends StatelessWidget {
                 fontSize: 12.0,
                 weight: FontWeight.w500,
               ),
-            ),
+            ).tr(),
           ],
         ),
       ),

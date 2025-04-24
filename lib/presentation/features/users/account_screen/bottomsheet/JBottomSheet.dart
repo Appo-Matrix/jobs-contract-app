@@ -18,7 +18,7 @@ class JBottomSheet extends StatelessWidget {
   final String saveButtonText;
 
   const JBottomSheet({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.content,
@@ -28,7 +28,7 @@ class JBottomSheet extends StatelessWidget {
     required this.backgroundColor,
     required this.isDark,
     this.saveButtonText = 'Save',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

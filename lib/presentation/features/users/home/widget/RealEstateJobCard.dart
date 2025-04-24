@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RealEstateJobCard extends StatelessWidget {
-  const RealEstateJobCard({Key? key}) : super(key: key);
+  const RealEstateJobCard({super.key});
 
   @override
   Widget build(BuildContext context) {

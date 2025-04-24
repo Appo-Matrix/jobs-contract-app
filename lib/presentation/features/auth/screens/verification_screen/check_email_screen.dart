@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +7,6 @@ import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
 
@@ -25,7 +24,7 @@ class CheckEmailScreen extends StatelessWidget {
     final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -33,7 +32,7 @@ class CheckEmailScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                JText.checkEmail,
+                'checkEmail',
                 style: AppTextStyle.dmSans(
                   color: isDark
                       ? JAppColors.lightGray100
@@ -42,13 +41,13 @@ class CheckEmailScreen extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
 
-              ),
+              ).tr(),
               const SizedBox(height: 8),
               RichText(
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "${JText.passwordResetSent} ",
+                      text: 'passwordResetSent'.tr(),
                       style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.lightGray300
@@ -58,7 +57,7 @@ class CheckEmailScreen extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: JText.email,
+                      text: 'email'.tr(),
                       style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.lightGray100
@@ -74,7 +73,7 @@ class CheckEmailScreen extends StatelessWidget {
 
               // Open email app button
               MainButton(
-                btn_title: JText.openEmailApp,
+                btn_title: 'openEmailApp',
                 btn_radius: 10,
                 btn_color: JAppColors.primary,
                 btn_boarder_color: Colors.transparent,
@@ -99,7 +98,7 @@ class CheckEmailScreen extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "${JText.didntReceiveEmail} ",
+                        text: 'didntReceiveEmail'.tr(),
                         style: AppTextStyle.dmSans(
                           color: isDark
                               ? JAppColors.lightGray300
@@ -109,7 +108,7 @@ class CheckEmailScreen extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: JText.clickToResend,
+                        text: 'clickToResend'.tr() ,
                         style: AppTextStyle.dmSans(
                           color: isDark
                               ? JAppColors.lightGray100

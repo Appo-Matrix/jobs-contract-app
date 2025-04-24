@@ -1,12 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/image_string.dart';
-import '../../../../../../utils/constants/text_strings.dart';
 
 class ResumeUploadSection extends StatelessWidget {
   final bool isDark;

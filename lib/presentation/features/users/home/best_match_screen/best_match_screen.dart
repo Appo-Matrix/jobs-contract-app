@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
@@ -12,7 +12,7 @@ import '../models/job_posting.dart';
 import '../widget/job_posting_card.dart';
 
 class BestMatchesPage extends StatelessWidget {
-  const BestMatchesPage({Key? key}) : super(key: key);
+  const BestMatchesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,13 +91,13 @@ class BestMatchesPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16, bottom: 12),
           child: Text(
-            JText.recommendedForYou,
+            'recommendedForYou',
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeLg,
               weight: FontWeight.bold,
               color: isDark ? Colors.white : JAppColors.lightGray900,
             ),
-          ),
+          ).tr(),
         ),
 
         Expanded(

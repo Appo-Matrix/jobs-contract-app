@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -31,18 +31,18 @@ class NotificationDialog extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              JText.noNotifications ,
+              'noNotifications' ,
               style: AppTextStyle.dmSans(color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900, fontSize: 16.0, weight: FontWeight.w400),
-            ),
+            ).tr(),
             const SizedBox(height: 10),
             Text(
-              JText.noNotificationsDesc,
+              'noNotificationsDesc',
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
               ),
-            ),
+            ).tr(),
             const SizedBox(height: 30),
           ],
         ),

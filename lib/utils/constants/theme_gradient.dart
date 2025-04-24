@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'colors.dart';
 
 class ThemeGradient {
   static const Color brandPrimary = Color(0xFF7F56D9);  // Primary brand color

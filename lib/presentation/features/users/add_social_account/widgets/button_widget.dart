@@ -10,7 +10,7 @@ class ButtonWidget extends StatelessWidget {
   final double borderRadius;
 
   // Constructor for the ButtonWidget widget
-  ButtonWidget({
+  const ButtonWidget({super.key, 
     required this.imagePath,
     required this.buttonText,
     required this.onPressed,

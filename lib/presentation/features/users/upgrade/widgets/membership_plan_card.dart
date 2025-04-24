@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -63,15 +64,15 @@ class MembershipPlanCard extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
+                ).tr(),
                 if (isCurrentPlan)
                   Text(
-                    'Your Current Plan',
+                    'yourCurrentPlan',
                     style: TextStyle(
                       color: textColor,
                       fontSize: 14,
                     ),
-                  ),
+                  ).tr(),
               ],
             ),
             const SizedBox(height: 8),
@@ -82,15 +83,15 @@ class MembershipPlanCard extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
-            ),
+            ).tr(),
             const SizedBox(height: 16),
             Text(
-              'Includes:',
+              'includes',
               style: TextStyle(
                 color: textColor,
                 fontSize: 14,
               ),
-            ),
+            ).tr(),
             const SizedBox(height: 12),
 
             // Features with checkmarks
@@ -112,11 +113,11 @@ class MembershipPlanCard extends StatelessWidget {
                         color: textColor,
                         fontSize: 14,
                       ),
-                    ),
+                    ).tr(),
                   ),
                 ],
               ),
-            )).toList(),
+            )),
 
             if (buttonText.isNotEmpty) ...[
               const SizedBox(height: 20),

@@ -1,5 +1,4 @@
 
-import '../my_ads_screen.dart';
 
 class Ad {
   final String id;

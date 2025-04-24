@@ -5,7 +5,6 @@ import 'package:job_contracts/presentation/features/auth/screens/profile/widgets
 import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/profile_photo_section.dart';
 import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/resume_upload_section.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';

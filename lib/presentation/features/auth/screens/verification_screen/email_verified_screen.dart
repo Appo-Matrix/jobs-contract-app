@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/common_widgets/appbar2.dart';
@@ -12,7 +12,7 @@ import '../../../../routes/app_routes.dart';
 
 
 class EmailVerifiedScreen extends StatefulWidget {
-  const EmailVerifiedScreen({Key? key}) : super(key: key);
+  const EmailVerifiedScreen({super.key});
 
   @override
   State<EmailVerifiedScreen> createState() => _EmailVerifiedScreenState();
@@ -59,7 +59,7 @@ class _EmailVerifiedScreenState extends State<EmailVerifiedScreen> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -67,7 +67,7 @@ class _EmailVerifiedScreenState extends State<EmailVerifiedScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                JText.emailVerified,
+                'emailVerified',
                 style: AppTextStyle.dmSans(
                   color: isDark
                       ? JAppColors.lightGray100
@@ -75,10 +75,10 @@ class _EmailVerifiedScreenState extends State<EmailVerifiedScreen> {
                   fontSize: 24.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 8),
               Text(
-                JText.verificationMessage,
+                'verificationMessage',
                 style: AppTextStyle.dmSans(
                   color: isDark
                       ? JAppColors.lightGray500
@@ -86,7 +86,7 @@ class _EmailVerifiedScreenState extends State<EmailVerifiedScreen> {
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
 
               // Display selected notification preferences or other content here
             ],
@@ -102,9 +102,9 @@ class NotificationSettingsDialog extends StatefulWidget {
   final Function(List<String>) onSubmit;
 
   const NotificationSettingsDialog({
-    Key? key,
+    super.key,
     required this.onSubmit,
-  }) : super(key: key);
+  });
 
   @override
   State<NotificationSettingsDialog> createState() => _NotificationSettingsDialogState();
@@ -112,9 +112,9 @@ class NotificationSettingsDialog extends StatefulWidget {
 
 class _NotificationSettingsDialogState extends State<NotificationSettingsDialog> {
   final List<String> _notificationOptions = [
-    JText.newJobOpportunities,
-    JText.promotionsDiscounts,
-    JText.industryNews,
+    'newJobOpportunities',
+    'promotionsDiscounts',
+    'industryNews',
   ];
 
   final List<String> _selectedOptions = [];
@@ -145,7 +145,7 @@ class _NotificationSettingsDialogState extends State<NotificationSettingsDialog>
                     fontSize: 16.0,
                     weight: FontWeight.w400,
                   ),
-                ),
+                ).tr(),
                 IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: () {
@@ -156,7 +156,7 @@ class _NotificationSettingsDialogState extends State<NotificationSettingsDialog>
             ),
             const SizedBox(height: 16),
             Text(
-              JText.notificationPreference,
+              'notificationPreference',
               style: AppTextStyle.dmSans(
                 color: isDark
                     ? JAppColors.lightGray100
@@ -164,7 +164,7 @@ class _NotificationSettingsDialogState extends State<NotificationSettingsDialog>
                 fontSize: 14.0,
                 weight: FontWeight.w400,
               ),
-            ),
+            ).tr(),
             const SizedBox(height: 16),
 
             // Notification options
@@ -180,7 +180,7 @@ class _NotificationSettingsDialogState extends State<NotificationSettingsDialog>
 
 
             MainButton(
-              btn_title: JText.submit,
+              btn_title: 'submit',
               btn_radius: 10,
               btn_color: JAppColors.main,
               btn_boarder_color: Color(0xff7030F1),

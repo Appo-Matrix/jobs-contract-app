@@ -55,10 +55,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     print("Current locale: ${context.locale}");
     final locale = context.locale;
-    if (locale != null) {
-      print("Current locale: $locale");
-    }
-
+    print("Current locale: $locale");
+  
     final isDark = JDeviceUtils.isDarkMode(context);
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 

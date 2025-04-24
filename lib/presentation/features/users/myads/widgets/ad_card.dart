@@ -1,4 +1,3 @@
-// lib/asdas/ad_card.dart
 
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
@@ -6,6 +5,7 @@ import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../../../../routes/app_routes.dart';
 import '../model/ad.dart';
 
 class AdCard extends StatelessWidget {
@@ -23,9 +23,6 @@ class AdCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final textColor = widget.isDark ? JAppColors.lightGray300 : JAppColors.lightGray900;
-    // final accentColor = widget.isDark ? JAppColors.lightest : JAppColors.primary;
-    // final containerColor = widget.isDark ? JAppColors.darkGray700 : JAppColors.lightGray100;
 
     return Container(
       decoration: BoxDecoration(
@@ -33,7 +30,7 @@ class AdCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 5),
           ),
@@ -129,11 +126,12 @@ class AdCard extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 16),
+
                 Row(
                   children: [
                     Expanded(
                       child: MainButton(
-                        btn_title: "View Details",
+                        btn_title: 'viewDetails',
                         btn_radius: 10,
                         btn_color: JAppColors.main,
                         btn_boarder_color: Color(0xff7030F1),
@@ -141,14 +139,14 @@ class AdCard extends StatelessWidget {
                         text_fontweight: FontWeight.w600,
                         image_value: false,
                         onTap: () {
-                          // AppRouter.router.push('/contractDetailScreen');
+                          AppRouter.router.push('/adDetailsScreen');
                         },
                       ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
                       child: MainButton(
-                        btn_title: "Edit Ad",
+                        btn_title: 'editAd',
                         btn_radius: 10,
                         btn_color: Colors.transparent,
                         btn_boarder_color: JAppColors.t,

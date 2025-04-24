@@ -8,9 +8,9 @@ class WorkHistoryList extends StatelessWidget {
   final bool isDark;
 
   const WorkHistoryList({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +41,11 @@ class WorkHistoryItem extends StatelessWidget {
   final bool isDark;
 
   const WorkHistoryItem({
-    Key? key,
+    super.key,
     required this.period,
     required this.description,
     required this.isDark,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CircularAvatar extends StatelessWidget {
@@ -12,7 +11,7 @@ class CircularAvatar extends StatelessWidget {
   final bool asset;
 
   const CircularAvatar({
-    Key? key,
+    super.key,
     required this.isDark,
     required this.radius,
     required this.imageUrl,
@@ -21,7 +20,7 @@ class CircularAvatar extends StatelessWidget {
     this.borderWidth = 2.0,
     this.initials,
     this.asset = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

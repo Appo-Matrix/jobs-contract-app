@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/presentation/features/auth/screens/sign_up_type/widgets/option_cardwidget.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';

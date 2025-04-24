@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/widgets/buildOtpBox.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:pinput/pinput.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';

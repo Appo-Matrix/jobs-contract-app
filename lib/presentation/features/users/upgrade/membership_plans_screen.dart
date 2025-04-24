@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/upgrade/widgets/membership_plan_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
-import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/text_strings.dart';
@@ -26,15 +25,15 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.membershipPlans ,
+          'membershipPlans',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(2.0),
           child: BackCircle(
             isDark: isDark,
             onTap: (){
@@ -51,15 +50,15 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
             children: [
               // Free Plan Card
               MembershipPlanCard(
-                title: 'Free',
-                subtitle: 'Free',
+                title: 'free',
+                subtitle: 'free',
                 isCurrentPlan: true,
                 features: [
-                  'Profile Creation',
-                  'Limited Search',
-                  'Job Applications',
-                  'Basic Messaging',
-                  'No Premium Features',
+                  'profileCreation',
+                  'limitedSearch',
+                  'jobApplications',
+                  'basicMessaging',
+                  'noPremiumFeatures',
                 ],
                 buttonText: '',
                 isPurple: false,
@@ -69,14 +68,14 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
 
               // Basic Plan Card
               MembershipPlanCard(
-                title: 'Basic',
-                subtitle: '\$45.10 per month*',
+                title: 'basic',
+                subtitle: '\$45.10 ${"perMonth".tr()}',
                 features: [
-                  'Higher visibility in search results',
-                  'Priority for job opportunities',
-                  'Statistics on profile performance',
+                  'higherVisibility',
+                  'priorityOpportunities',
+                  'statisticsPerformance',
                 ],
-                buttonText: 'Upgrade to Basic',
+                buttonText: 'upgradeBasic',
                 isPurple: true,
                 onTap: () {
                   // Handle basic plan upgrade
@@ -86,14 +85,14 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
 
               // Premium Plan Card
               MembershipPlanCard(
-                title: 'Premium',
-                subtitle: '\$45.10 per month*',
+                title: 'premium',
+                subtitle: '\$45.10 ${"perMonth".tr()}',
                 features: [
-                  'Higher visibility in search results',
-                  'Priority for job opportunities',
-                  'Statistics on profile performance',
+                  'higherVisibility',
+                  'priorityOpportunities',
+                  'statisticsPerformance',
                 ],
-                buttonText: 'Upgrade to Premium',
+                buttonText: 'upgradePremium',
                 isPurple: false,
                 onTap: () {
                   // Handle premium plan upgrade

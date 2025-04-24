@@ -3,13 +3,12 @@ import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/text_strings.dart';
-import '../my_ads_screen.dart';
 import '../widgets/ad_card.dart';
 import '../model/ad.dart';
 
 class DraftAdsScreen extends StatefulWidget {
   final bool isDark;
-  const DraftAdsScreen({Key? key, required this.isDark}) : super(key: key);
+  const DraftAdsScreen({super.key, required this.isDark});
 
   @override
   State<DraftAdsScreen> createState() => _DraftAdsScreenState();

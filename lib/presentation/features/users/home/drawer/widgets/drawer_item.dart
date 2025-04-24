@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
@@ -14,13 +15,13 @@ class DrawerItem extends StatelessWidget {
   final Color? textColor;
 
   const DrawerItem({
-    Key? key,
+    super.key,
     required this.iconPath,
     required this.title,
     required this.onTap,
     this.iconColor,
     this.textColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class DrawerItem extends StatelessWidget {
           weight: FontWeight.w500,
           color: textColor ?? (isDark ? JAppColors.darkGray100 : JAppColors.lightGray800),
         ),
-      ),
+      ).tr(),
       onTap: onTap,
     );
   }

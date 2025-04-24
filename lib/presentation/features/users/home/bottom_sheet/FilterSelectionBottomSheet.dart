@@ -195,7 +195,7 @@ class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet>
                       ),
                     ],
                   );
-                }).toList(),
+                }),
                 const SizedBox(height: 20),
               ],
             ),

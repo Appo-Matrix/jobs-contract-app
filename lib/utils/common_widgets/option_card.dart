@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
@@ -19,7 +20,7 @@ class OptionCard extends StatelessWidget {
   final Color? textColor;
 
   const OptionCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.svgPath,
     required this.onTap,
@@ -27,12 +28,12 @@ class OptionCard extends StatelessWidget {
     this.width,
     this.iconSize = 60,
     this.borderRadius = 12,
-    this.fontSize = 18.0,
+    this.fontSize = 16.0,
     this.fontWeight = FontWeight.w500,
     this.backgroundColor,
     this.iconColor,
     this.textColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,7 @@ class OptionCard extends StatelessWidget {
                 weight: fontWeight!,
               ),
               textAlign: TextAlign.center,
-            ),
+            ).tr(),
           ],
         ),
       ),

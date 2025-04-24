@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -19,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    String? _validateRequired(String? value) {
+    String? validateRequired(String? value) {
       if (value == null || value.trim().isEmpty) {
         return JText.requiredField;
       }
@@ -64,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
 
@@ -74,7 +73,7 @@ class LoginScreen extends StatelessWidget {
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
-                validator: _validateRequired,
+                validator: validateRequired,
               ),
 
 

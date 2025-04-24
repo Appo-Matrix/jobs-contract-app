@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 
@@ -15,14 +15,14 @@ class UploadContainerWidget extends StatelessWidget {
   final VoidCallback? onTap;
 
   const UploadContainerWidget({
-    Key? key,
+    super.key,
     required this.isDark,
     required this.cardColor,
     required this.accentColor,
     required this.secondaryTextColor,
     this.height = 120,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class UploadContainerWidget extends StatelessWidget {
       child: Container(
         height: height,
         decoration: BoxDecoration(
-          color: Colors.transparent,
+          color:  isDark ? JAppColors.backGroundDarkCard : Colors.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
@@ -73,7 +73,8 @@ class UploadContainerWidget extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: JText.clickToUpload,
+
+                      text:  easy.tr('clickToUpload'),
                       style: AppTextStyle.dmSans(
                         color: accentColor,
                         fontSize: 14.0,
@@ -81,7 +82,7 @@ class UploadContainerWidget extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: JText.orDragAndDrop,
+                      text:  easy.tr('orDragAndDrop'),
                       style: AppTextStyle.dmSans(
                         color: secondaryTextColor,
                         fontSize: 14.0,
@@ -93,13 +94,13 @@ class UploadContainerWidget extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                JText.fileFormats,
+                'fileFormats',
                 style: AppTextStyle.dmSans(
                   color: secondaryTextColor,
                   fontSize: 12.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
             ],
           ),
         ),

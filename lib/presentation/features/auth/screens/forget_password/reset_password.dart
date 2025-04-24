@@ -9,7 +9,6 @@ import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
 import '../success/model/success_screen_args.dart';

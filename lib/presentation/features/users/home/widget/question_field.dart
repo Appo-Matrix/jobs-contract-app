@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -26,8 +26,8 @@ class QuestionField extends StatelessWidget {
             fontSize: 14.0,
             weight: FontWeight.w500,
           ),
-        ),
-        const SizedBox(height: 6),
+        ).tr(),
+        const SizedBox(height: 8),
         Container(
           height: 48,
           decoration: BoxDecoration(

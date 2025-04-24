@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -30,7 +31,7 @@ class  JDialogWidget extends StatelessWidget {
           ),
            SizedBox(height: JSizes.spaceBtwSections-20),
           Text(
-            JText.donotCard,
+            'donotCard',
             style:
             AppTextStyle.dmSans(
                 color: isDark
@@ -38,10 +39,11 @@ class  JDialogWidget extends StatelessWidget {
                     : JAppColors.lightGray900,
                 fontSize: 16.0,
                 weight: FontWeight.w400),
-          ),
+          ).tr(),
           const SizedBox(height: JSizes.spaceBtwSections-10),
           Text(
-            JText.cardDetailText,
+            textAlign: TextAlign.center,
+            'cardDetailText',
             style:
             AppTextStyle.dmSans(
                 color: isDark
@@ -49,7 +51,7 @@ class  JDialogWidget extends StatelessWidget {
                     : JAppColors.lightGray900,
                 fontSize: 16.0,
                 weight: FontWeight.w400),
-          ),
+          ).tr(),
         ],
       ),
     );

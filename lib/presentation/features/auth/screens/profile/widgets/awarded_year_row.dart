@@ -1,11 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/constants/text_strings.dart';
 
 class AwardedYearRow extends StatelessWidget {
   final bool isDark;

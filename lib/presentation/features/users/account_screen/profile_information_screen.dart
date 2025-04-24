@@ -1,16 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/common_widgets/main_button.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
-import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
-import '../../../../../utils/common_widgets/phone_number_widget.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
@@ -43,7 +40,7 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Profile saved successfully")),
+      SnackBar(content: Text("Profile saved successfully".tr())),
     );
   }
 
@@ -66,13 +63,13 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.profileInfo,
+          'profileInfo',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         leadingIcon: Padding(
           padding: const EdgeInsets.all(2.0),
           child: BackCircle(
@@ -91,42 +88,43 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
             children: [
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: 'First Name',
-                hintText: 'e.g john',
+                subTitle: 'firstName',
+                hintText: 'e.g john'.tr(),
                 subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: 'Last Name',
-                hintText: 'e.g doe',
+                subTitle: 'lastName',
+                hintText: 'e.g doe'.tr(),
                 subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: 'Date of Birth',
-                hintText: '10 August 2004',
+                subTitle: 'dateOfBirth',
+                hintText: '10 August 2004'.tr(),
                 subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 suffixIcon: Icon(Icons.calendar_month_outlined),
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: 'Email Address',
+                subTitle: 'emailAddress',
                 hintText: 'e.g johndev@gmail.com',
                 subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
+
               Text(
-                JText.phone,
+                'phone',
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeMd,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               SizedBox(height: JSizes.spaceBtwInputFields - 8),
               IntlPhoneField(
                 decoration: InputDecoration(
@@ -145,7 +143,7 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
               SizedBox(height: JSizes.spaceBtwInputFields + 25),
               MainButton(
                 onTap: _isLoading ? null : _handleSave,
-                btn_title: JText.save,
+                btn_title: 'save'.tr(),
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Colors.transparent,
@@ -160,5 +158,3 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
     );
   }
 }
-
-

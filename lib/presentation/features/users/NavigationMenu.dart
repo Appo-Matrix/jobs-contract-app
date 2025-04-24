@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/presentation/features/users/contract/contract_screen.dart';
 import 'package:job_contracts/presentation/features/users/home/home_screen.dart';
 import 'package:job_contracts/presentation/features/users/notification/notifcations.dart';
-import 'package:job_contracts/presentation/features/users/search_filters/search_filter.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 

@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/users/myads/tabs_screen/active_ads_screen.dart';
 import 'package:job_contracts/presentation/features/users/myads/tabs_screen/araft_ads_screen.dart';
 import 'package:job_contracts/presentation/features/users/myads/tabs_screen/paused_ads_screen.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/constants/app_text_style.dart';
@@ -22,7 +22,7 @@ class MyAdsScreen extends StatefulWidget {
 class _MyAdsScreenState extends State<MyAdsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  final List<String> _tabs = [JText.active, JText.drafts, JText.paused];
+  final List<String> _tabs = [tr('active'), tr('drafts'), tr('paused')];
 
   @override
   void initState() {
@@ -44,18 +44,18 @@ class _MyAdsScreenState extends State<MyAdsScreen>
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
         title: Text(
-          JText.myAds,
+          'myAds',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
             height: 32,
-            width: 100,
+            width: 110,
             child: ElevatedButton(
               onPressed: () {
                 AppRouter.router.push('/createAdScreen');
@@ -70,13 +70,13 @@ class _MyAdsScreenState extends State<MyAdsScreen>
                 ),
               ),
               child: Text(
-                JText.createAd,
+                'createAd',
                 style: AppTextStyle.dmSans(
                   color: Colors.white,
-                  fontSize: 16.0,
+                  fontSize: 14.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
             ),
           ),
         ],
