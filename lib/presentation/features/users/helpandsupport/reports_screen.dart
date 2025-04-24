@@ -44,7 +44,7 @@ class _ReportScreenState extends State<ReportScreen> {
           ),
         ),
         leadingIcon: Padding(
-          padding: const EdgeInsets.all(3.0),
+          padding: const EdgeInsets.all(2.0),
           child: BackCircle(
             isDark: isDark,
             onTap: (){

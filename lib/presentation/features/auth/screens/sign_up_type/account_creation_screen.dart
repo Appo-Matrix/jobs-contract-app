@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/presentation/features/auth/screens/sign_up_type/widgets/option_cardwidget.dart';
@@ -20,7 +21,7 @@ class AccountCreationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppBar2(
-        title: JText.backToLogin,
+        title: 'backToLogin',
         onBackPressed: () {
           Navigator.pop(context);
         },
@@ -33,30 +34,30 @@ class AccountCreationScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               Text(
-                JText.createAccount,
+                'createAccount',
                 style: AppTextStyle.dmSans(
                   color:
                       isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   fontSize: 24.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 10),
               Text(
-                JText.chooseOption,
+                'chooseOption',
                 style: AppTextStyle.dmSans(
                   color:
                       isDark ? JAppColors.lightGray300 : JAppColors.darkGray500,
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 40),
               Row(
                 children: [
                   Expanded(
                     child: OptionCardWidget(
-                      title: JText.contractor,
+                      title: 'contractor',
                       svgPath: JImages.contractor,
                       onTap: () {
                         AppRouter.router.push('/signupScreen');
@@ -70,7 +71,7 @@ class AccountCreationScreen extends StatelessWidget {
                   const SizedBox(width: 16),
                   Expanded(
                     child: OptionCardWidget(
-                      title: JText.professional,
+                      title: 'professional',
                       svgPath: JImages.professional,
                       onTap: () {
                         AppRouter.router.push('/signupScreen');

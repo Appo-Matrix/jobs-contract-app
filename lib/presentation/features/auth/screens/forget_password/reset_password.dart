@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/common_widgets/appbar.dart';
@@ -43,48 +44,48 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              JText.resetPassword,
+              'resetPassword',
               style: AppTextStyle.dmSans(
                 color:
-                    isDark ? JAppColors.darkGray200 : JAppColors.lightGray900,
+                isDark ? JAppColors.darkGray200 : JAppColors.lightGray900,
                 fontSize: 24.0,
                 weight: FontWeight.w600,
               ),
-            ),
+            ).tr(),
 
             SizedBox(height: JSizes.spaceBtwItems - 6),
 
             Text(
-              JText.resetPasswordDec,
+              'resetPasswordDec',
 
               style: AppTextStyle.dmSans(
                 height: 1.3,
                 color:
-                    isDark ? JAppColors.darkGray200 : JAppColors.lightGray600,
+                isDark ? JAppColors.darkGray200 : JAppColors.lightGray600,
                 fontSize: 16.0,
                 weight: FontWeight.w400,
               ),
-            ),
+            ).tr(),
 
             SizedBox(height: JSizes.spaceBtwSections),
             TextFieldWidget(
-              subTitle: JText.enterNewPass,
-              hintText: JText.enterNewPass,
+              subTitle: 'enterNewPass',
+              hintText: 'enterNewPass',
               subtitleColor:
-                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
               titleColor:
-                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
             ),
 
             SizedBox(height: JSizes.spaceBtwInputFields),
 
             TextFieldWidget(
-              subTitle: JText.repeatNewPass,
-              hintText: JText.repeatNewPass,
+              subTitle: 'repeatNewPass',
+              hintText: 'repeatNewPass',
               subtitleColor:
-                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
               titleColor:
-                  isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
             ),
 
             SizedBox(height: JSizes.spaceBtwInputFields + 20),
@@ -107,7 +108,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 );
               },
 
-              btn_title: JText.resetPassword,
+              btn_title: 'resetPassword',
               btn_radius: 10,
               btn_boarder_color: Color(0xff7030F1),
               title_color: Colors.white,

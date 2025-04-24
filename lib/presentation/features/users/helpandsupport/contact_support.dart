@@ -28,11 +28,14 @@ class ContactSupportScreen extends StatelessWidget {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: (){
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: Padding(

@@ -69,11 +69,14 @@ class _ChangedPasswordScreenState extends State<ChangedPasswordScreen> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () {
-            Navigator.pop(context);
-          },
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: (){
+              Navigator.pop(context);
+            },
+          ),
         ),
       ),
       body: SingleChildScrollView(

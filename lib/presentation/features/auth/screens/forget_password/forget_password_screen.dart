@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
@@ -36,7 +37,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                JText.forgetPassword,
+                'forgetPassword',
                 style: AppTextStyle.dmSans(
                   color: isDark
                       ? JAppColors.darkGray200
@@ -44,12 +45,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
 
               SizedBox(height: JSizes.spaceBtwItems - 6),
 
               Text(
-                JText.plesdr,
+                'plesdr',
                 style: AppTextStyle.dmSans(
                   height: 1.3,
                   color: isDark
@@ -58,12 +59,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
 
               SizedBox(height: JSizes.spaceBtwSections),
               TextFieldWidget(
-                subTitle: JText.email,
-                hintText: JText.emailEnter,
+                subTitle: 'email',
+                hintText: 'emailEnter',
                 subtitleColor:
                 isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
                 titleColor:
@@ -76,7 +77,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               MainButton(
                 btn_color: JAppColors.primary,
 
-                btn_title: JText.sendCode,
+                btn_title: 'sendCode',
                 btn_radius: 10,isDark: isDark,
                 btn_boarder_color: Color(0xff7030F1),
                 title_color: Colors.white,
@@ -93,7 +94,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    JText.alreadyAccount,
+                    'alreadyAccount',
                     style: AppTextStyle.dmSans(
                       color: isDark
                           ? JAppColors.darkGray100
@@ -102,7 +103,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                       weight: FontWeight.w400,
                     ),
 
-                  ),
+                  ).tr(),
 
                   SizedBox(width: JSizes.spaceBtwItems - 10),
 
@@ -111,14 +112,14 @@ class ForgetPasswordScreen extends StatelessWidget {
                       AppRouter.router.push('/loginScreen');
                     },
                     child: Text(
-                      JText.login,
+                      'login',
                       style: AppTextStyle.dmSans(
                           color: isDark
                               ? JAppColors.darkGray100
                               : JAppColors.primary,
                           fontSize: 18.0,
                           weight: FontWeight.w600),
-                    ),
+                    ).tr(),
                   ),
                 ],
               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
@@ -27,7 +28,6 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
   final _stateController = TextEditingController();
   final _countryController = TextEditingController();
   final _postalCodeController = TextEditingController();
-
 
   // Map-related variables
   // GoogleMapController? _mapController;
@@ -76,26 +76,31 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor:  isDark ? JAppColors.backGroundDark : Colors.white,
+      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
-
-
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              SizedBox(height: JSizes.appBarHeight,),
-              TopHeader(logo: JImages.mainLogo, title: JText.address, subTitle: '', isDark: isDark,),
-
+              SizedBox(
+                height: JSizes.appBarHeight,
+              ),
+              TopHeader(
+                logo: JImages.mainLogo,
+                title: 'address',
+                subTitle: '',
+                isDark: isDark,
+              ),
 
               TextFieldWidget(
-                subTitle: JText.streetNumber,
+                subTitle: 'streetNumber',
                 hintText: 'Enter street and number',
                 textEditingController: _streetController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: _validateRequired,
               ),
@@ -103,21 +108,25 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               // Neighborhood Area Field
               TextFieldWidget(
-                subTitle: JText.neighborhoodArea,
+                subTitle: 'neighborhoodArea',
                 hintText: 'Enter neighborhood (optional)',
                 textEditingController: _neighborhoodController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               // City Field (Required)
               TextFieldWidget(
-                subTitle: JText.city,
+                subTitle: 'city',
                 hintText: 'Enter city',
                 textEditingController: _cityController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: _validateRequired,
               ),
@@ -125,11 +134,13 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               // State/Province Field (Required)
               TextFieldWidget(
-                subTitle: JText.stateProvince,
+                subTitle: 'stateProvince',
                 hintText: 'Enter state or province',
                 textEditingController: _stateController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: _validateRequired,
               ),
@@ -137,11 +148,13 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               // Country Field (Required)
               TextFieldWidget(
-                subTitle: JText.country,
+                subTitle: 'country',
                 hintText: 'Enter country',
                 textEditingController: _countryController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: _validateRequired,
               ),
@@ -149,16 +162,18 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               // Postal Code Field (Required)
               TextFieldWidget(
-                subTitle: JText.postalCode,
+                subTitle: 'postalCode',
                 hintText: 'Enter postal code',
                 textEditingController: _postalCodeController,
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: _validateRequired,
                 keyboardType: TextInputType.number,
               ),
-               SizedBox(height: JSizes.spaceBtwInputFields),
+              SizedBox(height: JSizes.spaceBtwInputFields),
 
               // Map Location (Required)
               Column(
@@ -166,9 +181,11 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: JText.mapLocation,
+                      text: 'mapLocation'.tr(),
                       style: AppTextStyle.dmSans(
-                        color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                        color: isDark
+                            ? JAppColors.lightGray100
+                            : JAppColors.darkGray800,
                         fontSize: 16.0,
                         weight: FontWeight.w500,
                       ),
@@ -190,7 +207,9 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,
+                        color: isDark
+                            ? JAppColors.darkGray700
+                            : JAppColors.lightGray300,
                         width: 1,
                       ),
                     ),
@@ -229,7 +248,14 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                             child: ElevatedButton.icon(
                               onPressed: _onTraceMe,
                               icon: const Icon(Icons.location_on),
-                              label: Text(JText.traceMe),
+                              label: Text(
+                                'traceMe',
+                                style: AppTextStyle.dmSans(
+                                  color: JAppColors.error600,
+                                  fontSize: 16.0,
+                                  weight: FontWeight.w500,
+                                ),
+                              ).tr(),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: JAppColors.primary,
                                 foregroundColor: Colors.white,
@@ -264,20 +290,16 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               const SizedBox(height: 40),
               MainButton(
-                btn_title: JText.nextStep,
-                btn_radius: 10,
-                btn_color: JAppColors.main,
-                btn_boarder_color: Color(0xff7030F1),
-                title_color: Colors.white,
-                text_fontweight: FontWeight.w600,
-                image_value: false,
-                onTap: (){
-
-                  AppRouter.router.push('/termsConditionsScreen');
-                }
-              ),
-
-
+                  btn_title: 'nextStep',
+                  btn_radius: 10,
+                  btn_color: JAppColors.main,
+                  btn_boarder_color: Color(0xff7030F1),
+                  title_color: Colors.white,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
+                  onTap: () {
+                    AppRouter.router.push('/termsConditionsScreen');
+                  }),
             ],
           ),
         ),

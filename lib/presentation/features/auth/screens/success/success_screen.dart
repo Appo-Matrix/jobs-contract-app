@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../../utils/common_widgets/back_circle.dart';
@@ -45,7 +46,7 @@ class SuccessScreen extends StatelessWidget {
                   fontSize: 16.0,
                   weight: FontWeight.w400,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 10),
               Text(
                 args.message,
@@ -54,7 +55,7 @@ class SuccessScreen extends StatelessWidget {
                   fontSize: 16,
                   color: Colors.grey,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 30),
               MainButton(
                 btn_color: JAppColors.primary,

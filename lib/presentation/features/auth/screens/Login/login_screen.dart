@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -32,8 +34,8 @@ class LoginScreen extends StatelessWidget {
           children: [
             BottomWidget(
               isDark: isDark,
-              title: JText.donotHaveAccount,
-              titleDes: JText.signUp,
+              title: 'donotHaveAccount',
+              titleDes: 'signUp',
               onPressed: () {
                 AppRouter.router.push('/accountCreationScreen');
               },
@@ -52,13 +54,13 @@ class LoginScreen extends StatelessWidget {
             children: [
 
               SizedBox(height: JSizes.spaceBtwSections+10,),
-               TopHeader(logo: JImages.mainLogo, title: JText.login, subTitle: JText.loginTitle, isDark: isDark,),
+               TopHeader(logo: JImages.mainLogo, title: 'logIn', subTitle: 'loginTitle', isDark: isDark,),
               SizedBox(height: JSizes.spaceBtwItems -10,),
 
 
               TextFieldWidget(
-                subTitle: JText.email,
-                hintText: JText.emailEnter,
+                subTitle: 'email',
+                hintText: 'emailEnter',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
@@ -67,7 +69,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               TextFieldWidget(
-                subTitle: JText.password,
+                subTitle: 'password',
                 hintText: '******',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -101,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    JText.remember,
+                    'remember',
                     style: AppTextStyle.dmSans(
                       color: isDark
                           ? JAppColors.darkGray100
@@ -109,7 +111,7 @@ class LoginScreen extends StatelessWidget {
                       fontSize: JSizes.fontSizeESm,
                       weight: FontWeight.w500,
                     ),
-                  ),
+                  ).tr(),
 
                   Spacer(),
                   TextButton(
@@ -120,7 +122,7 @@ class LoginScreen extends StatelessWidget {
 
                     },
                     child: Text(
-                      JText.forgetPassword,
+                      'forgetPassword',
                       style: AppTextStyle.dmSans(
                         color: isDark
                       ? JAppColors.darkGray100
@@ -128,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                         fontSize: JSizes.fontSizeEaSm,
                         weight: FontWeight.w600,
                       ),
-                    ),
+                    ).tr(),
                   ),
                 ],
               ),
@@ -137,20 +139,20 @@ class LoginScreen extends StatelessWidget {
                SizedBox(height: JSizes.spaceBtwSections),
 
               MainButton(
-                btn_title: JText.signIn,
+                btn_title: 'signIn',
                 btn_radius: 8,
                 btn_color: JAppColors.main,
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,onTap: (){
-                  
+
                   AppRouter.router.push('/navigationMenu');
-                  
+
               }, btn_boarder_color: JAppColors.primary,
               ),
               SizedBox(height: JSizes.spaceBtwItems),
               MainButton(
-                btn_title: JText.signInGoogle,
+                btn_title: 'signInGoogle',
                 btn_radius: 10,
                 btn_color: Colors.transparent,
                 btn_boarder_color: JAppColors.t,

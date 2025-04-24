@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -51,7 +52,7 @@ class OptionCardWidget extends StatelessWidget {
                 fontSize: 18.0,
                 weight: FontWeight.w500,
               ),
-            ),
+            ).tr(),
           ],
         ),
       ),

@@ -165,6 +165,7 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
               scrolledUnderElevation: 0,
               centerTitle: false,
               automaticallyImplyLeading: false,
+
               leading: showBackArrow
                   ? IconButton(
                 onPressed: leadingOnPressed,
@@ -189,7 +190,5 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  @override
-  Size get preferredSize =>
-      Size.fromHeight(JDeviceUtils.getAppBarHeight() + 17);
+  Size get preferredSize => Size.fromHeight(JDeviceUtils.getAppBarHeight());
 }

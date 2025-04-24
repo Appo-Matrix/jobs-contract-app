@@ -73,6 +73,7 @@
 //     ;
 //   }
 // }
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
@@ -143,7 +144,7 @@ class MainButton extends StatelessWidget {
                     fontSize: text_size!,
                     weight: text_fontweight!,
                   ),
-                ),
+                ).tr(),
               ],
             ),
           ),

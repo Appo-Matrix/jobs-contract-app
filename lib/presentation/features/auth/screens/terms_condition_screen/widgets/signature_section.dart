@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -60,13 +61,13 @@ class _SignatureSectionState extends State<SignatureSection> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-      JText.eSignature,
+      'eSignature',
           style: AppTextStyle.dmSans(
             color: widget.isDark ? JAppColors.lightGray300 : JAppColors.darkGray700,
             fontSize: JSizes.fontSizeMd,
             weight: FontWeight.w500,
           ),
-        ),
+        ).tr(),
 
         const SizedBox(height: 8),
 
@@ -83,7 +84,7 @@ class _SignatureSectionState extends State<SignatureSection> {
                 decoration: InputDecoration(
                   fillColor:  widget.isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
                   filled: true,
-                  hintText: JText.typeSignatureHint,
+                  hintText: 'typeSignatureHint'.tr(),
                   hintStyle: AppTextStyle.dmSans(
                     color: widget.isDark ? JAppColors.lightGray300.withOpacity(0.5) : JAppColors.darkGray700.withOpacity(0.5),
                     fontSize: 14.0, weight: FontWeight.w500,
@@ -198,13 +199,13 @@ class _SignatureSectionState extends State<SignatureSection> {
 
         // Helper text
         Text(
-       JText.signatureHelperText,
+       'signatureHelperText',
           style: AppTextStyle.dmSans(
             color: widget.isDark ? JAppColors.lightGray300.withOpacity(0.7) : JAppColors.darkGray700.withOpacity(0.7),
             fontSize: 12.0,
             weight: FontWeight.w400,
           ),
-        ),
+        ).tr(),
       ],
     );
   }

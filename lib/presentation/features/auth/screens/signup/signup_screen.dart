@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -14,6 +16,7 @@ import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
 
+import 'package:easy_localization/easy_localization.dart' as easy;
 
 
 class SignupScreen extends StatelessWidget {
@@ -24,7 +27,7 @@ class SignupScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     String? _validateRequired(String? value) {
       if (value == null || value.trim().isEmpty) {
-        return JText.requiredField;
+        return 'requiredField';
       }
       return null;
     }
@@ -41,10 +44,10 @@ class SignupScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-               TopHeader(logo: JImages.mainLogo, title: JText.signUp, subTitle: JText.signupSubtitle, isDark: isDark,),
+               TopHeader(logo: JImages.mainLogo, title: 'signUp', subTitle: 'signupSubtitle', isDark: isDark,),
               TextFieldWidget(
-                subTitle: JText.firstName,
-                hintText: JText.firstNameText,
+                subTitle: 'firstName',
+                hintText: 'firstNameText',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
@@ -53,8 +56,8 @@ class SignupScreen extends StatelessWidget {
 
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: JText.lastName,
-                hintText: JText.lastNameText,
+                subTitle: 'lastName',
+                hintText: 'lastNameText',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
@@ -62,8 +65,8 @@ class SignupScreen extends StatelessWidget {
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: JText.email,
-                hintText: JText.emailEnter,
+                subTitle: 'email',
+                hintText: 'emailEnter',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
@@ -73,7 +76,7 @@ class SignupScreen extends StatelessWidget {
               SizedBox(height: JSizes.spaceBtwInputFields ),
               RichText(
                 text: TextSpan(
-                  text: JText.phone,
+                  text: easy.tr('phone'),
                   style: AppTextStyle.dmSans(
                     color: isDark  ? JAppColors.lightGray100 : JAppColors.lightGray800,
                     fontSize: JSizes.fontSizeMd,
@@ -113,7 +116,7 @@ class SignupScreen extends StatelessWidget {
               ),
 
               TextFieldWidget(
-                subTitle: JText.password,
+                subTitle: 'password',
                 hintText: '*****',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -121,17 +124,17 @@ class SignupScreen extends StatelessWidget {
                 validator: _validateRequired,
               ),
               SizedBox(height: 4,)
-,              Text(JText.passwordMustBe,style: AppTextStyle.dmSans(
+,              Text('passwordMustBe',style: AppTextStyle.dmSans(
                 color: isDark
                     ? JAppColors.darkGray100
                     : JAppColors.lightGray500,
                 fontSize: JSizes.fontSizeSm,
                 weight: FontWeight.w500,
-              ),),
+              ),).tr(),
 
               SizedBox(height: JSizes.spaceBtwInputFields),
               TextFieldWidget(
-                subTitle: JText.confirmPassword,
+                subTitle: 'confirmPassword',
                 hintText: '*****',
                 subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -148,7 +151,7 @@ class SignupScreen extends StatelessWidget {
 
                   AppRouter.router.push('/addressFormScreen');
                 },
-                btn_title: JText.signUp,
+                btn_title: 'signUp',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: Color(0xff7030F1),
@@ -164,8 +167,8 @@ class SignupScreen extends StatelessWidget {
 
               BottomWidget(
                 isDark: isDark,
-                title: JText.alreadyAccount,
-                titleDes: JText.logIn,
+                title: 'alreadyAccount',
+                titleDes: 'logIn',
                 onPressed: () {
                   AppRouter.router.push('/loginScreen');
                 },

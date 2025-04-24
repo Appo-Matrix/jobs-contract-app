@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/expanded_effect.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/smooth_page_indicator.dart';
@@ -24,20 +25,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
+
   final List<OnboardingItem> _onboardingItems = [
     OnboardingItem(
-      title: JText.title1,
-      description: JText.subtitle1,
+      title: 'title1',
+      description: 'subtitle1',
       imagePath: JImages.image1,
     ),
     OnboardingItem(
-      title: JText.title2,
-      description: JText.subtitle2,
+      title: 'title2',
+      description: 'subtitle2',
       imagePath: JImages.image2,
     ),
     OnboardingItem(
-      title: JText.title3,
-      description: JText.subtitle3,
+      title: 'title3',
+      description: 'subtitle3',
       imagePath: JImages.image3,
     ),
 
@@ -51,6 +53,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Current locale: ${context.locale}");
+    final locale = context.locale;
+    if (locale != null) {
+      print("Current locale: $locale");
+    }
+
     final isDark = JDeviceUtils.isDarkMode(context);
     final themeNotifier = Provider.of<ThemeNotifier>(context);
 
@@ -71,8 +79,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {
-                      AppRouter.router.push('/loginScreen');
+                    onPressed: () async {
+
+                      final currentLocale = context.locale;
+                      final newLocale = currentLocale.languageCode == 'en'
+                          ? const Locale('es', 'ES')
+                          : const Locale('en', 'US');
+
+                      print("Switching from $currentLocale to $newLocale");
+                      await context.setLocale(newLocale);
+                      setState(() {});
+
+                      // AppRouter.router.push('/loginScreen');
 
 
                     },
@@ -155,7 +173,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                     ),
 
-                  ),
+                  ).tr(),
                   SizedBox(height: 16),
                   Text(
                     _onboardingItems[_currentPage].description,
@@ -168,7 +186,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       height: 1.2,
 
                     ),
-                  ),
+                  ).tr(),
                   SizedBox(height: 32),
                   Row(
                     mainAxisAlignment: _currentPage > 0

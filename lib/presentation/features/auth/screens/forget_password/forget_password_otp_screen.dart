@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
@@ -65,7 +67,7 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
         width: double.infinity,
         child:
         MainButton(
-          btn_title: "Verify",
+          btn_title: 'verify',
           btn_radius: 10,
           btn_color: JAppColors.primary,
 
@@ -94,7 +96,7 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  JText.secureCode,
+                  'secureCode',
                   textAlign: TextAlign.start,
                   style: AppTextStyle.dmSans(
                     color: isDark
@@ -103,7 +105,7 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
                     fontSize: 16.0,
                     weight: FontWeight.w500,
                   ),
-                ),
+                ).tr(),
               ),
 
               const SizedBox(height: 20),
@@ -122,28 +124,32 @@ class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    JText.receivecode,
-                    style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.lightGray400
-                          : JAppColors.darkGray600,
-                      fontSize: 16.0,
-                      weight: FontWeight.w400,
-                    ),
+                  Expanded(
+                    child: Text(
+                      'receivecode',
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray400
+                            : JAppColors.darkGray600,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                      ),
+                    ).tr(),
                   ),
                   SizedBox(
                     width: JSizes.xs + 2,
                   ),
-                  Text(
-                    JText.sendAgain,
-                    style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.lightGray100
-                          : JAppColors.primary,
-                      fontSize: 18.0,
-                      weight: FontWeight.w600,
-                    ),
+                  Expanded(
+                    child: Text(
+                      'sendAgain',
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray100
+                            : JAppColors.primary,
+                        fontSize: 18.0,
+                        weight: FontWeight.w600,
+                      ),
+                    ).tr(),
                   ),
                 ],
               ),

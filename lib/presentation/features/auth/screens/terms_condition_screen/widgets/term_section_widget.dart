@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
@@ -30,7 +31,7 @@ class TermSectionWidget extends StatelessWidget {
             fontSize: JSizes.fontSizeMd,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         const SizedBox(height: 8),
         if (content.isNotEmpty)
           Text(
@@ -40,7 +41,7 @@ class TermSectionWidget extends StatelessWidget {
               fontSize: 14.0,
               weight: FontWeight.w400,
             ),
-          ),
+          ).tr(),
         if (bulletPoints != null && bulletPoints!.isNotEmpty) ...[
           const SizedBox(height: 8),
           ...bulletPoints!.map((point) => BulletPointWidget(text: point, isDark: isDark)),

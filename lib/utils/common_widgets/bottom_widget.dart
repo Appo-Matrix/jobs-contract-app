@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../constants/app_text_style.dart';
@@ -31,7 +32,7 @@ class BottomWidget extends StatelessWidget {
             fontSize: 16.0,
             weight: FontWeight.w400,
           ),
-        ),
+        ).tr(),
         SizedBox(
           width: JSizes.xs + 2,
         ),
@@ -46,7 +47,7 @@ class BottomWidget extends StatelessWidget {
               fontSize: 18.0,
               weight: FontWeight.w600,
             ),
-          ),
+          ).tr(),
         ),
       ],
     );
