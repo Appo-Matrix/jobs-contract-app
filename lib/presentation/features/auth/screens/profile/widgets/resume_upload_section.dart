@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,13 +26,13 @@ class ResumeUploadSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          JText.uploadResume,
+          'uploadResume',
           style: AppTextStyle.dmSans(
             color: textColor,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         const SizedBox(height: 16),
         Container(
           height: 150,
@@ -74,7 +75,7 @@ class ResumeUploadSection extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: JText.clickToUpload,
+                        text: 'clickToUpload'.tr(),
                         style: AppTextStyle.dmSans(
                           color: isDark ? Colors.white : JAppColors.darkGray800,
                           fontSize: 16.0,
@@ -82,7 +83,7 @@ class ResumeUploadSection extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: JText.orDragAndDrop,
+                        text: 'orDragAndDrop'.tr(),
                         style: AppTextStyle.dmSans(
                           color: secondaryTextColor,
                           fontSize: 16.0,
@@ -94,7 +95,7 @@ class ResumeUploadSection extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  JText.fileFormats,
+                  'fileFormats'.tr(),
                   style: AppTextStyle.dmSans(
                     color: secondaryTextColor,
                     fontSize: 14.0,

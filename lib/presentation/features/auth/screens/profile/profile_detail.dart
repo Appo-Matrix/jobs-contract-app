@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/awarded_year_row.dart';
 import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/certificate_input_section.dart';
@@ -32,7 +33,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: JAppBar2(title: JText.back),
+      appBar: JAppBar2(title: 'back'),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -40,13 +41,13 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                JText.profileDetails,
+                'profileDetails',
                 style: AppTextStyle.dmSans(
                   color: textColor,
                   fontSize: 24.0,
                   weight: FontWeight.w600,
                 ),
-              ),
+              ).tr(),
               const SizedBox(height: 32),
 
               /// Profile Photo
@@ -83,7 +84,7 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                 onTap: () {
                   AppRouter.router.push('/uploadPortfolioScreen');
                 },
-                btn_title: JText.nextStep,
+                btn_title: 'nextStep',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
                 btn_boarder_color: const Color(0xff7030F1),

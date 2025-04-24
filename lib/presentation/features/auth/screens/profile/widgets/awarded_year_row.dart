@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ class AwardedYearRow extends StatelessWidget {
       children: [
         Expanded(
           child: TextFieldWidget(
-            subTitle: JText.awardedBy,
+            subTitle: 'awardedBy'.tr(),
             subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.grayBlue800,
             titleColor: isDark ? Colors.white : JAppColors.grayBlue800,
           ),
@@ -39,7 +40,7 @@ class AwardedYearRow extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                JText.year,
+                'year'.tr(),
                 style: AppTextStyle.dmSans(
                   color: textColor,
                   fontSize: 16.0,

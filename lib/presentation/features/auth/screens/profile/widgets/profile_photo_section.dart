@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class ProfilePhotoSection extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: JText.profilePhoto,
+                text: 'profilePhoto'.tr(),
                 style: AppTextStyle.dmSans(
                   color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                   fontSize: 20.0,

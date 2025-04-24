@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,16 +18,16 @@ class CertificateInputSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          JText.certificatesAndLicenses,
+          'certificatesAndLicenses',
           style: AppTextStyle.dmSans(
             color: isDark ? Colors.white : JAppColors.darkGray800,
             fontSize: 20.0,
             weight: FontWeight.w600,
           ),
-        ),
+        ).tr(),
         const SizedBox(height: 16),
         TextFieldWidget(
-          subTitle: JText.certificateOrLicenseName,
+          subTitle: 'certificateOrLicenseName'.tr(),
           subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
           titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
         ),
