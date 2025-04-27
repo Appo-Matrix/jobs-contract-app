@@ -93,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                     },
                     child: Text(
-                      JText.skip,
+                      'skip',
                       style: AppTextStyle.dmSans(
                         color: isDark
                             ? JAppColors.darkGray100
@@ -103,7 +103,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 1.2,
 
                       ),
-                    ),
+                    ).tr(),
                   ),
                 ],
               ),

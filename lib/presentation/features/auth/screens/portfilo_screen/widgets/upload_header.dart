@@ -42,9 +42,9 @@ class UploadHeader extends StatelessWidget {
           style: AppTextStyle.dmSans(
             color: textColor,
             fontSize: 20.0,
-            weight: FontWeight.w600,
+            weight: FontWeight.w500,
           ),
-        ),
+        ).tr(),
         const SizedBox(height: 24),
       ],
     );

@@ -118,8 +118,7 @@
   "details": "Detalles",
   "secureCode": "Código seguro",
   "fullName": "Nombre Completo",
-  "sendAgain": "Enviar Nuevamente",
-  "receivecode": "¿No recibiste ningún código?",
+
   "cNICPassportNumber": "Número de CNIC/Pasaporte",
   "paymentDetails": "Detalles de Pago",
   "accountName": "Nombre de la cuenta",
@@ -493,6 +492,11 @@
   "languages": "Idiomas",
   "workFeedback": "Historial laboral y comentarios",
   "contract": "Contrato",
-  "notification": "Notificación"
+  "talent": "Talento",
+  "notification": "Notificación",
 
+  "receiveCode": "No recibiste el código?",
+  "sendAgain": "Reenviar",
+  "verifyEmail": "Verificar correo",
+  "verifyEmailBtn": "Verificar correo"
 }

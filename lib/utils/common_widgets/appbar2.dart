@@ -55,7 +55,7 @@ class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
                   style: AppTextStyle.dmSans(
                     color: isDark ? JAppColors.darkGray300 : JAppColors.darkGray600,
                     fontSize: 14.0,
-                    weight: FontWeight.w500,
+                    weight: FontWeight.w400,
                   ),
                 ).tr(),
               ],

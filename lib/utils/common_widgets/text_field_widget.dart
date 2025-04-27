@@ -322,7 +322,7 @@ class TextFieldWidget extends StatelessWidget {
           ),
           decoration: InputDecoration(
             hintText: hintText?.tr(), // Use .tr() to translate the hint text
-            fillColor:  isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+            fillColor:  isDark ? JAppColors.backGroundDarkCard.withValues(alpha: 0.4) : Colors.transparent,
             filled: true,
             hintStyle: AppTextStyle.dmSans(
               color: titleColor?.withValues(alpha: 0.5) ?? JAppColors.darkGray800.withValues(alpha: 0.5),

@@ -119,7 +119,6 @@
   "details": "Details",
   "secureCode": "Secure code",
   "fullName": "Full Name",
-  "sendAgain": "Send Again",
   "receivecode": "Didn't recieved any code?",
   "dateOfBirth": "Date Of Birth",
   "cNICPassportNumber": "CNIC/Passport Number",
@@ -206,7 +205,6 @@
   "company": "Company",
   "writeInformationDetail": "Write additional information here",
 
-  "home": "Home",
   "search": "Search",
   "saved": "Saved",
   "profile": "Profile",
@@ -382,7 +380,6 @@
   "seeLess": "See Less",
   "recommendedForYou": "Recommended for you",
   "recentPotJob": "Recently Posted Jobs",
-  "message": "Message",
   "changeTheme": "Change Theme",
   "helpAndSupport": "Help & Support",
   "upgrade": "Upgrade",
@@ -494,9 +491,15 @@
   "skills": "Skills",
   "languages": "Languages",
   "workFeedback": "Work History and Feedback",
+  "sendAgain": "Resend",
+  "receiveCode": "No code received?",
+  "verifyEmail": "Verify email",
 
+  "home": "Home",
   "contract": "Contract",
-
+  "talent": "Talent",
+  "message": "Message",
   "notification": "Notification"
+
 
 }

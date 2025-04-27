@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
@@ -93,7 +94,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
 
               TextFieldWidget(
                 subTitle: 'streetNumber',
-                hintText: 'Enter street and number',
+                hintText: 'streetNumber',
                 textEditingController: _streetController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -107,7 +108,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               // Neighborhood Area Field
               TextFieldWidget(
                 subTitle: 'neighborhoodArea',
-                hintText: 'Enter neighborhood (optional)',
+                hintText: 'neighborhoodArea)',
                 textEditingController: _neighborhoodController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -119,7 +120,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               // City Field (Required)
               TextFieldWidget(
                 subTitle: 'city',
-                hintText: 'Enter city',
+                hintText: 'city',
                 textEditingController: _cityController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -133,7 +134,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               // State/Province Field (Required)
               TextFieldWidget(
                 subTitle: 'stateProvince',
-                hintText: 'Enter state or province',
+                hintText: 'stateProvince',
                 textEditingController: _stateController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -147,7 +148,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               // Country Field (Required)
               TextFieldWidget(
                 subTitle: 'country',
-                hintText: 'Enter country',
+                hintText: 'country',
                 textEditingController: _countryController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -161,7 +162,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
               // Postal Code Field (Required)
               TextFieldWidget(
                 subTitle: 'postalCode',
-                hintText: 'Enter postal code',
+                hintText: 'postalCode',
                 textEditingController: _postalCodeController,
                 subtitleColor:
                     isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -243,28 +244,45 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                           Positioned(
                             right: 16,
                             bottom: 16,
-                            child: ElevatedButton.icon(
-                              onPressed: _onTraceMe,
-                              icon: const Icon(Icons.location_on),
-                              label: Text(
-                                'traceMe',
-                                style: AppTextStyle.dmSans(
-                                  color: JAppColors.error600,
-                                  fontSize: 16.0,
-                                  weight: FontWeight.w500,
-                                ),
-                              ).tr(),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: JAppColors.primary,
-                                foregroundColor: Colors.white,
-                                elevation: 2,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16,
-                                  vertical: 12,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
+                            child:
+                            Container(
+                              padding: EdgeInsets.all(8),
+
+
+                              decoration: BoxDecoration(
+                                  color: JAppColors.primary
+                                  ,
+                                  borderRadius: BorderRadius.circular(8)
+                              ),
+                              child: Row(
+                                children: [
+
+                                  SvgPicture.asset(
+                                    JImages.locationSvg,
+                                    width: 20,
+                                    height: 20,
+                                    colorFilter: ColorFilter.mode(
+                                      isDark ? JAppColors.lightGray100 :JAppColors.primary,
+                                      BlendMode.srcIn,
+
+                                    ),
+                                  ),
+
+
+                                  SizedBox(width: 8,),
+                                  Text(
+                                    'traceMe',
+                                    style: AppTextStyle.dmSans(
+                                      color:
+                                      isDark
+                                          ? JAppColors.lightGray100
+                                          : JAppColors.darkGray800,
+
+                                      fontSize: 16.0,
+                                      weight: FontWeight.w500,
+                                    ),
+                                  ).tr(),
+                                ],
                               ),
                             ),
                           ),

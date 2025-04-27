@@ -120,7 +120,6 @@
   "details": "Details",
   "secureCode": "Secure code",
   "fullName": "Full Name",
-  "sendAgain": "Send Again",
   "receivecode": "Didn't recieved any code?",
   "dateOfBirth": "Date Of Birth",
   "cNICPassportNumber": "CNIC/Passport Number",
@@ -172,7 +171,8 @@
   "reportReason": "Report Reason",
   "selectReason": "Select Reason",
   "reportsTitle": "Reports Title",
-
+  "sendAgain": "Resend",
+  "receiveCode": "No code received?",
   "contactSupport": "Contact Support",
   "chatWithSupport": "Chat With Support",
   "viewMyRequest": "View My Request",
@@ -236,7 +236,7 @@
   "fileFormat": "PNG",
   "fileName": "Design.png",
   "fileSize": "200 KB",
-  "salaryText": "Salary: \$20,000 - \$25,000",
+  "salaryText": "Salary: $20,000 - $25,000",
   "categoryLabel": "Category: ",
   "categoryValue": "Electrician",
   "jobTypeLabel": "Job Type: ",
@@ -495,7 +495,11 @@
   "languages": "Languages",
   "workFeedback": "Work History and Feedback",
   "contract": "Contract",
+  "verifyEmail": "Verify email",
 
+  "talent": "Talent",
   "notification": "Notification"
+
+
 
 }

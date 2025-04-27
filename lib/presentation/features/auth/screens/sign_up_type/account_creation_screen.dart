@@ -20,7 +20,7 @@ class AccountCreationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppBar2(
-        title: 'backToLogin',
+        title: 'back',
         onBackPressed: () {
           Navigator.pop(context);
         },
@@ -47,7 +47,7 @@ class AccountCreationScreen extends StatelessWidget {
                 style: AppTextStyle.dmSans(
                   color:
                       isDark ? JAppColors.lightGray300 : JAppColors.darkGray500,
-                  fontSize: 16.0,
+                  fontSize: 14.0,
                   weight: FontWeight.w400,
                 ),
               ).tr(),

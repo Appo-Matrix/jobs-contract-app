@@ -118,7 +118,6 @@
   "details": "Detalles",
   "secureCode": "Código seguro",
   "fullName": "Nombre Completo",
-  "sendAgain": "Enviar Nuevamente",
   "receivecode": "¿No recibiste ningún código?",
   "cNICPassportNumber": "Número de CNIC/Pasaporte",
   "paymentDetails": "Detalles de Pago",
@@ -177,7 +176,8 @@
   "membershipPlans": "Planes de membresía",
 
   "language": "Idioma",
-
+  "verifyEmail": "Verificar correo",
+  "verifyEmailBtn": "Verificar correo",
   "jobDescription": "Descripción del trabajo",
   "applyJob": "Solicitar trabajo",
   "backToJobDetail": "Volver a detalles del trabajo",
@@ -202,7 +202,6 @@
   "company": "Empresa",
   "writeInformationDetail": "Escribe información adicional aquí",
 
-  "home": "Inicio",
   "search": "Buscar",
   "saved": "Guardados",
   "profile": "Perfil",
@@ -492,6 +491,11 @@
   "skills": "Habilidades",
   "languages": "Idiomas",
   "workFeedback": "Historial laboral y comentarios",
+  "home": "Inicio",
   "contract": "Contrato",
-  "notification": "Notificación"
+  "talent": "Talento",
+  "notification": "Notificación",
+
+  "receiveCode": "No recibiste el código?",
+  "sendAgain": "Reenviar"
 }
