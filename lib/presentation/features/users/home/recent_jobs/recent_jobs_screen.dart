@@ -235,7 +235,7 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){}, // Fixed: Direct reference to the method
+                  onTap: (){showFilterBottomSheet();}, // Fixed: Direct reference to the method
                   child: SvgPicture.asset(
                     JImages.filters,
                     width: 20,
@@ -262,33 +262,6 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
 
           const SizedBox(height: 16),
 
-          // Display selected filters if any
-          if (selectedFilters.isNotEmpty)
-            Container(
-              margin: const EdgeInsets.only(bottom: 12),
-              child: Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  ...selectedFilters.entries.expand((entry) =>
-                      entry.value.map((filter) =>
-                          Chip(
-                            label: Text(filter),
-                            deleteIcon: const Icon(Icons.close, size: 16),
-                            onDeleted: () {
-                              final updated = Map<String, List<String>>.from(selectedFilters);
-                              updated[entry.key]!.remove(filter);
-                              if (updated[entry.key]!.isEmpty) {
-                                updated.remove(entry.key);
-                              }
-                              updateFilters(updated);
-                            },
-                          )
-                      )
-                  ),
-                ],
-              ),
-            ),
 
           Expanded(
             child: ListView.builder(
@@ -300,7 +273,7 @@ class _RecentJobsPageState extends State<RecentJobsPage> {
                   salary: "\$20,000 - \$25,000",
                   category: "Site Inspections",
                   isVerified: true,
-                  isDark: isDark,
+                  isDark: isDark,employerImage: JImages.image,
                 );
               },
             ),

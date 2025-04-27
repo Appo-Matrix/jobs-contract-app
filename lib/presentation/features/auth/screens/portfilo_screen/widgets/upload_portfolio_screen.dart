@@ -28,10 +28,11 @@ class UploadContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
+      child:
+      Container(
         height: height,
         decoration: BoxDecoration(
-          color:  isDark ? JAppColors.backGroundDarkCard : Colors.white,
+          color: cardColor,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray300,

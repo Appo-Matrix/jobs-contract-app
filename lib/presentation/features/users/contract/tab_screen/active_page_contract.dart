@@ -38,6 +38,8 @@ class ActiveContractsPage extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, index) {
               return ContractCard(
+                onSendMessagePressed: (){},
+                onSubmitWorkPressed: (){},
                 status: 'Active',
                 name: 'Amélie Laurent',
                 jobTitle: 'Architects Construction Specialist',

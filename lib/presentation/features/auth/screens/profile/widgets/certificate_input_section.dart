@@ -26,6 +26,7 @@ class CertificateInputSection extends StatelessWidget {
         const SizedBox(height: 16),
         TextFieldWidget(
           subTitle: 'certificateOrLicenseName'.tr(),
+
           subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
           titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
         ),

@@ -37,6 +37,7 @@ import '../features/users/bank_account_info/bank_account_info.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_active_screen.dart';
 import '../features/users/contract/contact_detail_screens/contract_detail_screen.dart';
+import '../features/users/contract/contact_detail_screens/deliver_contract_screen.dart';
 import '../features/users/contract/contact_detail_screens/feed_back_screen.dart';
 import '../features/users/finanance_report/finance_reports_screen.dart';
 import '../features/users/finanance_report/withdrawal_screen.dart';
@@ -363,6 +364,11 @@ class AppRouter {
         path: '/withdrawalScreen',
         name: Routes.withdrawalScreen.name,
         builder: (context, state) => WithdrawalScreen(),
+      ),
+      GoRoute(
+        path: '/deliverContractScreen',
+        name: Routes.deliverContractScreen.name,
+        builder: (context, state) => DeliverContractScreen(),
       ),
 
     ],

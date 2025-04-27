@@ -97,7 +97,7 @@ class SignupScreen extends StatelessWidget {
 
               IntlPhoneField(
                 decoration: InputDecoration(
-                  fillColor:  isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                  fillColor:   isDark ? JAppColors.backGroundDarkCard.withValues(alpha: 0.4) : Colors.transparent,
                   filled: true,
                   border: OutlineInputBorder(
                     borderSide: BorderSide(),

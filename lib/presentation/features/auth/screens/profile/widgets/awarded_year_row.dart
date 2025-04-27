@@ -23,53 +23,49 @@ class AwardedYearRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded(
-          child: TextFieldWidget(
-            subTitle: 'awardedBy'.tr(),
-            subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.grayBlue800,
-            titleColor: isDark ? Colors.white : JAppColors.grayBlue800,
-          ),
+        TextFieldWidget(
+          subTitle: 'awardedBy'.tr(),
+          subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.grayBlue800,
+          titleColor: isDark ? Colors.white : JAppColors.grayBlue800,
         ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'year'.tr(),
-                style: AppTextStyle.dmSans(
-                  color: textColor,
-                  fontSize: 16.0,
-                  weight: FontWeight.w500,
-                ),
+        const SizedBox(height: 16),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'year'.tr(),
+              style: AppTextStyle.dmSans(
+                color: textColor,
+                fontSize: 16.0,
+                weight: FontWeight.w500,
               ),
-              const SizedBox(height: 8),
-              SizedBox(
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
 
-                height: 48,
-                child: DropdownButtonFormField<String>(
-                  value: selectedYear,
-                  items: years.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
-                  onChanged: onYearChange,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(width: 1.5, color: JAppColors.lightGray300),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: JAppColors.light),
-                    ),
+              height: 48,
+              child: DropdownButtonFormField<String>(
+                value: selectedYear,
+                items: years.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+                onChanged: onYearChange,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: isDark ? JAppColors.backGroundDarkCard : Colors.transparent,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(width: 1.5, color: JAppColors.lightGray300),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: JAppColors.light),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

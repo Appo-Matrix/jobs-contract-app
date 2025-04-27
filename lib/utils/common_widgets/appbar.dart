@@ -143,15 +143,13 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
     final backgroundColor = isDark ? JAppColors.backGroundDark : Colors.white;
 
-
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: backgroundColor,
         statusBarIconBrightness:
-        isDark ? Brightness.light : Brightness.dark, // Icon color
+            isDark ? Brightness.light : Brightness.dark, // Icon color
         statusBarBrightness:
-        isDark ? Brightness.dark : Brightness.light, // iOS only
+            isDark ? Brightness.dark : Brightness.light, // iOS only
       ),
       child: SafeArea(
         child: Column(
@@ -160,30 +158,29 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
             AppBar(
               backgroundColor: backgroundColor,
               elevation: 0,
-              shadowColor: isDark ? Colors.black45 : Colors.black26, // Define shadow color
-              surfaceTintColor: Colors.transparent, // For Material 3, remove surface tint
+
+              titleSpacing: 0,
+              shadowColor: isDark ? Colors.black45 : Colors.black26,
+              // Define shadow color
+              surfaceTintColor: Colors.transparent,
+              // For Material 3, remove surface tint
               scrolledUnderElevation: 0,
               centerTitle: false,
               automaticallyImplyLeading: false,
 
               leading: showBackArrow
                   ? IconButton(
-                onPressed: leadingOnPressed,
-                icon:
-                Icon(Icons.arrow_back, color: JAppColors.primary ,size: 16,),
-              )
+                      onPressed: leadingOnPressed,
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: JAppColors.primary,
+                        size: 16,
+                      ),
+                    )
                   : leadingIcon,
               title: title,
               actions: actions,
             ),
-            // Uncomment if you want divider
-            // if (showDivider)
-            //   Divider(
-            //     height: 1,
-            //     thickness: 1,
-            //     color:
-            //         isDark ? JAppColors.darkGray600 : Colors.grey.shade200,
-            //   ),
           ],
         ),
       ),

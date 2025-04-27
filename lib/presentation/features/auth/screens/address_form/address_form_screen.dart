@@ -262,7 +262,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                                     width: 20,
                                     height: 20,
                                     colorFilter: ColorFilter.mode(
-                                      isDark ? JAppColors.lightGray100 :JAppColors.primary,
+                                      isDark ? JAppColors.lightGray100 :JAppColors.lightGray100,
                                       BlendMode.srcIn,
 
                                     ),
@@ -273,10 +273,7 @@ class _AddressFormScreenState extends State<AddressFormScreen> {
                                   Text(
                                     'traceMe',
                                     style: AppTextStyle.dmSans(
-                                      color:
-                                      isDark
-                                          ? JAppColors.lightGray100
-                                          : JAppColors.darkGray800,
+                                      color: Colors.white,
 
                                       fontSize: 16.0,
                                       weight: FontWeight.w500,

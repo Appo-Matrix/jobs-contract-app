@@ -271,7 +271,10 @@
   "prohibitedActivity1": "Participar en actividades ilegales o fraudulentas.",
   "prohibitedActivity2": "Intentar hackear, modificar o interferir con nuestros sistemas.",
   "prohibitedActivity3": "Usar nuestra plataforma para spam o propósitos maliciosos.",
-
+  "addBusinessAddress": "Agrega la dirección de tu negocio",
+  "helper": "ej., 5 días, 3 semanas, 2 meses",
+  "deliverContract": "Entregar contrato",
+  "leaveMessage": "Deja un mensaje",
   "payment1": "Todos los pagos deben realizarse utilizando los métodos de pago aceptados.",
   "payment2": "No somos responsables por fallas de transacción causadas por proveedores externos.",
   "payment3": "Las políticas de reembolso están sujetas a nuestra discreción y leyes aplicables.",

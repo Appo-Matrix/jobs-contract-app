@@ -24,47 +24,7 @@ class ContractDetailScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-        child: SizedBox(
-          height: 50,
-          child: Row(
-            children: [
-              Expanded(
-                child: MainButton(
-                  btn_title: 'deliverNowButton',
-                  btn_radius: 10,
-                  btn_color: JAppColors.main,
-                  btn_boarder_color: const Color(0xff7030F1),
-                  title_color: Colors.white,
-                  text_fontweight: FontWeight.w600,
-                  image_value: false,
-                  onTap: () {
-                    AppRouter.router.push('/feedBackScreen');
-                  },
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: MainButton(
-                  btn_title: 'sendMessage',
-                  btn_radius: 10,
-                  btn_color: Colors.transparent,
-                  btn_boarder_color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
-                  title_color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
-                  text_fontweight: FontWeight.w600,
-                  image_value: false,
-                  onTap: () {                    AppRouter.router.push('/chatScreen');
-                  },
-                  text_size: JSizes.fontSizeMd,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+
       appBar: JAppbar(
         title: Text(
           'appBarTitle',
@@ -109,6 +69,44 @@ class ContractDetailScreen extends StatelessWidget {
               ContractDetailsSection(isDark: isDark),
 
               const SizedBox(height: 24),
+              Row(
+                children: [
+
+                  Expanded(
+                    child: MainButton(
+                      btn_title: 'sendMessage',
+                      btn_radius: 10,
+                      btn_color: Colors.transparent,
+                      btn_boarder_color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
+                      title_color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.primary,
+                      text_fontweight: FontWeight.w600,
+                      image_value: false,
+                      onTap: () {                    AppRouter.router.push('/chatScreen');
+                      },
+                      text_size: JSizes.fontSizeMd,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+
+                  Expanded(
+                    child: MainButton(
+                      btn_title: 'deliverNowButton',
+                      btn_radius: 10,
+                      btn_color: JAppColors.main,
+                      btn_boarder_color: const Color(0xff7030F1),
+                      title_color: Colors.white,
+                      text_fontweight: FontWeight.w600,
+                      image_value: false,
+                      onTap: () {
+
+                        AppRouter.router.push('/deliverContractScreen');
+                      },
+                    ),
+                  ),
+                ],
+              ),
 
               // Bottom indicator
             ],

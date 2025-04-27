@@ -276,7 +276,9 @@
   "prohibitedActivity1": "Engage in illegal or fraudulent activities.",
   "prohibitedActivity2": "Attempt to hack, modify, or interfere with our systems.",
   "prohibitedActivity3": "Use our platform for spam or malicious purposes.",
-
+  "addBusinessAddress": "Add your business address",
+  "helper": "e.g., 5 days, 3 weeks, 2 months",
+  "deliverContract": "Deliver Contract",
   "payment1": "All payments must be made using the accepted payment methods.",
   "payment2": "We are not responsible for any transaction failures caused by third-party providers.",
   "payment3": "Refund policies are subject to our discretion and applicable laws.",
@@ -496,7 +498,7 @@
   "workFeedback": "Work History and Feedback",
   "contract": "Contract",
   "verifyEmail": "Verify email",
-
+  "leaveMessage": "Leave a Message",
   "talent": "Talent",
   "notification": "Notification"
 

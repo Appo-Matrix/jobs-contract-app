@@ -7,10 +7,13 @@ import 'package:job_contracts/presentation/features/auth/screens/profile/widgets
 import 'package:job_contracts/utils/common_widgets/appbar2.dart';
 import 'package:job_contracts/utils/constants/app_text_style.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
+import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 
 import 'package:job_contracts/presentation/routes/app_routes.dart';
+
+import '../../../../../utils/common_widgets/text_field_widget.dart';
 
 class ProfileDetailsScreen extends StatefulWidget {
   const ProfileDetailsScreen({super.key});
@@ -22,7 +25,7 @@ class ProfileDetailsScreen extends StatefulWidget {
 class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
   String? selectedYear;
   final List<String> years =
-  List.generate(30, (index) => (DateTime.now().year - index).toString());
+      List.generate(30, (index) => (DateTime.now().year - index).toString());
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +53,22 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
               const SizedBox(height: 32),
 
               /// Profile Photo
-               ProfilePhotoSection(isDark: isDark,),
+              ProfilePhotoSection(
+                isDark: isDark,
+              ),
 
               const SizedBox(height: 32),
 
-              ResumeUploadSection(isDark: isDark, textColor: textColor, secondaryTextColor: JAppColors.lightGray400),
+              ResumeUploadSection(
+                  isDark: isDark,
+                  textColor: textColor,
+                  secondaryTextColor: JAppColors.lightGray400),
               const SizedBox(height: 32),
 
               CertificateInputSection(isDark: isDark),
 
+               SizedBox(height: JSizes.spaceBtwInputFields),
 
-
-              const SizedBox(height: 48),
 
               AwardedYearRow(
                 isDark: isDark,
@@ -74,7 +81,6 @@ class _ProfileDetailsScreenState extends State<ProfileDetailsScreen> {
                   });
                 },
               ),
-
 
               const SizedBox(height: 48),
 

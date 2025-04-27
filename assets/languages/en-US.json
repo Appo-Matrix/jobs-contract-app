@@ -305,13 +305,13 @@
   "before": "Before",
   "after": "After",
   "briefDescription": "Brief Description",
-
-
+  "addBusinessAddress": "Add your business address",
   "selectYourSpecialization": "Select Your Specialization",
   "serviceType": "Service Type",
   "yearsOfExperience": "Years Of Experience",
   "serviceRange": "Service Range",
   "nextStepProfileDetails": "Next Step : Profile Details",
+  "helper": "e.g., 5 days, 3 weeks, 2 months",
 
   "specializationOptions": [
     "Bricklaying",
@@ -328,6 +328,8 @@
     "Individual / Freelancer",
     "Company/Agency"
   ],
+  "leaveMessage": "Leave a Message",
+  "deliverContract": "Deliver Contract",
   "experienceOptions": ["0-2 Years", "3-5 Years", "6-10 years", "Over 10 Years"],
   "serviceRangeOptions": ["City/State", "Country", "International Service"],
   "emailVerified": "Email Verified",

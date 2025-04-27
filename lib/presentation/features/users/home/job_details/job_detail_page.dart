@@ -68,9 +68,12 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: () => Navigator.pop(context),
+        leadingIcon: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: BackCircle(
+            isDark: isDark,
+            onTap: () => Navigator.pop(context),
+          ),
         ),
         title: Text(
           'pageTitle',
@@ -133,7 +136,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                       border: Border.all(color: Colors.grey[300]!),
                       borderRadius: BorderRadius.circular(8),
                       color: isDark
-                          ? JAppColors.backGroundDarkCard
+                          ? JAppColors.backGroundDarkCard.withValues(alpha: 0.4)
                           : Colors.transparent,
                     ),
                     child: TextField(
@@ -177,11 +180,13 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
 
                   QuestionField(
                     question: 'estimatedServiceCost',
-                    isDark: isDark,
+                    isDark: isDark , hint: "\$5656",
                   ),
                   const SizedBox(height: 12),
                   QuestionField(
+                    hint: 'helper',
                     question: 'estimatedCompletionTime',
+
                     isDark: isDark,
                   ),
                   const SizedBox(height: 24),

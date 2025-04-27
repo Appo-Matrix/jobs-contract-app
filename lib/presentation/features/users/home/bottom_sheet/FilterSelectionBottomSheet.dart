@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
 
 class FilterSelectionBottomSheet extends StatefulWidget {
@@ -20,9 +23,7 @@ class FilterSelectionBottomSheet extends StatefulWidget {
     return showModalBottomSheet<Map<String, List<String>>>(
       context: context,
       isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
+      backgroundColor: Colors.transparent,
       builder: (context) => DraggableScrollableSheet(
         initialChildSize: 0.85,
         minChildSize: 0.6,
@@ -44,8 +45,10 @@ class FilterSelectionBottomSheet extends StatefulWidget {
   State<FilterSelectionBottomSheet> createState() => _FilterSelectionBottomSheetState();
 }
 
-class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet> {
+class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet> with SingleTickerProviderStateMixin {
   late Map<String, List<String>> selectedFilters;
+  late TabController _tabController;
+  int _activeTabIndex = 0;
 
   // Define filter categories and their options
   final Map<String, List<String>> filterOptions = {
@@ -91,6 +94,21 @@ class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet>
   void initState() {
     super.initState();
     selectedFilters = Map<String, List<String>>.from(widget.initialFilters);
+    _tabController = TabController(
+      length: filterOptions.keys.length,
+      vsync: this,
+    );
+    _tabController.addListener(() {
+      setState(() {
+        _activeTabIndex = _tabController.index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   void toggleFilter(String category, String option) {
@@ -119,12 +137,31 @@ class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet>
     widget.onApplyFilters(selectedFilters);
   }
 
+  void resetFilters() {
+    setState(() {
+      selectedFilters.clear();
+    });
+  }
+
+  int getFilterCount(String category) {
+    if (!selectedFilters.containsKey(category)) return 0;
+    return selectedFilters[category]!.length;
+  }
+
+  int getTotalFilterCount() {
+    int count = 0;
+    for (var filters in selectedFilters.values) {
+      count += filters.length;
+    }
+    return count;
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+    final categories = filterOptions.keys.toList();
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: isDark ? JAppColors.backGroundDark : Colors.white,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
@@ -132,90 +169,160 @@ class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Handle bar
-          Center(
-            child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade400,
-                borderRadius: BorderRadius.circular(2),
-              ),
+          // Handle bar and header
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: isDark ? JAppColors.backGroundDark : Colors.white,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: const Offset(0, 1),
+                ),
+              ],
             ),
-          ),
-
-          Expanded(
-            child: ListView(
+            child: Column(
               children: [
-                ...filterOptions.entries.map((category) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 24),
-                      Text(
-                        category.key,
+                // Handle bar
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade400,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                  ),
+                ),
+
+                // Header with Reset button
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Filters',
                         style: AppTextStyle.dmSans(
-                          color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                          color: isDark ? Colors.white : JAppColors.lightGray900,
                           fontSize: 18.0,
                           weight: FontWeight.w600,
                         ),
-                        textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 16),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: category.value.map((option) {
-                          final selected = isSelected(category.key, option);
-                          return FilterChip(
-                            label: Text(
-                              option,
-                              style: AppTextStyle.dmSans(
-                                color: selected
-                                    ? Colors.white
-                                    : isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                                fontSize: 14.0,
-                                weight: FontWeight.w400,
-                              ),
-                            ),
-                            selected: selected,
-                            backgroundColor: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
-                            selectedColor: const Color(0xFF8B5CF6), // Purple color
-                            checkmarkColor: Colors.white,
-                            onSelected: (isSelected) {
-                              toggleFilter(category.key, option);
-                            },
-                            showCheckmark: false,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          );
-                        }).toList(),
+                    ),
+                    if (getTotalFilterCount() > 0)
+                      TextButton(
+                        onPressed: resetFilters,
+                        child: Text(
+                          'Reset',
+                          style: AppTextStyle.dmSans(
+                            color: const Color(0xFF8B5CF6),
+                            fontSize: 14.0,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                    ],
-                  );
-                }),
-                const SizedBox(height: 20),
+                  ],
+                ),
               ],
+            ),
+          ),
+
+          // Tab bar
+          Container(
+            decoration: BoxDecoration(
+              color: isDark ? JAppColors.backGroundDark : Colors.white,
+              border: Border(
+                bottom: BorderSide(
+                  color: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+                  width: 1,
+                ),
+              ),
+            ),
+            child: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              labelColor: const Color(0xFF8B5CF6),
+              unselectedLabelColor: isDark ? Colors.grey.shade400 : Colors.grey.shade700,
+              labelStyle: AppTextStyle.dmSans(
+                fontSize: 15.0,
+                weight: FontWeight.w500, color:JAppColors.grayBlue600,
+              ),
+              indicatorColor: const Color(0xFF8B5CF6),
+              indicatorWeight: 3,
+              tabs: categories.map((category) {
+                final count = getFilterCount(category);
+                return Tab(
+                  child: Row(
+                    children: [
+                      Text(category),
+                      if (count > 0) ...[
+                        const SizedBox(width: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF8B5CF6),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            count.toString(),
+                            style: AppTextStyle.dmSans(
+                              color: Colors.white,
+                              fontSize: 12.0,
+                              weight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
+          // Tab content
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: categories.map((category) {
+                return _buildFilterCategoryView(category, filterOptions[category]!);
+              }).toList(),
             ),
           ),
 
           // Apply Filters Button
           Container(
-            margin: const EdgeInsets.only(bottom: 16, top: 8),
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: isDark ? JAppColors.backGroundDark : Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  spreadRadius: 1,
+                  blurRadius: 4,
+                  offset: const Offset(0, -2),
+                ),
+              ],
+            ),
             child: ElevatedButton(
               onPressed: applyFilters,
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF8B5CF6), // Purple color
+                backgroundColor: const Color(0xFF8B5CF6),
                 foregroundColor: Colors.white,
+                elevation: 0,
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
               child: Text(
-                'Apply Filters',
+                getTotalFilterCount() > 0
+                    ? 'Apply Filters (${getTotalFilterCount()})'
+                    : 'Apply Filters',
                 style: AppTextStyle.dmSans(
                   color: Colors.white,
                   fontSize: 16.0,
@@ -228,50 +335,89 @@ class _FilterSelectionBottomSheetState extends State<FilterSelectionBottomSheet>
       ),
     );
   }
-}
 
-// Example usage:
-class FilterButton extends StatelessWidget {
-  final Map<String, List<String>> currentFilters;
-  final Function(Map<String, List<String>>) onFiltersChanged;
+  Widget _buildFilterCategoryView(String category, List<String> options) {
+    final isDark = JDeviceUtils.isDarkMode(context);
 
-  const FilterButton({
-    super.key,
-    required this.currentFilters,
-    required this.onFiltersChanged,
-  });
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Search box for filter options (optional)
+          Container(
+            margin: const EdgeInsets.only(bottom: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: isDark ? JAppColors.darkGray700 : Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.search,
+                  size: 20,
+                  color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search in ${category.toLowerCase()}',
+                      border: InputBorder.none,
+                      hintStyle: AppTextStyle.dmSans(
+                        color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+                        fontSize: 14.0, weight: FontWeight.w400,
+                      ),
+                    ),
+                    style: AppTextStyle.dmSans(
+                      color: isDark ? Colors.white : Colors.black,
+                      fontSize: 14.0, weight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: const Icon(Icons.filter_list),
-      label: Text('Filters ${currentFilters.isEmpty ? '' : '(${_getFilterCount()})'}'),
-      onPressed: () async {
-        final result = await FilterSelectionBottomSheet.show(
-          context,
-          initialFilters: currentFilters,
-        );
-
-        if (result != null) {
-          onFiltersChanged(result);
-        }
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: currentFilters.isEmpty
-            ? Colors.grey.shade200
-            : const Color(0xFF8B5CF6).withOpacity(0.1),
-        foregroundColor: currentFilters.isEmpty
-            ? Colors.black87
-            : const Color(0xFF8B5CF6),
+          // Filter options
+          Expanded(
+            child: SingleChildScrollView(
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 12,
+                children: options.map((option) {
+                  final selected = isSelected(category, option);
+                  return FilterChip(
+                    label: Text(
+                      option,
+                      style: AppTextStyle.dmSans(
+                        color: selected
+                            ? Colors.white
+                            : isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                        fontSize: 14.0,
+                        weight: FontWeight.w400,
+                      ),
+                    ),
+                    selected: selected,
+                    backgroundColor: isDark ? Colors.grey.shade800 : Colors.grey.shade200,
+                    selectedColor: const Color(0xFF8B5CF6), // Purple color
+                    checkmarkColor: Colors.white,
+                    onSelected: (isSelected) {
+                      toggleFilter(category, option);
+                    },
+                    showCheckmark: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
-  }
-
-  int _getFilterCount() {
-    int count = 0;
-    for (var filters in currentFilters.values) {
-      count += filters.length;
-    }
-    return count;
   }
 }

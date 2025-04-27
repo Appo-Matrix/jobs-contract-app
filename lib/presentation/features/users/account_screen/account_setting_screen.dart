@@ -115,12 +115,12 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  AppRouter.router.push('/preferenceScreen');
+                  AppRouter.router.push('/addressFormScreen');
                 },
                 child: AccountWidgetContainer(
-                  iconsImage: JImages.preference,
-                  title: 'preferencesTitle',
-                  subTitle: 'preferencesTitleDe',
+                  iconsImage: JImages.location,
+                  title: 'address',
+                  subTitle: 'addBusinessAddress',
                   child: Icon(
                     size: 20,
                     Icons.arrow_forward_ios_outlined,
