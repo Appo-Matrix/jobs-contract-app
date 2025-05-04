@@ -149,7 +149,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color:isDark ? JAppColors.backGroundDarkCard : JAppColors.darkGray100,
+                color:isDark ? JAppColors.backGroundDarkCard : JAppColors.lightGray100,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(28),
                 ),

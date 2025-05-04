@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:job_contracts/presentation/features/users/message/widgets/message_card.dart';
@@ -101,12 +102,20 @@ class _MessageScreenState extends State<MessageScreen> {
       key: _scaffoldKey,
 
       appBar: JAppbar(
+        title: Text('message',
+          style: AppTextStyle.dmSans(
+            fontSize: 18.0,
+            weight: FontWeight.w500,
+            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+          ),
+        ).tr(),
         leadingIcon: GestureDetector(
           onTap: ()=>{
             print('click'),
             _scaffoldKey.currentState?.openDrawer()
 
           },
+          
 
           child: Padding(
             padding: const EdgeInsets.all(8.0),

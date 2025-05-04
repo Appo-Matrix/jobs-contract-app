@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../utils/common_widgets/EmployerProfileWidget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
@@ -74,6 +75,7 @@ class _ProposalCardState extends State<ProposalCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           // Top Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -173,17 +175,53 @@ class _ProposalCardState extends State<ProposalCard> {
           Divider(color: widget.isDark ? Colors.white12 : Colors.grey.shade300),
 
           const SizedBox(height: 12),
+          EmployerProfileWidget(
+            employerName: 'Tech Solutions Inc.',
+            location: 'San Francisco, CA',
+            postedTime: '2 hours ago',
+            employerImage: JImages.image, // or 'assets/images/employer1.png'
+            isVerified: true,
+            isDark: false,
+          ),
+          const SizedBox(height: 10),
 
-          // Employer Info
-          Row(
-            children: [
-              _buildEmployerImage(),
-              const SizedBox(width: 16),
-              _buildEmployerDetails(iconColor, textColor),
-            ],
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'posted',
+                  style: AppTextStyle.dmSans(
+                    fontSize: 12.0,
+                    color: textColor.withValues(alpha: 0.8),
+                    weight: FontWeight.w500,
+                  ),
+                ).tr(),
+                Text(
+                  ' ${widget.postedTime}',
+
+                  style: AppTextStyle.dmSans(
+                    fontSize: 12.0,
+                    color: textColor.withValues(alpha: 0.8),
+                    weight: FontWeight.w500,
+                  ),
+                ).tr(),
+              ],
+            ),
           ),
 
-          const SizedBox(height: 20),
+          // Employer Info
+          // Row(
+          //   children: [
+          //     _buildEmployerImage(),
+          //     const SizedBox(width: 16),
+          //     _buildEmployerDetails(iconColor, textColor),
+          //   ],
+          // ),
+
+          const SizedBox(height: 10),
 
           // 💡 Bottom Button
           SizedBox(
@@ -219,7 +257,12 @@ class _ProposalCardState extends State<ProposalCard> {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: color),
+        style: AppTextStyle.dmSans(
+          color: color,
+          fontSize: 12.0,
+          weight: FontWeight.w500,
+        ),
+
       ),
     );
   }
@@ -235,12 +278,13 @@ class _ProposalCardState extends State<ProposalCard> {
         children: [
           Icon(Icons.attach_money, size: 16, color: isDark ? Colors.green[300] : Colors.green[700]),
           const SizedBox(width: 4),
+
           Text(
             salary.replaceAll("\$", ""),
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: isDark ? Colors.green[300] : Colors.green[700],
+            style: AppTextStyle.dmSans(
+              color: isDark ? (Colors.green[300] ?? Colors.green) : (Colors.green[700] ?? Colors.green),
+              fontSize: 12.0,
+              weight: FontWeight.w500,
             ),
           ),
         ],
@@ -272,83 +316,4 @@ class _ProposalCardState extends State<ProposalCard> {
     );
   }
 
-  Widget _buildEmployerImage() {
-    return Stack(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(40),
-          child: widget.employerImage != null
-              ? Image.asset(widget.employerImage!, width: 50, height: 50, fit: BoxFit.cover)
-              : Container(
-            width: 50,
-            height: 50,
-            color: widget.isDark ? Colors.grey[700] : Colors.grey[300],
-            child: Icon(Icons.person, size: 36, color: widget.isDark ? Colors.grey[500] : Colors.grey),
-          ),
-        ),
-        if (widget.isVerified)
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Container(
-              padding: const EdgeInsets.all(2),
-              decoration: BoxDecoration(
-                color: widget.isDark ? JAppColors.backGroundDarkCard : Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Image.asset(JImages.verify, width: 16, height: 16),
-            ),
-          ),
-      ],
-    );
-  }
-
-  Widget _buildEmployerDetails(Color iconColor, Color textColor) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.employerName,
-            style: AppTextStyle.dmSans(
-              fontSize: 16.0,
-              weight: FontWeight.w600,
-              color: widget.isDark ? Colors.white : JAppColors.lightGray900,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Row(
-            children: [
-              SvgPicture.asset(
-                JImages.locationSvg,
-                width: 16,
-                height: 16,
-                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
-              ),
-              const SizedBox(width: 4),
-              Text(
-                widget.location,
-                style: AppTextStyle.dmSans(
-                  fontSize: 12.0,
-                  color: textColor.withValues(alpha: 0.8),
-                  weight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Icon(Icons.access_time_filled, size: 14, color: textColor.withValues(alpha: 0.8)),
-              const SizedBox(width: 4),
-              Text(
-                "Posted ${widget.postedTime}",
-                style: AppTextStyle.dmSans(
-                  fontSize: 12.0,
-                  color: textColor.withValues(alpha: 0.8),
-                  weight: FontWeight.w400,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
 }

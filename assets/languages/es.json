@@ -380,7 +380,7 @@
   "seeLess": "Ver menos",
   "recommendedForYou": "Recomendado para ti",
   "recentPotJob": "Trabajos publicados recientemente",
-  "message": "Mensaje",
+  "message": "Mensajes",
   "changeTheme": "Cambiar tema",
   "helpAndSupport": "Ayuda y soporte",
   "upgrade": "Actualizar",
@@ -501,5 +501,8 @@
   "receiveCode": "No recibiste el código?",
   "sendAgain": "Reenviar",
   "verifyEmail": "Verificar correo",
-  "verifyEmailBtn": "Verificar correo"
+  "verifyEmailBtn": "Verificar correo",
+  "posted": "Publicado"
+
+
 }

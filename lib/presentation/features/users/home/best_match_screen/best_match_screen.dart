@@ -94,7 +94,7 @@ class BestMatchesPage extends StatelessWidget {
             'recommendedForYou',
             style: AppTextStyle.dmSans(
               fontSize: JSizes.fontSizeLg,
-              weight: FontWeight.bold,
+              weight: FontWeight.w500,
               color: isDark ? Colors.white : JAppColors.lightGray900,
             ),
           ).tr(),

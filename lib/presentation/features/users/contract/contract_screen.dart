@@ -65,7 +65,7 @@ class _ContractsScreenState extends State<ContractsScreen>
           'allContract',
           style: AppTextStyle.dmSans(
             fontSize: 18.0,
-            weight: FontWeight.bold,
+            weight: FontWeight.w500,
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
           ),
         ).tr(),

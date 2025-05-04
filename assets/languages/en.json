@@ -383,7 +383,7 @@
   "seeLess": "See Less",
   "recommendedForYou": "Recommended for you",
   "recentPotJob": "Recently Posted Jobs",
-  "message": "Message",
+  "message": "Messages",
   "changeTheme": "Change Theme",
   "helpAndSupport": "Help & Support",
   "upgrade": "Upgrade",
@@ -500,8 +500,8 @@
   "verifyEmail": "Verify email",
   "leaveMessage": "Leave a Message",
   "talent": "Talent",
-  "notification": "Notification"
-
+  "notification": "Notification",
+  "posted": "Posted"
 
 
 }

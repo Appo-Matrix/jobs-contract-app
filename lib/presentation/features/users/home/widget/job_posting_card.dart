@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../utils/common_widgets/EmployerProfileWidget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
@@ -70,6 +71,8 @@ class _JobPostingCardState extends State<JobPostingCard> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
+
           // Top Row - Job Type Badge & Salary
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,10 +86,10 @@ class _JobPostingCardState extends State<JobPostingCard> {
                 ),
                 child: Text(
                   widget.jobType,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: accentColor,
+                  style: AppTextStyle.dmSans(
+                    fontSize: 12.0,
+                    weight: FontWeight.w500,
+                    color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                   ),
                 ).tr(),
               ),
@@ -119,17 +122,19 @@ class _JobPostingCardState extends State<JobPostingCard> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
 
           // Job Title Row with Save Button
           Row(
             children: [
               Expanded(
                 child: Text(
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
                   widget.jobTitle,
                   style: AppTextStyle.dmSans(
-                    fontSize: 20.0,
-                    weight: FontWeight.w700,
+                    fontSize: 16.0,
+                    weight: FontWeight.w500,
                     color: widget.isDark ? Colors.white : JAppColors.lightGray900,
                   ),
                 ).tr(),
@@ -143,7 +148,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                 icon: Icon(
                   _isSaved ? Icons.bookmark : Icons.bookmark_border,
                   color: _isSaved ? accentColor : textColor,
-                  size: 24,
+                  size: 18,
                 ),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
@@ -152,19 +157,14 @@ class _JobPostingCardState extends State<JobPostingCard> {
                 onTap: () {
                   // Share functionality
                 },
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: widget.isDark ? Colors.white.withOpacity(0.1) : accentColor.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Icon(
-                    Icons.share_outlined,
-                    size: 20,
-                    color: accentColor,
-                  ),
+                child: Icon(
+                  Icons.share_outlined,
+                  size: 18,
+                  color: accentColor,
                 ),
               ),
+
+              SizedBox(width: 9,)
 
             ],
           ),
@@ -196,7 +196,7 @@ class _JobPostingCardState extends State<JobPostingCard> {
                 AnimatedCrossFade(
                   firstChild: Text(
                     widget.description,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyle.dmSans(
                       fontSize: JSizes.fontSizeEaSm,
@@ -232,8 +232,8 @@ class _JobPostingCardState extends State<JobPostingCard> {
                       Text(
                         _isExpanded ? 'seeLess' : 'seeMore',
                         style: AppTextStyle.dmSans(
-                          fontSize: 16.0,
-                          weight: FontWeight.w600,
+                          fontSize: 14.0,
+                          weight: FontWeight.w400,
                           color: accentColor,
                         ),
                       ).tr(),
@@ -260,118 +260,27 @@ class _JobPostingCardState extends State<JobPostingCard> {
           const SizedBox(height: 16),
 
           // Employer section with improved layout
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Employer Avatar with verification badge
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: widget.employerImage != null
-                        ? Image(
-                      image: AssetImage(widget.employerImage!),
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    )
-                        : Container(
-                      width: 50,
-                      height: 50,
-                      color: widget.isDark ? Colors.grey[700] : Colors.grey[300],
-                      child: Icon(
-                        Icons.person,
-                        size: 36,
-                        color: widget.isDark ? Colors.grey[500] : Colors.grey,
-                      ),
-                    ),
-                  ),
-                  if (widget.isVerified)
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          color: widget.isDark ? JAppColors.backGroundDarkCard : Colors.white,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: widget.isDark ? JAppColors.backGroundDarkCard : Colors.white,
-                            width: 2,
-                          ),
-                        ),
-                        child: Image(
-                          height: 16,
-                          width: 16,
-                          image: AssetImage(JImages.verify),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-              const SizedBox(width: 16),
-
-              // Employer Details
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Employer Name
-                    Text(
-                      widget.employerName,
-                      style: AppTextStyle.dmSans(
-                        fontSize: 16.0,
-                        weight: FontWeight.w600,
-                        color: widget.isDark ? Colors.white : JAppColors.lightGray900,
-                      ),
-                    ).tr(),
-                    const SizedBox(height: 4),
-
-                    // Location and Posted Time
-                    Row(
-                      children: [
-                        SvgPicture.asset(
-                          JImages.locationSvg,
-                          width: 16,
-                          height: 16,
-                          colorFilter: ColorFilter.mode(
-                            iconColor,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          widget.location,
-                          style: AppTextStyle.dmSans(
-                            fontSize: 12.0,
-                            color: textColor.withValues(alpha: 0.8),
-                            weight: FontWeight.w500,
-                          ),
-                        ).tr(),
-                        const SizedBox(width: 16),
-                        Icon(
-                          Icons.access_time_filled,
-                          size: 14,
-                          color: textColor.withValues(alpha: 0.8),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          "Posted ${widget.postedTime}",
-                          style: AppTextStyle.dmSans(
-                            fontSize: 12.0,
-                            color: textColor.withValues(alpha: 0.8),
-                            weight: FontWeight.w500,
-                          ),
-                        ).tr(),
-
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          EmployerProfileWidget(
+            employerName: 'Tech Solutions Inc.',
+            location: 'San Francisco, CA',
+            postedTime: '2 hours ago',
+            employerImage: JImages.image, // or 'assets/images/employer1.png'
+            isVerified: true,
+            isDark: false,
           ),
+          const SizedBox(height: 10),
 
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Text(
+              "Posted ${widget.postedTime}",
+              style: AppTextStyle.dmSans(
+                fontSize: 12.0,
+                color: textColor.withValues(alpha: 0.8),
+                weight: FontWeight.w500,
+              ),
+            ).tr(),
+          ),
 
         ],
       ),

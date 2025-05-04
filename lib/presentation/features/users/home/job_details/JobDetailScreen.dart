@@ -34,14 +34,14 @@ class JobDetailScreen extends StatelessWidget {
             },
           ),
         ),
-        title: Text(
-          "Architects Construction.",
-          style: AppTextStyle.dmSans(
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: 19.0,
-            weight: FontWeight.w500,
-          ),
-        ),
+        // title: Text(
+        //   "Architects Construction.",
+        //   style: AppTextStyle.dmSans(
+        //     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+        //     fontSize: 18.0,
+        //     weight: FontWeight.w500,
+        //   ),
+        // ),
       ),
       body: SingleChildScrollView(
         child: Padding(
