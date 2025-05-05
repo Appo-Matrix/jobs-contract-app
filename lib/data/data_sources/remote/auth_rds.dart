@@ -2,12 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+import '../../models/auth/foget_pass_res.dart';
+import '../../models/auth/forget_pass_req.dart';
 import '../../models/auth/login_req.dart';
 import '../../models/auth/login_res.dart';
 
 class AuthRemoteDataSource{
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
 
+
+  // Login
   Future<LoginResponse> login(LoginRequest request) async {
     try {
       final response = await apiClient.post(
@@ -30,6 +34,34 @@ class AuthRemoteDataSource{
     } catch (error) {
       debugPrint('Login error: $error');
       throw Exception('Error during login: $error');
+    }
+  }
+
+
+  // Forget Password
+  Future<ForgotPasswordResponse> forgotPassword(ForgotPasswordRequest request) async {
+    try {
+      final response = await apiClient.post(
+        endpoint: ApiPath.forgotPassword,
+        data: request.toJson(),
+      );
+
+      if (response.statusCode == 200) {
+        return ForgotPasswordResponse.fromJson(response.data);
+      } else if (response.statusCode == 400) {
+        throw Exception(ForgotPasswordError.fromJson(response.data).error);
+      } else if (response.statusCode == 404) {
+        throw Exception(ForgotPasswordError.fromJson(response.data).error);
+      } else if (response.statusCode == 500) {
+        final error = ForgotPasswordError.fromJson(response.data);
+        throw Exception('${error.error}: ${error.details}');
+      } else {
+        throw Exception(
+            'Forgot password failed with status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      debugPrint('Forgot password error: $error');
+      throw Exception('Error during forgot password: $error');
     }
   }
 
