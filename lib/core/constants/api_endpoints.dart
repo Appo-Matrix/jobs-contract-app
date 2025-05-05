@@ -1,9 +1,8 @@
 class ApiPath{
 
-  static String baseUrl = "";
+  static String baseUrl = "http://localhost:3000/api/v1";
 
 
   //Auth
-  static String loginWithEmail = "/auth/login-email";
-  static String loginWithPhone = "/auth/login-phone";
+  static String login = "/auth/login";
 }

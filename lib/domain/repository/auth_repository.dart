@@ -1,5 +1,8 @@
- abstract class AuthRepository {
+ import '../../data/models/auth/login_req.dart';
+import '../../data/models/auth/login_res.dart';
 
-   //Future<LoginWithEmailResponse> loginWithEmail(LoginWithEmailRequest req);
+abstract class AuthRepository {
+
+  Future<LoginResponse> login(LoginRequest request);
 
  }

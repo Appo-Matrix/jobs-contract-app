@@ -5,6 +5,7 @@ class JAppColors {
 
 
   static const Color primary = Color(0xFF6841D9);
+  static const Color white = Color(0xFFFFFFFF); // Shade 100
 
 
 

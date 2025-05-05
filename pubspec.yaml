@@ -44,6 +44,7 @@ dependencies:
   pinput: ^5.0.1
   get: ^4.6.6
   iconsax: ^0.0.8
+  fluttertoast: ^8.2.12
   flutter_svg: ^2.0.17
   smooth_page_indicator: ^1.2.1
   google_maps_flutter: ^2.12.1

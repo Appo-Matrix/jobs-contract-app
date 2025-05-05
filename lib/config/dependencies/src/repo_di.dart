@@ -2,7 +2,6 @@ part of '../di.dart';
 
 void registerRepositoriesDi() {
 
-  // getIt
-  //   ..registerSingleton(AuthRepositoryImpl());
+   getIt.registerSingleton(AuthRepositoryImpl());
 
 }
