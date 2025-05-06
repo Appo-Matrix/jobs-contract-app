@@ -48,6 +48,7 @@ class ApiClient{
       }) async {
     try {
       final response = await _dio.post(endpoint, data: data);
+      print('response');
       return response;
     } on DioException catch (e) {
       return _handleError(e);

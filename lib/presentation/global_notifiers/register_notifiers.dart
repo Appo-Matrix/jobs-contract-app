@@ -5,6 +5,7 @@ import 'package:job_contracts/presentation/global_notifiers/app_config_notifier.
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+
 List<SingleChildWidget> registerGlobalNotifiers() {
   return [
     ChangeNotifierProvider(create: (_) => getIt<AppConfigNotifier>()),
@@ -13,3 +14,4 @@ List<SingleChildWidget> registerGlobalNotifiers() {
 
   ];
 }
+

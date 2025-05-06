@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import '../../../../../utils/common_widgets/EmployerProfileWidget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -73,7 +71,6 @@ class _JobPostingCardState extends State<JobPostingCard> {
         children: [
 
 
-          // Top Row - Job Type Badge & Salary
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -219,7 +216,6 @@ class _JobPostingCardState extends State<JobPostingCard> {
                 ),
                 const SizedBox(height: 6),
 
-                // See More Button with animated text transition and better styling
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -259,7 +255,6 @@ class _JobPostingCardState extends State<JobPostingCard> {
 
           const SizedBox(height: 16),
 
-          // Employer section with improved layout
           EmployerProfileWidget(
             employerName: 'Tech Solutions Inc.',
             location: 'San Francisco, CA',

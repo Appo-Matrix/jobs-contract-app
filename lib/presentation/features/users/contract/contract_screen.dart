@@ -16,7 +16,6 @@ import '../../../../utils/common_widgets/circular_avatar.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../routes/app_routes.dart';
-import '../../theme_controller/ThemeNotifier.dart';
 import '../home/drawer/custom_navigation_drawer.dart';
 import '../home/drawer/widgets/drawer_item.dart';
 

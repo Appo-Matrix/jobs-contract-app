@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
@@ -6,28 +7,50 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:job_contracts/utils/messages/messages.dart';
+import 'package:provider/provider.dart';
 import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String? validateRequired(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return JText.requiredField;
+    }
+    return null;
+  }
+
+  bool obscureText = true;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-    String? validateRequired(String? value) {
-      if (value == null || value.trim().isEmpty) {
-        return JText.requiredField;
-      }
-      return null;
-    }
+
+
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-
-      bottomNavigationBar:SizedBox(
+      bottomNavigationBar: SizedBox(
         height: 50,
         child: Column(
           children: [
@@ -39,50 +62,71 @@ class LoginScreen extends StatelessWidget {
                 AppRouter.router.push('/accountCreationScreen');
               },
             ),
-
           ],
         ),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16 ,horizontal: 16),
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           // padding: TSpacingStyle.paddingWithAppBarHeight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              SizedBox(height: JSizes.spaceBtwSections+10,),
-               TopHeader(logo: JImages.mainLogo, title: 'logIn', subTitle: 'loginTitle', isDark: isDark,),
-              SizedBox(height: JSizes.spaceBtwItems -10,),
-
+              SizedBox(
+                height: JSizes.spaceBtwSections + 10,
+              ),
+              TopHeader(
+                logo: JImages.mainLogo,
+                title: 'logIn',
+                subTitle: 'loginTitle',
+                isDark: isDark,
+              ),
+              SizedBox(
+                height: JSizes.spaceBtwItems - 10,
+              ),
 
               TextFieldWidget(
+                textEditingController: emailController,
                 subTitle: 'email',
                 hintText: 'emailEnter',
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
                 validator: validateRequired,
               ),
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               TextFieldWidget(
+                textEditingController: passwordController,
                 subTitle: 'password',
                 hintText: '******',
-                subtitleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                obscureText: obscureText,
                 validator: validateRequired,
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      // Add setState here
+                      obscureText = !obscureText;
+                      print('Click');
+                    });
+                  },
+                  child: Icon(obscureText
+                      ? CupertinoIcons.eye
+                      : CupertinoIcons.eye_slash),
+                ),
               ),
-
 
               const SizedBox(
                 height: 12,
               ),
-
-
-
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -92,8 +136,8 @@ class LoginScreen extends StatelessWidget {
                     onChanged: (value) {},
                     side: BorderSide(
                       color: isDark
-                      ? JAppColors.darkGray100
-                      : JAppColors.lightGray800,
+                          ? JAppColors.darkGray100
+                          : JAppColors.lightGray800,
                       // Border color changes based on checkbox state
                       width: 1.6, // You can adjust the width as well
                     ),
@@ -111,21 +155,17 @@ class LoginScreen extends StatelessWidget {
                       weight: FontWeight.w500,
                     ),
                   ).tr(),
-
                   Spacer(),
                   TextButton(
                     onPressed: () {
-
                       AppRouter.router.push('/forgetPasswordScreen');
-
-
                     },
                     child: Text(
                       'forgetPassword',
                       style: AppTextStyle.dmSans(
                         color: isDark
-                      ? JAppColors.darkGray100
-                          : JAppColors.primary,
+                            ? JAppColors.darkGray100
+                            : JAppColors.primary,
                         fontSize: JSizes.fontSizeEaSm,
                         weight: FontWeight.w600,
                       ),
@@ -135,7 +175,7 @@ class LoginScreen extends StatelessWidget {
               ),
 
               ///SignIn Button
-               SizedBox(height: JSizes.spaceBtwSections),
+              SizedBox(height: JSizes.spaceBtwSections),
 
               MainButton(
                 btn_title: 'signIn',
@@ -143,11 +183,31 @@ class LoginScreen extends StatelessWidget {
                 btn_color: JAppColors.main,
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
-                image_value: false,onTap: (){
+                image_value: false,
+                onTap: () {
+                  JDeviceUtils.hideKeyBoard(context);
+                  final emailError = validateRequired(emailController.text);
+                  final passwordError =
+                      validateRequired(passwordController.text);
+                  // Messages.flashBarErrorMessage( 'login button pressed',context);
+                  if (emailError != null || passwordError != null) {
+                    // Show error message if validation fails
+                    Messages.flashBarErrorMessage(
+                        'Please fill all required fields', context);
+                  } else {
+                    Map data = {
+                      "email": "shoaib.sahirrr@gmail.com",
+                      "password": "securePassword123"
+                    };
 
-                  AppRouter.router.push('/navigationMenu');
-
-              }, btn_boarder_color: JAppColors.primary,
+                    // Proceed with login if validation passes
+                    Messages.flashBarErrorMessage(
+                        'login button pressed', context);
+                    // AppRouter.router.push('/navigationMenu');
+                  }
+                  // AppRouter.router.push('/navigationMenu');
+                },
+                btn_boarder_color: JAppColors.primary,
               ),
               SizedBox(height: JSizes.spaceBtwItems),
               MainButton(
@@ -155,22 +215,17 @@ class LoginScreen extends StatelessWidget {
                 btn_radius: 10,
                 btn_color: Colors.transparent,
                 btn_boarder_color: JAppColors.t,
-                title_color: isDark
-              ? JAppColors.darkGray100
-                  : JAppColors.lightGray800,
+                title_color:
+                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                 text_fontweight: FontWeight.w600,
                 btn_image: JImages.googleImage,
                 image_value: true,
-                onTap: (){},
-
+                onTap: () {},
                 text_size: JSizes.fontSizeMd,
               ),
 
               /// Create Account
-               SizedBox(height: JSizes.spaceBtwSections+10),
-
-
-
+              SizedBox(height: JSizes.spaceBtwSections + 10),
             ],
           ),
         ),

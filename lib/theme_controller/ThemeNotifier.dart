@@ -25,7 +25,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/theme_controller/theme_pref_helper.dart';
+import 'package:job_contracts/theme_controller/theme_pref_helper.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system;
