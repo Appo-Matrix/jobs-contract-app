@@ -53,7 +53,7 @@ class TopHeader extends StatelessWidget {
           ),
         ).tr(),
         const SizedBox(
-          height: 30,
+          height: 10,
         ),
       ],
     );

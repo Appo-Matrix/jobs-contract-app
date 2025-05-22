@@ -10,15 +10,13 @@ import '../features/auth/screens/forget_password/forget_password_otp_screen.dart
 import '../features/auth/screens/forget_password/reset_password.dart';
 import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
 import '../features/auth/screens/profile/profile_detail.dart';
-import '../features/auth/screens/sign_up_type/account_creation_screen.dart';
+import '../features/auth/screens/signup/company_signup_screen.dart';
+import '../features/auth/screens/signup/email_verification_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
-import '../features/auth/screens/specilization/specialization_screen.dart';
 import '../features/auth/screens/success/model/success_screen_args.dart';
 import '../features/auth/screens/success/success_screen.dart';
-import '../features/auth/screens/terms_condition_screen/terms_conditionsS_screen.dart';
 import '../features/auth/screens/verification_screen/check_email_screen.dart';
 import '../features/auth/screens/verification_screen/email_verified_screen.dart';
-import '../features/auth/screens/verification_screen/verification_screen.dart';
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
@@ -80,11 +78,6 @@ class AppRouter {
         path: '/loginScreen',
         name: Routes.loginScreen.name,
        builder: (context, state) => const LoginScreen(),
-      ),
-      GoRoute(
-        path: '/accountCreationScreen',
-        name: Routes.accountCreationScreen.name,
-       builder: (context, state) => const AccountCreationScreen(),
       ),
 
 
@@ -154,9 +147,9 @@ class AppRouter {
         builder: (context, state) => const AddressFormScreen(),
       ),
       GoRoute(
-        path: '/termsConditionsScreen',
-        name: Routes.termsConditionsScreen.name,
-        builder: (context, state) => const TermsConditionsScreen(),
+        path: '/companySignupScreen',
+        name: Routes.companySignupScreen.name,
+        builder: (context, state) => const CompanySignupScreen(),
       ),
       GoRoute(
         path: '/uploadPortfolioScreen',
@@ -303,16 +296,6 @@ class AppRouter {
         name: Routes.chatScreen.name,
         builder: (context, state) => ChatScreen(),
       ),
-      GoRoute(
-        path: '/specializationScreen',
-        name: Routes.specializationScreen.name,
-        builder: (context, state) => SpecializationScreen(),
-      ),
-      GoRoute(
-        path: '/verificationScreen',
-        name: Routes.verificationScreen.name,
-        builder: (context, state) => VerificationScreen(),
-      ),
 
 
       GoRoute(
@@ -369,6 +352,11 @@ class AppRouter {
         path: '/deliverContractScreen',
         name: Routes.deliverContractScreen.name,
         builder: (context, state) => DeliverContractScreen(),
+      ),
+      GoRoute(
+        path: '/emailVerificationScreen',
+        name: Routes.emailVerificationScreen.name,
+        builder: (context, state) => EmailVerificationScreen(),
       ),
 
     ],

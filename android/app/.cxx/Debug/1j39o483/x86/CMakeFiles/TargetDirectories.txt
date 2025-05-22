@@ -1,0 +1,2 @@
+/home/appomatrix/StudioProjects/jobs-contract-app/android/app/.cxx/Debug/1j39o483/x86/CMakeFiles/edit_cache.dir
+/home/appomatrix/StudioProjects/jobs-contract-app/android/app/.cxx/Debug/1j39o483/x86/CMakeFiles/rebuild_cache.dir

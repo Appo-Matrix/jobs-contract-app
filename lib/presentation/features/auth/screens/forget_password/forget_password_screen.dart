@@ -18,114 +18,122 @@ class ForgetPasswordScreen extends StatelessWidget {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      appBar: JAppbar(
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: (){
-            Navigator.pop(context);
-          },
-        ),
-      ),
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
 
       // Use SingleChildScrollView to prevent overflow
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'forgetPassword',
-                style: AppTextStyle.dmSans(
-                  color: isDark
-                      ? JAppColors.darkGray200
-                      : JAppColors.lightGray800,
-                  fontSize: JSizes.fontSizeLg,
-                  weight: FontWeight.w600,
-                ),
-              ).tr(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-              SizedBox(height: JSizes.spaceBtwItems - 6),
-
-              Text(
-                'plesdr',
-                style: AppTextStyle.dmSans(
-                  height: 1.3,
-                  color: isDark
-                      ? JAppColors.darkGray200
-                      : JAppColors.lightGray600,
-                  fontSize: 16.0,
-                  weight: FontWeight.w400,
-                ),
-              ).tr(),
-
-              SizedBox(height: JSizes.spaceBtwSections),
-              TextFieldWidget(
-                subTitle: 'email',
-                hintText: 'emailEnter',
-                subtitleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-                titleColor:
-                isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-              ),
-
-
-              SizedBox(height: JSizes.spaceBtwSections - 8),
-
-              MainButton(
-                btn_color: JAppColors.primary,
-
-                btn_title: 'sendCode',
-                btn_radius: 10,isDark: isDark,
-                btn_boarder_color: Color(0xff7030F1),
-                title_color: Colors.white,
-                text_fontweight: FontWeight.w600,
-                image_value: false,
-                onTap: (){
-                  AppRouter.router.push('/forgetPasswordOtpScreen');
-                },
-              ),
-
-              SizedBox(height: JSizes.spaceBtwSections),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'alreadyAccount',
+                const SizedBox(height: 40),
+                Center(
+                  child: Text(
+                    'logo',
                     style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray100
-                          : JAppColors.lightGray800,
-                      fontSize: 16.0,
-                      weight: FontWeight.w400,
+                      color: const Color(0xFF7C3AED),
+                      fontSize: 28.0,
+                      weight: FontWeight.bold,
                     ),
-
                   ).tr(),
+                ),
 
-                  SizedBox(width: JSizes.spaceBtwItems - 10),
-
-                  GestureDetector(
-                    onTap: (){
-                      AppRouter.router.push('/loginScreen');
-                    },
-                    child: Text(
-                      'login',
-                      style: AppTextStyle.dmSans(
-                          color: isDark
-                              ? JAppColors.darkGray100
-                              : JAppColors.primary,
-                          fontSize: 18.0,
-                          weight: FontWeight.w600),
-                    ).tr(),
+                const SizedBox(height: 60),
+                Text(
+                  'forgetPassword',
+                  style: AppTextStyle.dmSans(
+                    color: isDark
+                        ? JAppColors.darkGray200
+                        : JAppColors.lightGray800,
+                    fontSize: JSizes.fontSizeLg,
+                    weight: FontWeight.w600,
                   ),
-                ],
-              ),
-
-              // Add some bottom padding to ensure everything is visible
-              SizedBox(height: 24),
-            ],
+                ).tr(),
+        
+                SizedBox(height: JSizes.spaceBtwItems - 6),
+        
+                Text(
+                  'plesdr',
+                  style: AppTextStyle.dmSans(
+                    height: 1.3,
+                    color: isDark
+                        ? JAppColors.darkGray200
+                        : JAppColors.lightGray600,
+                    fontSize: 16.0,
+                    weight: FontWeight.w400,
+                  ),
+                ).tr(),
+        
+                SizedBox(height: JSizes.spaceBtwSections),
+                TextFieldWidget(
+                  subTitle: 'email',
+                  hintText: 'email@gmail.com',
+                  subtitleColor:
+                  isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                  titleColor:
+                  isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
+                ),
+        
+        
+                SizedBox(height: JSizes.spaceBtwSections - 8),
+        
+                MainButton(
+                  btn_color: JAppColors.primary,
+        
+                  btn_title: 'continue',
+                  btn_radius: 10,isDark: isDark,
+                  btn_boarder_color: Color(0xff7030F1),
+                  title_color: Colors.white,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
+                  onTap: (){
+                    AppRouter.router.push('/forgetPasswordOtpScreen');
+                  },
+                ),
+        
+                SizedBox(height: JSizes.spaceBtwSections),
+        
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'alreadyAccount',
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.lightGray800,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                      ),
+        
+                    ).tr(),
+        
+                    SizedBox(width: JSizes.spaceBtwItems - 10),
+        
+                    GestureDetector(
+                      onTap: (){
+                        AppRouter.router.push('/loginScreen');
+                      },
+                      child: Text(
+                        'login',
+                        style: AppTextStyle.dmSans(
+                            color: isDark
+                                ? JAppColors.darkGray100
+                                : JAppColors.primary,
+                            fontSize: 18.0,
+                            weight: FontWeight.w600),
+                      ).tr(),
+                    ),
+                  ],
+                ),
+        
+                // Add some bottom padding to ensure everything is visible
+                SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),

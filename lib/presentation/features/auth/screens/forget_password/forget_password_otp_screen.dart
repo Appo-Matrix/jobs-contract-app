@@ -11,199 +11,253 @@ import '../../../../routes/app_routes.dart';
 import 'package:pinput/pinput.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contracts/utils/constants/app_text_style.dart';
+import 'package:job_contracts/utils/device/device_utility.dart';
+import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+
 class ForgetPasswordOtpScreen extends StatefulWidget {
   const ForgetPasswordOtpScreen({super.key});
 
   @override
-  State<ForgetPasswordOtpScreen> createState() => _ForgetPasswordOtpScreenState();
+  State<ForgetPasswordOtpScreen> createState() =>
+      _ForgetPasswordOtpScreenState();
 }
 
 class _ForgetPasswordOtpScreenState extends State<ForgetPasswordOtpScreen> {
-  final TextEditingController otpController = TextEditingController();
-  final List<TextEditingController> otpControllers =
-  List.generate(4, (_) => TextEditingController());
-  final List<FocusNode> focusNodes = List.generate(4, (_) => FocusNode());
+  final List<TextEditingController> _controllers =
+      List.generate(6, (index) => TextEditingController());
+  final List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
 
-  @override
-  void dispose() {
-    for (var controller in otpControllers) {
-      controller.dispose();
-    }
-    for (var node in focusNodes) {
-      node.dispose();
-    }
-    super.dispose();
+  String get _verificationCode {
+    return _controllers.map((controller) => controller.text).join();
   }
 
-  String getEnteredOtp() {
-    String otp = "";
-    for (var controller in otpControllers) {
-      otp += controller.text.trim();
+  void _onCodeChanged(String value, int index) {
+    if (value.isNotEmpty && index < 5) {
+      _focusNodes[index + 1].requestFocus();
+    } else if (value.isEmpty && index > 0) {
+      _focusNodes[index - 1].requestFocus();
     }
-    return otp;
+
+    setState(() {});
   }
 
-  Widget buildOtpBox(int index, BuildContext context) {
-    final isDark = JDeviceUtils.isDarkMode(context);
-
-    return Container(
-      width: 64,
-      height: 75,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: TextField(
-        controller: otpControllers[index],
-        focusNode: focusNodes[index],
-        keyboardType: TextInputType.number,
-        textAlign: TextAlign.center,
-        maxLength: 1,
-        style: AppTextStyle.dmSans(
-          color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-          fontSize: 24.0,
-          weight: FontWeight.w600,
-        ),
-        decoration: InputDecoration(
-          counterText: '',
-          filled: true,
-          fillColor: isDark ? Colors.transparent : Colors.white,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray400,
-              width: 1,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
-              color: JAppColors.primary,
-              width: 1.5,
-            ),
-          ),
-        ),
-        onChanged: (value) {
-          if (value.isNotEmpty && index < 3) {
-            FocusScope.of(context).requestFocus(focusNodes[index + 1]);
-          } else if (value.isEmpty && index > 0) {
-            FocusScope.of(context).requestFocus(focusNodes[index - 1]);
-          }
-        },
+  void _resendCode() {
+    print('Resending verification code...');
+    // Add your resend logic here
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('verificationCodeResent'.tr()),
+        backgroundColor: const Color(0xFF7C3AED),
       ),
     );
   }
+
+  void _verifyCode() {
+    JDeviceUtils.hideKeyBoard(context);
+    if (_verificationCode.length == 6) {
+      print('Verifying code: $_verificationCode');
+      // Add your verification logic here
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('verificationSuccessful'.tr()),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('pleaseEnterCompleteCode'.tr()),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+
+    AppRouter.router.push('/resetPasswordScreen');
+  }
+
   @override
   Widget build(BuildContext context) {
-    final isDark = JDeviceUtils.isDarkMode(context);
-    final defaultPinTheme = PinTheme(
-      width: 60,
-      height: 60,
-      textStyle: AppTextStyle.dmSans(
-        color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-        fontSize: 24.0,
-        weight: FontWeight.w600,
-      ),
-      decoration: BoxDecoration(
-        color: isDark ? Colors.transparent : Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray400,
-          width: 1,
-        ),
-      ),
-    );
+    final bool isDark = JDeviceUtils.isDarkMode(context);
 
-    // Define focused theme
-    final focusedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration!.copyWith(
-        border: Border.all(
-          color: JAppColors.primary,
-          width: 1.5,
-        ),
-      ),
-    );
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-
-      appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
-        ),
-      ),
-
-      body: SingleChildScrollView(
+      backgroundColor: isDark ? JAppColors.darkGray900 : Colors.white,
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'secureCode',
-                  textAlign: TextAlign.start,
-                  style: AppTextStyle.dmSans(
-                    color:
-                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                    fontSize: 16.0,
-                    weight: FontWeight.w500,
-                  ),
-                ).tr(),
-              ),
+
+              // Back button
+
               const SizedBox(height: 20),
-              Form(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    4,
-                        (index) => buildOtpBox(index, context),
-                  ),
+
+              // Logo Section
+              Text(
+                'logo',
+                style: AppTextStyle.dmSans(
+                  color: const Color(0xFF7C3AED),
+                  fontSize: 24.0,
+                  weight: FontWeight.bold,
+                ),
+              ).tr(),
+
+              const SizedBox(height: 60),
+
+              // Title
+              Text(
+                'verifyYourEmail',
+                style: AppTextStyle.dmSans(
+                  color:
+                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                  fontSize: 24.0,
+                  weight: FontWeight.w600,
+                ),
+              ).tr(),
+
+              const SizedBox(height: 16),
+
+              // Subtitle
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'pleaseEnterCodeSentOnMail'.tr(),
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray300
+                            : JAppColors.darkGray600,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' bob@reui.io ',
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray100
+                            : JAppColors.darkGray800,
+                        fontSize: 16.0,
+                        weight: FontWeight.w600,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'toResetAccount'.tr(),
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray300
+                            : JAppColors.darkGray600,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: JSizes.spaceBtwSections ),
 
+              const SizedBox(height: 40),
 
+              // Verification Code Input
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(6, (index) {
+                  return Container(
+                    width: 45,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: TextFormField(
+                      controller: _controllers[index],
+                      focusNode: _focusNodes[index],
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      maxLength: 1,
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.lightGray100
+                            : JAppColors.darkGray800,
+                        fontSize: 24.0,
+                        weight: FontWeight.w600,
+                      ),
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        counterText: '',
+                      ),
+                      onChanged: (value) => _onCodeChanged(value, index),
+                    ),
+                  );
+                }),
+              ),
+
+              const SizedBox(height: 30),
+
+              // Didn't receive code section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'didntReceiveCode',
+                    style: AppTextStyle.dmSans(
+                      color: isDark
+                          ? JAppColors.lightGray300
+                          : JAppColors.darkGray600,
+                      fontSize: 14.0,
+                      weight: FontWeight.w400,
+                    ),
+                  ).tr(),
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: _resendCode,
+                    child: Text(
+                      'resend',
+                      style: AppTextStyle.dmSans(
+                        color: const Color(0xFF7C3AED),
+                        fontSize: 14.0,
+                        weight: FontWeight.w600,
+                      ),
+                    ).tr(),
+                  ),
+                ],
+              ),
+
+              const Spacer(),
+
+              // Continue Button
               MainButton(
-                btn_title: 'verifyEmail',
+                btn_title: 'continue',
                 btn_radius: 10,
                 btn_color: JAppColors.primary,
-                btn_boarder_color: const Color(0xff7030F1),
+                btn_boarder_color: Colors.transparent,
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,
-                onTap: () {
-                  final otp = getEnteredOtp();
-                  if (otp.length == 4) {
-                    print("Entered OTP is: $otp");
-                    AppRouter.router.push('/navigationMenu');
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Please enter complete OTP')),
-                    );
-                  }
-                },
-                isDark: isDark,
+                onTap: _verifyCode,
+                text_size: JSizes.fontSizeMd,
               ),
-
-              SizedBox(height: JSizes.spaceBtwSections ),
-
-              BottomWidget(
-                isDark: isDark,
-                title: 'receiveCode',
-                titleDes: 'sendAgain',
-                onPressed: () {
-                  // Handle resend OTP
-                },
-              ),
+              const SizedBox(height: 40),
             ],
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    for (var controller in _controllers) {
+      controller.dispose();
+    }
+    for (var focusNode in _focusNodes) {
+      focusNode.dispose();
+    }
+    super.dispose();
   }
 }

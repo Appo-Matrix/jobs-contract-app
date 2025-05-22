@@ -8,6 +8,7 @@ class MainButton extends StatelessWidget {
   final String btn_title;
   final String? btn_image;
   final double btn_radius;
+  final double height;
   final Color? btn_color;
   final Color title_color;
   final Color btn_boarder_color;
@@ -29,7 +30,7 @@ class MainButton extends StatelessWidget {
     this.btn_image = '',
     required this.image_value,
     this.onTap,
-    this.isDark,
+    this.isDark,  this.height =48,
   });
 
   @override
@@ -38,7 +39,7 @@ class MainButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 48,
+        height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(btn_radius),
           color: btn_color ?? (isDark == true

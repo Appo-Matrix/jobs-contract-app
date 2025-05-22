@@ -7,6 +7,7 @@ import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
@@ -54,43 +55,24 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray800 : Colors.white,
 
-      appBar: JAppbar(
-        leadingIcon: BackCircle(
-          isDark: isDark,
-          onTap: (){
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      bottomNavigationBar: Padding(padding: EdgeInsets.symmetric(vertical: 26,horizontal: 16),child:               SizedBox(
-        width: double.infinity,
-        child:
-        MainButton(
-          btn_title: JText.sendCode,
-          btn_radius: 10,
-          btn_color: JAppColors.main,
-          btn_boarder_color: Color(0xff7030F1),
-          title_color: Colors.white,
-          text_fontweight: FontWeight.w600,
-          image_value: false,
-          onTap: (){
-            AppRouter.router.push('/resetPasswordScreen');
-          },
-        ),
-      ),
-          ),
+
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 20),
+              const SizedBox(height: 20),
+
+              Image(height: 50, width: 50, image: AssetImage(JImages.appleLogo)),
               const SizedBox(height: 20),
 
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  JText.secureCode,
+                  JText.verify,
                   textAlign: TextAlign.start,
                   style: AppTextStyle.dmSans(
                     color: isDark
@@ -147,7 +129,19 @@ class _VerifyPhoneOtpState extends State<VerifyPhoneOtp> {
               const SizedBox(height: JSizes.spaceBtwSections + 30),
 
 
-  
+              MainButton(
+                btn_title: JText.sendCode,
+                btn_radius: 10,
+                btn_color: JAppColors.main,
+                btn_boarder_color: Color(0xff7030F1),
+                title_color: Colors.white,
+                text_fontweight: FontWeight.w600,
+                image_value: false,
+                onTap: (){
+                  AppRouter.router.push('/resetPasswordScreen');
+                },
+              ),
+
 
               // Next Button
             ],

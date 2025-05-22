@@ -50,21 +50,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
-      bottomNavigationBar: SizedBox(
-        height: 50,
-        child: Column(
-          children: [
-            BottomWidget(
-              isDark: isDark,
-              title: 'donotHaveAccount',
-              titleDes: 'signUp',
-              onPressed: () {
-                AppRouter.router.push('/accountCreationScreen');
-              },
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
@@ -124,9 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
 
-              const SizedBox(
-                height: 12,
-              ),
+
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -203,29 +186,101 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Proceed with login if validation passes
                     Messages.flashBarErrorMessage(
                         'login button pressed', context);
-                    // AppRouter.router.push('/navigationMenu');
+                    AppRouter.router.push('/navigationMenu');
                   }
                   // AppRouter.router.push('/navigationMenu');
                 },
                 btn_boarder_color: JAppColors.primary,
               ),
-              SizedBox(height: JSizes.spaceBtwItems),
-              MainButton(
-                btn_title: 'signInGoogle',
-                btn_radius: 10,
-                btn_color: Colors.transparent,
-                btn_boarder_color: JAppColors.t,
-                title_color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                text_fontweight: FontWeight.w600,
-                btn_image: JImages.googleImage,
-                image_value: true,
-                onTap: () {},
-                text_size: JSizes.fontSizeMd,
+
+
+              SizedBox(height: JSizes.spaceBtwSections+10,),
+
+              Row(
+                children: [
+                  Expanded(child: Divider(color:JAppColors.darkGray300,)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0,right: 8.0),
+                    child: Text(
+                      'OR',
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.lightGray500,
+                        fontSize: JSizes.fontSizeEaSm,
+                        weight: FontWeight.w600,
+                      ),
+                    ).tr(),
+                  ),
+                  Expanded(child: Divider(color:JAppColors.darkGray300,)),
+
+                ],
+              ),
+              SizedBox(height: JSizes.spaceBtwSections,),
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainButton(
+                        btn_image: JImages.googleImage,
+
+                        height: 40,
+                        btn_title: "User Google",
+                        btn_radius: 10,
+                        btn_color: Colors.transparent,
+                        btn_boarder_color: JAppColors.t,
+                        title_color:
+                        isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                        text_fontweight: FontWeight.w600,
+                        image_value: true,
+                        onTap: () {},
+                        text_size: JSizes.fontSizeMd,
+                      ),
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MainButton(
+                        height: 40,
+
+                        btn_title: 'User Apple',
+                        btn_radius: 10,
+                        btn_color: Colors.transparent,
+                        btn_boarder_color: JAppColors.t,
+                        title_color:
+                            isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                        text_fontweight: FontWeight.w600,
+
+                        btn_image: JImages.appleLogo,
+
+                        image_value: true,
+                        onTap: () {},
+                        text_size: JSizes.fontSizeMd,
+                      ),
+                    ),
+                  ),
+                ],
               ),
 
+
+              SizedBox(height: JSizes.spaceBtwSections,),
+              BottomWidget(
+                isDark: isDark,
+                title: 'donotHaveAccount',
+                titleDes: 'signUp',
+                onPressed: () {
+                  AppRouter.router.push('/signupScreen');
+                },
+              ),
+
+
+
+
               /// Create Account
-              SizedBox(height: JSizes.spaceBtwSections + 10),
             ],
           ),
         ),

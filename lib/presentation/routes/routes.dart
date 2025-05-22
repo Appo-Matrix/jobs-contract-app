@@ -49,6 +49,10 @@ enum Routes {
   myAdsScreen,
   createAdScreen,
   adUploadScreen,
-  adDetailsScreen, forgetPasswordOtpScreen, proposalScreen, financeReportScreen, withdrawalScreen, deliverContractScreen
-
+  adDetailsScreen,
+  forgetPasswordOtpScreen,
+  proposalScreen,
+  financeReportScreen,
+  withdrawalScreen,
+  deliverContractScreen, companySignupScreen, emailVerificationScreen
 }

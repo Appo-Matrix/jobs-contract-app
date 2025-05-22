@@ -14,7 +14,8 @@ Widget buildOtpBox(int index ,BuildContext context) {
       borderRadius: BorderRadius.circular(10),
 
     ),
-    child: TextField(
+    child:
+    TextField(
       textAlign: TextAlign.center,
       keyboardType: TextInputType.number,
       maxLength: 1,

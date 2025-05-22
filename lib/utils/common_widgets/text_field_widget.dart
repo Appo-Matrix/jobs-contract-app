@@ -59,8 +59,8 @@ class TextFieldWidget extends StatelessWidget {
               text: subTitle!.tr(), // Use .tr() to translate the subtitle
               style: AppTextStyle.dmSans(
                 color: subtitleColor ?? JAppColors.darkGray700,
-                fontSize: JSizes.fontSizeMd,
-                weight: FontWeight.w600,
+                fontSize: JSizes.fontSizeSm,
+                weight: FontWeight.w500,
               ),
               children: isRequired
                   ? [
@@ -76,7 +76,7 @@ class TextFieldWidget extends StatelessWidget {
                   : [],
             ),
           ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 6),
         TextFormField(
           controller: textEditingController,
           obscureText: obscureText!,
