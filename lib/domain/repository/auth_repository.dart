@@ -12,6 +12,8 @@ import '../../data/models/auth/send_otp_email_req.dart';
 import '../../data/models/auth/send_otp_email_res.dart';
 import '../../data/models/auth/send_otp_sms_req.dart';
 import '../../data/models/auth/send_otp_sms_res.dart';
+import '../../data/models/auth/update_password_req.dart';
+import '../../data/models/auth/update_password_res.dart';
 
 abstract class AuthRepository {
 
@@ -28,6 +30,8 @@ abstract class AuthRepository {
   Future<SendOtpSmsResponse> sendOtpSms(SendOtpSmsRequest request);
 
   Future<GoogleSignInResponse> signInWithGoogle(GoogleSignInRequest request);
+
+  Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request);
 
 
 }

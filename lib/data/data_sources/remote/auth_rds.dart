@@ -16,6 +16,8 @@ import '../../models/auth/send_otp_email_req.dart';
 import '../../models/auth/send_otp_email_res.dart';
 import '../../models/auth/send_otp_sms_req.dart';
 import '../../models/auth/send_otp_sms_res.dart';
+import '../../models/auth/update_password_req.dart';
+import '../../models/auth/update_password_res.dart';
 
 class AuthRemoteDataSource{
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -101,7 +103,7 @@ class AuthRemoteDataSource{
   }
 
   Future<ResetPasswordResponse> resetPassword(ResetPasswordRequest request) async {
-    final response = await apiClient.post(
+    final response = await apiClient.put(
       endpoint: ApiPath.resetPassword ,
       data: request.toJson(),
     );
@@ -173,6 +175,26 @@ class AuthRemoteDataSource{
       throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
+
+  @override
+  Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request) async {
+    final response = await apiClient.put(
+      endpoint: ApiPath.updatePassword,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      return UpdatePasswordResponse.fromJson(response.data);
+    } else if ([400, 401, 404].contains(response.statusCode)) {
+      throw Exception(UpdatePasswordError.fromJson(response.data).error);
+    } else if (response.statusCode == 500) {
+      final error = UpdatePasswordError.fromJson(response.data);
+      throw Exception('${error.error}: ${error.details}');
+    } else {
+      throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
 
 
 
