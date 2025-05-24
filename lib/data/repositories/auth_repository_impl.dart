@@ -14,6 +14,8 @@ import '../models/auth/login_req.dart';
 import '../models/auth/login_res.dart';
 import '../models/auth/send_otp_sms_req.dart';
 import '../models/auth/send_otp_sms_res.dart';
+import '../models/auth/update_password_req.dart';
+import '../models/auth/update_password_res.dart';
 
 class AuthRepositoryImpl implements AuthRepository{
 
@@ -90,6 +92,16 @@ class AuthRepositoryImpl implements AuthRepository{
       throw Exception('Error in repository during Google sign-in: $error');
     }
   }
+
+  @override
+  Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request) async {
+    try {
+      return await authRemoteDataSource.updatePassword(request);
+    } catch (error) {
+      throw Exception('Error in repository during password update: $error');
+    }
+  }
+
 
 
 }

@@ -11,4 +11,5 @@ class ApiPath{
   static String sendOtpEmail = "/users/send-otp-email";
   static String sendOtpSms = "/users/send-otp-sms";
   static String googleSignIn = "/auth/google";
+  static String updatePassword = "/users/update-password";
 }
