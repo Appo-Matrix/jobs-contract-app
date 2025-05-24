@@ -5,6 +5,8 @@ import 'package:job_contracts/data/models/auth/register_user_req.dart';
 import 'package:job_contracts/data/models/auth/register_user_res.dart';
 import 'package:job_contracts/data/models/auth/reset_password_req.dart';
 import 'package:job_contracts/data/models/auth/reset_password_res.dart';
+import 'package:job_contracts/data/models/auth/send_otp_email_req.dart';
+import 'package:job_contracts/data/models/auth/send_otp_email_res.dart';
 
 import '../../domain/repository/auth_repository.dart';
 import '../models/auth/login_req.dart';
@@ -51,9 +53,20 @@ class AuthRepositoryImpl implements AuthRepository{
       return await authRemoteDataSource.resetPassword(request);
 
     }catch(error){
-      throw Exception('Error in repository during registration: $error');
+      throw Exception('Error in repository during reset password: $error');
 
     }
 
+  }
+
+  @override
+  Future<SendOtpEmailResponse> sendOtpEmail(SendOtpEmailRequest request) async {
+    try{
+      return await authRemoteDataSource.sendOtpEmail(request);
+
+    }catch(error){
+      throw Exception('Error in repository during sending otp: $error');
+
+    }
   }
 }
