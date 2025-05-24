@@ -12,6 +12,8 @@ import '../../models/auth/reset_password_req.dart';
 import '../../models/auth/reset_password_res.dart';
 import '../../models/auth/send_otp_email_req.dart';
 import '../../models/auth/send_otp_email_res.dart';
+import '../../models/auth/send_otp_sms_req.dart';
+import '../../models/auth/send_otp_sms_res.dart';
 
 class AuthRemoteDataSource{
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -135,7 +137,25 @@ class AuthRemoteDataSource{
     }
   }
 
+  Future<SendOtpSmsResponse> sendOtpSms(SendOtpSmsRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.sendOtpSms,
+      data: request.toJson(),
+    );
 
+    if (response.statusCode == 200) {
+      return SendOtpSmsResponse.fromJson(response.data);
+    } else if (response.statusCode == 400 || response.statusCode == 404) {
+      throw Exception(SendOtpSmsError.fromJson(response.data).message);
+    } else if (response.statusCode == 500) {
+      final error = SendOtpSmsError.fromJson(response.data);
+      throw Exception('${error.message}: ${error.error}');
+    } else {
+      throw Exception(
+        'OTP SMS request failed with status code: ${response.statusCode}',
+      );
+    }
+  }
 
 
 }

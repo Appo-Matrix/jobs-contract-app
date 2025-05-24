@@ -8,6 +8,8 @@ import '../../data/models/auth/reset_password_req.dart';
 import '../../data/models/auth/reset_password_res.dart';
 import '../../data/models/auth/send_otp_email_req.dart';
 import '../../data/models/auth/send_otp_email_res.dart';
+import '../../data/models/auth/send_otp_sms_req.dart';
+import '../../data/models/auth/send_otp_sms_res.dart';
 
 abstract class AuthRepository {
 
@@ -20,6 +22,8 @@ abstract class AuthRepository {
   Future<ResetPasswordResponse> resetPassword(ResetPasswordRequest request);
 
   Future<SendOtpEmailResponse> sendOtpEmail(SendOtpEmailRequest request);
+
+  Future<SendOtpSmsResponse> sendOtpSms(SendOtpSmsRequest request);
 
 
 }
