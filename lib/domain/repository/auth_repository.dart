@@ -4,6 +4,8 @@ import '../../data/models/auth/login_req.dart';
 import '../../data/models/auth/login_res.dart';
 import '../../data/models/auth/register_user_req.dart';
 import '../../data/models/auth/register_user_res.dart';
+import '../../data/models/auth/reset_password_req.dart';
+import '../../data/models/auth/reset_password_res.dart';
 
 abstract class AuthRepository {
 
@@ -12,6 +14,8 @@ abstract class AuthRepository {
   Future<ForgotPasswordResponse> forgotPassword(ForgotPasswordRequest request);
 
   Future<RegisterUserResponse> registerUser(RegisterUserRequest request);
+
+  Future<ResetPasswordResponse> resetPassword(ResetPasswordRequest request);
 
 
 }

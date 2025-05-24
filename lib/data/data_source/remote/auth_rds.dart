@@ -8,6 +8,8 @@ import '../../models/auth/login_req.dart';
 import '../../models/auth/login_res.dart';
 import '../../models/auth/register_user_req.dart';
 import '../../models/auth/register_user_res.dart';
+import '../../models/auth/reset_password_req.dart';
+import '../../models/auth/reset_password_res.dart';
 
 class AuthRemoteDataSource{
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -89,6 +91,26 @@ class AuthRemoteDataSource{
     } catch (error) {
       debugPrint('Register user error: $error');
       throw Exception('Error during registration: $error');
+    }
+  }
+
+  Future<ResetPasswordResponse> resetPassword(ResetPasswordRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.resetPassword ,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      return ResetPasswordResponse.fromJson(response.data);
+    } else if (response.statusCode == 400 || response.statusCode == 404) {
+      throw Exception(ResetPasswordError.fromJson(response.data).message);
+    } else if (response.statusCode == 500) {
+      final error = ResetPasswordError.fromJson(response.data);
+      throw Exception('${error.message}: ${error.error}');
+    } else {
+      throw Exception(
+        'Reset password failed with status code: ${response.statusCode}',
+      );
     }
   }
 
