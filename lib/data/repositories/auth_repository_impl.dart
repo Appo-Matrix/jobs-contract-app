@@ -11,6 +11,8 @@ import '../../domain/repository/auth_repository.dart';
 import '../data_source/remote/auth_rds.dart';
 import '../models/auth/login_req.dart';
 import '../models/auth/login_res.dart';
+import '../models/auth/send_otp_sms_req.dart';
+import '../models/auth/send_otp_sms_res.dart';
 
 class AuthRepositoryImpl implements AuthRepository{
 
@@ -69,4 +71,14 @@ class AuthRepositoryImpl implements AuthRepository{
 
     }
   }
+
+  @override
+  Future<SendOtpSmsResponse> sendOtpSms(SendOtpSmsRequest request) async {
+    try {
+      return await authRemoteDataSource.sendOtpSms(request);
+    } catch (error) {
+      throw Exception('Error in repository during sending OTP SMS: $error');
+    }
+  }
+
 }
