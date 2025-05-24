@@ -9,6 +9,8 @@ import 'package:job_contracts/data/models/auth/send_otp_email_req.dart';
 import 'package:job_contracts/data/models/auth/send_otp_email_res.dart';
 
 import '../../domain/repository/auth_repository.dart';
+import '../models/auth/google_sigin_res.dart';
+import '../models/auth/google_signin_req.dart';
 import '../models/auth/login_req.dart';
 import '../models/auth/login_res.dart';
 import '../models/auth/send_otp_sms_req.dart';
@@ -80,5 +82,15 @@ class AuthRepositoryImpl implements AuthRepository{
       throw Exception('Error in repository during sending OTP SMS: $error');
     }
   }
+
+  @override
+  Future<GoogleSignInResponse> signInWithGoogle(GoogleSignInRequest request) async {
+    try {
+      return await authRemoteDataSource.signInWithGoogle(request);
+    } catch (error) {
+      throw Exception('Error in repository during Google sign-in: $error');
+    }
+  }
+
 
 }

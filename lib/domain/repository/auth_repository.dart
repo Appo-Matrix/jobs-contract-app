@@ -1,5 +1,7 @@
  import '../../data/models/auth/foget_pass_res.dart';
 import '../../data/models/auth/forget_pass_req.dart';
+import '../../data/models/auth/google_sigin_res.dart';
+import '../../data/models/auth/google_signin_req.dart';
 import '../../data/models/auth/login_req.dart';
 import '../../data/models/auth/login_res.dart';
 import '../../data/models/auth/register_user_req.dart';
@@ -24,6 +26,8 @@ abstract class AuthRepository {
   Future<SendOtpEmailResponse> sendOtpEmail(SendOtpEmailRequest request);
 
   Future<SendOtpSmsResponse> sendOtpSms(SendOtpSmsRequest request);
+
+  Future<GoogleSignInResponse> signInWithGoogle(GoogleSignInRequest request);
 
 
 }

@@ -4,6 +4,8 @@ import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/auth/foget_pass_res.dart';
 import '../../models/auth/forget_pass_req.dart';
+import '../../models/auth/google_sigin_res.dart';
+import '../../models/auth/google_signin_req.dart';
 import '../../models/auth/login_req.dart';
 import '../../models/auth/login_res.dart';
 import '../../models/auth/register_user_req.dart';
@@ -156,6 +158,22 @@ class AuthRemoteDataSource{
       );
     }
   }
+  @override
+  Future<GoogleSignInResponse> signInWithGoogle(GoogleSignInRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.googleSignIn,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      return GoogleSignInResponse.fromJson(response.data);
+    } else if (response.statusCode == 400 || response.statusCode == 500) {
+      throw Exception('Google sign-in failed: ${response.data['message'] ?? 'Unknown error'}');
+    } else {
+      throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
 
 
 }
