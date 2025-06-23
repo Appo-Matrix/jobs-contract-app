@@ -7,6 +7,7 @@ import '../data_source/remote/user_rds.dart';
 import '../models/user/delete_resume_res.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
+import '../models/user/user_talent_res.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteDataSource remoteDataSource= UserRemoteDataSource();
@@ -38,6 +39,15 @@ class UserRepositoryImpl implements UserRepository {
     } catch(e){
       throw Exception('Error in repository during profile updation: $e');
 
+    }
+  }
+
+  @override
+  Future<TalentListResponse> getTalents({int page = 1, int limit = 10}) async {
+    try {
+      return await remoteDataSource.getTalents(page: page, limit: limit);
+    } catch (e) {
+      throw Exception("Repository error while fetching talents: $e");
     }
   }
 

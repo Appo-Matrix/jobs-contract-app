@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get_connect/http/src/multipart/form_data.dart';
 import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 
@@ -7,6 +8,7 @@ import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/update_user_profile_req.dart';
 import '../../models/user/update_user_profile_res.dart';
+import '../../models/user/user_talent_res.dart';
 
 class UserRemoteDataSource {
 
@@ -80,5 +82,29 @@ class UserRemoteDataSource {
       throw Exception("Error updating profile: $e");
     }
   }
+
+  Future<TalentListResponse> getTalents({int page = 1, int limit = 10}) async {
+    try {
+      final response = await apiClient.get(
+        ApiPath.getTalents,
+        queryParameters: {
+          "page": page,
+          "limit": limit,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return TalentListResponse.fromJson(response.data);
+      } else if (response.statusCode == 500) {
+        throw Exception("Server error occurred");
+      } else {
+        throw Exception("Failed to load talents: ${response.statusMessage}");
+      }
+    } catch (error) {
+      debugPrint('getTalents error: $error');
+      throw Exception("Unexpected error: $error");
+    }
+  }
+
 }
 
