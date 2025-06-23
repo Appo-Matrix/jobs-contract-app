@@ -1,7 +1,12 @@
+import 'package:get/get_connect/http/src/multipart/form_data.dart';
+import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
+
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
+import '../../models/user/update_user_profile_req.dart';
+import '../../models/user/update_user_profile_res.dart';
 
 class UserRemoteDataSource {
 
@@ -46,4 +51,34 @@ class UserRemoteDataSource {
       throw Exception('Failed to delete user: $error');
     }
   }
+
+  Future<UpdateUserProfileResponse> updateUserProfile(
+      String userId,
+      UpdateUserProfileRequest request,
+      ) async {
+
+
+    try {
+
+      final response = await apiClient.put(endpoint: ApiPath.updateUserProfile(userId),
+      data: request.toJson(),
+      );
+
+
+      if (response.statusCode == 200) {
+        return UpdateUserProfileResponse.fromJson(response.data);
+      } else if (response.statusCode == 400) {
+        throw Exception("Invalid request data");
+      } else if (response.statusCode == 401) {
+        throw Exception("Unauthorized");
+      } else if (response.statusCode == 404) {
+        throw Exception("User not found");
+      } else {
+        throw Exception("Unexpected error: ${response.statusCode}");
+      }
+    } catch (e) {
+      throw Exception("Error updating profile: $e");
+    }
+  }
 }
+
