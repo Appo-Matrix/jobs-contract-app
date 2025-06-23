@@ -16,5 +16,6 @@ class ApiPath{
   // User
   static String deleteResume = "/users/delete-resume";
   static const String deleteUser = "/users"; // will use /users/{userId}
+  static String updateUserProfile(String userId) => "/users/$userId";
 
 }

@@ -5,6 +5,8 @@ import 'package:job_contracts/data/models/user/delete_user_res.dart';
 import '../../domain/repository/user_repository.dart';
 import '../data_source/remote/user_rds.dart';
 import '../models/user/delete_resume_res.dart';
+import '../models/user/update_user_profile_req.dart';
+import '../models/user/update_user_profile_res.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserRemoteDataSource remoteDataSource= UserRemoteDataSource();
@@ -25,6 +27,16 @@ class UserRepositoryImpl implements UserRepository {
       return await remoteDataSource.deleteUser(userId);
     }catch(e){
       throw Exception('Error in repository during user deletion: $e');
+
+    }
+  }
+
+  @override
+  Future<UpdateUserProfileResponse> updateUserProfile(String userId, UpdateUserProfileRequest request,) async {
+    try {
+      return await remoteDataSource.updateUserProfile(userId, request);
+    } catch(e){
+      throw Exception('Error in repository during profile updation: $e');
 
     }
   }
