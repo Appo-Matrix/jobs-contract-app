@@ -12,4 +12,8 @@ class ApiPath{
   static String sendOtpSms = "/users/send-otp-sms";
   static String googleSignIn = "/auth/google";
   static String updatePassword = "/users/update-password";
+
+  // User
+  static String deleteResume = "/users/delete-resume";
+
 }
