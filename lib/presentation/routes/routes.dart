@@ -53,6 +53,7 @@ enum Routes {
   adDetailsScreen,
   forgetPasswordOtpScreen,
   proposalScreen,
+  bottomNav,
   financeReportScreen,
   withdrawalScreen,
   deliverContractScreen, companySignupScreen, emailVerificationScreen, contractorSignupScreen
