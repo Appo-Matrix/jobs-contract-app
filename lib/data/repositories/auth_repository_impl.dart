@@ -8,6 +8,7 @@ import 'package:job_contracts/data/models/auth/send_otp_email_req.dart';
 import 'package:job_contracts/data/models/auth/send_otp_email_res.dart';
 
 import '../../domain/repository/auth_repository.dart';
+import '../data_source/remote/auth_rds.dart';
 import '../models/auth/google_sigin_res.dart';
 import '../models/auth/google_signin_req.dart';
 import '../models/auth/login_req.dart';
