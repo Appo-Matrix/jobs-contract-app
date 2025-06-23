@@ -18,6 +18,8 @@ class ApiPath{
   static const String deleteUser = "/users"; // will use /users/{userId}
   static String updateUserProfile(String userId) => "/users/$userId";
   static const String getTalents = "/users/talent";
+  static const String getHiredTalents = "/users/hired-talent";
+
 
 
 }

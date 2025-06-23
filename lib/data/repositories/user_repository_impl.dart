@@ -7,6 +7,7 @@ import '../data_source/remote/user_rds.dart';
 import '../models/user/delete_resume_res.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
+import '../models/user/user_hired_talent_res.dart';
 import '../models/user/user_talent_res.dart';
 
 class UserRepositoryImpl implements UserRepository {
@@ -48,6 +49,15 @@ class UserRepositoryImpl implements UserRepository {
       return await remoteDataSource.getTalents(page: page, limit: limit);
     } catch (e) {
       throw Exception("Repository error while fetching talents: $e");
+    }
+  }
+
+  @override
+  Future<HiredTalentListResponse> getHiredTalents({int page = 1, int limit = 10}) async {
+    try {
+      return await remoteDataSource.getHiredTalents(page: page, limit: limit);
+    } catch (e) {
+      throw Exception("Repository error while fetching hired talents: $e");
     }
   }
 

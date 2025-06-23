@@ -8,6 +8,7 @@ import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/update_user_profile_req.dart';
 import '../../models/user/update_user_profile_res.dart';
+import '../../models/user/user_hired_talent_res.dart';
 import '../../models/user/user_talent_res.dart';
 
 class UserRemoteDataSource {
@@ -105,6 +106,32 @@ class UserRemoteDataSource {
       throw Exception("Unexpected error: $error");
     }
   }
+
+  Future<HiredTalentListResponse> getHiredTalents({int page = 1, int limit = 10}) async {
+    try {
+      final response = await apiClient.get(
+        ApiPath.getHiredTalents,
+        queryParameters: {
+          "page": page,
+          "limit": limit,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return HiredTalentListResponse.fromJson(response.data);
+      } else if (response.statusCode == 401) {
+        throw Exception("Unauthorized access");
+      } else if (response.statusCode == 500) {
+        throw Exception("Server error. Please try again later.");
+      } else {
+        throw Exception("Failed with status: ${response.statusMessage}");
+      }
+    } catch (error) {
+      debugPrint("getHiredTalents error: $error");
+      throw Exception("Unexpected error: $error");
+    }
+  }
+
 
 }
 
