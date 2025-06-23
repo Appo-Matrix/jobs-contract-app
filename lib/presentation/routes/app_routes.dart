@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/screens/forget_password/forget_password_screen.dart';
 import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
+
 import 'package:job_contracts/presentation/routes/routes.dart';
 
 import '../features/auth/screens/Login/login_screen.dart';
@@ -33,6 +34,7 @@ import '../features/users/account_screen/preference_screen.dart';
 import '../features/users/account_screen/profile_information_screen.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 
+import '../features/users/bottom_nav/bottom_nav_bar.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_active_screen.dart';
 import '../features/users/contract/contact_detail_screens/contract_detail_screen.dart';
@@ -364,6 +366,12 @@ class AppRouter {
         name: Routes.contractorSignupScreen.name,
         builder: (context, state) => ContractorSignupScreen(),
       ),
+
+      GoRoute(
+        path: '/bottomNav',
+        name: Routes.bottomNav.name,
+        builder: (context, state) => const BottomNavBar(),
+      )
 
     ],
   );

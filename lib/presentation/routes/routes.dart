@@ -1,5 +1,6 @@
 enum Routes {
   onboardingScreen,
+  startScreen,
   homeScreen,
   navigationMenu,
   resetPasswordScreen,
