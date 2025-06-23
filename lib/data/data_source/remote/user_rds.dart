@@ -4,6 +4,7 @@ import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+import '../../models/user/contractor_by_speciality_res.dart';
 import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/update_user_profile_req.dart';
@@ -129,6 +130,30 @@ class UserRemoteDataSource {
     } catch (error) {
       debugPrint("getHiredTalents error: $error");
       throw Exception("Unexpected error: $error");
+    }
+  }
+
+  Future<ContractorBySpecialityResponse> getContractorsBySpeciality({
+    required String speciality,
+    int page = 1,
+    int limit = 10,
+  }) async {
+    final response = await apiClient.get(
+      ApiPath.contractorsBySpeciality(speciality),
+      queryParameters: {
+        'page': page,
+        'limit': limit,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return ContractorBySpecialityResponse.fromJson(response.data);
+    } else if (response.statusCode == 400) {
+      throw Exception(response.data['message'] ?? 'Invalid speciality');
+    } else if (response.statusCode == 500) {
+      throw Exception(response.data['error'] ?? 'Server error');
+    } else {
+      throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
 

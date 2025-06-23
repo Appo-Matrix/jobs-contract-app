@@ -4,6 +4,7 @@ import 'package:job_contracts/data/models/user/delete_user_res.dart';
 
 import '../../domain/repository/user_repository.dart';
 import '../data_source/remote/user_rds.dart';
+import '../models/user/contractor_by_speciality_res.dart';
 import '../models/user/delete_resume_res.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
@@ -58,6 +59,23 @@ class UserRepositoryImpl implements UserRepository {
       return await remoteDataSource.getHiredTalents(page: page, limit: limit);
     } catch (e) {
       throw Exception("Repository error while fetching hired talents: $e");
+    }
+  }
+
+  @override
+  Future<ContractorBySpecialityResponse> getContractorsBySpeciality({
+    required String speciality,
+    int page = 1,
+    int limit = 10,
+  }) async {
+    try {
+      return await remoteDataSource.getContractorsBySpeciality(
+        speciality: speciality,
+        page: page,
+        limit: limit,
+      );
+    } catch (e) {
+      throw Exception('Error in repository while fetching contractors: $e');
     }
   }
 
