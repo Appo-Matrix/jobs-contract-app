@@ -5,5 +5,5 @@ class ApiPath{
 
   //Auth
   static String login = "/auth/login";
-  static String loginWithPhone = "/auth/login-phone";
+  static String forgotPassword = "/auth/forgot-password";
 }

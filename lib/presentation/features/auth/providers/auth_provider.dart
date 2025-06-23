@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:job_contracts/data/models/auth/forget_pass_req.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
@@ -15,6 +16,7 @@ class AuthProvider with ChangeNotifier{
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
 
   bool _isLoading = false;
 
@@ -80,6 +82,51 @@ class AuthProvider with ChangeNotifier{
     }
 
     resetInputField();
+  }
+
+  Future<void> forgetPassword(BuildContext context) async {
+    if (emailController.text.isEmpty || !_isValidEmail(emailController.text)) {
+      _errorMessage = 'Please enter a valid email';
+      Fluttertoast.showToast(
+          msg: _errorMessage,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          textColor: Colors.white,
+          fontSize: 16.0);
+
+      notifyListeners();
+      return;
+    }
+    context.loaderOverlay.show();
+    _isLoading = true;
+    _errorMessage = '';
+    notifyListeners();
+
+    try {
+      final forgetPassRequest = ForgotPasswordRequest(email: emailController.text);
+      final response = await authRepository.forgotPassword(forgetPassRequest);
+
+
+    } catch (error) {
+      _errorMessage = 'Error: $error';
+      Fluttertoast.showToast(
+          msg: 'Something went wrong => Error: $error',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          textColor: JAppColors.white,
+          fontSize: 16.0);
+    } finally {
+      // ignore: use_build_context_synchronously
+      context.loaderOverlay.hide();
+      _isLoading = false;
+      notifyListeners();
+    }
+
+    resetInputField();
+
+
   }
 
   bool _isValidEmail(String email) {
