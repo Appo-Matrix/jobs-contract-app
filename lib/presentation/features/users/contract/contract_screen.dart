@@ -68,26 +68,7 @@ class _ContractsScreenState extends State<ContractsScreen>
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
           ),
         ).tr(),
-        leadingIcon: GestureDetector(
-          onTap: () => {scaffoldKey.currentState?.openDrawer()},
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircularAvatar(
-              isDark: isDark,
-              radius: 20,
-              imageUrl: JImages.image,
-              // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert,
-                color:
-                    isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
-            onPressed: () {},
-          ),
-        ],
+
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,8 +126,8 @@ class _ContractsScreenState extends State<ContractsScreen>
                 tabAlignment: TabAlignment.start,
                 // Explicitly set alignment to start
                 indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: JAppColors.primary,
+                  borderRadius: BorderRadius.circular(5),
+                  color: JAppColors.primary.withValues(alpha: 0.9),
                 ),
                 indicatorSize: TabBarIndicatorSize.tab,
                 labelColor: Colors.white,

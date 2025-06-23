@@ -47,7 +47,7 @@ class AccountWidgetContainer extends StatelessWidget {
                 Text(
                   title,
                   overflow: TextOverflow.ellipsis,
-                  style: AppTextStyle.dmSans(
+                  style: AppTextStyle.onest(
                     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                     fontSize: JSizes.fontSizeMd,
                     weight: FontWeight.w500,
@@ -68,7 +68,7 @@ class AccountWidgetContainer extends StatelessWidget {
                     subTitle!,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
-                    style: AppTextStyle.dmSans(
+                    style: AppTextStyle.onest(
                       color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray500,
                       fontSize: JSizes.fontSizeEaSm,
                       weight: FontWeight.w400,

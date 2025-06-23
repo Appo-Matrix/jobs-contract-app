@@ -384,7 +384,6 @@
   "seeLess": "See Less",
   "recommendedForYou": "Recommended for you",
   "recentPotJob": "Recently Posted Jobs",
-  "changeTheme": "Change Theme",
   "helpAndSupport": "Help & Support",
   "upgrade": "Upgrade",
   "proposal": "My Proposal",
@@ -508,7 +507,9 @@
   "posted": "Posted",
   "User Type": "User Type",
   "client": "Client",
-
+  "theme": "Theme",
+  "changeTheme": "Change Theme",
+  "changeYourTheme": "Change your theme",
   "logo": "Logo",
   "signUpAsCompany": "Sign Up as a Construction/Real Estate Company",
   "uploadCompanyLogo": "Upload Company Logo",
@@ -522,6 +523,7 @@
   "websiteHint": "https://yourcompany.com",
   "photoLibrary": "Photo Library",
   "camera": "Camera",
+  "preferredServiceType": "Preferred service type (Optional)",
   "fieldRequired": "is required",
   "invalidWebsite": "Please enter a valid website URL",
   "acceptTermsError": "Please accept Terms & Conditions",
@@ -548,6 +550,7 @@
     "inspectionServices": "Inspection Services",
     "other": "Other"
   },
+  "enterHere": "Enter here",
   "experienceRanges": {
     "oneToThree": "1-3 years",
     "fourToSeven": "4-7 years",
@@ -576,5 +579,7 @@
   "verificationSuccessful": "Email verified successfully!",
   "pleaseEnterCompleteCode": "Please enter the complete verification code",
   "verifyYourEmail": "Verify Your Email",
-  "pleaseEnterCodeSentOnMail": "Please enter the verification code sent to your email address"
+  "pleaseEnterCodeSentOnMail": "Please enter the verification code sent to your email address",
+  "verification": "Verification",
+  "verifyYourAccount": "Verify your account"
 }

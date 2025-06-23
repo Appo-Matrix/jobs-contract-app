@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -38,8 +39,13 @@ class ActiveContractsPage extends StatelessWidget {
             itemCount: 3,
             itemBuilder: (context, index) {
               return ContractCard(
-                onSendMessagePressed: (){},
-                onSubmitWorkPressed: (){},
+                onSendMessagePressed: (){
+
+                },
+                onSubmitWorkPressed: (){
+                  AppRouter.router.push('/contractDetailScreen');
+
+                },
                 status: 'Active',
                 name: 'Amélie Laurent',
                 jobTitle: 'Architects Construction Specialist',

@@ -178,7 +178,6 @@ class _ProposalCardState extends State<ProposalCard> {
           EmployerProfileWidget(
             employerName: 'Tech Solutions Inc.',
             location: 'San Francisco, CA',
-            postedTime: '2 hours ago',
             employerImage: JImages.image, // or 'assets/images/employer1.png'
             isVerified: true,
             isDark: false,

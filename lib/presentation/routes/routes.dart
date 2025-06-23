@@ -54,5 +54,5 @@ enum Routes {
   proposalScreen,
   financeReportScreen,
   withdrawalScreen,
-  deliverContractScreen, companySignupScreen, emailVerificationScreen
+  deliverContractScreen, companySignupScreen, emailVerificationScreen, contractorSignupScreen
 }

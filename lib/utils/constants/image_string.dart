@@ -21,6 +21,8 @@ class JImages {
   static const String image1 = "assets/images/immjasda3.png";
   static const String image2 = "assets/images/onboarding2.png";
   static const String image3 = "assets/images/onboarding3a.png";
+  static const String nightmode = "assets/icons/nightmode.png";
+  static const String drawer = "assets/svg/drawer.svg";
 
 
   ////KYC Icons

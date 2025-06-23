@@ -77,7 +77,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
         ),
         title: Text(
           'pageTitle',
-          style: AppTextStyle.dmSans(
+          style: AppTextStyle.onest(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
@@ -94,7 +94,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                 children: [
                   Text(
                     'jobTitle',
-                    style: AppTextStyle.dmSans(
+                    style: AppTextStyle.onest(
                       color: isDark
                           ? JAppColors.lightGray100
                           : JAppColors.lightGray900,
@@ -105,7 +105,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                   const SizedBox(height: 4),
                   Text(
                     'companyDetails',
-                    style: AppTextStyle.dmSans(
+                    style: AppTextStyle.onest(
                       color: isDark
                           ? JAppColors.darkGray300
                           : JAppColors.lightGray700,
@@ -120,7 +120,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                   // Cover Letter Section
                   Text(
                     'coverLetterTitle',
-                    style: AppTextStyle.dmSans(
+                    style: AppTextStyle.onest(
                       color: isDark
                           ? JAppColors.darkGray100
                           : JAppColors.lightGray900,

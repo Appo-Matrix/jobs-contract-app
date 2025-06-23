@@ -72,7 +72,7 @@ class BestMatchesPage extends StatelessWidget {
       ),
       JobPosting(
         jobTitle: "Site Supervisor",
-        description: "Oversee daily operations on construction sites.",
+        description: "Oversee daily operations on  d beautiful interior spaces for homes and offices.Create functional and beautiful interio d beautiful interior spaces for homes and offices.Create functional and beautiful interio d beautiful interior spaces for homes and offices.Create functional and beautiful interioconstruction sites.",
         salary: "\$30,000 - \$40,000",
         category: "Supervision",
         jobType: "Onsite",

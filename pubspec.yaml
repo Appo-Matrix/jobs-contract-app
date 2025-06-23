@@ -30,7 +30,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
 
   url_launcher: ^6.1.12
-  intl: ^0.19.0
+  intl: ^0.20.2
   logger: ^2.0.1
   flutter_native_splash: ^2.4.4
   easy_localization: ^3.0.7
@@ -54,6 +54,7 @@ dependencies:
   flutter_localization: ^0.3.2
   another_flushbar: ^1.12.30
   fluttertoast: ^8.2.12
+  country_code_picker: ^3.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -98,6 +99,19 @@ flutter:
         - asset: assets/fonts/dm_sans/DMSans-ExtraLight.ttf
           weight: 700
         - asset: assets/fonts/dm_sans/DMSans-ExtraLightItalic.ttf
+          weight: 900
+
+    - family: Onest
+      fonts:
+        - asset: assets/fonts/onest/Onest-Black.ttf
+          weight: 400
+        - asset: assets/fonts/onest/Onest-Black.ttf
+          weight: 500
+        - asset: assets/fonts/onest/Onest-Black.ttf
+          weight: 600
+        - asset: assets/fonts/onest/Onest-Black.ttf
+          weight: 700
+        - asset: assets/fonts/onest/Onest-Black.ttf
           weight: 900
 
 

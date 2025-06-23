@@ -11,6 +11,7 @@ import '../features/auth/screens/forget_password/reset_password.dart';
 import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
 import '../features/auth/screens/profile/profile_detail.dart';
 import '../features/auth/screens/signup/company_signup_screen.dart';
+import '../features/auth/screens/signup/contractor_signup_screen.dart';
 import '../features/auth/screens/signup/email_verification_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/success/model/success_screen_args.dart';
@@ -357,6 +358,11 @@ class AppRouter {
         path: '/emailVerificationScreen',
         name: Routes.emailVerificationScreen.name,
         builder: (context, state) => EmailVerificationScreen(),
+      ),
+      GoRoute(
+        path: '/contractorSignupScreen',
+        name: Routes.contractorSignupScreen.name,
+        builder: (context, state) => ContractorSignupScreen(),
       ),
 
     ],

@@ -168,26 +168,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 text_fontweight: FontWeight.w600,
                 image_value: false,
                 onTap: () {
-                  JDeviceUtils.hideKeyBoard(context);
-                  final emailError = validateRequired(emailController.text);
-                  final passwordError =
-                      validateRequired(passwordController.text);
-                  // Messages.flashBarErrorMessage( 'login button pressed',context);
-                  if (emailError != null || passwordError != null) {
-                    // Show error message if validation fails
-                    Messages.flashBarErrorMessage(
-                        'Please fill all required fields', context);
-                  } else {
-                    Map data = {
-                      "email": "shoaib.sahirrr@gmail.com",
-                      "password": "securePassword123"
-                    };
 
-                    // Proceed with login if validation passes
-                    Messages.flashBarErrorMessage(
-                        'login button pressed', context);
-                    AppRouter.router.push('/navigationMenu');
-                  }
+                  AppRouter.router.push('/navigationMenu');
+
+                  // JDeviceUtils.hideKeyBoard(context);
+                  // final emailError = validateRequired(emailController.text);
+                  // final passwordError =
+                  //     validateRequired(passwordController.text);
+                  // // Messages.flashBarErrorMessage( 'login button pressed',context);
+                  // if (emailError != null || passwordError != null) {
+                  //   // Show error message if validation fails
+                  //   Messages.flashBarErrorMessage(
+                  //       'Please fill all required fields', context);
+                  // } else {
+                  //   Map data = {
+                  //     "email": "shoaib.sahirrr@gmail.com",
+                  //     "password": "securePassword123"
+                  //   };
+                  //
+                  //   // Proceed with login if validation passes
+                  //   Messages.flashBarErrorMessage(
+                  //       'login button pressed', context);
+                  //   AppRouter.router.push('/navigationMenu');
+                  // }
                   // AppRouter.router.push('/navigationMenu');
                 },
                 btn_boarder_color: JAppColors.primary,

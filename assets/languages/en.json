@@ -76,6 +76,9 @@
   "addCreditTitle": "Add your credit & debit cards",
   "locationTitle": "Locations",
   "preferencesTitle": "Preferences",
+  "theme": "Theme",
+  "changeTheme": "Change Theme",
+  "changeYourTheme": "Change your theme",
   "preferencesTitleDe": "Add Filter for Jobs",
   "locationSubTitle": "Add or remove your delivery locations",
   "accountSettingText": "Update your settings like notifications, payments, profile edit etc.",
@@ -105,6 +108,7 @@
   "resetPasswordDec": "Please type something you'll remember",
   "verifyProfile": "Verify Profile",
   "verifyPhoneNumber": "Verify Phone Number",
+  "enterHere": "Enter here",
   "verifyPhoneNumberDesc": "Ensure your account security and receive important updates by verifying your phone number. Enter the code sent to your mobile to complete the verification process quickly and easily",
   "verifyPaymentMethods": "Verify Payment Methods",
   "verifyPaymentMethod": "Verify Payment Method",
@@ -386,7 +390,6 @@
   "recommendedForYou": "Recommended for you",
   "recentPotJob": "Recently Posted Jobs",
   "message": "Messages",
-  "changeTheme": "Change Theme",
   "helpAndSupport": "Help & Support",
   "upgrade": "Upgrade",
   "proposal": "My Proposal",
@@ -514,6 +517,7 @@
   "businessType": "Business Type",
   "businessTypeHint": "General Construction, Real Estate Development, etc.",
   "countryHint": "United States",
+  "preferredServiceType": "Preferred service type (Optional)",
   "licenseNumber": "License Number (Optional)",
   "licenseNumberHint": "Enter construction/contractor license number",
   "experienceHint": "Select experience range",
@@ -575,6 +579,9 @@
   "verificationSuccessful": "Email verified successfully!",
   "pleaseEnterCompleteCode": "Please enter the complete verification code",
   "verifyYourEmail": "Verify Your Email",
-  "pleaseEnterCodeSentOnMail": "Please enter the verification code sent to your email address"
+  "pleaseEnterCodeSentOnMail": "Please enter the verification code sent to your email address",
 
+
+  "verification": "Verification",
+  "verifyYourAccount": "Verify your account"
 }

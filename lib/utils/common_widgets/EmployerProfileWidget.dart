@@ -10,7 +10,6 @@ import '../constants/image_string.dart';
 class EmployerProfileWidget extends StatelessWidget {
   final String employerName;
   final String location;
-  final String postedTime;
   final String? employerImage;
   final bool isVerified;
   final bool isDark;
@@ -19,7 +18,6 @@ class EmployerProfileWidget extends StatelessWidget {
     super.key,
     required this.employerName,
     required this.location,
-    required this.postedTime,
     this.employerImage,
     this.isVerified = false,
     this.isDark = false,
@@ -28,7 +26,7 @@ class EmployerProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Define colors based on dark mode
-    final textColor = isDark ? Colors.white : const Color(0xFF344054);
+    final textColor = isDark ? Colors.white :  Colors.white ;
     final iconColor = isDark ? JAppColors.lightGray100 : JAppColors.primary;
 
     return
@@ -92,10 +90,10 @@ class EmployerProfileWidget extends StatelessWidget {
               // Employer Name
               Text(
                 employerName,
-                style: AppTextStyle.dmSans(
-                  fontSize: 14.0,
-                  weight: FontWeight.w500,
-                  color: isDark ? Colors.white : JAppColors.lightGray900,
+                style: AppTextStyle.onest(
+                  fontSize: 16.0,
+                  weight: FontWeight.w400,
+                  color: textColor,
                 ),
               ),
               const SizedBox(height: 4),
@@ -116,10 +114,10 @@ class EmployerProfileWidget extends StatelessWidget {
                   const SizedBox(width: 4),
                   Text(
                     location,
-                    style: AppTextStyle.dmSans(
+                    style: AppTextStyle.onest(
                       fontSize: 12.0,
-                      color: textColor.withValues(alpha: 0.8),
-                      weight: FontWeight.w500,
+                      color: textColor,
+                      weight: FontWeight.w400,
                     ),
                   ).tr(),
                   const SizedBox(width: 10),

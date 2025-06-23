@@ -35,14 +35,6 @@ class _VerifyProfileState extends State<VerifyProfile> {
             weight: FontWeight.w600,
           ),
         ),
-        leadingIcon: JCircularAvatar(
-          isDark: isDark,
-          radius: 20, // Modify the radius to make it larger
-          child: Icon(
-            CupertinoIcons.back,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-          ),
-        ),
       ),
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(vertical: 26, horizontal: 16),

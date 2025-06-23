@@ -45,6 +45,7 @@ class _SignupScreenState extends State<SignupScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
@@ -211,17 +212,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 onTap: () {
                   // Pass the selected user type to the next screen or API call
                   print('Signing up as: $selectedUserType');
-                  AppRouter.router.push('/companySignupScreen');
+                  if (selectedUserType.toLowerCase() == 'company') {
+                    AppRouter.router.push('/companySignupScreen');
+                  } else if (selectedUserType.toLowerCase() == 'contractor') {
+                    AppRouter.router.push('/contractorSignupScreen');
+                  }
                 },
                 btn_title: 'next',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
-                btn_boarder_color: Color(0xff7030F1),
+                btn_boarder_color: const Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,
-              ),
-              const SizedBox(height: 12),
+              ),              const SizedBox(height: 12),
 
               /// Create Account
 

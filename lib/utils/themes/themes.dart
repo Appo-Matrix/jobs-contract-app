@@ -15,7 +15,6 @@ class JAppTheme {
   JAppTheme._();
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Domaine Display Narrow',
     disabledColor: JAppColors.darkGray300,
     brightness: Brightness.light,
     primaryColor: JAppColors.primary,
@@ -33,7 +32,6 @@ class JAppTheme {
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    fontFamily: 'Domaine Display Narrow',
     disabledColor: JAppColors.lightGray300,
     brightness: Brightness.dark,
     primaryColor: JAppColors.primary,

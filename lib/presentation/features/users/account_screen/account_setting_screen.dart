@@ -11,6 +11,7 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../home/bottom_sheet/app_bottom_sheets.dart';
 
 class AccountSettingScreen extends StatefulWidget {
   const AccountSettingScreen({super.key});
@@ -29,23 +30,16 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
+
         title: Text(
-          'accountSetting',
-          style: AppTextStyle.dmSans(
+          textAlign: TextAlign.center,
+          'settingsScreenTitle',
+          style: AppTextStyle.onest(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
             fontSize: JSizes.fontSizeLg,
             weight: FontWeight.w600,
           ),
         ).tr(),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
-        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -58,7 +52,7 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               // Account Section
               Text(
                 'accountSettingText',
-                style: AppTextStyle.dmSans(
+                style: AppTextStyle.onest(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
                   fontSize: JSizes.fontSizeMd,
                   weight: FontWeight.w400,
@@ -133,7 +127,7 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
               // Notification Section
               Text(
                 'notifications',
-                style: AppTextStyle.dmSans(
+                style: AppTextStyle.onest(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
@@ -172,8 +166,70 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
 
               // More Section
               Text(
+                'theme',
+                style: AppTextStyle.onest(
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  fontSize: JSizes.fontSizeLg,
+                  weight: FontWeight.w600,
+                  height: 1.5,
+                ),
+              ).tr(),
+              SizedBox(height: 15),
+              InkWell(
+                onTap: (){
+
+                  AppBottomSheets.showThemeBottomSheet(context, isDark);
+                },
+                child: AccountWidgetContainer(
+                  iconsImage: JImages.nightmode,
+                  title: 'changeTheme',
+                  subTitle: 'changeYourTheme',
+                  child: Icon(
+                    size: 20,
+                    Icons.arrow_forward_ios_outlined,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+
+              // More Sect
+              //
+              // ion
+
+              Text(
+                'verification',
+                style: AppTextStyle.onest(
+                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  fontSize: JSizes.fontSizeLg,
+                  weight: FontWeight.w600,
+                  height: 1.5,
+                ),
+              ).tr(),
+              SizedBox(height: 15),
+              InkWell(
+                onTap: (){
+
+                  AppRouter.router.push('/verifyProfile');
+
+                },
+                child: AccountWidgetContainer(
+                  iconsImage: JImages.userIcon,
+                  title: 'verifyYourAccount',
+                  subTitle: 'verifyYourAccount',
+                  child: Icon(
+                    size: 20,
+                    Icons.arrow_forward_ios_outlined,
+                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  ),
+                ),
+              ),
+              SizedBox(height: 15),
+
+
+              Text(
                 'more',
-                style: AppTextStyle.dmSans(
+                style: AppTextStyle.onest(
                   color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: JSizes.fontSizeLg,
                   weight: FontWeight.w600,
