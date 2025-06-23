@@ -101,4 +101,20 @@ class ApiClient {
           statusMessage: 'An unknown error occurred.',
         );
   }
+
+  // ✅ Generic DELETE request
+  Future<Response> delete({
+    required String endpoint,
+    Map<String, dynamic>? data,
+  }) async {
+    try {
+      final response = await _dio.delete(
+        endpoint,
+        data: data,
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
 }
