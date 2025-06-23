@@ -1,11 +1,11 @@
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/user/delete_resume_res.dart';
+import '../../models/user/delete_user_res.dart';
 
 class UserRemoteDataSource {
 
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
-
 
 
   Future<DeleteResumeResponse> deleteResume() async {
@@ -27,6 +27,23 @@ class UserRemoteDataSource {
       }
     } catch (error) {
       throw Exception("Error deleting resume: $error");
+    }
+  }
+
+  // ⛔ DELETE User by ID
+  Future<DeleteUserResponse> deleteUser(String userId) async {
+    try {
+      final response = await apiClient.delete(
+        endpoint: '${ApiPath.deleteUser}/$userId',
+      );
+
+      if (response.statusCode == 200) {
+        return DeleteUserResponse.fromJson(response.data);
+      } else {
+        throw Exception(response.data['message'] ?? 'Failed to delete user');
+      }
+    } catch (error) {
+      throw Exception('Failed to delete user: $error');
     }
   }
 }

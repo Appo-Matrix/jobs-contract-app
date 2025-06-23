@@ -49,4 +49,35 @@ class UserProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> deleteUserById(BuildContext context, String userId) async {
+    context.loaderOverlay.show();
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final response = await userRepository.deleteUser(userId);
+      Fluttertoast.showToast(
+        msg: response.message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    } catch (error) {
+      _errorMessage = 'Error: $error';
+      Fluttertoast.showToast(
+        msg: _errorMessage,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        textColor: Colors.red,
+        fontSize: 16.0,
+      );
+    } finally {
+      context.loaderOverlay.hide();
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
 }
