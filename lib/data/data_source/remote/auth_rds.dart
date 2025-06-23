@@ -6,6 +6,8 @@ import '../../models/auth/foget_pass_res.dart';
 import '../../models/auth/forget_pass_req.dart';
 import '../../models/auth/login_req.dart';
 import '../../models/auth/login_res.dart';
+import '../../models/auth/register_user_req.dart';
+import '../../models/auth/register_user_res.dart';
 
 class AuthRemoteDataSource{
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -64,6 +66,33 @@ class AuthRemoteDataSource{
       throw Exception('Error during forgot password: $error');
     }
   }
+
+
+  Future<RegisterUserResponse> registerUser(RegisterUserRequest request) async {
+    try {
+      final response = await apiClient.post(
+        endpoint: ApiPath.register,
+        data: request.toJson(),
+      );
+
+      if (response.statusCode == 201) {
+        return RegisterUserResponse.fromJson(response.data);
+      } else if (response.statusCode == 400 || response.statusCode == 409) {
+        throw Exception(RegisterUserError.fromJson(response.data).error);
+      } else if (response.statusCode == 500) {
+        final error = RegisterUserError.fromJson(response.data);
+        throw Exception('${error.error}');
+      } else {
+        throw Exception(
+            'Registration failed with status code: ${response.statusCode}');
+      }
+    } catch (error) {
+      debugPrint('Register user error: $error');
+      throw Exception('Error during registration: $error');
+    }
+  }
+
+
 
 
 }
