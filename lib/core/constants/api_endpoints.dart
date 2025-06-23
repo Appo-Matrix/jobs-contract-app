@@ -19,6 +19,7 @@ class ApiPath{
   static String updateUserProfile(String userId) => "/users/$userId";
   static const String getTalents = "/users/talent";
   static const String getHiredTalents = "/users/hired-talent";
+  static String contractorsBySpeciality(String speciality) => "/contractors/$speciality";
 
 
 
