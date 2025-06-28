@@ -12,6 +12,8 @@ import '../models/user/top_performer_res.dart';
 import '../models/user/update_current_user_profile_req.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
+import '../models/user/upload_resume_req.dart';
+import '../models/user/upload_resume_res.dart';
 import '../models/user/user_hired_talent_res.dart';
 import '../models/user/user_talent_res.dart';
 
@@ -129,6 +131,15 @@ class UserRepositoryImpl implements UserRepository {
       return await remoteDataSource.updateCurrentUserProfile(request);
     } catch (e) {
       throw Exception('Error updating current user profile: $e');
+    }
+  }
+
+  @override
+  Future<UploadResumeResponse> uploadResume(UploadResumeRequest request) async {
+    try {
+      return await remoteDataSource.uploadResume(request);
+    } catch (e) {
+      throw Exception('Error uploading resume :$e');
     }
   }
 

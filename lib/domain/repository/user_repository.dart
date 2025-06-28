@@ -8,6 +8,8 @@ import '../../data/models/user/top_performer_res.dart';
 import '../../data/models/user/update_current_user_profile_req.dart';
 import '../../data/models/user/update_user_profile_req.dart';
 import '../../data/models/user/update_user_profile_res.dart';
+import '../../data/models/user/upload_resume_req.dart';
+import '../../data/models/user/upload_resume_res.dart';
 import '../../data/models/user/user_hired_talent_res.dart';
 import '../../data/models/user/user_talent_res.dart';
 
@@ -23,6 +25,7 @@ abstract class UserRepository {
   Future<List<TopPerformer>> getTopPerformers({String timePeriod, int page, int limit,});
   Future<CurrentUser> getCurrentUser();
   Future<CurrentUser> updateCurrentUserProfile(UpdateCurrentUserProfileRequest request);
+  Future<UploadResumeResponse> uploadResume(UploadResumeRequest request);
 
 
 

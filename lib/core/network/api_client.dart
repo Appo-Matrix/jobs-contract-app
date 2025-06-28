@@ -138,4 +138,24 @@ class ApiClient {
     }
   }
 
+  // Multipart POST request (e.g., for file uploads)
+  Future<Response> postMultipart({
+    required String endpoint,
+    required FormData data,
+  }) async {
+    try {
+      final response = await _dio.post(
+        endpoint,
+        data: data,
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
+
+
 }
