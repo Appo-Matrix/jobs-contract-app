@@ -1,5 +1,6 @@
 
 import '../../data/models/user/contractor_by_speciality_res.dart';
+import '../../data/models/user/current_user_res.dart';
 import '../../data/models/user/delete_resume_res.dart';
 import '../../data/models/user/delete_user_res.dart';
 import '../../data/models/user/featured_company_res.dart';
@@ -19,6 +20,8 @@ abstract class UserRepository {
 
   Future<FeaturedCompanyResponse> getFeaturedCompanies({int page, int limit,});
   Future<List<TopPerformer>> getTopPerformers({String timePeriod, int page, int limit,});
+  Future<CurrentUser> getCurrentUser();
+
 
 
 }
