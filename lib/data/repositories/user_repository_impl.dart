@@ -6,6 +6,7 @@ import '../../domain/repository/user_repository.dart';
 import '../data_source/remote/user_rds.dart';
 import '../models/user/contractor_by_speciality_res.dart';
 import '../models/user/delete_resume_res.dart';
+import '../models/user/featured_company_res.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
 import '../models/user/user_hired_talent_res.dart';
@@ -76,6 +77,21 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       throw Exception('Error in repository while fetching contractors: $e');
+    }
+  }
+
+  @override
+  Future<FeaturedCompanyResponse> getFeaturedCompanies({
+    int page = 1,
+    int limit = 10,
+  }) async {
+    try {
+      return await remoteDataSource.getFeaturedCompanies(
+        page: page,
+        limit: limit,
+      );
+    } catch (e) {
+      throw Exception('Error fetching featured companies: $e');
     }
   }
 

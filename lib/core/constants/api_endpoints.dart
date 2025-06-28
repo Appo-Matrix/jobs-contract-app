@@ -20,6 +20,8 @@ class ApiPath{
   static const String getTalents = "/users/talent";
   static const String getHiredTalents = "/users/hired-talent";
   static String contractorsBySpeciality(String speciality) => "/contractors/$speciality";
+  static String getFeaturedCompanies = "/companies/featured";
+
 
 
 
