@@ -24,6 +24,8 @@ class ApiPath{
   static String getTopPerformers = "/users/top-performers";
   static String getCurrentUser = "/users/me";
   static String updateCurrentUserProfile = "/users/me";
+  static const String logout = "/auth/logout";
+
 
 
 

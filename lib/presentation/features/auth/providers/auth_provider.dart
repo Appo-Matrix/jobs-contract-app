@@ -129,6 +129,35 @@ class AuthProvider with ChangeNotifier{
 
   }
 
+  Future<void> logoutUser(BuildContext context) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final success = await authRepository.logout();
+      if (success) {
+        // Clear local storage, navigate to login, etc.
+       // await SecureStorageService.clearAll();
+        Fluttertoast.showToast(
+          msg: "Logout successful",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+        );
+        // Optionally navigate or reset UI
+      }
+    } catch (error) {
+      Fluttertoast.showToast(
+        msg: "Logout error: $error",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
   bool _isValidEmail(String email) {
     return RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
         .hasMatch(email);
