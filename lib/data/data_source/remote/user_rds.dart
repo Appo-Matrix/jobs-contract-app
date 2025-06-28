@@ -8,6 +8,7 @@ import '../../models/user/contractor_by_speciality_res.dart';
 import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/featured_company_res.dart';
+import '../../models/user/top_performer_res.dart';
 import '../../models/user/update_user_profile_req.dart';
 import '../../models/user/update_user_profile_res.dart';
 import '../../models/user/user_hired_talent_res.dart';
@@ -174,6 +175,37 @@ class UserRemoteDataSource {
       return FeaturedCompanyResponse.fromJson(response.data);
     } else if (response.statusCode == 500) {
       throw Exception(response.data['error'] ?? 'Server error');
+    } else {
+      throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
+  Future<List<TopPerformer>> getTopPerformers({
+    String timePeriod = 'all',
+    int page = 1,
+    int limit = 10,
+  }) async {
+    final response = await apiClient.get(
+      ApiPath.getTopPerformers,
+      queryParameters: {
+        'timePeriod': timePeriod,
+        'page': page,
+        'limit': limit,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return (response.data as List)
+          .map((json) => TopPerformer.fromJson(json))
+          .toList();
+    } else if (response.statusCode == 400) {
+      throw Exception(response.data['message'] ?? 'Invalid query parameters');
+    } else if (response.statusCode == 401) {
+      throw Exception(response.data['message'] ?? 'Unauthorized');
+    } else if (response.statusCode == 404) {
+      throw Exception(response.data['message'] ?? 'No professionals found');
+    } else if (response.statusCode == 500) {
+      throw Exception(response.data['message'] ?? 'Server error');
     } else {
       throw Exception('Unexpected error: ${response.statusCode}');
     }

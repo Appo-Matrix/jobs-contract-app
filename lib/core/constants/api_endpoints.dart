@@ -21,6 +21,7 @@ class ApiPath{
   static const String getHiredTalents = "/users/hired-talent";
   static String contractorsBySpeciality(String speciality) => "/contractors/$speciality";
   static String getFeaturedCompanies = "/companies/featured";
+  static String getTopPerformers = "/users/top-performers";
 
 
 
