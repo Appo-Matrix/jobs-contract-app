@@ -1,6 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_connect/http/src/multipart/form_data.dart';
-import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
@@ -13,6 +14,8 @@ import '../../models/user/top_performer_res.dart';
 import '../../models/user/update_current_user_profile_req.dart';
 import '../../models/user/update_user_profile_req.dart';
 import '../../models/user/update_user_profile_res.dart';
+import '../../models/user/upload_resume_req.dart';
+import '../../models/user/upload_resume_res.dart';
 import '../../models/user/user_hired_talent_res.dart';
 import '../../models/user/user_talent_res.dart';
 
@@ -251,6 +254,34 @@ class UserRemoteDataSource {
       throw Exception("Unexpected error: ${response.statusCode}");
     }
   }
+
+// user_remote_data_source.dart
+  Future<UploadResumeResponse> uploadResume(UploadResumeRequest request) async {
+    final formData = FormData.fromMap({
+      'userId': request.userId,
+      'resume': await MultipartFile.fromFile(
+        request.resume.path,
+        filename: request.resume.path.split('/').last,
+      ),
+    });
+
+    final response = await apiClient.postMultipart(
+      endpoint: ApiPath.uploadResume,
+      data: formData,
+    );
+
+    if (response.statusCode == 200) {
+      return UploadResumeResponse.fromJson(response.data);
+    } else if (response.statusCode == 404) {
+      throw Exception('User not found');
+    } else if (response.statusCode == 500) {
+      throw Exception(response.data['message'] ?? 'Server error');
+    } else {
+      throw Exception('Failed to upload resume');
+    }
+  }
+
+
 
 
 
