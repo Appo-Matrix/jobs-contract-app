@@ -117,4 +117,25 @@ class ApiClient {
       return _handleError(e);
     }
   }
+
+  Future<Response> putMultipart({
+    required String endpoint,
+    required FormData data,
+  }) async {
+    try {
+      final response = await _dio.put(
+        endpoint,
+        data: data,
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
+
 }

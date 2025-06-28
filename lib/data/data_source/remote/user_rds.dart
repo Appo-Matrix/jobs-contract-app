@@ -10,6 +10,7 @@ import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/featured_company_res.dart';
 import '../../models/user/top_performer_res.dart';
+import '../../models/user/update_current_user_profile_req.dart';
 import '../../models/user/update_user_profile_req.dart';
 import '../../models/user/update_user_profile_res.dart';
 import '../../models/user/user_hired_talent_res.dart';
@@ -227,6 +228,30 @@ class UserRemoteDataSource {
       throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
+
+  Future<CurrentUser> updateCurrentUserProfile(UpdateCurrentUserProfileRequest request) async {
+    final formData = await request.toFormData();
+
+    final response = await apiClient.putMultipart(
+      endpoint: ApiPath.updateCurrentUserProfile, // like "/users/me"
+      data: formData,
+    );
+
+    if (response.statusCode == 200) {
+      return CurrentUser.fromJson(response.data);
+    } else if (response.statusCode == 400) {
+      throw Exception("Invalid request data");
+    } else if (response.statusCode == 401) {
+      throw Exception("Unauthorized");
+    } else if (response.statusCode == 404) {
+      throw Exception("User not found");
+    } else if (response.statusCode == 500) {
+      throw Exception("Internal server error");
+    } else {
+      throw Exception("Unexpected error: ${response.statusCode}");
+    }
+  }
+
 
 
 

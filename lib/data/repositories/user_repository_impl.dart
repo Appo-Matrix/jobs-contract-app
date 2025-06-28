@@ -9,6 +9,7 @@ import '../models/user/current_user_res.dart';
 import '../models/user/delete_resume_res.dart';
 import '../models/user/featured_company_res.dart';
 import '../models/user/top_performer_res.dart';
+import '../models/user/update_current_user_profile_req.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
 import '../models/user/user_hired_talent_res.dart';
@@ -120,6 +121,14 @@ class UserRepositoryImpl implements UserRepository {
       return await remoteDataSource.getCurrentUser();
     } catch (e) {
       throw Exception('Error fetching current user: $e');
+    }
+  }
+  @override
+  Future<CurrentUser> updateCurrentUserProfile(UpdateCurrentUserProfileRequest request) async {
+    try {
+      return await remoteDataSource.updateCurrentUserProfile(request);
+    } catch (e) {
+      throw Exception('Error updating current user profile: $e');
     }
   }
 
