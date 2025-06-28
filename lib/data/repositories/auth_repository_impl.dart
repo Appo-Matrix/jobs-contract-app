@@ -103,6 +103,15 @@ class AuthRepositoryImpl implements AuthRepository{
     }
   }
 
+  @override
+  Future<bool> logout() async {
+    try {
+      return await authRemoteDataSource.logout();
+    } catch (error) {
+      throw Exception('Error in repository during logout: $error');
+    }
+  }
+
 
 
 }

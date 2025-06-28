@@ -194,6 +194,21 @@ class AuthRemoteDataSource{
       throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
+  Future<bool> logout() async {
+    final response = await apiClient.post(endpoint: ApiPath.logout);
+
+    if (response.statusCode == 200) {
+      return true;
+    } else if (response.statusCode == 401) {
+      throw Exception("Unauthorized: Token missing or invalid.");
+    } else if (response.statusCode == 404) {
+      throw Exception("User not found.");
+    } else if (response.statusCode == 500) {
+      throw Exception("Internal Server Error.");
+    } else {
+      throw Exception("Logout failed with status code: ${response.statusCode}");
+    }
+  }
 
 
 

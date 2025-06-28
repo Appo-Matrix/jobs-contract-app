@@ -33,5 +33,8 @@ abstract class AuthRepository {
 
   Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request);
 
+  Future<bool> logout();
+
+
 
 }
