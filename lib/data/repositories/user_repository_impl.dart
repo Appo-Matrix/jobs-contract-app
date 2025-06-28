@@ -7,6 +7,7 @@ import '../data_source/remote/user_rds.dart';
 import '../models/user/contractor_by_speciality_res.dart';
 import '../models/user/delete_resume_res.dart';
 import '../models/user/featured_company_res.dart';
+import '../models/user/top_performer_res.dart';
 import '../models/user/update_user_profile_req.dart';
 import '../models/user/update_user_profile_res.dart';
 import '../models/user/user_hired_talent_res.dart';
@@ -92,6 +93,23 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       throw Exception('Error fetching featured companies: $e');
+    }
+  }
+
+  @override
+  Future<List<TopPerformer>> getTopPerformers({
+    String timePeriod = 'all',
+    int page = 1,
+    int limit = 10,
+  }) async {
+    try {
+      return await remoteDataSource.getTopPerformers(
+        timePeriod: timePeriod,
+        page: page,
+        limit: limit,
+      );
+    } catch (e) {
+      throw Exception('Error fetching top performers: $e');
     }
   }
 
