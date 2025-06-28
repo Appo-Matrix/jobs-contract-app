@@ -22,6 +22,7 @@ class ApiPath{
   static String contractorsBySpeciality(String speciality) => "/contractors/$speciality";
   static String getFeaturedCompanies = "/companies/featured";
   static String getTopPerformers = "/users/top-performers";
+  static String getCurrentUser = "/users/me";
 
 
 

@@ -5,6 +5,7 @@ import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/user/contractor_by_speciality_res.dart';
+import '../../models/user/current_user_res.dart';
 import '../../models/user/delete_resume_res.dart';
 import '../../models/user/delete_user_res.dart';
 import '../../models/user/featured_company_res.dart';
@@ -210,6 +211,23 @@ class UserRemoteDataSource {
       throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
+
+  Future<CurrentUser> getCurrentUser() async {
+    final response = await apiClient.get(ApiPath.getCurrentUser);
+
+    if (response.statusCode == 200) {
+      return CurrentUser.fromJson(response.data);
+    } else if (response.statusCode == 401) {
+      throw Exception(response.data['error'] ?? 'Unauthorized');
+    } else if (response.statusCode == 404) {
+      throw Exception(response.data['error'] ?? 'User not found');
+    } else if (response.statusCode == 500) {
+      throw Exception(response.data['error'] ?? 'Internal server error');
+    } else {
+      throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
 
 
 }
