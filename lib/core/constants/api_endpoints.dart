@@ -26,6 +26,11 @@ class ApiPath{
   static String updateCurrentUserProfile = "/users/me";
   static const String logout = "/auth/logout";
   static const String uploadResume = "/users/upload-resume";
+  static const String search = "/search";
+  static const String getUserSearches = "/search";
+  static const String removeSearch = "/search/remove";
+
+
 
 
 
