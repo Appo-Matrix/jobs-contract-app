@@ -23,6 +23,8 @@ class ApiPath{
   static String getFeaturedCompanies = "/companies/featured";
   static String getTopPerformers = "/users/top-performers";
   static String getCurrentUser = "/users/me";
+  static String updateCurrentUserProfile = "/users/me";
+
 
 
 
