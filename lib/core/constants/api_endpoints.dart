@@ -63,6 +63,18 @@ class ApiPath{
   static String updateContract(String id) => '/contracts/$id';
   static String updateContractPayment(String contractId) => "/contracts/$contractId/payment";
 
+  // Support Tickets
+  static const String createSupportTicket = "/tickets";
+  static String deleteTicket(String id) => "/tickets/$id";
+  static String getTicketById(String id) => "/tickets/$id";
+  static String updateTicket(String id) => "/tickets/$id";
+  static const String getAllTickets = "/ticket";
+  static const String getUserTickets = "/tickets/user";
+  static String resolveTicket(String id) => "/tickets/$id/resolve";
+
+
+
+
 
 
 
