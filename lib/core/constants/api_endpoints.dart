@@ -26,9 +26,19 @@ class ApiPath{
   static String updateCurrentUserProfile = "/users/me";
   static const String logout = "/auth/logout";
   static const String uploadResume = "/users/upload-resume";
+
+  // Search
   static const String search = "/search";
   static const String getUserSearches = "/search";
   static const String removeSearch = "/search/remove";
+
+  // Certificate
+  static const String addCertificate = "/certificates/add";
+  static String getUserCertificates(String userId) => "/certificates/user/$userId";
+  static String deleteCertificate(String id) => "/certificates/$id";
+  static String updateCertificate(String id) => '/certificates/$id';
+
+
 
 
 
