@@ -38,6 +38,13 @@ class ApiPath{
   static String deleteCertificate(String id) => "/certificates/$id";
   static String updateCertificate(String id) => '/certificates/$id';
 
+  // Chat
+  static const String createChat = '/chats/create';
+  static const String deleteChatByJobId = '/chats'; // + /{jobId}
+  static const String getAllChats = '/chats';
+
+
+
 
 
 
