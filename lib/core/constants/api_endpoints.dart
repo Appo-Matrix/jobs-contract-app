@@ -43,6 +43,26 @@ class ApiPath{
   static const String deleteChatByJobId = '/chats'; // + /{jobId}
   static const String getAllChats = '/chats';
 
+  // Contracts
+  static String activateContract(String contractId) => '/contracts/$contractId/activate';
+  static String cancelContractPath(String contractId) => '/api/contracts/$contractId/cancel';
+  static String completeContract(String contractId) => '/contracts/$contractId/complete';
+  static const String createContract = '/contracts';
+  static String deleteContract(String contractId) => '/contracts/$contractId';
+  static String getContractById(String contractId) => '/contracts/$contractId';
+  static String endContract(String contractId) => '/contracts/end/$contractId';
+  static const String getActiveContracts = '/contracts/active-contracts';
+  static const String getAllContracts = '/contracts';
+  static const String getCanceledContracts = '/contracts/canceled';
+  static const String getCompletedContracts = '/contracts/completed';
+  static String getContractsByJobId(String jobId) => '/contracts/job/$jobId';
+  static String getContractsByUserId(String userId) => '/contracts/user/$userId';
+  static const String getEndedContracts = '/contracts/ended';
+  static String getPausedContracts(String userId) => '/contracts/paused/$userId';
+  static String pauseContract(String contractId) => '/contracts/$contractId/pause';
+  static String updateContract(String id) => '/contracts/$id';
+  static String updateContractPayment(String contractId) => "/contracts/$contractId/payment";
+
 
 
 

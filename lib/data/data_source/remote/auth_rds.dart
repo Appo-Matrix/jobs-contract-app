@@ -121,6 +121,7 @@ class AuthRemoteDataSource{
       );
     }
   }
+
   Future<SendOtpEmailResponse> sendOtpEmail(SendOtpEmailRequest request) async {
     final response = await apiClient.post(
       endpoint: ApiPath.sendOtpEmail,
