@@ -85,6 +85,19 @@ class ApiPath{
   static String getQualificationsByUserId(String userId) => '/qualifications/user/$userId';
   static const String getMyQualifications = '/qualifications/me';
 
+  // Jobs
+  static const String createJob = "/jobs/create";
+  static const String adminMetrics = "/admins/metrics";
+  static String deleteJob(String jobId) => '/jobs/$jobId';
+  static String getJobById(String jobId) => '/jobs/$jobId';
+  static String updateJob(String id) => '/jobs/$id';
+  static String getAllJobs({int page = 1, int limit = 10, String sortBy = 'date', String sortOrder = 'desc'}) =>
+      '/jobs/all?page=$page&limit=$limit&sortBy=$sortBy&sortOrder=$sortOrder';
+
+
+
+
+
 
 
 
