@@ -72,6 +72,12 @@ class ApiPath{
   static const String getUserTickets = "/tickets/user";
   static String resolveTicket(String id) => "/tickets/$id/resolve";
 
+  // Deliveries
+  static const String createDelivery = "/deliveries";
+  static String getDeliveriesByJob(String jobId) => "/deliveries/job/$jobId";
+  static String deleteDeliveryById(String id) => '/deliveries/$id';
+
+
 
 
 
