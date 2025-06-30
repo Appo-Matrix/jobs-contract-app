@@ -77,6 +77,15 @@ class ApiPath{
   static String getDeliveriesByJob(String jobId) => "/deliveries/job/$jobId";
   static String deleteDeliveryById(String id) => '/deliveries/$id';
 
+  // Education
+  static const String addQualification = '/qualifications/add';
+  static String deleteQualification(String eduId) => '/qualifications/$eduId';
+  static String getQualificationById(String eduId) => '/qualifications/$eduId';
+  static String updateQualification(String eduId) => '/qualifications/$eduId';
+  static String getQualificationsByUserId(String userId) => '/qualifications/user/$userId';
+  static const String getMyQualifications = '/qualifications/me';
+
+
 
 
 
