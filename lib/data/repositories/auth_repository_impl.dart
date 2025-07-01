@@ -9,6 +9,7 @@ import 'package:job_contracts/data/models/auth/send_otp_email_res.dart';
 
 import '../../domain/repository/auth_repository.dart';
 import '../data_source/remote/auth_rds.dart';
+import '../models/auth/fcm_token_req.dart';
 import '../models/auth/google_sigin_res.dart';
 import '../models/auth/google_signin_req.dart';
 import '../models/auth/login_req.dart';
@@ -103,6 +104,23 @@ class AuthRepositoryImpl implements AuthRepository{
     }
   }
 
+  @override
+  Future<bool> logout() async {
+    try {
+      return await authRemoteDataSource.logout();
+    } catch (error) {
+      throw Exception('Error in repository during logout: $error');
+    }
+  }
+
+  @override
+  Future<void> registerFcmToken(FcmTokenRequest request) async {
+    try {
+      return await authRemoteDataSource.registerFcmToken(request);
+    } catch (e) {
+      throw Exception('Error registering FCM token: $e');
+    }
+  }
 
 
 }

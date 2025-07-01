@@ -1,4 +1,5 @@
- import '../../data/models/auth/foget_pass_res.dart';
+ import '../../data/models/auth/fcm_token_req.dart';
+import '../../data/models/auth/foget_pass_res.dart';
 import '../../data/models/auth/forget_pass_req.dart';
 import '../../data/models/auth/google_sigin_res.dart';
 import '../../data/models/auth/google_signin_req.dart';
@@ -32,6 +33,12 @@ abstract class AuthRepository {
   Future<GoogleSignInResponse> signInWithGoogle(GoogleSignInRequest request);
 
   Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request);
+
+  Future<bool> logout();
+
+  Future<void> registerFcmToken(FcmTokenRequest request);
+
+
 
 
 }

@@ -101,4 +101,80 @@ class ApiClient {
           statusMessage: 'An unknown error occurred.',
         );
   }
+
+  // ✅ Generic DELETE request
+  Future<Response> delete({
+    required String endpoint,
+    Map<String, dynamic>? data,
+  }) async {
+    try {
+      final response = await _dio.delete(
+        endpoint,
+        data: data,
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  Future<Response> putMultipart({
+    required String endpoint,
+    required FormData data,
+  }) async {
+    try {
+      final response = await _dio.put(
+        endpoint,
+        data: data,
+        options: Options(
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        ),
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  // Multipart POST request (e.g., for file uploads)
+  Future<Response> postMultipart({
+    required String endpoint,
+    required FormData data,
+  }) async {
+    try {
+      final response = await _dio.post(
+        endpoint,
+        data: data,
+        options: Options(
+          contentType: 'multipart/form-data',
+        ),
+      );
+      return response;
+    } on DioException catch (e) {
+      return _handleError(e);
+    }
+  }
+
+  Future<Response> patch(
+      String path, {
+        Map<String, dynamic>? data,
+        Map<String, dynamic>? queryParameters,
+        Options? options,
+      }) async {
+    try {
+      final response = await _dio.patch(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
+      return response;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+
 }

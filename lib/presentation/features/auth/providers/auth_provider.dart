@@ -5,6 +5,7 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../../core/constants/keys/secure_storage_keys.dart';
+import '../../../../data/models/auth/fcm_token_req.dart';
 import '../../../../data/models/auth/login_req.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
 import '../../../../domain/repository/auth_repository.dart';
@@ -129,6 +130,35 @@ class AuthProvider with ChangeNotifier{
 
   }
 
+  Future<void> logoutUser(BuildContext context) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final success = await authRepository.logout();
+      if (success) {
+        // Clear local storage, navigate to login, etc.
+       // await SecureStorageService.clearAll();
+        Fluttertoast.showToast(
+          msg: "Logout successful",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+        );
+        // Optionally navigate or reset UI
+      }
+    } catch (error) {
+      Fluttertoast.showToast(
+        msg: "Logout error: $error",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
   bool _isValidEmail(String email) {
     return RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
         .hasMatch(email);
@@ -144,6 +174,23 @@ class AuthProvider with ChangeNotifier{
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+
+  Future<void> registerToken(String email, String token) async {
+    _isLoading = true;
+    _errorMessage = '';
+    notifyListeners();
+
+    try {
+      final request = FcmTokenRequest(email: email, fcmToken: token);
+      await authRepository.registerFcmToken(request);
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
 }

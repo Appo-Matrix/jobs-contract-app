@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+import '../../models/auth/fcm_token_req.dart';
 import '../../models/auth/foget_pass_res.dart';
 import '../../models/auth/forget_pass_req.dart';
 import '../../models/auth/google_sigin_res.dart';
@@ -121,6 +122,7 @@ class AuthRemoteDataSource{
       );
     }
   }
+
   Future<SendOtpEmailResponse> sendOtpEmail(SendOtpEmailRequest request) async {
     final response = await apiClient.post(
       endpoint: ApiPath.sendOtpEmail,
@@ -194,7 +196,37 @@ class AuthRemoteDataSource{
       throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
+  Future<bool> logout() async {
+    final response = await apiClient.post(endpoint: ApiPath.logout);
 
+    if (response.statusCode == 200) {
+      return true;
+    } else if (response.statusCode == 401) {
+      throw Exception("Unauthorized: Token missing or invalid.");
+    } else if (response.statusCode == 404) {
+      throw Exception("User not found.");
+    } else if (response.statusCode == 500) {
+      throw Exception("Internal Server Error.");
+    } else {
+      throw Exception("Logout failed with status code: ${response.statusCode}");
+    }
+  }
+
+  Future<void> registerFcmToken(FcmTokenRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.registerFcmToken,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      // Token registered successfully
+      return;
+    } else if (response.statusCode == 400) {
+      throw Exception(response.data['message'] ?? 'Missing email or FCM token');
+    } else {
+      throw Exception(response.data['error'] ?? 'Failed to register token');
+    }
+  }
 
 
 
