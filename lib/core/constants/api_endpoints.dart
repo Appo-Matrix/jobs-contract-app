@@ -141,6 +141,14 @@ class ApiPath{
   static String searchUsersByJobPreference(String job) => '/preferences/search?job=$job';
   static const String updateRealEstatePreferences = '/preferences';
 
+  // Languages
+
+  static const String addLanguage = '/languages/';
+  static String updateLanguage(String id) => '/languages/$id';
+  static String deleteLanguage(String id) => '/languages/$id';
+  static String getLanguage(String id) => '/languages/$id';
+  static const String getMyLanguages = '/languages/me';
+
 
 
 
