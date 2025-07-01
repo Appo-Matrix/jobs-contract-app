@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+import '../../models/auth/fcm_token_req.dart';
 import '../../models/auth/foget_pass_res.dart';
 import '../../models/auth/forget_pass_req.dart';
 import '../../models/auth/google_sigin_res.dart';
@@ -211,6 +212,21 @@ class AuthRemoteDataSource{
     }
   }
 
+  Future<void> registerFcmToken(FcmTokenRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.registerFcmToken,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 200) {
+      // Token registered successfully
+      return;
+    } else if (response.statusCode == 400) {
+      throw Exception(response.data['message'] ?? 'Missing email or FCM token');
+    } else {
+      throw Exception(response.data['error'] ?? 'Failed to register token');
+    }
+  }
 
 
 

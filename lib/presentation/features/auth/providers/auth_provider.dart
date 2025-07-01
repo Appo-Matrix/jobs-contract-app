@@ -5,6 +5,7 @@ import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../../core/constants/keys/secure_storage_keys.dart';
+import '../../../../data/models/auth/fcm_token_req.dart';
 import '../../../../data/models/auth/login_req.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
 import '../../../../domain/repository/auth_repository.dart';
@@ -173,6 +174,23 @@ class AuthProvider with ChangeNotifier{
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
+  }
+
+
+  Future<void> registerToken(String email, String token) async {
+    _isLoading = true;
+    _errorMessage = '';
+    notifyListeners();
+
+    try {
+      final request = FcmTokenRequest(email: email, fcmToken: token);
+      await authRepository.registerFcmToken(request);
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
 }

@@ -12,6 +12,8 @@ class ApiPath{
   static String sendOtpSms = "/users/send-otp-sms";
   static String googleSignIn = "/auth/google";
   static String updatePassword = "/users/update-password";
+  static const String registerFcmToken = '/auth/register-token';
+
 
   // User
   static String deleteResume = "/users/delete-resume";
