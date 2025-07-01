@@ -110,6 +110,17 @@ class ApiPath{
   // Email Settings
   static const String updateEmailSettings = '/email-settings/';
 
+  // Feedback
+  static const String submitFeedback = '/feedbacks/add';
+  static const String getAllFeedbacks = '/feedbacks/all';
+  static const String getFeedbackById = '/feedbacks'; // Append /{feedbackId} dynamically
+  static const String getUserFeedbacks = '/feedbacks/user';
+  static String getUserRating(String userId) => '/feedbacks/rating/$userId';
+
+
+
+
+
 
 
 
