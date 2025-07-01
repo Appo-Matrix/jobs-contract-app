@@ -142,12 +142,22 @@ class ApiPath{
   static const String updateRealEstatePreferences = '/preferences';
 
   // Languages
-
   static const String addLanguage = '/languages/';
   static String updateLanguage(String id) => '/languages/$id';
   static String deleteLanguage(String id) => '/languages/$id';
   static String getLanguage(String id) => '/languages/$id';
   static const String getMyLanguages = '/languages/me';
+
+  // Locations
+  static const String addLocation = '/locations/';
+  static String deleteLocation(String userId) => '/locations/$userId';
+  static String getLocationByUserId(String userId) => '/locations/$userId';
+  static String updateLocation(String userId) => '/locations/$userId';
+  static const String getAllLocations = '/locations';
+  static const String getUserLocation = '/locations/me';
+
+
+
 
 
 
