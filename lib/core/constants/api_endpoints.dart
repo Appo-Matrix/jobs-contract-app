@@ -117,6 +117,16 @@ class ApiPath{
   static const String getUserFeedbacks = '/feedbacks/user';
   static String getUserRating(String userId) => '/feedbacks/rating/$userId';
 
+  // Invitations
+  static String acceptInvitation(String id) => '/invitations/$id/accept';
+  static const String sendInvitation = '/invitations/send';
+  static String deleteInvitation(String id) => '/invitations/$id';
+  static const String getInvitationById = '/invitations'; // Will be used like: /invitations/{id}
+  static const String getAllInvitations = '/invitations';
+  static String getInvitationsByJob(String jobId) => '/invitations/job/$jobId';
+  static const String userInvitations = '/invitations/user';
+  static String rejectInvitation(String id) => '/invitations/$id/reject';
+
 
 
 
