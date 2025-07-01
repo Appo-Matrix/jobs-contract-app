@@ -135,6 +135,11 @@ class ApiPath{
   static const String myJobApplications = '/applications/me';
   static const String submitJobApplication = '/applications/apply';
 
+  // Preferences
+  static String deleteJobPreferences(String userId) => '/preferences/$userId';
+  static String getUserPreferences(String userId) => '/preferences/$userId';
+  static String searchUsersByJobPreference(String job) => '/preferences/search?job=$job';
+  static const String updateRealEstatePreferences = '/preferences';
 
 
 
