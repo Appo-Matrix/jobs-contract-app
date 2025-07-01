@@ -107,6 +107,10 @@ class ApiPath{
   static String getUserAds(String userId) => '/ads/user/$userId';
   static String getNearbyAds = '/ads/nearby';
 
+  // Email Settings
+  static const String updateEmailSettings = '/email-settings/';
+
+
 
 
 
