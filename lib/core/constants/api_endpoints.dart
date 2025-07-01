@@ -98,6 +98,20 @@ class ApiPath{
   static const String searchJobs = '/jobs/search';
   static const String reportJob = '/api/jobs/report';
 
+  // Ads
+  static const String createAd = '/ads';
+  static const String getAllAds = '/ads';
+  static String deleteAd(String id) => '/ads/$id';
+  static String getAdById(String id) => '/ads/$id';
+  static String updateAd(String adId) => '/ads/$adId';
+  static String getUserAds(String userId) => '/ads/user/$userId';
+  static String getNearbyAds = '/ads/nearby';
+
+
+
+
+
+
 
 
 
