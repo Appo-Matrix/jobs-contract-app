@@ -163,6 +163,12 @@ class ApiPath{
   static String getMessagesByChatId(String chatId) => '/messages/$chatId';
   static const String markMessageAsRead = '/messages/read';
 
+  // Notifications
+  static const String getNotificationsByUser = '/notifications';
+  static const String unreadNotificationCount = '/notifications/unread-count';
+  static const String markAllNotificationsAsRead = '/notifications/mark-as-read';
+  static const String updateNotificationSettings = '/settings';
+
 
 
 
