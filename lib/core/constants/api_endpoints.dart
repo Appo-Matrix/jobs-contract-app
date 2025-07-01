@@ -156,6 +156,13 @@ class ApiPath{
   static const String getAllLocations = '/locations';
   static const String getUserLocation = '/locations/me';
 
+  // Messages
+  static const String sendMessage = '/messages/';
+  static String deleteMessage(String id) => '/messages/$id';
+  static String updateMessage(String id) => '/messages/$id';
+  static String getMessagesByChatId(String chatId) => '/messages/$chatId';
+  static const String markMessageAsRead = '/messages/read';
+
 
 
 
