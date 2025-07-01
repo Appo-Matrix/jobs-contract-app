@@ -171,6 +171,14 @@ class ApiPath{
   static const String markAllNotificationsAsRead = '/notifications/mark-as-read';
   static const String updateNotificationSettings = '/settings';
 
+  // Offers
+  static String acceptOffer(String offerId) => '/offers/$offerId/accept';
+  static const String sendOffer = '/offers/send';
+  static String deleteOffer(String offerId) => '/offers/$offerId';
+  static String getOfferById(String offerId) => '/offers/$offerId';
+  static String updateOffer(String offerId) => '/offers/$offerId';
+  static const String fetchOffers = '/offers/sent-or-received-offers';
+  static String rejectOffer(String id) => '/offers/$id/reject';
 
 
 
