@@ -127,6 +127,15 @@ class ApiPath{
   static const String userInvitations = '/invitations/user';
   static String rejectInvitation(String id) => '/invitations/$id/reject';
 
+  // Job Applications
+  static String getJobApplicationById(String id) => '/applications/$id';
+  static String deleteJobApplication(String id) => '/applications/$id';
+  static String updateJobApplication(String id) => '/applications/$id';
+  static const String getApplicationsByJobId = '/applications'; // usage: /applications/{jobId}
+  static const String myJobApplications = '/applications/me';
+  static const String submitJobApplication = '/applications/apply';
+
+
 
 
 
