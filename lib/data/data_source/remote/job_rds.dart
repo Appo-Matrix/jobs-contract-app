@@ -2,9 +2,14 @@ import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/jobs/create_job_request.dart';
 import '../../models/jobs/job_detail_model.dart';
+import '../../models/jobs/job_list_item_model.dart';
 import '../../models/jobs/job_metrics_model.dart';
 import '../../models/jobs/job_model.dart';
+import '../../models/jobs/job_report_model.dart';
+import '../../models/jobs/job_search_result_model.dart';
+import '../../models/jobs/matched_job_model.dart';
 import '../../models/jobs/pagination_job_model.dart';
+import '../../models/jobs/recent_job_model.dart';
 
 class JobRemoteDataSource {
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -119,6 +124,91 @@ class JobRemoteDataSource {
         throw Exception(response.data['error'] ?? "Internal server error.");
       default:
         throw Exception("Unexpected error: ${response.statusCode}");
+    }
+  }
+
+  Future<List<JobListItemModel>> getMyPostedJobs() async {
+    final response = await apiClient.get(ApiPath.jobsByUser);
+
+    switch (response.statusCode) {
+      case 200:
+        return List<JobListItemModel>.from(
+          response.data['jobs'].map((x) => JobListItemModel.fromJson(x)),
+        );
+      case 401:
+        throw Exception(response.data['message'] ?? "Unauthorized request.");
+      case 500:
+        throw Exception(response.data['error'] ?? "Internal Server Error");
+      default:
+        throw Exception("Unexpected error: ${response.statusCode}");
+    }
+  }
+
+  Future<List<MatchedJobModel>> getMatchedJobs() async {
+    final response = await apiClient.get( ApiPath.matchingJobs);
+
+    switch (response.statusCode) {
+      case 200:
+        return List<MatchedJobModel>.from(
+          response.data['data'].map((x) => MatchedJobModel.fromJson(x)),
+        );
+      case 401:
+        throw Exception(response.data['message'] ?? "Unauthorized");
+      case 404:
+        throw Exception(response.data['message'] ?? "User not found");
+      case 500:
+        throw Exception(response.data['message'] ?? "Server Error");
+      default:
+        throw Exception("Unexpected error: ${response.statusCode}");
+    }
+  }
+
+  Future<List<RecentJobModel>> getRecentJobs({int page = 1, int limit = 10}) async {
+    final response = await apiClient.get(
+       ApiPath.getRecentJobs(page: page, limit: limit),
+    );
+
+    switch (response.statusCode) {
+      case 200:
+        return List<RecentJobModel>.from(
+          response.data['data'].map((x) => RecentJobModel.fromJson(x)),
+        );
+      case 500:
+        throw Exception(response.data['error'] ?? "Internal Server Error");
+      default:
+        throw Exception("Unexpected error: ${response.statusCode}");
+    }
+  }
+
+  @override
+  Future<List<JobSearchResultModel>> searchJobs(Map<String, String> filters) async {
+    final response = await apiClient.get(ApiPath.searchJobs,queryParameters:filters);
+
+    if (response.statusCode == 200 && response.data['success'] == true) {
+      final List jobs = response.data['data'];
+      return jobs.map((e) => JobSearchResultModel.fromJson(e)).toList();
+    } else {
+      throw Exception(response.data['message'] ?? "Failed to search jobs");
+    }
+  }
+
+  @override
+  Future<JobReportModel> reportJob(JobReportModel report) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.reportJob,
+      data: report.toJson(),
+    );
+
+    switch (response.statusCode) {
+      case 201:
+        return JobReportModel.fromJson(response.data['data']);
+      case 400:
+      case 404:
+        throw Exception(response.data['message']);
+      case 500:
+        throw Exception(response.data['error'] ?? 'Internal server error');
+      default:
+        throw Exception('Unexpected error: ${response.statusCode}');
     }
   }
 }

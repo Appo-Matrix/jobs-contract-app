@@ -5,9 +5,14 @@ import 'package:job_contracts/data/repositories/job_repository_impl.dart';
 
 import '../../../../data/models/jobs/create_job_request.dart';
 import '../../../../data/models/jobs/job_detail_model.dart';
+import '../../../../data/models/jobs/job_list_item_model.dart';
 import '../../../../data/models/jobs/job_metrics_model.dart';
 import '../../../../data/models/jobs/job_model.dart';
+import '../../../../data/models/jobs/job_report_model.dart';
+import '../../../../data/models/jobs/job_search_result_model.dart';
+import '../../../../data/models/jobs/matched_job_model.dart';
 import '../../../../data/models/jobs/pagination_job_model.dart';
+import '../../../../data/models/jobs/recent_job_model.dart';
 import '../../../../domain/repository/job_repository.dart';
 
 class JobProvider with ChangeNotifier {
@@ -30,6 +35,22 @@ class JobProvider with ChangeNotifier {
 
   JobDetailModel? _updatedJob;
   JobDetailModel? get updatedJob => _updatedJob;
+
+  List<JobListItemModel> _jobs = [];
+  List<JobListItemModel> get jobs => _jobs;
+
+  List<MatchedJobModel> _matchedJobs = [];
+  List<MatchedJobModel> get matchedJobs => _matchedJobs;
+
+  List<RecentJobModel> _recentJobs = [];
+  List<RecentJobModel> get recentJobs => _recentJobs;
+
+  List<JobSearchResultModel> _searchResults = [];
+  List<JobSearchResultModel> get searchResults => _searchResults;
+
+
+
+
 
   PaginatedJobsModel? _paginatedJobs;
 
@@ -144,6 +165,85 @@ class JobProvider with ChangeNotifier {
       );
     } catch (e) {
       _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> fetchMyPostedJobs() async {
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      _jobs = await repository.getMyPostedJobs();
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> fetchMatchedJobs() async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _matchedJobs = await repository.getMatchedJobs();
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> fetchRecentJobs({int page = 1, int limit = 10}) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _recentJobs = await repository.getRecentJobs(page: page, limit: limit);
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> searchJobs(Map<String, String> filters) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _searchResults = await repository.searchJobs(filters);
+      _errorMessage = null;
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
+  Future<void> reportJob(JobReportModel report) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final result = await repository.reportJob(report);
+      Fluttertoast.showToast(msg: 'Job reported successfully');
+    } catch (e) {
+      _errorMessage = e.toString();
+      Fluttertoast.showToast(msg: _errorMessage!);
     } finally {
       _isLoading = false;
       notifyListeners();

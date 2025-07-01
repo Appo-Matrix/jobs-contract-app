@@ -91,8 +91,16 @@ class ApiPath{
   static String deleteJob(String jobId) => '/jobs/$jobId';
   static String getJobById(String jobId) => '/jobs/$jobId';
   static String updateJob(String id) => '/jobs/$id';
-  static String getAllJobs({int page = 1, int limit = 10, String sortBy = 'date', String sortOrder = 'desc'}) =>
-      '/jobs/all?page=$page&limit=$limit&sortBy=$sortBy&sortOrder=$sortOrder';
+  static String getAllJobs({int page = 1, int limit = 10, String sortBy = 'date', String sortOrder = 'desc'}) => '/jobs/all?page=$page&limit=$limit&sortBy=$sortBy&sortOrder=$sortOrder';
+  static const String jobsByUser = '/jobs/me';
+  static const String matchingJobs = '/jobs/matching';
+  static String getRecentJobs({int page = 1, int limit = 10}) => '/jobs/recent?page=$page&limit=$limit';
+  static const String searchJobs = '/jobs/search';
+  static const String reportJob = '/api/jobs/report';
+
+
+
+
 
 
 
