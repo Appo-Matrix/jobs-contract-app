@@ -208,6 +208,10 @@ class ApiPath{
   static const String getSavedJobs = '/jobs/saved';
   static const String toggleSaveJob = '/saved-jobs/toggle-save-job';
 
+  // Saved Talents
+  static const String getSavedTalents = '/saved-talents';
+  static const String toggleSaveTalent = '/saved-talents/toggle-save-talent';
+
 
 
 
