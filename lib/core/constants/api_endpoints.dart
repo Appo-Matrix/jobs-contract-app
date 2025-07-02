@@ -180,6 +180,19 @@ class ApiPath{
   static const String fetchOffers = '/offers/sent-or-received-offers';
   static String rejectOffer(String id) => '/offers/$id/reject';
 
+  // Payments
+  static const String addBankAccount = '/api/payment/add-bank-account';
+  static const String addPaymentMethod = '/api/payment/add-payment-method';
+  static const String createPaymentIntent = '/api/create-payment-intent';
+  static String getUserPaymentMethods(String userId) => '/api/payment/user/$userId/methods';
+  static const String processPayment = '/api/payment/pay';
+  static const String setDefaultPaymentMethod = '/api/payment/set-default';
+  static String verifyPaymentMethod(String paymentMethodId) => '/api/payment/verify/$paymentMethodId';
+  static const String stripeWebhook = '/api/payment/webhook';
+  static const String withdrawFunds = '/api/payment/withdraw';
+
+
+
 
 
 
