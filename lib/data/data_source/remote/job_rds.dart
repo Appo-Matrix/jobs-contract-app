@@ -10,6 +10,9 @@ import '../../models/jobs/job_search_result_model.dart';
 import '../../models/jobs/matched_job_model.dart';
 import '../../models/jobs/pagination_job_model.dart';
 import '../../models/jobs/recent_job_model.dart';
+import '../../models/saved_jobs/saved_jobs_model.dart';
+import '../../models/saved_jobs/toggle_saved_jobs_req.dart';
+import '../../models/saved_jobs/toggle_saved_jobs_res.dart';
 
 class JobRemoteDataSource {
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
@@ -207,6 +210,41 @@ class JobRemoteDataSource {
         throw Exception(response.data['message']);
       case 500:
         throw Exception(response.data['error'] ?? 'Internal server error');
+      default:
+        throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
+  Future<List<SavedJobModel>> getSavedJobs() async {
+    final response = await apiClient.get(ApiPath.getSavedJobs);
+
+    switch (response.statusCode) {
+      case 200:
+        final List data = response.data['data'];
+        return data.map((e) => SavedJobModel.fromJson(e)).toList();
+      case 401:
+        throw Exception(response.data['message'] ?? 'Unauthorized');
+      case 500:
+        throw Exception(response.data['error'] ?? 'Internal Server Error');
+      default:
+        throw Exception('Unexpected error: ${response.statusCode}');
+    }
+  }
+
+  Future<ToggleSaveJobResponse> toggleSaveJob(ToggleSaveJobRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.toggleSaveJob,
+      data: request.toJson(),
+    );
+
+    switch (response.statusCode) {
+      case 200:
+      case 201:
+        return ToggleSaveJobResponse.fromJson(response.data);
+      case 400:
+        throw Exception(response.data['message'] ?? 'Validation Error');
+      case 500:
+        throw Exception(response.data['error'] ?? 'Internal Server Error');
       default:
         throw Exception('Unexpected error: ${response.statusCode}');
     }

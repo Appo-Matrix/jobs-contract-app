@@ -171,6 +171,83 @@ class ApiPath{
   static const String markAllNotificationsAsRead = '/notifications/mark-as-read';
   static const String updateNotificationSettings = '/settings';
 
+  // Offers
+  static String acceptOffer(String offerId) => '/offers/$offerId/accept';
+  static const String sendOffer = '/offers/send';
+  static String deleteOffer(String offerId) => '/offers/$offerId';
+  static String getOfferById(String offerId) => '/offers/$offerId';
+  static String updateOffer(String offerId) => '/offers/$offerId';
+  static const String fetchOffers = '/offers/sent-or-received-offers';
+  static String rejectOffer(String id) => '/offers/$id/reject';
+
+  // Payments
+  static const String addBankAccount = '/api/payment/add-bank-account';
+  static const String addPaymentMethod = '/api/payment/add-payment-method';
+  static const String createPaymentIntent = '/api/create-payment-intent';
+  static String getUserPaymentMethods(String userId) => '/api/payment/user/$userId/methods';
+  static const String processPayment = '/api/payment/pay';
+  static const String setDefaultPaymentMethod = '/api/payment/set-default';
+  static String verifyPaymentMethod(String paymentMethodId) => '/api/payment/verify/$paymentMethodId';
+  static const String stripeWebhook = '/api/payment/webhook';
+  static const String withdrawFunds = '/api/payment/withdraw';
+
+  // Portfolios
+  static const String createPortfolio = '/portfolios';
+  static const String getAllPortfolios = '/portfolios';
+  static String deletePortfolio(String id) => '/portfolios/$id';
+  static String getPortfolioById(String id) => '/portfolios/$id';
+  static String updatePortfolio(String id) => '/portfolios/$id';
+
+  // Reported Jobs
+  static const String getAllReportedJobs = '/reports';
+  static String getReportedJobById(String id) => '/reports/$id';
+  static String getUserReports(String userId) => '/reports/users/$userId';
+  static String getReportsByJob(String jobId) => '/reports/$jobId';
+
+  // Saved Jobs
+  static const String getSavedJobs = '/jobs/saved';
+  static const String toggleSaveJob = '/saved-jobs/toggle-save-job';
+
+  // Saved Talents
+  static const String getSavedTalents = '/saved-talents';
+  static const String toggleSaveTalent = '/saved-talents/toggle-save-talent';
+
+  // Skills
+  static const String addSkill = '/skills/add';
+  static const String getAllSkills = '/skills/all';
+  static String getSkillsByUser(String userId) => '/skills/$userId';
+  static String deleteSkill(String skillId) => '/skills/$skillId';
+  static String deleteSkillById(String id) => '/api/skills/$id';
+
+  // Subscription
+  static const String cancelSubscription = '/subscriptions/cancel';
+  static const String startFreeTrial = '/subscription/start-free-trial';
+  static const String upgradeSubscription = '/subscriptions/upgrade';
+
+  // Visitor Analytics
+  static const String visitorAnalytics = '/visitors/analytics';
+
+  // Warnings
+  static const String issueWarning = '/warnings';
+  static String deleteWarning(String id) => '/warnings/$id';
+  static const String getMyWarnings = '/warnings/me';
+  static String getUserWarnings(String userId) => '/warnings/user/$userId';
+
+  // Work Experience
+  static const String addExperience = '/experiences/add';
+  static const String getUserExperiences = '/experiences';
+  static String getExperienceById(String id) => '/experiences/$id';
+  static String deleteExperience(String id) => '/experiences/$id';
+  static String updateExperience(String id) => '/experiences/$id';
+
+
+
+
+
+
+
+
+
 
 
 
