@@ -198,6 +198,14 @@ class ApiPath{
   static String getPortfolioById(String id) => '/portfolios/$id';
   static String updatePortfolio(String id) => '/portfolios/$id';
 
+  // Reported Jobs
+  static const String getAllReportedJobs = '/reports';
+  static String getReportedJobById(String id) => '/reports/$id';
+  static String getUserReports(String userId) => '/reports/users/$userId';
+  static String getReportsByJob(String jobId) => '/reports/$jobId';
+
+
+
 
 
 
