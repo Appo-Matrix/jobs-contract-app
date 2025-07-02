@@ -212,6 +212,15 @@ class ApiPath{
   static const String getSavedTalents = '/saved-talents';
   static const String toggleSaveTalent = '/saved-talents/toggle-save-talent';
 
+  // Skills
+  static const String addSkill = '/skills/add';
+  static const String getAllSkills = '/skills/all';
+  static String getSkillsByUser(String userId) => '/skills/$userId';
+  static String deleteSkill(String skillId) => '/skills/$skillId';
+  static String deleteSkillById(String id) => '/api/skills/$id';
+
+
+
 
 
 
