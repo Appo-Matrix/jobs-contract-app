@@ -8,6 +8,9 @@ import '../../data/models/jobs/job_search_result_model.dart';
 import '../../data/models/jobs/matched_job_model.dart';
 import '../../data/models/jobs/pagination_job_model.dart';
 import '../../data/models/jobs/recent_job_model.dart';
+import '../../data/models/saved_jobs/saved_jobs_model.dart';
+import '../../data/models/saved_jobs/toggle_saved_jobs_req.dart';
+import '../../data/models/saved_jobs/toggle_saved_jobs_res.dart';
 
 abstract class JobRepository {
 
@@ -32,6 +35,11 @@ abstract class JobRepository {
   Future<List<JobSearchResultModel>> searchJobs(Map<String, String> filters);
 
   Future<JobReportModel> reportJob(JobReportModel report);
+
+  Future<List<SavedJobModel>> fetchSavedJobs();
+
+  Future<ToggleSaveJobResponse> toggleJobSaveStatus(ToggleSaveJobRequest request);
+
 
 
 

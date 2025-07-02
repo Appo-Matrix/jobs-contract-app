@@ -204,6 +204,11 @@ class ApiPath{
   static String getUserReports(String userId) => '/reports/users/$userId';
   static String getReportsByJob(String jobId) => '/reports/$jobId';
 
+  // Saved Jobs
+  static const String getSavedJobs = '/jobs/saved';
+  static const String toggleSaveJob = '/saved-jobs/toggle-save-job';
+
+
 
 
 

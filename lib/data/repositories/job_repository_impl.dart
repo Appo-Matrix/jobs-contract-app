@@ -10,6 +10,9 @@ import '../models/jobs/job_search_result_model.dart';
 import '../models/jobs/matched_job_model.dart';
 import '../models/jobs/pagination_job_model.dart';
 import '../models/jobs/recent_job_model.dart';
+import '../models/saved_jobs/saved_jobs_model.dart';
+import '../models/saved_jobs/toggle_saved_jobs_req.dart';
+import '../models/saved_jobs/toggle_saved_jobs_res.dart';
 
 class JobRepositoryImpl implements JobRepository {
   final JobRemoteDataSource remoteDataSource=JobRemoteDataSource();
@@ -98,6 +101,15 @@ class JobRepositoryImpl implements JobRepository {
   }
 
   @override
+  Future<List<SavedJobModel>> fetchSavedJobs() async {
+    try {
+      return await remoteDataSource.getSavedJobs();
+    } catch (e) {
+      throw Exception('Failed to fetch saved jobs: $e');
+    }
+  }
+
+  @override
   Future<List<RecentJobModel>> getRecentJobs({int page = 1, int limit = 10}) async {
     try {
       return await remoteDataSource.getRecentJobs(page: page, limit: limit);
@@ -121,6 +133,15 @@ class JobRepositoryImpl implements JobRepository {
       return await remoteDataSource.reportJob(report);
     } catch (e) {
       throw Exception('Error reporting job: $e');
+    }
+  }
+
+  @override
+  Future<ToggleSaveJobResponse> toggleJobSaveStatus(ToggleSaveJobRequest request) async {
+    try {
+      return await remoteDataSource.toggleSaveJob(request);
+    } catch (e) {
+      throw Exception('Failed to toggle save status: $e');
     }
   }
 }

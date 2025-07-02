@@ -13,6 +13,8 @@ import '../../../../data/models/jobs/job_search_result_model.dart';
 import '../../../../data/models/jobs/matched_job_model.dart';
 import '../../../../data/models/jobs/pagination_job_model.dart';
 import '../../../../data/models/jobs/recent_job_model.dart';
+import '../../../../data/models/saved_jobs/saved_jobs_model.dart';
+import '../../../../data/models/saved_jobs/toggle_saved_jobs_req.dart';
 import '../../../../domain/repository/job_repository.dart';
 
 class JobProvider with ChangeNotifier {
@@ -48,6 +50,9 @@ class JobProvider with ChangeNotifier {
   List<JobSearchResultModel> _searchResults = [];
   List<JobSearchResultModel> get searchResults => _searchResults;
 
+
+  List<SavedJobModel> _savedJobs = [];
+  List<SavedJobModel> get savedJobs => _savedJobs;
 
 
 
@@ -244,6 +249,37 @@ class JobProvider with ChangeNotifier {
     } catch (e) {
       _errorMessage = e.toString();
       Fluttertoast.showToast(msg: _errorMessage!);
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> fetchSavedJobs() async {
+    _isLoading = true;
+    _errorMessage = '';
+    notifyListeners();
+
+    try {
+      _savedJobs = await repository.fetchSavedJobs();
+    } catch (e) {
+      _errorMessage = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> toggleSaveJob(String jobId, String userId) async {
+    _isLoading = true;
+    _errorMessage = '';
+    notifyListeners();
+
+    try {
+      final request = ToggleSaveJobRequest(jobId: jobId, userId: userId);
+      final response = await repository.toggleJobSaveStatus(request);
+    } catch (e) {
+      _errorMessage = e.toString();
     } finally {
       _isLoading = false;
       notifyListeners();
