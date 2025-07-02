@@ -219,6 +219,11 @@ class ApiPath{
   static String deleteSkill(String skillId) => '/skills/$skillId';
   static String deleteSkillById(String id) => '/api/skills/$id';
 
+  // Subscription
+  static const String cancelSubscription = '/subscriptions/cancel';
+  static const String startFreeTrial = '/subscription/start-free-trial';
+  static const String upgradeSubscription = '/subscriptions/upgrade';
+
 
 
 
