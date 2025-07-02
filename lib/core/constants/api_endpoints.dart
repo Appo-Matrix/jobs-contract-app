@@ -224,6 +224,9 @@ class ApiPath{
   static const String startFreeTrial = '/subscription/start-free-trial';
   static const String upgradeSubscription = '/subscriptions/upgrade';
 
+  // Visitor Analytics
+  static const String visitorAnalytics = '/visitors/analytics';
+
 
 
 
