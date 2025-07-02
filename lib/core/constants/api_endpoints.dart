@@ -227,6 +227,13 @@ class ApiPath{
   // Visitor Analytics
   static const String visitorAnalytics = '/visitors/analytics';
 
+  // Warnings
+  static const String issueWarning = '/warnings';
+  static String deleteWarning(String id) => '/warnings/$id';
+  static const String getMyWarnings = '/warnings/me';
+  static String getUserWarnings(String userId) => '/warnings/user/$userId';
+
+
 
 
 
