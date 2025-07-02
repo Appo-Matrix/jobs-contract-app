@@ -191,6 +191,13 @@ class ApiPath{
   static const String stripeWebhook = '/api/payment/webhook';
   static const String withdrawFunds = '/api/payment/withdraw';
 
+  // Portfolios
+  static const String createPortfolio = '/portfolios';
+  static const String getAllPortfolios = '/portfolios';
+  static String deletePortfolio(String id) => '/portfolios/$id';
+  static String getPortfolioById(String id) => '/portfolios/$id';
+  static String updatePortfolio(String id) => '/portfolios/$id';
+
 
 
 
