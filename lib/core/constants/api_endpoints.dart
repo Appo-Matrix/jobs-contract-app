@@ -233,6 +233,14 @@ class ApiPath{
   static const String getMyWarnings = '/warnings/me';
   static String getUserWarnings(String userId) => '/warnings/user/$userId';
 
+  // Work Experience
+  static const String addExperience = '/experiences/add';
+  static const String getUserExperiences = '/experiences';
+  static String getExperienceById(String id) => '/experiences/$id';
+  static String deleteExperience(String id) => '/experiences/$id';
+  static String updateExperience(String id) => '/experiences/$id';
+
+
 
 
 
