@@ -136,6 +136,7 @@ class ApiClient {
     } on DioException catch (e) {
       return _handleError(e);
     }
+
   }
 
   // Multipart POST request (e.g., for file uploads)
