@@ -3,8 +3,11 @@ part of '../di.dart';
 
 void registerNotifiersDi() {
 
- getIt.registerSingleton(AppConfigNotifier());
+ getIt
+  ..registerSingleton(AppConfigNotifier())
+  ..registerSingleton(AuthProvider())
+ ..registerSingleton(RegisterProvider());
 
-  assert(getIt.isRegistered<AuthProvider>());
+
 
 }

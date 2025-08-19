@@ -82,7 +82,7 @@ class AuthProvider with ChangeNotifier{
       notifyListeners();
     }
 
-    resetInputField();
+   // resetInputField();
   }
 
   Future<void> forgetPassword(BuildContext context) async {

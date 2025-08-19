@@ -1,3 +1,5 @@
 part of '../di.dart';
 
-void registerOtherDi() {}
+void registerOtherDi() {
+  getIt.registerSingleton<AuthProvider>(AuthProvider());
+}

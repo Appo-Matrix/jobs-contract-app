@@ -1,6 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:job_contracts/core/constants/global.dart';
+import 'package:job_contracts/presentation/features/auth/providers/register_provider.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
 import 'package:job_contracts/utils/constants/image_string.dart';
@@ -50,6 +54,9 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
 
+
+    final registerProvider = getIt<RegisterProvider>();
+
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkGray900 : Colors.white,
       body: SingleChildScrollView(
@@ -67,7 +74,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 isDark: isDark,
               ),
               TextFieldWidget(
-                subTitle: 'firstName',
+                subTitle: 'Full Name',
+                textEditingController: registerProvider.fullNameController,
+
                 hintText: 'firstNameText',
                 subtitleColor:
                 isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -77,10 +86,22 @@ class _SignupScreenState extends State<SignupScreen> {
                 validator: validateRequired,
               ),
 
+              // SizedBox(height: JSizes.inputFieldRadius),
+              // TextFieldWidget(
+              //   subTitle: 'lastName',
+              //   hintText: 'lastNameText',
+              //   subtitleColor:
+              //   isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              //   titleColor:
+              //   isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              //   isRequired: true,
+              //   validator: validateRequired,
+              // ),
               SizedBox(height: JSizes.inputFieldRadius),
               TextFieldWidget(
-                subTitle: 'lastName',
-                hintText: 'lastNameText',
+                subTitle: 'email',
+                textEditingController: registerProvider.emailController,
+                hintText: 'emailEnter',
                 subtitleColor:
                 isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor:
@@ -89,14 +110,19 @@ class _SignupScreenState extends State<SignupScreen> {
                 validator: validateRequired,
               ),
               SizedBox(height: JSizes.inputFieldRadius),
+
+
               TextFieldWidget(
-                subTitle: 'email',
-                hintText: 'emailEnter',
+                subTitle: 'Phone',
+                hintText: 'Enter your phone',
+                textEditingController: registerProvider.phoneNumberController,
+
                 subtitleColor:
                 isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 titleColor:
                 isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
                 isRequired: true,
+                keyboardType: TextInputType.phone,
                 validator: validateRequired,
               ),
               SizedBox(height: JSizes.inputFieldRadius),
@@ -173,6 +199,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
               TextFieldWidget(
                 subTitle: 'password',
+                textEditingController: registerProvider.passwordController,
+
                 hintText: '*****',
                 subtitleColor:
                 isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
@@ -193,18 +221,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   weight: FontWeight.w500,
                 ),
               ).tr(),
-
-              SizedBox(height: JSizes.inputFieldRadius),
-              TextFieldWidget(
-                subTitle: 'confirmPassword',
-                hintText: '*****',
-                subtitleColor:
-                isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                titleColor:
-                isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                isRequired: true,
-                validator: validateRequired,
-              ),
+              //
+              // SizedBox(height: JSizes.inputFieldRadius),
+              // TextFieldWidget(
+              //   subTitle: 'confirmPassword',
+              //   hintText: '*****',
+              //   subtitleColor:
+              //   isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              //   titleColor:
+              //   isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              //   isRequired: true,
+              //   validator: validateRequired,
+              // ),
 
               const SizedBox(height: 25),
 

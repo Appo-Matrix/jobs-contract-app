@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contracts/presentation/features/auth/providers/auth_provider.dart';
 import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import 'package:job_contracts/utils/constants/colors.dart';
@@ -9,6 +10,7 @@ import 'package:job_contracts/utils/constants/sizes.dart';
 import 'package:job_contracts/utils/constants/text_strings.dart';
 import 'package:job_contracts/utils/messages/messages.dart';
 import 'package:provider/provider.dart';
+import '../../../../../core/constants/global.dart';
 import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
@@ -46,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
-
+      final authProvider =getIt<AuthProvider>();
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
@@ -72,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               TextFieldWidget(
-                textEditingController: emailController,
+                textEditingController: authProvider.emailController,
                 subTitle: 'email',
                 hintText: 'emailEnter',
                 subtitleColor:
@@ -85,7 +87,9 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: JSizes.spaceBtwInputFields),
 
               TextFieldWidget(
-                textEditingController: passwordController,
+
+                textEditingController: authProvider.passwordController,
+
                 subTitle: 'password',
                 hintText: '******',
                 isRequired: true,
@@ -169,8 +173,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 image_value: false,
                 onTap: () {
 
-                  AppRouter.router.push('/navigationMenu');
+                 // AppRouter.router.push('/navigationMenu');
 
+                   authProvider.loginWithEmail(context);
                   // JDeviceUtils.hideKeyBoard(context);
                   // final emailError = validateRequired(emailController.text);
                   // final passwordError =
