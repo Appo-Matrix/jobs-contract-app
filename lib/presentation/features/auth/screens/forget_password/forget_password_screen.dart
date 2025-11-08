@@ -85,7 +85,6 @@ class ForgetPasswordScreen extends StatelessWidget {
         
                   btn_title: 'continue',
                   btn_radius: 10,isDark: isDark,
-                  btn_boarder_color: Color(0xff7030F1),
                   title_color: Colors.white,
                   text_fontweight: FontWeight.w600,
                   image_value: false,

@@ -63,7 +63,6 @@ class SuccessScreen extends StatelessWidget {
                 onTap: args.onButtonTap,
                 btn_title: args.buttonText,
                 btn_radius: 10,
-                btn_boarder_color: JAppColors.primary,
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false, isDark: isDark,

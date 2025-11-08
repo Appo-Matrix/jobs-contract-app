@@ -144,7 +144,6 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                     btn_title: 'uploadPortfolio',
                     btn_radius: 10,
                     btn_color: JAppColors.main,
-                    btn_boarder_color: Color(0xff7030F1),
                     title_color: Colors.white,
                     text_fontweight: FontWeight.w600,
                     image_value: false,
@@ -156,7 +155,6 @@ class _UploadPortfolioScreenState extends State<UploadPortfolioScreen> {
                   btn_title: 'skip',
                   btn_radius: 10,
                   btn_color: Colors.transparent,
-                  btn_boarder_color: Colors.transparent,
                   title_color:
                       isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   text_fontweight: FontWeight.w600,

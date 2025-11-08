@@ -24,7 +24,7 @@ class ContactFirstWidget extends StatelessWidget {
             btn_title: subTitle,
             btn_radius: 8,
             btn_color: JAppColors.primary,
-            btn_boarder_color: Colors.transparent,
+            btn_border_color: Colors.transparent,
             title_color: Colors.white,
             image_value: false,
             text_size: 14,

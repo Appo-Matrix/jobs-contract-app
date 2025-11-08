@@ -581,5 +581,48 @@
   "verifyYourEmail": "Verify Your Email",
   "pleaseEnterCodeSentOnMail": "Please enter the verification code sent to your email address",
   "verification": "Verification",
-  "verifyYourAccount": "Verify your account"
+  "verifyYourAccount": "Verify your account",
+
+  "stepProgress": "Step {} of {}",
+  "selectRole": "Select Role",
+  "selectYourRole": "Select Your Role",
+  "selectRoleSubtitle": "Choose how you want to use our platform",
+
+  "contractorDesc": "Find work opportunities and\nbuild your career",
+
+  "clientDesc": "Hire talented professionals for\nyour projects",
+
+  "companyDesc": "Manage your team and find\nthe best talent",
+
+
+
+  "basicDetails": "Basic Details",
+  "connectAccounts": "Connect Accounts",
+  "termsConditions": "Terms & Conditions",
+  "fillBasicInfo": "Fill in your basic information to get started",
+  "selectedRole": "Selected Role",
+
+
+
+  "// Terms & Privacy Screen": "",
+  "termsAndPrivacy": "Terms & Privacy",
+  "termsAndPrivacySubtitle": "Please review and accept our terms and privacy policy to complete your registration.",
+  "readTerms": "Read Terms of Service",
+  "agreeToPrivacy": "I agree to the Privacy Policy",
+  "privacySubtitle": "Learn how we collect, use, and protect your personal data.",
+  "readPrivacy": "Read Privacy Policy",
+  "agreeToMarketing": "I would like to receive marketing emails and updates",
+  "marketingSubtitle": "Get the latest news, job opportunities, and platform updates delivered to your inbox.",
+  "required": "Required",
+  "acceptRequiredAgreements": "Please accept Terms of Service and Privacy Policy to continue",
+  "completeSignup": "Complete Signup",
+  "close": "Close",
+  "termsOfService": "Terms of Service",
+  "termsContent": "Welcome to ArquiMatch!\n\n1. Acceptance of Terms\nBy accessing and using this platform, you accept and agree to be bound by the terms and provision of this agreement.\n\n2. Use License\nPermission is granted to temporarily access the materials on ArquiMatch for personal, non-commercial use only.\n\n3. User Responsibilities\nYou are responsible for maintaining the confidentiality of your account and password.\n\n4. Prohibited Uses\nYou may not use our service for any illegal or unauthorized purpose.\n\n5. Termination\nWe may terminate or suspend access to our service immediately, without prior notice.",
+  "privacyPolicy": "Privacy Policy",
+  "privacyContent": "Your Privacy Matters\n\n1. Information We Collect\nWe collect information you provide directly to us, including name, email, location, and professional details.\n\n2. How We Use Your Information\n- To provide, maintain, and improve our services\n- To communicate with you about services and updates\n- To match contractors with relevant opportunities\n\n3. Information Sharing\nWe do not sell your personal information. We may share information with service providers who assist in our operations.\n\n4. Data Security\nWe implement appropriate security measures to protect your personal information.\n\n5. Your Rights\nYou have the right to access, correct, or delete your personal data.",
+
+  "blogs": "Blogs",
+
+  "continueWithoutAccounts": "Continue without an account"
 }

@@ -161,7 +161,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                       btn_title: 'cancel',
                       btn_radius: 10,
                       btn_color: Colors.white.withValues(alpha: 0.4),
-                      btn_boarder_color: JAppColors.grayBlue800,
+                      btn_border_color: JAppColors.grayBlue800,
                       title_color: isDark
                           ? JAppColors.lightGray100
                           : JAppColors.grayBlue800,
@@ -178,7 +178,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                       btn_title: 'submitReport',
                       btn_radius: 10,
                       btn_color: JAppColors.error500,
-                      btn_boarder_color: Colors.transparent,
+                      btn_border_color: Colors.transparent,
                       title_color: Colors.white,
                       text_fontweight: FontWeight.w600,
                       image_value: false,

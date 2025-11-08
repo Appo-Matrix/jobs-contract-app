@@ -92,7 +92,6 @@ class ChangeWorkExperienceScreen extends StatelessWidget {
                       btn_title: 'Remove',
                       btn_radius: 10,
                       btn_color: JAppColors.error100,
-                      btn_boarder_color: Colors.transparent,
                       title_color: JAppColors.error500,
                     
                       image_value: false,
@@ -101,10 +100,11 @@ class ChangeWorkExperienceScreen extends StatelessWidget {
                   SizedBox(width: 10),
                   Expanded(
                     child: MainButton(
+
                       btn_title: 'Save',
                       btn_radius: 10,
                       btn_color: JAppColors.main,
-                      btn_boarder_color: Colors.transparent,
+
                       title_color: Colors.white,
                     
                       image_value: false,

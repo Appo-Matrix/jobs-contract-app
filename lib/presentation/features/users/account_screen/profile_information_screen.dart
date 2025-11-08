@@ -146,7 +146,6 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
                 btn_title: 'save'.tr(),
                 btn_radius: 10,
                 btn_color: JAppColors.main,
-                btn_boarder_color: Colors.transparent,
                 title_color: Colors.white,
                 image_value: false,
               ),

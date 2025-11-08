@@ -83,7 +83,7 @@ class _AdUploadScreenState extends State<AdUploadScreen> {
                 btn_title: JText.next,
                 btn_radius: 10,
                 btn_color: JAppColors.main,
-                btn_boarder_color: Color(0xff7030F1),
+                btn_border_color: Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,onTap: (){
@@ -97,7 +97,7 @@ class _AdUploadScreenState extends State<AdUploadScreen> {
                 btn_title: JText.moveToDrafts,
                 btn_radius: 10,
                 btn_color: Colors.transparent,
-                btn_boarder_color: JAppColors.t,
+                btn_border_color: JAppColors.t,
                 title_color: isDark
                     ? JAppColors.darkGray100
                     : JAppColors.lightGray800,

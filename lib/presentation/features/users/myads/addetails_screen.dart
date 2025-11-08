@@ -560,7 +560,7 @@ class _AdDetailsScreenState extends State<AdDetailsScreen> {
                     btn_title: JText.publishAd,
                     btn_radius: 10,
                     btn_color: JAppColors.main,
-                    btn_boarder_color: JAppColors.primary,
+                    btn_border_color: JAppColors.primary,
                     title_color: Colors.white,
                     text_fontweight: FontWeight.w600,
                     image_value: false,

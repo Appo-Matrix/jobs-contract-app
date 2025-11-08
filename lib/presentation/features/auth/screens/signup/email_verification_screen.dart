@@ -212,7 +212,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                 btn_title: 'continue',
                 btn_radius: 10,
                 btn_color: JAppColors.primary,
-                btn_boarder_color: Colors.transparent,
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,

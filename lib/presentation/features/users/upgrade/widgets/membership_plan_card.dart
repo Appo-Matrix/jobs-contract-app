@@ -127,7 +127,7 @@ class MembershipPlanCard extends StatelessWidget {
                 btn_color: isPurple
                     ? Colors.white
                     : JAppColors.main,
-                btn_boarder_color: const Color(0xff7030F1),
+                btn_border_color: const Color(0xff7030F1),
                 title_color: isPurple
                     ? const Color(0xFF7030F1)
                     : Colors.white,

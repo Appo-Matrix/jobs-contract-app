@@ -22,6 +22,7 @@ class JAppColors {
   static const Color darkest = Color(0xFF2D1360);
   static const Color darkest12 = Color(0xFF395998);
   static const Color darkest1212 = Color(0xFF4285F4);
+  static const Color darkBackground = Color(0xFF101828); // Shade 200
 
 
   static const Color backGroundDark = Color(0xFF101828); // Shade 200

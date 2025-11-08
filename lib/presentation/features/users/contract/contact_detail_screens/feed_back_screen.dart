@@ -375,7 +375,7 @@ class _FeedBackScreenState extends State<FeedBackScreen> {
               btn_title: 'submit',
               btn_radius: 10,
               btn_color: JAppColors.main,
-              btn_boarder_color: Colors.transparent,
+              btn_border_color: Colors.transparent,
               title_color: Colors.white,
               image_value: false,
               onTap: _submitFeedback,

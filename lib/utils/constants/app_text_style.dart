@@ -20,6 +20,6 @@ class AppTextStyle {
 
 class AppFontFamilies {
   static String dm_sans = 'dm_sans';
-  static String domaine_arrow = 'domaine_arrow';
-  static String onest = 'onest';
+  static String domaine_arrow = 'dm_sans';
+  static String onest = 'dm_sans';
 }

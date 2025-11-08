@@ -142,7 +142,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   },
                   btn_title: 'resetPassword',
                   btn_radius: 10,
-                  btn_boarder_color: const Color(0xff7030F1),
                   title_color: Colors.white,
                   text_fontweight: FontWeight.w600,
                   image_value: false,

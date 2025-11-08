@@ -580,5 +580,71 @@
   "verificationSuccessful": "¡Correo verificado exitosamente!",
   "pleaseEnterCompleteCode": "Por favor ingresa el código de verificación completo",
   "verifyYourEmail": "Verifica Tu Correo",
-  "pleaseEnterCodeSentOnMail": "Por favor ingresa el código de verificación enviado a tu dirección de correo electrónico"
+  "pleaseEnterCodeSentOnMail": "Por favor ingresa el código de verificación enviado a tu dirección de correo electrónico",
+
+  "stepProgress": "Paso {} de {}",
+  "selectRole": "Seleccionar Rol",
+  "selectYourRole": "Selecciona Tu Rol",
+  "selectRoleSubtitle": "Elige cómo quieres usar nuestra plataforma",
+
+  "contractorDesc": "Encuentra oportunidades de trabajo y\nconstruye tu carrera",
+
+  "clientDesc": "Contrata profesionales talentosos\npara tus proyectos",
+
+  "companyDesc": "Gestiona tu equipo y encuentra\nel mejor talento",
+
+
+
+  "basicDetails": "Detalles Básicos",
+  "connectAccounts": "Conectar Cuentas",
+  "termsConditions": "Términos y Condiciones",
+  "fillBasicInfo": "Rellena tu información básica para comenzar",
+  "selectedRole": "Rol seleccionado",
+
+
+
+
+  "tapToSelectLocation": "Toca para seleccionar ubicación",
+  "confirmLocation": "Confirmar Ubicación",
+
+  "// Validation Messages": "",
+  "emailRequired": "El correo electrónico es obligatorio",
+  "emailInvalid": "Por favor ingresa un correo electrónico válido",
+  "passwordRequired": "La contraseña es obligatoria",
+  "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+  "passwordUppercase": "La contraseña debe contener al menos una letra mayúscula",
+  "passwordNumber": "La contraseña debe contener al menos un número",
+  "isRequired": "es obligatorio",
+  "selectLocationFirst": "Por favor selecciona una ubicación primero",
+  "locationSelected": "Ubicación seleccionada exitosamente",
+
+  "// Connect Accounts Screen": "",
+  "connectAccountsSubtitle": "Conecta tus cuentas sociales para una experiencia de registro más rápida (opcional)",
+  "continueWithGoogle": "Continuar con Google",
+  "continueWithFacebook": "Continuar con Facebook",
+  "continueWithApple": "Continuar con Apple",
+  "connecting": "Conectando...",
+  "or": "O",
+  "continueWithoutAccounts": "Continuar sin conectar cuentas",
+  "googleConnectedSuccess": "¡Cuenta de Google conectada exitosamente!",
+  "facebookConnectedSuccess": "¡Cuenta de Facebook conectada exitos",
+  "// Terms & Privacy Screen": "",
+  "termsAndPrivacy": "Términos y Privacidad",
+  "termsAndPrivacySubtitle": "Por favor, revisa y acepta nuestros términos y política de privacidad para completar tu registro.",
+  "readTerms": "Leer los Términos de Servicio",
+  "agreeToPrivacy": "Acepto la Política de Privacidad",
+  "privacySubtitle": "Conoce cómo recopilamos, usamos y protegemos tus datos personales.",
+  "readPrivacy": "Leer la Política de Privacidad",
+  "agreeToMarketing": "Deseo recibir correos y actualizaciones de marketing",
+  "marketingSubtitle": "Recibe las últimas noticias, oportunidades laborales y actualizaciones de la plataforma directamente en tu bandeja de entrada.",
+  "required": "Requerido",
+  "acceptRequiredAgreements": "Por favor, acepta los Términos de Servicio y la Política de Privacidad para continuar",
+  "completeSignup": "Completar Registro",
+  "close": "Cerrar",
+  "termsOfService": "Términos de Servicio",
+  "termsContent": "¡Bienvenido a ArquiMatch!\n\n1. Aceptación de los Términos\nAl acceder y utilizar esta plataforma, aceptas y te comprometes a cumplir los términos y disposiciones de este acuerdo.\n\n2. Licencia de Uso\nSe concede permiso para acceder temporalmente a los materiales de ArquiMatch para uso personal y no comercial únicamente.\n\n3. Responsabilidades del Usuario\nEres responsable de mantener la confidencialidad de tu cuenta y contraseña.\n\n4. Usos Prohibidos\nNo puedes utilizar nuestro servicio para ningún propósito ilegal o no autorizado.\n\n5. Terminación\nPodemos suspender o cancelar el acceso a nuestro servicio de forma inmediata y sin previo aviso.",
+  "privacyPolicy": "Política de Privacidad",
+  "privacyContent": "Tu Privacidad Importa\n\n1. Información que Recopilamos\nRecopilamos la información que proporcionas directamente, incluyendo nombre, correo electrónico, ubicación y detalles profesionales.\n\n2. Cómo Usamos tu Información\n- Para ofrecer, mantener y mejorar nuestros servicios\n- Para comunicarnos contigo sobre servicios y actualizaciones\n- Para vincular contratistas con oportunidades relevantes\n\n3. Compartición de Información\nNo vendemos tu información personal. Podemos compartir datos con proveedores de servicios que nos ayudan en nuestras operaciones.\n\n4. Seguridad de los Datos\nImplementamos medidas de seguridad adecuadas para proteger tu información personal.\n\n5. Tus Derechos\nTienes derecho a acceder, corregir o eliminar tus datos personales.",
+
+  "blogs": "Blogs",
 }

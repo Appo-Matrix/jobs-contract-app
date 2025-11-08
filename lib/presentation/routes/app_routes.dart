@@ -9,6 +9,7 @@ import '../features/auth/screens/Login/login_screen.dart';
 import '../features/auth/screens/address_form/address_form_screen.dart';
 import '../features/auth/screens/forget_password/forget_password_otp_screen.dart';
 import '../features/auth/screens/forget_password/reset_password.dart';
+import '../features/auth/screens/newsignupscreen/new_signup_screen.dart';
 import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
 import '../features/auth/screens/profile/profile_detail.dart';
 import '../features/auth/screens/signup/company_signup_screen.dart';
@@ -109,6 +110,11 @@ class AppRouter {
         path: '/verifyIdentity',
         name: Routes.verifyIdentity.name,
        builder: (context, state) => const VerifyIdentity(),
+      ),
+      GoRoute(
+        path: '/newSignupScreen',
+        name: Routes.newSignupScreen.name,
+       builder: (context, state) => const NewSignupScreen(),
       ),
       GoRoute(
         path: '/verifyPaymentMethod',

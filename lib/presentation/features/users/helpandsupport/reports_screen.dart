@@ -184,7 +184,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 btn_title: 'submit',
                 btn_radius: 10,
                 btn_color: JAppColors.main,
-                btn_boarder_color: const Color(0xff7030F1),
+                btn_border_color: const Color(0xff7030F1),
                 title_color: Colors.white,
                 text_fontweight: FontWeight.w600,
                 image_value: false,
