@@ -33,26 +33,8 @@ class _NotifcationsScreenState extends State<NotifcationsScreen> {
       key: scaffoldKey,
       drawer: CustomNavigationDrawer(isDark: isDark),  // Use the new drawer widget
       appBar: JAppbar(
-        leadingIcon: GestureDetector(
-          onTap: () => {scaffoldKey.currentState?.openDrawer()},
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: CircularAvatar(
-              isDark: isDark,
-              radius: 20,
-              imageUrl: JImages.image,
-              // Or use asset: true and imagePath: 'assets/images/profile1.jpg' for asset images
-            ),
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.more_vert,
-                color:
-                isDark ? JAppColors.darkGray100 : JAppColors.darkGray800),
-            onPressed: () {},
-          ),
-        ],
+        leadingIcon: Icon(Icons.arrow_back  ,color: isDark ? JAppColors.lightGray100 : JAppColors.lightGray800,),
+        
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),

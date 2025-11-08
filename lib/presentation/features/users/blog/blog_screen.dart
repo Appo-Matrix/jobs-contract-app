@@ -22,12 +22,17 @@ class BlogScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: JAppbar(
-        title: Text(
-          'Blogs',
-          style: AppTextStyle.dmSans(
-            fontSize: 18.0,
-            weight: FontWeight.w600,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray900,
+
+        title: Padding(
+          padding: const EdgeInsets.only(left: 18.0),
+          child: Text(
+            textAlign: TextAlign.start,
+            'Blogs',
+            style: AppTextStyle.dmSans(
+              fontSize: 18.0,
+              weight: FontWeight.w600,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray900,
+            ),
           ),
         ),
         actions: [

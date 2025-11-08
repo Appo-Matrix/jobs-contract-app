@@ -66,46 +66,46 @@ class _FinanceReportScreenState extends State<FinanceReportScreen> {
             weight: FontWeight.w500,
           ),
         ),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        // leadingIcon: Padding(
+        //   padding: const EdgeInsets.all(2.0),
+        //   child: BackCircle(
+        //     isDark: isDark,
+        //     onTap: () {
+        //       Navigator.pop(context);
+        //     },
+        //   ),
+        // ),
 
 
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            height: 32,
-            width: 100,
-            child: ElevatedButton(
-              onPressed: () {
-                AppRouter.router.push('/withdrawalScreen');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: JAppColors.primary,
-                foregroundColor: Colors.white,
-                elevation: 0,
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: Text(
-                JText.withdraw,
-                style: AppTextStyle.dmSans(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  weight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Container(
+        //     margin: const EdgeInsets.only(right: 16),
+        //     height: 32,
+        //     width: 100,
+        //     child: ElevatedButton(
+        //       onPressed: () {
+        //         AppRouter.router.push('/withdrawalScreen');
+        //       },
+        //       style: ElevatedButton.styleFrom(
+        //         backgroundColor: JAppColors.primary,
+        //         foregroundColor: Colors.white,
+        //         elevation: 0,
+        //         padding: EdgeInsets.zero,
+        //         shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(8),
+        //         ),
+        //       ),
+        //       child: Text(
+        //         JText.withdraw,
+        //         style: AppTextStyle.dmSans(
+        //           color: Colors.white,
+        //           fontSize: 16.0,
+        //           weight: FontWeight.w400,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ],
 
 
 

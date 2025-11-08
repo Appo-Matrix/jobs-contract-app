@@ -85,6 +85,7 @@ class JImages {
   static const String appleLogo = "assets/logos/apple.png";
   static const String logoSVG = "assets/svg/logo.svg";
   static const String blogs = "assets/svg/blogs.svg";
+  static const String reports = "assets/svg/reports.svg";
 
 
 

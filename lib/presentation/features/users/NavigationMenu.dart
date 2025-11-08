@@ -10,6 +10,7 @@ import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../utils/constants/colors.dart';
 import 'blog/blog_screen.dart';
+import 'finanance_report/finance_reports_screen.dart';
 import 'message/message_screen.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -128,7 +129,7 @@ class NavigationMenu extends StatelessWidget {
 
             NavigationDestination(
               icon: SvgPicture.asset(
-                JImages.notificationsvg,
+                JImages.reports,
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
@@ -145,7 +146,7 @@ class NavigationMenu extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               ),
-              label:tr('notification'),
+              label:tr('reports'),
             ),
           ],
         ),
@@ -164,6 +165,6 @@ class NavigationController extends GetxController {
     MessageScreen(),
     BlogScreen(),
 
-    NotifcationsScreen()
+    FinanceReportScreen()
   ];
 }

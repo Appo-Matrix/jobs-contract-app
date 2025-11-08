@@ -57,7 +57,7 @@ class JAppbar extends StatelessWidget implements PreferredSizeWidget {
             surfaceTintColor: Colors.transparent,
             scrolledUnderElevation: 0,
             shadowColor: Colors.transparent,
-            centerTitle: true,
+            centerTitle: false,
             automaticallyImplyLeading: false,
             leading: showBackArrow
                 ? IconButton(

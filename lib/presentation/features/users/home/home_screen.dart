@@ -140,6 +140,8 @@ class _HomeScreenState extends State<HomeScreen>
                         // Notification Icon
                         GestureDetector(
                           onTap: () {
+                            AppRouter.router.push('/notifcationsScreen');
+
                             print("Notifications tapped");
                           },
                           child: Stack(
