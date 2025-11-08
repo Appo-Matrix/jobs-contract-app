@@ -70,7 +70,7 @@ class AppRouter {
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
     // initialLocation: '/onboardingScreen',
-    initialLocation: '/onboardingScreen',
+    initialLocation: '/navigationMenu',
     routes: [
       // User
       GoRoute(
