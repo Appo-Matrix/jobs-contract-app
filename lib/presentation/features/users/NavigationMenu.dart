@@ -9,6 +9,7 @@ import 'package:job_contracts/utils/constants/image_string.dart';
 import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../utils/constants/colors.dart';
+import 'blog/blog_screen.dart';
 import 'message/message_screen.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -98,7 +99,33 @@ class NavigationMenu extends StatelessWidget {
                 ),
               ),
               label: tr('message'),
+
             ),
+            NavigationDestination(
+              icon:
+              SvgPicture.asset(
+                JImages.blogs,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? JAppColors.lightGray100 :JAppColors.darkGray800,
+                  BlendMode.srcIn,
+
+                ),
+              ),
+              selectedIcon: SvgPicture.asset(
+                JImages.blogs,
+                width: 20,
+                height: 20,
+                colorFilter: ColorFilter.mode(
+                  isDark ? Colors.white60 : JAppColors.primary,
+                  BlendMode.srcIn,
+                ),
+
+              ),
+              label: tr('blogs'),
+            ),
+
             NavigationDestination(
               icon: SvgPicture.asset(
                 JImages.notificationsvg,
@@ -135,6 +162,8 @@ class NavigationController extends GetxController {
     HomeScreen(),
     ContractsScreen(),
     MessageScreen(),
+    BlogScreen(),
+
     NotifcationsScreen()
   ];
 }
