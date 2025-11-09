@@ -66,6 +66,8 @@ import '../features/users/add_education/add_education.dart';
 import '../features/users/add_social_account/add_social_account.dart';
 import '../features/users/notification/notifcations.dart';
 import '../features/users/proposalScreen/proposal_screen.dart';
+import '../features/users/proposal_and_offer/proposal_offer_detail_screen.dart';
+import '../features/users/proposal_and_offer/proposals_offers_screen.dart';
 import '../features/users/upgrade/membership_plans_screen.dart';
 
 class AppRouter {
@@ -406,7 +408,28 @@ class AppRouter {
         name: Routes.myBlogScreen.name,
         builder: (context, state) => MyBlogScreen(),
       ),
+      GoRoute(
+        path: '/proposalsOffersScreen',
+        name: Routes.proposalsOffersScreen.name,
+        builder: (context, state) => ProposalsOffersScreen(),
+      ),
+      GoRoute(
+        path: '/proposalOfferDetail',
+        name: Routes.proposalOfferDetail.name,
+        builder: (context, state) {
+          final isReceivedOffer = state.extra is Map
+              ? (state.extra as Map)['isReceivedOffer'] as bool
+              : false;
+          final proposalId = state.extra is Map
+              ? (state.extra as Map)['proposalId'] as String
+              : '';
 
+          return ProposalOfferDetailScreen(
+            isReceivedOffer: isReceivedOffer,
+            proposalId: proposalId,
+          );
+        },
+      ),
 
     ],
   );

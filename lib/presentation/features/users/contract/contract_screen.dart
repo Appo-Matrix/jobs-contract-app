@@ -107,12 +107,19 @@ class _ContractsScreenState extends State<ContractsScreen>
                     color: JAppColors.primary,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(
-                    'Proposal & Offers',
-                    style: AppTextStyle.dmSans(
-                      fontSize: 12.0,
-                      weight: FontWeight.w600,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: (){
+
+                      AppRouter.router.push('/proposalsOffersScreen');
+
+                    },
+                    child: Text(
+                      'Proposal & Offers',
+                      style: AppTextStyle.dmSans(
+                        fontSize: 12.0,
+                        weight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
