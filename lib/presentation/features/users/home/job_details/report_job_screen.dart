@@ -56,18 +56,14 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
           // Add your actual submission logic here
         }
       });
-    }    return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
+    }
+
+    return Scaffold(
       appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: (){
+          Navigator.pop(context);
+        },
         title: Text(
           'reportJob',
           style: AppTextStyle.dmSans(
@@ -157,7 +153,9 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                 children: [
                   Expanded(
                     child: MainButton(
-                      onTap: (){Navigator.pop(context);},
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                       btn_title: 'cancel',
                       btn_radius: 10,
                       btn_color: Colors.white.withValues(alpha: 0.4),
@@ -172,9 +170,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                   const SizedBox(width: 16),
                   Expanded(
                     child: MainButton(
-
                       onTap: isLoading ? null : handleSubmit,
-
                       btn_title: 'submitReport',
                       btn_radius: 10,
                       btn_color: JAppColors.error500,
@@ -184,19 +180,19 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
                       image_value: false,
                     ),
                   ),
-
                 ],
               ),
             ),
 
             // Bottom indicator line
 
-            SizedBox(height: 12,),
+            SizedBox(
+              height: 12,
+            ),
 
-
-
-            SizedBox(height: 12,),
-
+            SizedBox(
+              height: 12,
+            ),
           ],
         ),
       ),
@@ -237,8 +233,7 @@ class _ReportJobScreenState extends State<ReportJobScreen> {
               ),
               child: selectedReason == reason
                   ? Center(
-                      child:
-                      Container(
+                      child: Container(
                         width: 12,
                         height: 12,
                         decoration: const BoxDecoration(

@@ -298,7 +298,17 @@ class AppRouter {
       GoRoute(
         path: '/contractDetailScreen',
         name: Routes.contractDetailScreen.name,
-        builder: (context, state) => ContractDetailScreen(),
+        builder: (context, state) {
+          // Extract parameters from state.extra or state.params
+          final Map<String, dynamic>? extra = state.extra as Map<String, dynamic>?;
+
+          return ContractDetailScreen(
+            status: extra?['status'] ?? 'Active', // Default to Active if not provided
+            contractId: extra?['contractId'],
+            name: extra?['name'],
+            jobTitle: extra?['jobTitle'],
+          );
+        },
       ),
       GoRoute(
         path: '/chatScreen',

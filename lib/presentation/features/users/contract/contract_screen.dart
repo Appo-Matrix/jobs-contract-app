@@ -56,116 +56,122 @@ class _ContractsScreenState extends State<ContractsScreen>
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       key: scaffoldKey,
-      drawer: CustomNavigationDrawer(isDark: isDark),  // Use the new drawer widget
       appBar: JAppbar(
-        title: Text(
-          'allContract',
-          style: AppTextStyle.dmSans(
-            fontSize: 18.0,
-            weight: FontWeight.w500,
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+        title: Padding(
+          padding: const EdgeInsets.only(left:16.0),
+          child: Text(
+            'allContract',
+            style: AppTextStyle.dmSans(
+              fontSize: 18.0,
+              weight: FontWeight.w500,
+              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+            ),
+          ).tr(),
+        ),
+
+        actions: [
+          CircularAvatar(
+            isDark: isDark,
+            radius: 20,
+            imageUrl: JImages.image,
           ),
-        ).tr(),
+
+          SizedBox(width: 16,)
+        ],
+
 
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: isDark ? JAppColors.darkGray700 : Colors.grey[200],
-                borderRadius: BorderRadius.circular(10),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0 ,horizontal: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Active Contracts',
+                  style: AppTextStyle.dmSans(
+                    fontSize: 18.0,
+                    weight: FontWeight.w700,
+                    color: isDark
+                        ? JAppColors.darkGray100
+                        : JAppColors.darkGray800,
+                  ),
+                ),
+                Container(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: JAppColors.primary,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'Proposal & Offers',
+                    style: AppTextStyle.dmSans(
+                      fontSize: 12.0,
+                      weight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 12,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                height: 35,
+                child: TabBar(
+                  dividerColor: Colors.transparent,
+                  controller: _tabController,
+                  isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  // Explicitly set alignment to start
+                  indicator: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: JAppColors.primary.withValues(alpha: 0.9),
+                  ),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelColor: Colors.white,
+                  unselectedLabelColor:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  padding: const EdgeInsets.all(3),
+                  indicatorWeight: 0,
+                  labelStyle: AppTextStyle.dmSans(
+                    fontSize: JSizes.fontSizeESm,
+                    weight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                  unselectedLabelStyle: AppTextStyle.dmSans(
+                    fontSize: JSizes.fontSizeESm,
+                    weight: FontWeight.w500,
+                    color:
+                        isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  ),
+                  tabs: tabs.map((tab) => Tab(text: tab)).toList(),
+                ),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    JImages.search,
-                    width: 20,
-                    height: 20,
-                    colorFilter: ColorFilter.mode(
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'searchContracts',
-                        border: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        hintStyle: TextStyle(
-                            color:
-                                isDark ? JAppColors.lightGray100 : Colors.grey),
-                      ),
-                      style: TextStyle(
-                          color: isDark ? Colors.white : Colors.black),
-                    ),
-                  ),
+            ),
+
+            const SizedBox(height: 16),
+
+            // TabBarView
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  ActiveContractsPage(),
+                  CompletedContractsPage(),
+                  PausedContractsPage(),
+                  CancelledContractsPage(),
                 ],
               ),
             ),
-          ),
-
-          // Tab Bar with left-aligned scrollable tabs
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              height: 35,
-              margin: const EdgeInsets.only(left: 16, right: 16),
-              child: TabBar(
-                dividerColor: Colors.transparent,
-                controller: _tabController,
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                // Explicitly set alignment to start
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: JAppColors.primary.withValues(alpha: 0.9),
-                ),
-                indicatorSize: TabBarIndicatorSize.tab,
-                labelColor: Colors.white,
-                unselectedLabelColor:
-                    isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                padding: const EdgeInsets.all(3),
-                indicatorWeight: 0,
-                labelStyle: AppTextStyle.dmSans(
-                  fontSize: JSizes.fontSizeESm,
-                  weight: FontWeight.w500,
-                  color: Colors.white,
-                ),
-                unselectedLabelStyle: AppTextStyle.dmSans(
-                  fontSize: JSizes.fontSizeESm,
-                  weight: FontWeight.w500,
-                  color:
-                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
-                ),
-                tabs: tabs.map((tab) => Tab(text: tab)).toList(),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 16),
-
-          // TabBarView
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: const [
-                ActiveContractsPage(),
-                CompletedContractsPage(),
-                PausedContractsPage(),
-                CancelledContractsPage(),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

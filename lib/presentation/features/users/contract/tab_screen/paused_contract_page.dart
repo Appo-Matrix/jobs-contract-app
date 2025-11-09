@@ -3,8 +3,10 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../widgets/contract_card.dart';
 
 class PausedContractsPage extends StatelessWidget {
@@ -39,15 +41,30 @@ class PausedContractsPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return ContractCard(
                 status: 'Paused',
-                name: 'David Miller',
-                jobTitle: 'Plumbing Services',
-                dateRange: 'Feb 10 - Paused',
-                salary: '\$12,000 - \$15,000',
-                category: 'Plumber',
-                jobType: 'Onsite',
-                duration: '2 Months',
+                name: 'Shehla Abbas',
+                jobTitle: 'Architects Construction',
+                dateRange: '12 May - Paused',
+                salary: '\$20,000 - \$25,000',
+                category: 'Real Estate',
+                jobType: 'Hybrid',
+                duration: 'Full-time',
+                location: 'United States',
+                contractorImage: JImages.image,
                 showActions: true,
+                // View paused contract details (READ ONLY)
+                onViewDetailsPressed: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Paused',
+                  });
+                },
+                onCardTap: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Paused',
+                  });
+                },
               );
+
+
             },
           ),
         ),

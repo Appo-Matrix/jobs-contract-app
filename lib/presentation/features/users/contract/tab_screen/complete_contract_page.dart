@@ -3,8 +3,10 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../widgets/contract_card.dart';
 
 class CompletedContractsPage extends StatelessWidget {
@@ -39,14 +41,28 @@ class CompletedContractsPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return ContractCard(
                 status: 'Completed',
-                name: 'Robert Johnson',
-                jobTitle: 'Interior Design Specialist',
-                dateRange: 'Mar 5 - Apr 10',
-                salary: '\$15,000 - \$18,000',
-                category: 'Interior Designer',
-                jobType: 'Remote',
-                duration: '5 Weeks',
-                showActions: false,
+                name: 'Shehla Abbas',
+                jobTitle: 'Architects Construction',
+                dateRange: '12 May - 30 June',
+                salary: '\$20,000 - \$25,000',
+                category: 'Real Estate',
+                jobType: 'Hybrid',
+                duration: 'Full-time',
+                location: 'United States',
+                contractorImage: JImages.image,
+                showActions: true,
+                // View completion report
+                onViewDetailsPressed: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Completed',
+                    'contractId': 'contract_123',
+                  });
+                },
+                onCardTap: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Completed',
+                  });
+                },
               );
             },
           ),

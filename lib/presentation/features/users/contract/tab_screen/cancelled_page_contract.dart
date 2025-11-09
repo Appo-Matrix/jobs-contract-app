@@ -3,8 +3,10 @@ import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../widgets/contract_card.dart';
 
 class CancelledContractsPage extends StatelessWidget {
@@ -39,14 +41,27 @@ class CancelledContractsPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return ContractCard(
                 status: 'Cancelled',
-                name: 'Sarah Thompson',
-                jobTitle: 'Landscape Design Project',
-                dateRange: 'Apr 5 - Cancelled',
-                salary: '\$22,000 - \$25,000',
-                category: 'Landscape Designer',
+                name: 'Shehla Abbas',
+                jobTitle: 'Architects Construction',
+                dateRange: '12 May - Cancelled',
+                salary: '\$20,000 - \$25,000',
+                category: 'Real Estate',
                 jobType: 'Hybrid',
-                duration: '3 Months',
-                showActions: false,
+                duration: 'Full-time',
+                location: 'United States',
+                contractorImage: JImages.image,
+                showActions: true,
+                // View cancellation details (READ ONLY)
+                onViewDetailsPressed: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Cancelled',
+                  });
+                },
+                onCardTap: () {
+                  AppRouter.router.push('/contractDetailScreen', extra: {
+                    'status': 'Cancelled',
+                  });
+                },
               );
             },
           ),

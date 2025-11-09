@@ -90,7 +90,7 @@ class EmployerProfileWidget extends StatelessWidget {
                 employerName,
                 style: AppTextStyle.onest(
                   fontSize: 16.0,
-                  weight: FontWeight.w400,
+                  weight: FontWeight.w600,
                                color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
 
                 ),
@@ -116,7 +116,7 @@ class EmployerProfileWidget extends StatelessWidget {
                     style: AppTextStyle.onest(
                       fontSize: 12.0,
                       color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                      weight: FontWeight.w400,
+                      weight: FontWeight.w500,
                     ),
                   ).tr(),
                   const SizedBox(width: 10),
