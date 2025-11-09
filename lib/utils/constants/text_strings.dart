@@ -148,8 +148,8 @@ class JText {
   static const String verifyPaymentMethod = "Verify Payment Method";
   static const String verifyPaymentMethodsDesc = "Secure your transactions by verifying your payment method. Confirm your card or account details to enable smooth and hassle-free payments.";
   static const String verifyIdentity = "Verify Identity";
-  static const String verifyIdentityDesc = "Confirm your identity to ensure account security and access all features.";
-
+  static const String verifyIdentityDesc =
+      "Confirm your identity to ensure account security and access all features. This helps protect your account from unauthorized access. ";
   static const String next = "Next";
   static const String enterPhoneNumber = "Enter Phone Number";
   static const String phoneNumberVerified = "Phone Number Verified";

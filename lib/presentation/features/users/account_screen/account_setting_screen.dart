@@ -40,6 +40,11 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
             weight: FontWeight.w600,
           ),
         ).tr(),
+
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -106,22 +111,22 @@ class _AccountSettingScreenState extends State<AccountSettingScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
-              GestureDetector(
-                onTap: () {
-                  AppRouter.router.push('/addressFormScreen');
-                },
-                child: AccountWidgetContainer(
-                  iconsImage: JImages.location,
-                  title: 'address',
-                  subTitle: 'addBusinessAddress',
-                  child: Icon(
-                    size: 20,
-                    Icons.arrow_forward_ios_outlined,
-                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                  ),
-                ),
-              ),
+              // SizedBox(height: 15),
+              // GestureDetector(
+              //   onTap: () {
+              //     AppRouter.router.push('/addressFormScreen');
+              //   },
+              //   child: AccountWidgetContainer(
+              //     iconsImage: JImages.location,
+              //     title: 'address',
+              //     subTitle: 'addBusinessAddress',
+              //     child: Icon(
+              //       size: 20,
+              //       Icons.arrow_forward_ios_outlined,
+              //       color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: JSizes.spaceBtwItems),
 
               // Notification Section

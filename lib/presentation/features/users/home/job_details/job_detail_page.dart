@@ -64,56 +64,24 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
+    final double height = JDeviceUtils.getScreenHeight(context);
 
     return Scaffold(
       appBar: JAppbar(
         leadingIcon: Icon(Icons.arrow_back),
-        leadingOnPressed: (){
+        leadingOnPressed: () {
           Navigator.pop(context);
         },
-        // title: Text(
-        //   'pageTitle',
-        //   style: AppTextStyle.onest(
-        //     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-        //     fontSize: JSizes.fontSizeLg,
-        //     weight: FontWeight.w600,
-        //   ),
-        // ).tr(),
       ),
       body: Column(
         children: [
+          // Scrollable content area
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'jobTitle',
-                    style: AppTextStyle.onest(
-                      color: isDark
-                          ? JAppColors.lightGray100
-                          : JAppColors.lightGray900,
-                      fontSize: 18.0,
-                      weight: FontWeight.w700,
-                    ),
-                  ).tr(),
-                  const SizedBox(height: 4),
-                  Text(
-                    'companyDetails',
-                    style: AppTextStyle.onest(
-                      color: isDark
-                          ? JAppColors.darkGray300
-                          : JAppColors.lightGray700,
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
-                    ),
-                  ).tr(),
-                  const SizedBox(height: 24),
-
-                  const SizedBox(height: 24),
-
-                  // Cover Letter Section
                   Text(
                     'coverLetterTitle',
                     style: AppTextStyle.onest(
@@ -127,7 +95,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                   const SizedBox(height: 8),
 
                   Container(
-                    height: 200,
+                    height: height*0.7  ,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.grey[300]!),
                       borderRadius: BorderRadius.circular(8),
@@ -138,6 +106,8 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                     child: TextField(
                       controller: _coverLetterController,
                       maxLines: null,
+                      expands: true, // Add this
+                      textAlignVertical: TextAlignVertical.top, // Add this
                       style: AppTextStyle.dmSans(
                           color: isDark
                               ? JAppColors.lightGray100
@@ -145,8 +115,7 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                           fontSize: 14.9,
                           weight: FontWeight.w400),
                       decoration: InputDecoration(
-                        hintText:
-                            'describeFitForRole'.tr(),
+                        hintText: 'describeFitForRole'.tr(),
                         hintStyle: TextStyle(
                           color: isDark ? Colors.grey[500] : Colors.grey[400],
                         ),
@@ -157,68 +126,51 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
                       ),
                     ),
                   ),
-
-                  const SizedBox(height: 24),
-
-                  // Additional Questions
-                  Text(
-                    'additionalQuestions',
-                    style: AppTextStyle.dmSans(
-                      color: isDark
-                          ? JAppColors.darkGray100
-                          : JAppColors.lightGray900,
-                      fontSize: 14.0,
-                      weight: FontWeight.w500,
-                    ),
-                  ).tr(),
-                  const SizedBox(height: 12),
-
-
-                  QuestionField(
-                    question: 'estimatedServiceCost',
-                    isDark: isDark , hint: "\$5656",
-                  ),
-                  const SizedBox(height: 12),
-                  QuestionField(
-                    hint: 'helper',
-                    question: 'estimatedCompletionTime',
-
-                    isDark: isDark,
-                  ),
                   const SizedBox(height: 24),
                 ],
               ),
             ),
           ),
 
-          // Submit button
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              color: isDark ? JAppColors.backGroundDarkCard : Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, -5),
+          // Fixed buttons at bottom
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: [
+                // Cancel Button
+                Expanded(
+                  child: MainButton(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    btn_title: 'Cancel',
+                    btn_radius: 6,
+                    buttonType: MainButtonType.outlined,
+                    btn_border_color: isDark ? JAppColors.lightGray100 : JAppColors.primary,
+                    title_color: isDark ? JAppColors.lightGray100 : JAppColors.primary,
+                    text_fontweight: FontWeight.w600,
+
+                    image_value: false,
+                  ),
+                ),
+                const SizedBox(width: 16),
+
+                // Submit Button
+                Expanded(
+                  child: MainButton(
+                    onTap: _isLoading ? null : _handleSubmit,
+                    btn_title: 'Submit',
+                    btn_radius: 6,
+                    btn_color: JAppColors.main,
+                    btn_border_color: const Color(0xff7030F1),
+                    title_color: Colors.white,
+                    text_fontweight: FontWeight.w600,
+                    image_value: false,
+                  ),
                 ),
               ],
             ),
-            child: MainButton(
-              onTap: _isLoading ? null : _handleSubmit,
-              btn_title: 'submitButton',
-              btn_radius: 10,
-              btn_color: JAppColors.main,
-              btn_border_color: const Color(0xff7030F1),
-              title_color: Colors.white,
-              text_fontweight: FontWeight.w600,
-              image_value: false,
-            ),
           ),
-
-          // Bottom indicator
-
-          const SizedBox(height: 12),
         ],
       ),
     );

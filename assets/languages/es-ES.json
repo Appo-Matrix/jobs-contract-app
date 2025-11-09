@@ -22,6 +22,8 @@
   "streetNumber": "Calle y número",
   "neighborhoodArea": "Colonia/Barrio",
   "city": "Ciudad",
+  "accountSettingText": "Configuración de la cuenta",
+
   "stateProvince": "Estado/Provincia",
   "postalCode": "Código Postal",
   "mapLocation": "Ubicación en el mapa",
@@ -76,7 +78,6 @@
   "preferencesTitle": "Preferencias",
   "preferencesTitleDe": "Agregar filtro para trabajos",
   "locationSubTitle": "Agrega o elimina tus ubicaciones de entrega",
-  "accountSettingText": "Actualiza tu configuración como notificaciones, pagos, edición de perfil, etc.",
   "notifications": "Notificaciones",
   "notificationsTitle": "Notificaciones push",
   "notificationsSMSTitle": "Notificaciones SMS",

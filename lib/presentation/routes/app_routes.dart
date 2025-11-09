@@ -18,8 +18,7 @@ import '../features/auth/screens/signup/email_verification_screen.dart';
 import '../features/auth/screens/signup/signup_screen.dart';
 import '../features/auth/screens/success/model/success_screen_args.dart';
 import '../features/auth/screens/success/success_screen.dart';
-import '../features/auth/screens/verification_screen/check_email_screen.dart';
-import '../features/auth/screens/verification_screen/email_verified_screen.dart';
+
 import '../features/auth/screens/verify_profile/screens/verify_identity.dart';
 import '../features/auth/screens/verify_profile/screens/verify_payment_method.dart';
 import '../features/auth/screens/verify_profile/screens/verify_phone_number.dart';
@@ -322,16 +321,8 @@ class AppRouter {
       ),
 
 
-      GoRoute(
-        path: '/checkEmailScreen',
-        name: Routes.checkEmailScreen.name,
-        builder: (context, state) => CheckEmailScreen(),
-      ),
-      GoRoute(
-        path: '/emailVerifiedScreen',
-        name: Routes.emailVerifiedScreen.name,
-        builder: (context, state) => EmailVerifiedScreen(),
-      ),
+
+
       GoRoute(
         path: '/myAdsScreen',
         name: Routes.myAdsScreen.name,

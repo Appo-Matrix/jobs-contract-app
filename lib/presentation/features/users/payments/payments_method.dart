@@ -33,15 +33,10 @@ class _PaymentsMethodState extends State<PaymentsMethod> {
             weight: FontWeight.w600,
           ),
         ).tr(),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(
