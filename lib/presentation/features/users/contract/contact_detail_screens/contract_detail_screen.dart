@@ -46,9 +46,10 @@ class ContractDetailScreen extends StatelessWidget {
           ),
         ),
         leadingIcon: Icon(Icons.arrow_back),
-        leadingOnPressed: (){
+        leadingOnPressed: () {
           Navigator.pop(context);
-        },      ),
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -67,7 +68,8 @@ class ContractDetailScreen extends StatelessWidget {
                 style: AppTextStyle.dmSans(
                   fontSize: 24.0,
                   weight: FontWeight.w700,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+                  color:
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                 ),
               ),
               const SizedBox(height: 16),
@@ -188,7 +190,9 @@ class ContractDetailScreen extends StatelessWidget {
                   statusInfo['message'],
                   style: AppTextStyle.dmSans(
                     fontSize: 13.0,
-                    color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray700,
+                    color: isDark
+                        ? JAppColors.darkGray300
+                        : JAppColors.lightGray700,
                     weight: FontWeight.w400,
                   ),
                 ),
@@ -238,7 +242,8 @@ class ContractDetailScreen extends StatelessWidget {
           'color': JAppColors.success600,
           'icon': Icons.check_circle,
           'title': 'Contract Completed Successfully',
-          'message': 'This contract has been completed and the work has been delivered.',
+          'message':
+              'This contract has been completed and the work has been delivered.',
         };
       case 'paused':
         return {
@@ -252,7 +257,8 @@ class ContractDetailScreen extends StatelessWidget {
           'color': JAppColors.error600,
           'icon': Icons.cancel,
           'title': 'Contract Cancelled',
-          'message': 'This contract has been cancelled and is no longer active.',
+          'message':
+              'This contract has been cancelled and is no longer active.',
         };
       default:
         return {
@@ -488,7 +494,8 @@ class ContractDetailScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 12),
-                _buildInfoRow('Reason:', 'Project requirements changed', isDark),
+                _buildInfoRow(
+                    'Reason:', 'Project requirements changed', isDark),
                 const SizedBox(height: 8),
                 _buildInfoRow('Cancelled by:', 'Client', isDark),
                 const SizedBox(height: 8),
@@ -502,7 +509,8 @@ class ContractDetailScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.info_outline, size: 18, color: JAppColors.error700),
+                      Icon(Icons.info_outline,
+                          size: 18, color: JAppColors.error700),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
@@ -544,6 +552,7 @@ class ContractDetailScreen extends StatelessWidget {
     // Default - No buttons for other statuses
     return const SizedBox.shrink();
   }
+
   void _showFeedbackDialog(BuildContext context, bool isDark) {
     showDialog(
       context: context,
@@ -587,37 +596,37 @@ class ContractDetailScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         ...items.map((item) => Padding(
-          padding: const EdgeInsets.only(bottom: 12.0, left: 4.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 8, right: 12),
-                width: 4,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: isDark
-                      ? JAppColors.darkGray400
-                      : JAppColors.lightGray700,
-                  shape: BoxShape.circle,
-                ),
-              ),
-              Expanded(
-                child: Text(
-                  item,
-                  style: AppTextStyle.dmSans(
-                    fontSize: 14.0,
-                    color: isDark
-                        ? JAppColors.darkGray300
-                        : JAppColors.lightGray700,
-                    height: 1.6,
-                    weight: FontWeight.w400,
+              padding: const EdgeInsets.only(bottom: 12.0, left: 4.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 8, right: 12),
+                    width: 4,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: isDark
+                          ? JAppColors.darkGray400
+                          : JAppColors.lightGray700,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
+                  Expanded(
+                    child: Text(
+                      item,
+                      style: AppTextStyle.dmSans(
+                        fontSize: 14.0,
+                        color: isDark
+                            ? JAppColors.darkGray300
+                            : JAppColors.lightGray700,
+                        height: 1.6,
+                        weight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        )),
+            )),
       ],
     );
   }
