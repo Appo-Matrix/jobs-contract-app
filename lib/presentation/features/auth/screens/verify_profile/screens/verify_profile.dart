@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/widgets/profile_verification_container.dart';
 import 'package:job_contracts/presentation/routes/app_routes.dart';
 import '../../../../../../utils/common_widgets/appbar.dart';
-import '../../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
@@ -19,31 +18,9 @@ class VerifyProfile extends StatefulWidget {
 }
 
 class _VerifyProfileState extends State<VerifyProfile> {
-  bool isCheckedPhoneNumber = true;
-  bool isCheckedPaymentMethod = true;
-  bool isCheckedIdentity = true;
-
-  void _handleNext() {
-    if (!isCheckedPhoneNumber) {
-      AppRouter.router.push('/verifyPhoneNumber');
-    } else if (!isCheckedPaymentMethod) {
-      AppRouter.router.push('/verifyPaymentMethod');
-    } else if (!isCheckedIdentity) {
-      AppRouter.router.push('/verifyIdentity');
-    } else {
-      Navigator.pushNamed(context, '/nextScreen');
-    }
-  }
-
-  void _showWarning(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: JAppColors.primary,
-        duration: const Duration(seconds: 2),
-      ),
-    );
-  }
+  bool isCheckedPhoneNumber = false;
+  bool isCheckedPaymentMethod = false;
+  bool isCheckedIdentity = false;
 
   void _showPhoneVerificationHelp() {
     showDialog(
@@ -116,33 +93,12 @@ class _VerifyProfileState extends State<VerifyProfile> {
         leadingIcon: const Icon(Icons.arrow_back),
         leadingOnPressed: () => Navigator.pop(context),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 26, horizontal: 16),
-        child:         MainButton(
-          btn_title: 'signIn',
-          btn_radius: 8,
-          btn_color: JAppColors.main,
-          title_color: Colors.white,
-          text_fontweight: FontWeight.w600,
-          image_value: false,
-          onTap: (){
-
-            if (!isCheckedPhoneNumber &&
-                      !isCheckedPaymentMethod &&
-                      !isCheckedIdentity) {
-                    _showWarning("Please select at least one verification");
-                  } else {
-                    _handleNext();
-                  }
-          },
-        ),
-
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
             children: [
+              // Phone Number Verification
               ProfileVerificationContainer(
                 isChecked: isCheckedPhoneNumber,
                 isVerified: isCheckedPhoneNumber,
@@ -155,8 +111,14 @@ class _VerifyProfileState extends State<VerifyProfile> {
                 title: JText.verifyPhoneNumber,
                 description: JText.verifyPhoneNumberDesc,
                 onHelpTap: _showPhoneVerificationHelp,
+                onVerifyTap: () {
+                  // Navigate to phone verification screen
+                  AppRouter.router.push('/verifyPhoneNumber');
+                },
               ),
               SizedBox(height: JSizes.md),
+
+              // Payment Method Verification
               ProfileVerificationContainer(
                 isChecked: isCheckedPaymentMethod,
                 isVerified: isCheckedPaymentMethod,
@@ -169,8 +131,14 @@ class _VerifyProfileState extends State<VerifyProfile> {
                 title: JText.verifyPaymentMethods,
                 description: JText.verifyPhoneNumberDesc,
                 onHelpTap: _showPaymentMethodHelp,
+                onVerifyTap: () {
+                  // Navigate to payment method verification screen
+                  AppRouter.router.push('/verifyPaymentMethod');
+                },
               ),
               SizedBox(height: JSizes.md),
+
+              // Identity Verification
               ProfileVerificationContainer(
                 isChecked: isCheckedIdentity,
                 isVerified: isCheckedIdentity,
@@ -183,6 +151,10 @@ class _VerifyProfileState extends State<VerifyProfile> {
                 title: JText.verifyIdentity,
                 description: JText.verifyIdentityDesc,
                 onHelpTap: _showIdentityVerificationHelp,
+                onVerifyTap: () {
+                  // Navigate to identity verification screen
+                  AppRouter.router.push('/verifyIdentity');
+                },
               ),
               SizedBox(height: JSizes.spaceBtwSections + 20),
             ],

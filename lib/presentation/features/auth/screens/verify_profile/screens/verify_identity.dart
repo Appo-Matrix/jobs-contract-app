@@ -125,6 +125,9 @@ class _VerifyIdentityState extends State<VerifyIdentity> {
                   weight: FontWeight.w600,
                 ),
               ),
+
+              ///todo \
+              /// lately design the screen according to the api what detail it need
               SizedBox(height: JSizes.spaceBtwSections - 10),
               TextFieldWidget(
                 hintText: JText.enterPhoneNumber,

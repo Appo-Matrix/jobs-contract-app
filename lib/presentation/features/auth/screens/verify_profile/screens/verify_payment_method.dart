@@ -24,7 +24,8 @@ class _VerifyPaymentMethodState extends State<VerifyPaymentMethod> {
 
     return Scaffold(
       appBar: JAppbar(
-
+        ///todo \
+        /// lately design the screen according to the api what detail it need
         title: Text(
           JText.verifyPaymentMethod,
           style: AppTextStyle.dmSans(

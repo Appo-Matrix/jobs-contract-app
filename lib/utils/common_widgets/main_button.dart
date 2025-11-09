@@ -596,9 +596,9 @@
     // Get border width
     double _getBorderWidth() {
       if (isRequired || isFocused) {
-        return 2.0;
+        return 1.0;
       }
-      return buttonType == MainButtonType.outlined ? 1.5 : 1.0;
+      return buttonType == MainButtonType.outlined ? 1 : 1.0;
     }
 
     // Get border color based on state
