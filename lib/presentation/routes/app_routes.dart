@@ -35,6 +35,9 @@ import '../features/users/account_screen/preference_screen.dart';
 import '../features/users/account_screen/profile_information_screen.dart';
 import '../features/users/bank_account_info/bank_account_info.dart';
 
+import '../features/users/blog/blog_create_screen.dart';
+import '../features/users/blog/blog_list_screen.dart';
+import '../features/users/blog/my_slogS_screen.dart';
 import '../features/users/bottom_nav/bottom_nav_bar.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_accepted_screen.dart';
 import '../features/users/contract/contact_detail_screens/contact_details_active_screen.dart';
@@ -387,8 +390,22 @@ class AppRouter {
         path: '/bottomNav',
         name: Routes.bottomNav.name,
         builder: (context, state) => const BottomNavBar(),
-      )
-
+      ),
+      GoRoute(
+        path: '/blogListScreen',
+        name: Routes.blogListScreen.name,
+        builder: (context, state) => BlogListScreen(),
+      ),
+      GoRoute(
+        path: '/blogCreateScreen',
+        name: Routes.blogCreateScreen.name,
+        builder: (context, state) => BlogCreateScreen(),
+      ),
+      GoRoute(
+        path: '/myBlogScreen',
+        name: Routes.myBlogScreen.name,
+        builder: (context, state) => MyBlogScreen(),
+      ),
 
 
     ],

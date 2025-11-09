@@ -42,6 +42,16 @@ class BlogDetailScreen extends StatelessWidget {
             ),
           ),
         ),
+        actions: [
+
+          CircularAvatar(
+            isDark: isDark,
+            radius: 18,
+            imageUrl: JImages.image,
+          ),
+
+          SizedBox(width: 16,)
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -176,32 +186,7 @@ class BlogDetailScreen extends StatelessWidget {
 
                   const SizedBox(height: 16),
 
-                  // Engagement Actions
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _buildActionButton(
-                        isDark: isDark,
-                        icon: Icons.thumb_up_outlined,
-                        label: '124',
-                        onTap: () {},
-                      ),
-                      _buildActionButton(
-                        isDark: isDark,
-                        icon: Icons.comment_outlined,
-                        label: '32',
-                        onTap: () {},
-                      ),
-                      _buildActionButton(
-                        isDark: isDark,
-                        icon: Icons.share_outlined,
-                        label: 'Share',
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -398,45 +383,4 @@ class BlogDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton({
-    required bool isDark,
-    required IconData icon,
-    required String label,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
-        decoration: BoxDecoration(
-          color: isDark
-              ? JAppColors.darkGray700.withOpacity(0.3)
-              : JAppColors.lightGray200,
-          borderRadius: BorderRadius.circular(24.0),
-          border: Border.all(
-            color: isDark ? JAppColors.darkGray600 : JAppColors.lightGray400,
-            width: 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(
-              icon,
-              size: 20,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray700,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: AppTextStyle.dmSans(
-                fontSize: 14.0,
-                weight: FontWeight.w500,
-                color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray700,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }

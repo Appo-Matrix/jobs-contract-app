@@ -60,5 +60,6 @@ enum Routes {
   companySignupScreen,
   emailVerificationScreen,
   contractorSignupScreen,
-  newSignupScreen
+  newSignupScreen,
+  blogListScreen,blogCreateScreen,myBlogScreen
 }
