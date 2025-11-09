@@ -21,8 +21,14 @@ class SupportRequestCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: isLastItem ? 0 : 12),
       decoration: BoxDecoration(
-        color: isDark ? JAppColors.backGroundDarkCard : JAppColors.lightGray100,
-        borderRadius: BorderRadius.circular(12), // Always rounded for all cards
+        color: isDark ? JAppColors.backGroundDarkCard : JAppColors.lightGray100.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: isDark
+              ? JAppColors.darkGray700
+              : JAppColors.lightGray300,
+          width: 1,
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.05),
@@ -33,9 +39,9 @@ class SupportRequestCard extends StatelessWidget {
       ),
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.circular(12), // Matching borderRadius for Material
+        borderRadius: BorderRadius.circular(8),
         child: InkWell(
-          borderRadius: BorderRadius.circular(12), // Matching borderRadius for InkWell
+          borderRadius: BorderRadius.circular(8),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -51,6 +57,12 @@ class SupportRequestCard extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: isDark ? JAppColors.darkGray700 : Colors.grey[200],
                         borderRadius: BorderRadius.circular(8),
+                        border: Border.all(
+                          color: isDark
+                              ? JAppColors.darkGray600
+                              : JAppColors.lightGray400,
+                          width: 0.5,
+                        ),
                       ),
                       child: Text(
                         'ID: ${request['id']}',
@@ -107,6 +119,12 @@ class SupportRequestCard extends StatelessWidget {
             ? (isDark ? Colors.deepPurple[900]!.withOpacity(0.3) : Colors.deepPurple[50])
             : (isDark ? Colors.orange[900]!.withOpacity(0.3) : Colors.orange[50]),
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: status == 'Solved'
+              ? (isDark ? Colors.deepPurple[700]! : Colors.deepPurple[200]!)
+              : (isDark ? Colors.orange[700]! : Colors.orange[200]!),
+          width: 1,
+        ),
       ),
       child: Text(
         status,

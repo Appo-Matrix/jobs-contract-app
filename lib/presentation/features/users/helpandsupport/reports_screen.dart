@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/main_button.dart';
+import '../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -44,15 +45,10 @@ class _ReportScreenState extends State<ReportScreen> {
             weight: FontWeight.w600,
           ),
         ).tr(),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: () {
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -67,119 +63,89 @@ class _ReportScreenState extends State<ReportScreen> {
                 'reportReason',
                 style: AppTextStyle.dmSans(
                   color:
-                  isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                      isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
                   fontSize: 16.0,
                   weight: FontWeight.w600,
                 ),
               ).tr(),
               const SizedBox(height: 12),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey[300]!),
-                ),
-                child: DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                    border: InputBorder.none,
-                    hintText: tr('selectReason'),
-                  ),
-                  icon: const Icon(Icons.keyboard_arrow_down),
-                  value: selectedReason,
-                  items: reasons.map((reason) {
-                    return DropdownMenuItem<String>(
-                      value: reason,
-                      child: Text(
-                        reason,
-                        style: AppTextStyle.dmSans(
-                          color: isDark
-                              ? JAppColors.darkGray100
-                              : JAppColors.lightGray900,
-                          fontSize: 16.0,
-                          weight: FontWeight.w400,
-                        ),
-                      ).tr(),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      selectedReason = value;
-                    });
-                  },
-                ),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'reportsTitle',
-                style: AppTextStyle.dmSans(
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                  fontSize: 16.0,
-                  weight: FontWeight.w600,
-                ),
-              ).tr(),
-              const SizedBox(height: 12),
-
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey[300]!),
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: tr('writeTitleHere'),
-                    hintStyle: AppTextStyle.dmSans(
-                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                      fontSize: 14.0,
-                      weight: FontWeight.w400,
+              DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: isDark
+                          ? JAppColors.darkGray700
+                          : JAppColors.lightGray300,
+                      width: 1,
                     ),
-                    border: InputBorder.none,
-                    contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: JAppColors.primary,
+                      width: 1.5,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 12,
+                  ),
+                  hintText: tr('selectReason'),
+                ),
+                icon: Padding(
+                  padding: const EdgeInsets.only(right: 8), // Space after icon
+                  child: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: isDark
+                        ? JAppColors.darkGray100
+                        : JAppColors.lightGray700,
                   ),
                 ),
+                value: selectedReason,
+                items: reasons.map((reason) {
+                  return DropdownMenuItem<String>(
+                    value: reason,
+                    child: Text(
+                      reason,
+                      style: AppTextStyle.dmSans(
+                        color: isDark
+                            ? JAppColors.darkGray100
+                            : JAppColors.lightGray900,
+                        fontSize: 16.0,
+                        weight: FontWeight.w400,
+                      ),
+                    ).tr(),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedReason = value;
+                  });
+                },
               ),
               const SizedBox(height: 20),
-              Text(
-                'reportDescription',
-                style: AppTextStyle.dmSans(
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                  fontSize: 16.0,
-                  weight: FontWeight.w600,
-                ),
-              ).tr(),
-              const SizedBox(height: 8),
-              Container(
-                height: height / 2.5,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: isDark ? Colors.transparent : Colors.transparent,
-                  border: Border.all(
-                    color: Colors.grey[300]!, // Customize border color
-                    width: 1.5, // Border thickness
-                  ),
-                ),
-                child: TextField(
-                  maxLines: 5,
-                  minLines: 5,
-                  style: AppTextStyle.dmSans(
-                    color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-                    fontSize: 16.0,
-                    weight: FontWeight.w400,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: tr('whatYouWantToTalk'),
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                  ),
-                ),
+              TextFieldWidget(
+                subTitle: 'reportsTitle',
+                hintText: 'writeTitleHere',
+                maxLines: 2,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                isRequired: true,
               ),
-
               const SizedBox(height: 20),
-
+              TextFieldWidget(
+                subTitle: 'reportDescription',
+                hintText: 'whatYouWantToTalk',
+                maxLines: 10,
+                subtitleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                titleColor:
+                    isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+              ),
+              const SizedBox(height: 20),
               MainButton(
                 btn_title: 'submit',
                 btn_radius: 10,
