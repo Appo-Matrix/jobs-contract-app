@@ -10,16 +10,23 @@ class JCheckBoxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(JSizes.xs)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return JAppColors.lightGray100; // Check color for selected state
+        return JAppColors.white; // White check mark for selected state
       } else {
         return JAppColors.lightGray700; // Check color for unselected state
       }
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return JAppColors.primary; // Fill color for selected state
+        return JAppColors.primary; // Primary purple for selected state
       } else {
         return Colors.transparent; // Transparent for unselected state
+      }
+    }),
+    side: WidgetStateBorderSide.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return const BorderSide(color: JAppColors.primary, width: 2); // Border for selected
+      } else {
+        return BorderSide(color: JAppColors.lightGray400, width: 2); // Gray border for unselected
       }
     }),
   );
@@ -29,16 +36,23 @@ class JCheckBoxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(JSizes.xs)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return JAppColors.lightGray100; // Check color for selected state
+        return JAppColors.darkGray900; // Dark check mark for contrast on selected state
       } else {
         return JAppColors.darkGray300; // Check color for unselected state
       }
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
-        return JAppColors.primary; // Fill color for selected state
+        return JAppColors.primary; // Primary purple for selected state
       } else {
         return Colors.transparent; // Transparent for unselected state
+      }
+    }),
+    side: WidgetStateBorderSide.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return const BorderSide(color: JAppColors.primary, width: 2); // Border for selected
+      } else {
+        return BorderSide(color: JAppColors.darkGray600, width: 2); // Gray border for unselected
       }
     }),
   );

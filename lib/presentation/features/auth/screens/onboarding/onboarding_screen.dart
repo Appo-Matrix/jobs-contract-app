@@ -57,7 +57,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SafeArea(
         child: Column(
           children: [

@@ -76,7 +76,8 @@ class ContractDetailScreen extends StatelessWidget {
                     child: MainButton(
                       btn_title: 'sendMessage',
                       btn_radius: 10,
-                      btn_color: Colors.transparent,
+                      btn_border_color: isDark ? JAppColors.darkGray100 : JAppColors.primary,
+                      btn_color: Colors.white,
 
                       title_color:
                       isDark ? JAppColors.darkGray100 : JAppColors.primary,

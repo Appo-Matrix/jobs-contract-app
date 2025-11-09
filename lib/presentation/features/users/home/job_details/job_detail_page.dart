@@ -66,23 +66,19 @@ class _JobDetailsPageState extends State<JobDetailsPage> {
     final isDark = JDeviceUtils.isDarkMode(context);
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: () => Navigator.pop(context),
-          ),
-        ),
-        title: Text(
-          'pageTitle',
-          style: AppTextStyle.onest(
-            color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: JSizes.fontSizeLg,
-            weight: FontWeight.w600,
-          ),
-        ).tr(),
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: (){
+          Navigator.pop(context);
+        },
+        // title: Text(
+        //   'pageTitle',
+        //   style: AppTextStyle.onest(
+        //     color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+        //     fontSize: JSizes.fontSizeLg,
+        //     weight: FontWeight.w600,
+        //   ),
+        // ).tr(),
       ),
       body: Column(
         children: [

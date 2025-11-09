@@ -25,9 +25,7 @@ class EmployerProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define colors based on dark mode
-    final textColor = isDark ? Colors.white :  Colors.white ;
-    final iconColor = isDark ? JAppColors.lightGray100 : JAppColors.primary;
+
 
     return
       Row(
@@ -93,7 +91,8 @@ class EmployerProfileWidget extends StatelessWidget {
                 style: AppTextStyle.onest(
                   fontSize: 16.0,
                   weight: FontWeight.w400,
-                  color: textColor,
+                               color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
+
                 ),
               ),
               const SizedBox(height: 4),
@@ -107,7 +106,7 @@ class EmployerProfileWidget extends StatelessWidget {
                     width: 12,
                     height: 16,
                     colorFilter: ColorFilter.mode(
-                      iconColor,
+                      isDark ? JAppColors.lightGray100 : JAppColors.primary,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -116,7 +115,7 @@ class EmployerProfileWidget extends StatelessWidget {
                     location,
                     style: AppTextStyle.onest(
                       fontSize: 12.0,
-                      color: textColor,
+                      color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
                       weight: FontWeight.w400,
                     ),
                   ).tr(),

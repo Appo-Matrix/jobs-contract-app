@@ -22,14 +22,18 @@ class JobDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
+      appBar: JAppbar(
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: (){
+          Navigator.pop(context);
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: JSizes.appBarHeight),
 
               // Job Title
               Text(
@@ -80,7 +84,18 @@ class JobDetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+
+
                   TextButton(
+                    style: TextButton.styleFrom(
+                      side: const BorderSide(
+                        color: JAppColors.error500, // Border color
+                        width: 1.5,                 // Border width
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8), // Optional: rounded corners
+                      ),
+                    ),
                     onPressed: () {
                       AppRouter.router.push('/reportJobScreen');
                     },

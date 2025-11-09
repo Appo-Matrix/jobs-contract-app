@@ -7,21 +7,23 @@ class JElevatedButtonTheme {
   JElevatedButtonTheme._();
 
   /* -- Light Theme -- */
-  static final lightElevatedButtonTheme  = ElevatedButtonThemeData(
+  static final lightElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: JAppColors.lightGray100,  // Light foreground color (changed from default to lightGray100)
-      backgroundColor: JAppColors.primary,     // Primary background color (changed to primary)
-      disabledForegroundColor: JAppColors.lightGray500,  // Disabled foreground color (set to lightGray500)
-      disabledBackgroundColor: JAppColors.lightGray300,   // Disabled background color (set to lightGray300)
-      side: const BorderSide(color: JAppColors.primary),  // Border color (set to primary color)
-      padding: const EdgeInsets.symmetric(vertical: JSizes.buttonHeight),  // Vertical padding from JSizes
+      foregroundColor: JAppColors.white,  // White text on primary button
+      backgroundColor: JAppColors.primary,  // Primary purple background
+      disabledForegroundColor: JAppColors.lightGray500,  // Disabled text color
+      disabledBackgroundColor: JAppColors.lightGray300,  // Disabled background
+      side: const BorderSide(color: JAppColors.primary),  // Border matches background
+      padding: const EdgeInsets.symmetric(vertical: JSizes.buttonHeight),  // Vertical padding
       textStyle: const TextStyle(
-          fontSize: 16,  // Font size set to 16
-          color: JAppColors.lightGray100, // Text color for light mode (changed to lightGray100)
-          fontWeight: FontWeight.w600
+        fontSize: 16,
+        color: JAppColors.white,  // White text
+        fontWeight: FontWeight.w600,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(JSizes.buttonRadius)),  // Button radius from JSizes
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(JSizes.buttonRadius),
+      ),
     ),
   );
 
@@ -29,18 +31,20 @@ class JElevatedButtonTheme {
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
-      foregroundColor: JAppColors.lightGray100,  // Light foreground color (changed to lightGray100 for dark theme)
-      backgroundColor: JAppColors.primary,     // Primary background color (same as light theme)
-      disabledForegroundColor: JAppColors.darkGray500,  // Disabled foreground color for dark mode (set to darkGray500)
-      disabledBackgroundColor: JAppColors.darkGray300,   // Disabled background for dark mode (set to darkGray300)
-      side: const BorderSide(color: JAppColors.primary),  // Border color (set to primary color)
-      padding: const EdgeInsets.symmetric(vertical: JSizes.buttonHeight),  // Vertical padding from JSizes
+      foregroundColor: JAppColors.white,  // White text on primary button
+      backgroundColor: JAppColors.primary,  // Primary purple background
+      disabledForegroundColor: JAppColors.darkGray500,  // Disabled text for dark mode
+      disabledBackgroundColor: JAppColors.darkGray700,  // Disabled background for dark mode
+      side: const BorderSide(color: JAppColors.primary),  // Border matches background
+      padding: const EdgeInsets.symmetric(vertical: JSizes.buttonHeight),  // Vertical padding
       textStyle: const TextStyle(
-          fontSize: 16,  // Font size set to 16
-          color: JAppColors.lightGray100, // Text color for dark mode (set to lightGray100)
-          fontWeight: FontWeight.w600
+        fontSize: 16,
+        color: JAppColors.white,  // White text
+        fontWeight: FontWeight.w600,
       ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(JSizes.buttonRadius)),  // Button radius from JSizes
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(JSizes.buttonRadius),
+      ),
     ),
   );
 }

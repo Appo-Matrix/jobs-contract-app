@@ -8,24 +8,32 @@ class JTextFieldTheme {
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     errorMaxLines: 3,
-    prefixIconColor: JAppColors.darkGray400,  // Use your custom dark gray for icons
-    suffixIconColor: JAppColors.darkGray400,  // Use the same for suffix icon color
+    prefixIconColor: JAppColors.lightGray600,  // Medium gray for icons in light mode
+    suffixIconColor: JAppColors.lightGray600,  // Same for suffix icon color
     // constraints: const BoxConstraints.expand(height: TSizes.inputFieldHeight),
-    labelStyle: const TextStyle().copyWith(fontSize: JSizes.fontSizeMd, color: JAppColors.lightGray900),  // Text color for labels
-    hintStyle: const TextStyle().copyWith(fontSize: JSizes.fontSizeSm, color: JAppColors.lightGray600),  // Hint text color
+    labelStyle: const TextStyle().copyWith(
+      fontSize: JSizes.fontSizeMd,
+      color: JAppColors.lightGray700,  // Medium dark text for labels
+    ),
+    hintStyle: const TextStyle().copyWith(
+      fontSize: JSizes.fontSizeSm,
+      color: JAppColors.lightGray500,  // Lighter gray for hints
+    ),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: JAppColors.lightGray700.withOpacity(0.8)),  // Floating label color
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: JAppColors.primary,  // Primary purple when focused
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.lightGray500),  // Border color for light mode
+      borderSide: const BorderSide(width: 1, color: JAppColors.lightGray400),  // Lighter border
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.lightGray500),
+      borderSide: const BorderSide(width: 1, color: JAppColors.lightGray400),  // Lighter border
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.primary),  // Focused border color
+      borderSide: const BorderSide(width: 2, color: JAppColors.primary),  // Thicker primary border when focused
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
@@ -33,29 +41,38 @@ class JTextFieldTheme {
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 2, color: JAppColors.error500),  // Focused error border color
+      borderSide: const BorderSide(width: 2, color: JAppColors.error600),  // Darker error when focused
     ),
   );
 
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
-    errorMaxLines: 2,
-    prefixIconColor: JAppColors.darkGray400,  // Use custom dark gray for icons
-    suffixIconColor: JAppColors.darkGray400,  // Same for suffix icon color
+    errorMaxLines: 3,  // Consistent with light mode
+    prefixIconColor: JAppColors.darkGray500,  // Medium gray for icons in dark mode
+    suffixIconColor: JAppColors.darkGray500,  // Same for suffix icon color
     // constraints: const BoxConstraints.expand(height: TSizes.inputFieldHeight),
-    labelStyle: const TextStyle().copyWith(fontSize: JSizes.fontSizeMd, color: JAppColors.lightGray100),  // Text color for labels in dark mode
-    hintStyle: const TextStyle().copyWith(fontSize: JSizes.fontSizeSm, color: JAppColors.lightGray500),  // Hint text color
-    floatingLabelStyle: const TextStyle().copyWith(color: JAppColors.lightGray200.withOpacity(0.8)),  // Floating label color
+    labelStyle: const TextStyle().copyWith(
+      fontSize: JSizes.fontSizeMd,
+      color: JAppColors.darkGray300,  // Light gray text for labels in dark mode
+    ),
+    hintStyle: const TextStyle().copyWith(
+      fontSize: JSizes.fontSizeSm,
+      color: JAppColors.darkGray500,  // Medium gray for hints
+    ),
+    errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: JAppColors.primary,  // Primary purple when focused
+    ),
     border: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.darkGray500),  // Border color for dark mode
+      borderSide: const BorderSide(width: 1, color: JAppColors.darkGray600),  // Medium border for dark mode
     ),
     enabledBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.darkGray500),
+      borderSide: const BorderSide(width: 1, color: JAppColors.darkGray600),  // Medium border
     ),
     focusedBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 1, color: JAppColors.primary),  // Focused border color in dark mode
+      borderSide: const BorderSide(width: 2, color: JAppColors.primary),  // Thicker primary border when focused
     ),
     errorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
@@ -63,7 +80,7 @@ class JTextFieldTheme {
     ),
     focusedErrorBorder: const OutlineInputBorder().copyWith(
       borderRadius: BorderRadius.circular(JSizes.inputFieldRadius),
-      borderSide: const BorderSide(width: 2, color: JAppColors.error500),  // Focused error border color
+      borderSide: const BorderSide(width: 2, color: JAppColors.error600),  // Darker error when focused
     ),
   );
 }

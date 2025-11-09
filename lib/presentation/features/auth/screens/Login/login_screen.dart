@@ -325,7 +325,6 @@ class _LoginScreenState extends State<LoginScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),

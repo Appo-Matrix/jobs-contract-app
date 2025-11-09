@@ -4,20 +4,20 @@ import '../../constants/colors.dart'; // Your JAppColors class
 class JBottomSheetTheme {
   JBottomSheetTheme._();
 
-  static BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
+  static final BottomSheetThemeData lightBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: JAppColors.lightGray100, // Light background color
-    modalBackgroundColor: JAppColors.lightGray100, // Light modal background
+    backgroundColor: JAppColors.white, // White background for light mode
+    modalBackgroundColor: JAppColors.white, // White modal background
     constraints: const BoxConstraints(minWidth: double.infinity),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(16),
     ),
   );
 
-  static BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
+  static final BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
     showDragHandle: true,
-    backgroundColor: JAppColors.darkGray900, // Dark background color
-    modalBackgroundColor: JAppColors.darkGray900, // Dark modal background
+    backgroundColor: JAppColors.darkGray800, // Dark background color (slightly lighter than darkGray900)
+    modalBackgroundColor: JAppColors.darkGray800, // Dark modal background
     constraints: const BoxConstraints(minWidth: double.infinity),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(16),
