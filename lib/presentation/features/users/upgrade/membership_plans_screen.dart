@@ -21,6 +21,8 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
   Widget build(BuildContext context) {
     final isDark = JDeviceUtils.isDarkMode(context);
 
+    ///todo
+    ///i think this screen will be removed
     return Scaffold(
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       appBar: JAppbar(
@@ -28,19 +30,14 @@ class _MembershipPlansScreenState extends State<MembershipPlansScreen> {
           'membershipPlans',
           style: AppTextStyle.dmSans(
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray900,
-            fontSize: 20.0,
+            fontSize: 18.0,
             weight: FontWeight.w600,
           ),
         ).tr(),
-        leadingIcon: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: BackCircle(
-            isDark: isDark,
-            onTap: (){
-              Navigator.pop(context);
-            },
-          ),
-        ),
+        leadingIcon: Icon(Icons.arrow_back),
+        leadingOnPressed: () {
+          Navigator.pop(context);
+        },
       ),
 
       body: SingleChildScrollView(

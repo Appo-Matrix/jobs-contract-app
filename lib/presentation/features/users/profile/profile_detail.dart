@@ -39,10 +39,9 @@ class ProfileScreen extends StatelessWidget {
             color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
           ),
         ).tr(),
-        actions: [
 
-
-        ],
+          leadingIcon: const Icon(Icons.arrow_back),
+          leadingOnPressed: () => Navigator.pop(context),
       ),
       backgroundColor: isDark ? JAppColors.backGroundDark : Colors.white,
       body: SafeArea(
