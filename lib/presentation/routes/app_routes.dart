@@ -8,6 +8,7 @@ import 'package:job_contracts/presentation/routes/routes.dart';
 import '../features/auth/screens/Login/login_screen.dart';
 import '../features/auth/screens/address_form/address_form_screen.dart';
 import '../features/auth/screens/forget_password/forget_password_otp_screen.dart';
+import '../features/auth/screens/forget_password/password_updated_screen.dart';
 import '../features/auth/screens/forget_password/reset_password.dart';
 import '../features/auth/screens/newsignupscreen/new_signup_screen.dart';
 import '../features/auth/screens/portfilo_screen/upload_portfolio_screen.dart';
@@ -98,6 +99,11 @@ class AppRouter {
         path: '/verifyProfile',
         name: Routes.verifyProfile.name,
        builder: (context, state) => const VerifyProfile(),
+      ),
+      GoRoute(
+        path: '/passwordUpdatedScreen',
+        name: Routes.passwordUpdatedScreen.name,
+        builder: (context, state) => const PasswordUpdatedScreen(),
       ),
       GoRoute(
         path: '/verifyPhoneNumber',
