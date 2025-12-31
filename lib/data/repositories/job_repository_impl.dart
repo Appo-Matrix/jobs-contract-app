@@ -8,7 +8,7 @@ import '../models/jobs/job_model.dart';
 import '../models/jobs/job_report_model.dart';
 import '../models/jobs/job_search_result_model.dart';
 import '../models/jobs/matched_job_model.dart';
-import '../models/jobs/pagination_job_model.dart';
+import '../models/jobs/pagination_job_model.dart' hide PaginatedJobsModel;
 import '../models/jobs/recent_job_model.dart';
 import '../models/saved_jobs/saved_jobs_model.dart';
 import '../models/saved_jobs/toggle_saved_jobs_req.dart';

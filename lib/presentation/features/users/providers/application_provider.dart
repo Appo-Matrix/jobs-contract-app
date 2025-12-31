@@ -36,6 +36,24 @@ class ApplicationProvider with ChangeNotifier {
   String? _error;
   String? get error => _error;
 
+
+  Future<void> submitApplication(JobApplicationSubmitRequest request) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      _applicationResponse = await _repository.submitJobApplication(request);
+      _error = null;
+      Fluttertoast.showToast(msg: _applicationResponse!.message);
+    } catch (e) {
+      _error = e.toString();
+      Fluttertoast.showToast(msg: _error!);
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   Future<void> fetchApplicationById(String id) async {
     _isLoading = true;
     _error = null;
@@ -130,20 +148,5 @@ class ApplicationProvider with ChangeNotifier {
     }
   }
 
-  Future<void> submitApplication(JobApplicationSubmitRequest request) async {
-    _isLoading = true;
-    notifyListeners();
 
-    try {
-      _applicationResponse = await _repository.submitJobApplication(request);
-      _error = null;
-      Fluttertoast.showToast(msg: _applicationResponse!.message);
-    } catch (e) {
-      _error = e.toString();
-      Fluttertoast.showToast(msg: _error!);
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
 }

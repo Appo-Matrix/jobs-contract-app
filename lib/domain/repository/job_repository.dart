@@ -6,7 +6,6 @@ import '../../data/models/jobs/job_model.dart';
 import '../../data/models/jobs/job_report_model.dart';
 import '../../data/models/jobs/job_search_result_model.dart';
 import '../../data/models/jobs/matched_job_model.dart';
-import '../../data/models/jobs/pagination_job_model.dart';
 import '../../data/models/jobs/recent_job_model.dart';
 import '../../data/models/saved_jobs/saved_jobs_model.dart';
 import '../../data/models/saved_jobs/toggle_saved_jobs_req.dart';
@@ -39,16 +38,4 @@ abstract class JobRepository {
   Future<List<SavedJobModel>> fetchSavedJobs();
 
   Future<ToggleSaveJobResponse> toggleJobSaveStatus(ToggleSaveJobRequest request);
-
-
-
-
-
-
-
-
-
-
-
-
 }

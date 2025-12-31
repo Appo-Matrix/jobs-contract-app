@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
 
 import '../../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
-import '../../../../../../utils/constants/image_string.dart';
-import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/device/device_utility.dart';
 import '../../../../../utils/common_widgets/EmployerProfileWidget.dart';
 
@@ -82,7 +78,7 @@ class _ContractCardState extends State<ContractCard> {
               ? null
               : [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
+                    color: Colors.black.withValues(alpha: 0.05),
                     blurRadius: 10,
                     offset: const Offset(0, 2),
                   ),
@@ -173,7 +169,7 @@ class _ContractCardState extends State<ContractCard> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: JAppColors.primary.withOpacity(0.15),
+                    color: JAppColors.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
@@ -193,7 +189,7 @@ class _ContractCardState extends State<ContractCard> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                     decoration: BoxDecoration(
-                      color: JAppColors.success600.withOpacity(0.1),
+                      color: JAppColors.success600.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -288,9 +284,9 @@ class _ContractCardState extends State<ContractCard> {
       case 'completed':
         return null; // No special border
       case 'paused':
-        return Colors.orange.withOpacity(0.5);
+        return Colors.orange.withValues(alpha: 0.5);
       case 'cancelled':
-        return JAppColors.error500.withOpacity(0.5);
+        return JAppColors.error500.withValues(alpha: 0.5);
       default:
         return null;
     }
@@ -477,299 +473,13 @@ class _ContractCardState extends State<ContractCard> {
     return const SizedBox.shrink();
   }
 
-  // Widget _buildActionButtons(bool isDark) {
-  //   final status = widget.status.toLowerCase();
-  //
-  //   // Active contracts - Show both "Submit Work" and "View Details" buttons
-  //   if (status == 'active') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         // Primary Action - Submit Work
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: ElevatedButton(
-  //             onPressed: widget.onSubmitWorkPressed,
-  //             style: ElevatedButton.styleFrom(
-  //               backgroundColor: JAppColors.primary,
-  //               foregroundColor: Colors.white,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //               elevation: 0,
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.upload_file, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'Submit Work',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: Colors.white,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //         const SizedBox(height: 8),
-  //         // Secondary Action - View Details
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: JAppColors.primary,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: JAppColors.primary,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.visibility, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'View Contract Details',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: JAppColors.primary,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Completed contracts - Show "View Completion Report" button
-  //   if (status == 'completed') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: JAppColors.success600,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: JAppColors.success600,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.check_circle_outline, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'View Completion Report',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: JAppColors.success600,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Paused contracts - Show "View Details" button only (view-only)
-  //   if (status == 'paused') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         // View Details Button
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: Colors.orange,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: Colors.orange,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.visibility, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'View Paused Contract',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: Colors.orange,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Cancelled contracts - Show "View Cancellation Details" button
-  //   if (status == 'cancelled') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: JAppColors.error600,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: JAppColors.error600,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.cancel_outlined, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'View Cancellation Details',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: JAppColors.error600,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Pending - Show "View Pending Contract" button
-  //   if (status == 'pending') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: Colors.amber.shade700,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: Colors.amber.shade700,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.hourglass_empty, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'View Pending Contract',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: Colors.amber.shade700,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Under Review - Show "Check Review Status" button
-  //   if (status == 'under review') {
-  //     return Column(
-  //       children: [
-  //         const SizedBox(height: 16),
-  //         SizedBox(
-  //           width: double.infinity,
-  //           child: OutlinedButton(
-  //             onPressed: widget.onViewDetailsPressed ?? widget.onCardTap,
-  //             style: OutlinedButton.styleFrom(
-  //               foregroundColor: Colors.purple,
-  //               padding: const EdgeInsets.symmetric(vertical: 14),
-  //               side: BorderSide(
-  //                 color: Colors.purple,
-  //                 width: 1.5,
-  //               ),
-  //               shape: RoundedRectangleBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //               ),
-  //             ),
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 Icon(Icons.rate_review, size: 18),
-  //                 const SizedBox(width: 8),
-  //                 Text(
-  //                   'Check Review Status',
-  //                   style: AppTextStyle.dmSans(
-  //                     fontSize: 14.0,
-  //                     weight: FontWeight.w600,
-  //                     color: Colors.purple,
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     );
-  //   }
-  //
-  //   // Default - No action buttons
-  //   return const SizedBox.shrink();
-  // }
 
   Widget _buildIconChip(IconData icon, String value, bool isDark) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         color: isDark
-            ? JAppColors.darkGray700.withOpacity(0.5)
+            ? JAppColors.darkGray700.withValues(alpha: 0.5)
             : JAppColors.lightGray200,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(

@@ -12,6 +12,24 @@ import '../../models/job_applications/update_application_request.dart';
 class ApplicationRemoteDataSource {
   final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
 
+  Future<JobApplicationResponseModel> submitJobApplication(JobApplicationSubmitRequest request) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.submitJobApplication,
+      data: request.toJson(),
+    );
+
+    if (response.statusCode == 201) {
+      return JobApplicationResponseModel.fromJson(response.data);
+    } else if (response.statusCode == 400 || response.statusCode == 401) {
+      throw Exception(response.data['message'] ?? response.data['errors']?.join(', '));
+    } else {
+      throw Exception(response.data['error'] ?? 'Unexpected error occurred');
+    }
+  }
+
+
+
+
   Future<JobApplicationModel> getApplicationById(String id) async {
     final response = await apiClient.get(ApiPath.getJobApplicationById(id));
 
@@ -74,21 +92,6 @@ class ApplicationRemoteDataSource {
       throw Exception(response.data['message']);
     } else {
       throw Exception(response.data['error'] ?? 'Unexpected error');
-    }
-  }
-
-  Future<JobApplicationResponseModel> submitJobApplication(JobApplicationSubmitRequest request) async {
-    final response = await apiClient.post(
-      endpoint: ApiPath.submitJobApplication,
-      data: request.toJson(),
-    );
-
-    if (response.statusCode == 201) {
-      return JobApplicationResponseModel.fromJson(response.data);
-    } else if (response.statusCode == 400 || response.statusCode == 401) {
-      throw Exception(response.data['message'] ?? response.data['errors']?.join(', '));
-    } else {
-      throw Exception(response.data['error'] ?? 'Unexpected error occurred');
     }
   }
 }

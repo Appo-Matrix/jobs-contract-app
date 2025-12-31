@@ -48,13 +48,15 @@ dependencies:
   fluttertoast: ^8.2.12
   flutter_svg: ^2.0.17
   smooth_page_indicator: ^1.2.1
-  google_maps_flutter: ^2.12.1
+  google_maps_flutter: ^2.14.0
   image_picker: ^1.1.2
   intl_phone_field: ^3.2.0
   simple_circular_progress_bar: ^1.0.2
   flutter_localization: ^0.3.2
   another_flushbar: ^1.12.30
   country_code_picker: ^3.3.0
+  geolocator: ^14.0.2
+  cached_network_image: ^3.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

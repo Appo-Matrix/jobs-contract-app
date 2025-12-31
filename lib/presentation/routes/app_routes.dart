@@ -5,6 +5,7 @@ import 'package:job_contracts/presentation/features/auth/screens/onboarding/onbo
 
 import 'package:job_contracts/presentation/routes/routes.dart';
 
+import '../../main.dart';
 import '../features/auth/screens/Login/login_screen.dart';
 import '../features/auth/screens/address_form/address_form_screen.dart';
 import '../features/auth/screens/forget_password/forget_password_otp_screen.dart';
@@ -74,8 +75,8 @@ class AppRouter {
   static final router = GoRouter(
     navigatorKey: navigatorKey,
     debugLogDiagnostics: true,
-    // initialLocation: '/onboardingScreen',
-    initialLocation: '/navigationMenu',
+    initialLocation: globalInitialRoute ?? '/onboardingScreen',
+    //initialLocation: '/navigationMenu',
     routes: [
       // User
       GoRoute(

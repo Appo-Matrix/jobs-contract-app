@@ -37,7 +37,7 @@ class EmployerProfileWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(40),
               child: employerImage != null
-                  ? Image.asset(
+                  ? Image.network(
                 employerImage!,
                 width: 50,
                 height: 50,

@@ -233,28 +233,57 @@ class UserRemoteDataSource {
   }
 
   Future<CurrentUser> updateCurrentUserProfile(UpdateCurrentUserProfileRequest request) async {
-    final formData = await request.toFormData();
+    try {
+      debugPrint('🚀 Starting profile update...');
+      final formData = await request.toFormData();
 
-    final response = await apiClient.putMultipart(
-      endpoint: ApiPath.updateCurrentUserProfile, // like "/users/me"
-      data: formData,
-    );
+      debugPrint('📤 Sending PUT request to: ${ApiPath.updateCurrentUserProfile}');
+      debugPrint('📦 FormData summary:');
+      debugPrint('  Fields count: ${formData.fields.length}');
+      debugPrint('  Files count: ${formData.files.length}');
 
-    if (response.statusCode == 200) {
-      return CurrentUser.fromJson(response.data);
-    } else if (response.statusCode == 400) {
-      throw Exception("Invalid request data");
-    } else if (response.statusCode == 401) {
-      throw Exception("Unauthorized");
-    } else if (response.statusCode == 404) {
-      throw Exception("User not found");
-    } else if (response.statusCode == 500) {
-      throw Exception("Internal server error");
-    } else {
-      throw Exception("Unexpected error: ${response.statusCode}");
+      final response = await apiClient.putMultipart(
+        endpoint: ApiPath.updateCurrentUserProfile,
+        data: formData,
+      );
+
+      debugPrint('📥 Response received:');
+      debugPrint('  Status code: ${response.statusCode}');
+      debugPrint('  Response data: ${response.data}');
+
+      if (response.statusCode == 200) {
+        final user = CurrentUser.fromJson(response.data);
+        debugPrint('✅ Profile updated successfully');
+        debugPrint('  Updated profile URL: ${user.profile}');
+        return user;
+      } else if (response.statusCode == 400) {
+        final errorMsg = response.data['message'] ?? response.data['error'] ?? "Invalid request data";
+        debugPrint('❌ 400 Error: $errorMsg');
+        throw Exception(errorMsg);
+      } else if (response.statusCode == 401) {
+        debugPrint('❌ 401 Error: Unauthorized');
+        throw Exception("Unauthorized");
+      } else if (response.statusCode == 404) {
+        debugPrint('❌ 404 Error: User not found');
+        throw Exception("User not found");
+      } else if (response.statusCode == 500) {
+        final errorMsg = response.data['message'] ?? response.data['error'] ?? "Internal server error";
+        debugPrint('❌ 500 Error: $errorMsg');
+        throw Exception(errorMsg);
+      } else {
+        debugPrint('❌ Unexpected status code: ${response.statusCode}');
+        throw Exception("Unexpected error: ${response.statusCode}");
+      }
+    } catch (e) {
+      debugPrint('❌ Exception in updateCurrentUserProfile: $e');
+      if (e is DioException) {
+        debugPrint('  DioException type: ${e.type}');
+        debugPrint('  DioException message: ${e.message}');
+        debugPrint('  Response: ${e.response?.data}');
+      }
+      rethrow;
     }
   }
-
 // user_remote_data_source.dart
   Future<UploadResumeResponse> uploadResume(UploadResumeRequest request) async {
     final formData = FormData.fromMap({

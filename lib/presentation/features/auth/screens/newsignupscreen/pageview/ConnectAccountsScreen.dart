@@ -16,7 +16,7 @@ class ConnectAccountsScreen extends StatefulWidget {
   const ConnectAccountsScreen({
     super.key,
     required this.onContinue,
-    required this.onBack,
+    required this.onBack, required void Function() onConnectAccount,
   });
 
   @override

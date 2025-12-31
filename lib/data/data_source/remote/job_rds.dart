@@ -8,7 +8,7 @@ import '../../models/jobs/job_model.dart';
 import '../../models/jobs/job_report_model.dart';
 import '../../models/jobs/job_search_result_model.dart';
 import '../../models/jobs/matched_job_model.dart';
-import '../../models/jobs/pagination_job_model.dart';
+import '../../models/jobs/pagination_job_model.dart' hide PaginatedJobsModel;
 import '../../models/jobs/recent_job_model.dart';
 import '../../models/saved_jobs/saved_jobs_model.dart';
 import '../../models/saved_jobs/toggle_saved_jobs_req.dart';
@@ -109,24 +109,39 @@ class JobRemoteDataSource {
     String sortBy = 'date',
     String sortOrder = 'desc',
   }) async {
-    final response = await apiClient.get(
-       ApiPath.getAllJobs(
-        page: page,
-        limit: limit,
-        sortBy: sortBy,
-        sortOrder: sortOrder,
-      ),
-    );
+    try {
+      final response = await apiClient.get(
+        ApiPath.getAllJobs(
+          page: page,
+          limit: limit,
+          sortBy: sortBy,
+          sortOrder: sortOrder,
+        ),
+      );
 
-    switch (response.statusCode) {
-      case 200:
-        return PaginatedJobsModel.fromJson(response.data);
-      case 400:
+      print('📥 Raw response: ${response.data}');
+
+      if (response.statusCode == 200) {
+        // Extract the 'data' object from the response
+        final Map<String, dynamic> data = response.data['data'];
+
+        print('📦 Extracted data: $data');
+        print('📋 Jobs count: ${data['jobs']?.length}');
+        print('📄 Pagination: ${data['pagination']}');
+
+        return PaginatedJobsModel.fromJson(data);
+      } else if (response.statusCode == 400) {
         throw Exception(response.data['message'] ?? "Invalid pagination parameters.");
-      case 500:
+      } else if (response.statusCode == 401) {
+        throw Exception("Authentication failed. Please login again.");
+      } else if (response.statusCode == 500) {
         throw Exception(response.data['error'] ?? "Internal server error.");
-      default:
+      } else {
         throw Exception("Unexpected error: ${response.statusCode}");
+      }
+    } catch (e) {
+      print('Error in getAllJobs: $e');
+      rethrow;
     }
   }
 

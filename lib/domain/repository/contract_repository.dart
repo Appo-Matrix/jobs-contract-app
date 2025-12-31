@@ -20,6 +20,8 @@ import '../../data/models/contracts/user_contract_model.dart';
 
 abstract class ContractRepository {
 
+  Future<List<AllContractModel>> getContractsByStatus(String status);
+
   Future<ActivateContractResponse> activateContract(String contractId);
 
   Future<CancelContractResponse> cancelContract(String contractId);

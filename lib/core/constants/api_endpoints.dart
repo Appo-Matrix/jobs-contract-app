@@ -1,6 +1,6 @@
 class ApiPath{
 
-  static String baseUrl = "http://localhost:3000/api/v1";
+  static String baseUrl = "https://arquimatch.com/api/v1";
 
 
   //Auth
@@ -42,7 +42,7 @@ class ApiPath{
 
   // Chat
   static const String createChat = '/chats/create';
-  static const String deleteChatByJobId = '/chats'; // + /{jobId}
+  static const String deleteChatByJobId = '/chats';
   static const String getAllChats = '/chats';
 
   // Contracts
@@ -102,7 +102,7 @@ class ApiPath{
 
   // Ads
   static const String createAd = '/ads';
-  static const String getAllAds = '/ads';
+  static const String getAllAds = '/ads/all';
   static String deleteAd(String id) => '/ads/$id';
   static String getAdById(String id) => '/ads/$id';
   static String updateAd(String adId) => '/ads/$adId';
@@ -239,50 +239,6 @@ class ApiPath{
   static String getExperienceById(String id) => '/experiences/$id';
   static String deleteExperience(String id) => '/experiences/$id';
   static String updateExperience(String id) => '/experiences/$id';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
