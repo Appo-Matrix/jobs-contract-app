@@ -1,5 +1,3 @@
-
-
 import 'package:job_contracts/core/constants/global.dart';
 import 'package:job_contracts/presentation/features/auth/providers/register_provider.dart';
 import 'package:job_contracts/presentation/global_notifiers/app_config_notifier.dart';
@@ -23,10 +21,6 @@ List<SingleChildWidget> registerGlobalNotifiers() {
     ChangeNotifierProvider(create: (_) => getIt<ApplicationProvider>()),
     ChangeNotifierProvider(create: (_) => getIt<AdProvider>()),
     ChangeNotifierProvider(create: (_) => getIt<CurrentUserProvider>()),
-
-
-
-
   ];
 }
 

@@ -86,7 +86,6 @@ class ApiPath{
   static String updateQualification(String eduId) => '/qualifications/$eduId';
   static String getQualificationsByUserId(String userId) => '/qualifications/user/$userId';
   static const String getMyQualifications = '/qualifications/me';
-
   // Jobs
   static const String createJob = "/jobs/create";
   static const String adminMetrics = "/admins/metrics";
