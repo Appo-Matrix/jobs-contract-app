@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/presentation/features/auth/screens/forget_password/widgets/requirement_item.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/forget_password/widgets/requirement_item.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';

@@ -1,5 +1,5 @@
-import 'package:job_contracts/core/constants/api_endpoints.dart';
 
+import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/locations/location_model.dart';
 

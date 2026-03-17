@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 
 import '../../../../data/models/auth/reset_password_req.dart';
 import '../../../../domain/repository/auth_repository.dart';

@@ -1,6 +1,7 @@
-import 'package:job_contracts/core/constants/api_endpoints.dart';
-import 'package:job_contracts/core/network/api_client.dart';
 
+
+import '../../../core/constants/api_endpoints.dart';
+import '../../../core/network/api_client.dart';
 import '../../models/experience/experience_req.dart';
 import '../../models/experience/experience_res.dart';
 import '../../models/experience/work_experience.dart';

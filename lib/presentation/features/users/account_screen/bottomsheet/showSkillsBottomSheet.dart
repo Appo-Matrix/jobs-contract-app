@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import 'JBottomSheet.dart';
 
 void showSkillsBottomSheet(BuildContext context ,bool isDark) {

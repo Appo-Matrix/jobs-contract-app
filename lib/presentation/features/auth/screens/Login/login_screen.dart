@@ -1,19 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/Login/widgets/login_header.dart';
 import 'package:provider/provider.dart';
-import 'package:job_contracts/presentation/features/auth/screens/Login/widgets/login_header.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
-import 'package:job_contracts/utils/messages/messages.dart';
+
 import '../../../../../utils/common_widgets/bottom_widget.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
 import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../../utils/messages/messages.dart';
+import '../../../../routes/app_routes.dart';
 import '../../providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {

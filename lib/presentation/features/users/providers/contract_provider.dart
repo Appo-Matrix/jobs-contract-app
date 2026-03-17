@@ -2,8 +2,6 @@
 
  import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/data/repositories/contract_repository_impl.dart';
-import 'package:job_contracts/domain/repository/contract_repository.dart';
 import '../../../../data/models/contracts/activate_contract_res.dart';
 import '../../../../data/models/contracts/active_contract_model.dart';
 import '../../../../data/models/contracts/all_contract_model.dart';
@@ -21,6 +19,8 @@ import '../../../../data/models/contracts/update_contract_response.dart';
 import '../../../../data/models/contracts/update_payment_status_request.dart';
 import '../../../../data/models/contracts/update_payment_status_response.dart';
 import '../../../../data/models/contracts/user_contract_model.dart';
+import '../../../../data/repositories/contract_repository_impl.dart';
+import '../../../../domain/repository/contract_repository.dart';
 
 
 class ContractProvider with ChangeNotifier {

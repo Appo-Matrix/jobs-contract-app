@@ -1,18 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/ConnectAccountsScreen.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/basic_details_screen.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/role_selection_screen.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/terms_conditionsS_screen.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
-import 'package:job_contracts/presentation/features/auth/screens/newsignupscreen/pageview/ConnectAccountsScreen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/newsignupscreen/pageview/basic_details_screen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/newsignupscreen/pageview/role_selection_screen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/newsignupscreen/pageview/terms_conditionsS_screen.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
 
 import '../../../../../utils/common_widgets/StepProgressHeader.dart';
 import '../../../../../utils/common_widgets/arqui_match_logo.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../providers/register_provider.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/presentation/features/users/message/widgets/chat_message_widget.dart';
+import 'package:job_contract_app/presentation/features/users/message/widgets/chat_message_widget.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/constants/app_text_style.dart';

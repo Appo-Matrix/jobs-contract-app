@@ -5,7 +5,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import '../../../../data/models/auth/send_otp_sms_req.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
 import '../../../../domain/repository/auth_repository.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 
 class SendOtpSmsProvider with ChangeNotifier {
   final AuthRepository authRepository = AuthRepositoryImpl();

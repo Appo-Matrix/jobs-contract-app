@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:job_contracts/utils/common_widgets/main_button.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/data/models/user/update_current_user_profile_req.dart';
+import '../../../../data/models/user/update_current_user_profile_req.dart';
+import '../../../../utils/common_widgets/main_button.dart';
+import '../../../../utils/constants/colors.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';

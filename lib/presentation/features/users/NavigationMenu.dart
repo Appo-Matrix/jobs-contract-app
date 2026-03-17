@@ -174,15 +174,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:job_contracts/presentation/features/users/contract/contract_screen.dart';
-import 'package:job_contracts/presentation/features/users/home/home_screen.dart';
-import 'package:job_contracts/presentation/features/users/notification/notifcations.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/image_string.dart';
+import '../../../utils/device/device_utility.dart';
 import 'blog/blog_screen.dart';
+import 'contract/contract_screen.dart';
 import 'finanance_report/finance_reports_screen.dart';
+import 'home/home_screen.dart';
 import 'message/message_screen.dart';
 
 class NavigationMenu extends StatelessWidget {

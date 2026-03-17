@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/myads/widgets/file_upload_widget.dart';
+import 'package:job_contract_app/presentation/features/users/myads/widgets/file_upload_widget.dart';
 import 'dart:io';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';

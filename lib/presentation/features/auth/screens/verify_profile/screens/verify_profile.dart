@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/auth/screens/verify_profile/screens/widgets/profile_verification_container.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/verify_profile/screens/widgets/profile_verification_container.dart';
+
 import '../../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/constants/text_strings.dart';
 import '../../../../../../utils/device/device_utility.dart';
+import '../../../../../routes/app_routes.dart';
 import '../verification_help_dialog.dart';
 
 class VerifyProfile extends StatefulWidget {

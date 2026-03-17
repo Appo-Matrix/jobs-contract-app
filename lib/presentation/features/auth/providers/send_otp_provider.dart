@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../../data/models/auth/send_otp_email_req.dart';

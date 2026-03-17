@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/reports_repository_impl.dart';
 
 import '../../../../data/models/reported_jobs/reported_jobs_model.dart';
+import '../../../../data/repositories/reports_repository_impl.dart';
 import '../../../../domain/repository/reports_repository.dart';
 
 class ReportsProvider with ChangeNotifier {

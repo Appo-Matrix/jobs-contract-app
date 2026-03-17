@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../../../theme_controller/ThemeNotifier.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
 
 class AppBottomSheets {
   // Theme Bottom Sheet

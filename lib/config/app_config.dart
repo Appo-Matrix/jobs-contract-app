@@ -1,6 +1,7 @@
 
 
-import 'package:job_contracts/config/dependencies/di.dart';
+
+import 'package:job_contract_app/config/dependencies/di.dart';
 
 class AppConfig{
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/finanance_report/widgets/summary_card.dart';
+import 'package:job_contract_app/presentation/features/users/finanance_report/widgets/summary_card.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/device/device_utility.dart';

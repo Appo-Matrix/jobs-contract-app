@@ -1,4 +1,6 @@
-import 'package:job_contracts/data/models/jobs/pagination_info.dart';
+
+
+import 'package:job_contract_app/data/models/jobs/pagination_info.dart';
 
 import 'job_list_item_model.dart';
 

@@ -13,6 +13,12 @@ class ApiPath{
   static String googleSignIn = "/auth/google";
   static String updatePassword = "/users/update-password";
   static const String registerFcmToken = '/auth/register-token';
+  static const String postBlog = '/blogs/';
+  static const String getBlogByUser = '/blogs/user';
+  static const String getAllBlog = '/blogs/';
+  static const String deleteUserBlog = '/blogs/';
+  static const String jobsByUser = '/jobs/me';
+  static const String getAllJob = '/jobs/all';
 
 
   // User
@@ -93,7 +99,7 @@ class ApiPath{
   static String getJobById(String jobId) => '/jobs/$jobId';
   static String updateJob(String id) => '/jobs/$id';
   static String getAllJobs({int page = 1, int limit = 10, String sortBy = 'date', String sortOrder = 'desc'}) => '/jobs/all?page=$page&limit=$limit&sortBy=$sortBy&sortOrder=$sortOrder';
-  static const String jobsByUser = '/jobs/me';
+
   static const String matchingJobs = '/jobs/matching';
   static String getRecentJobs({int page = 1, int limit = 10}) => '/jobs/recent?page=$page&limit=$limit';
   static const String searchJobs = '/jobs/search';

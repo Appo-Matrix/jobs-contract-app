@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/data/repositories/user_repository_impl.dart';
-import 'package:job_contracts/domain/repository/user_repository.dart';
 import '../../../../data/models/user/featured_company_res.dart';
+import '../../../../data/repositories/user_repository_impl.dart';
+import '../../../../domain/repository/user_repository.dart';
 import '../../../../utils/constants/colors.dart';
 
 

@@ -1,7 +1,12 @@
-import 'package:job_contracts/presentation/features/auth/providers/register_provider.dart';
+
+import 'package:job_contract_app/presentation/features/users/blog/provider/blog_provider.dart';
 
 import '../../../core/constants/global.dart';
 import '../../../presentation/features/auth/providers/auth_provider.dart';
+import '../../../presentation/features/auth/providers/register_provider.dart';
+import '../../../presentation/features/users/account_screen/provider/change_password_provider.dart';
+import '../../../presentation/features/users/account_screen/provider/recent_job_provider.dart';
+import '../../../presentation/features/users/home/job_details/provider/job_application_provider.dart';
 import '../../../presentation/features/users/providers/ad_provider.dart';
 import '../../../presentation/features/users/providers/application_provider.dart';
 import '../../../presentation/features/users/providers/contract_provider.dart';
@@ -18,4 +23,8 @@ void registerNotifiersDi() {
   assert(getIt.isRegistered<ApplicationProvider>());
   assert(getIt.isRegistered<AdProvider>());
   assert(getIt.isRegistered<CurrentUserProvider>());
+  assert(getIt.isRegistered<BlogProvider>());
+  assert(getIt.isRegistered<JobApplicationProvider>());
+  assert(getIt.isRegistered<ChangePasswordProvider>());
+  assert(getIt.isRegistered<RecentJobProvider>());
 }

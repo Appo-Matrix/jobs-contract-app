@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/talent_repository_impl.dart';
 
 import '../../../../data/models/saved_talents/saved_talent_res.dart';
 import '../../../../data/models/saved_talents/toggle_talent_save_req.dart';
+import '../../../../data/repositories/talent_repository_impl.dart';
 import '../../../../domain/repository/talent_repository.dart';
 
 class SavedTalentsProvider with ChangeNotifier {

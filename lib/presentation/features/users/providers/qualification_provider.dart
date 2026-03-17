@@ -1,13 +1,13 @@
 // providers/qualification_provider.dart
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/data/repositories/qualification_repository_impl.dart';
-import 'package:job_contracts/domain/repository/qualification_repository.dart';
 
 import '../../../../data/models/education/education_model.dart';
 import '../../../../data/models/education/qualification_model.dart';
 import '../../../../data/models/education/qualification_request.dart';
 import '../../../../data/models/education/user_education_model.dart';
+import '../../../../data/repositories/qualification_repository_impl.dart';
+import '../../../../domain/repository/qualification_repository.dart';
 
 
 class QualificationProvider with ChangeNotifier {

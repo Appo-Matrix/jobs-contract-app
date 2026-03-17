@@ -1,9 +1,11 @@
-import 'package:go_router/go_router.dart';
-import 'package:job_contracts/core/constants/global.dart';
-import 'package:job_contracts/presentation/features/auth/screens/forget_password/forget_password_screen.dart';
-import 'package:job_contracts/presentation/features/auth/screens/onboarding/onboarding_screen.dart';
 
-import 'package:job_contracts/presentation/routes/routes.dart';
+
+import 'package:go_router/go_router.dart';
+
+import '../../core/constants/global.dart';
+import '../features/auth/screens/forget_password/forget_password_screen.dart';
+import '../features/auth/screens/onboarding/onboarding_screen.dart';
+import '../routes/routes.dart';
 
 import '../../main.dart';
 import '../features/auth/screens/Login/login_screen.dart';

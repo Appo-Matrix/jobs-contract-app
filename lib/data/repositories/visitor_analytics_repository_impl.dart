@@ -1,6 +1,6 @@
-import 'package:job_contracts/data/data_source/remote/visitors_analytics_rds.dart';
 
 import '../../domain/repository/visitor_analytics_repository.dart';
+import '../data_source/remote/visitors_analytics_rds.dart';
 import '../models/visitor_analytics/visitor_analytics_filter.dart';
 import '../models/visitor_analytics/visitor_analytics_res.dart';
 

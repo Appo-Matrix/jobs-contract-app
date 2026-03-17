@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/subscription_repo_impl.dart';
 
 import '../../../../data/models/subscription/cancel_subscription_req.dart';
 import '../../../../data/models/subscription/cancel_subscription_res.dart';
 import '../../../../data/models/subscription/start_free_trial_res.dart';
 import '../../../../data/models/subscription/upgrade_subscription_req.dart';
 import '../../../../data/models/subscription/upgrade_subscription_res.dart';
+import '../../../../data/repositories/subscription_repo_impl.dart';
 import '../../../../domain/repository/subscription_repository.dart';
 
 class SubscriptionProvider with ChangeNotifier {

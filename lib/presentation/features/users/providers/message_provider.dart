@@ -1,8 +1,7 @@
 // provider/message_provider.dart
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/message_repository_impl.dart';
-
 import '../../../../data/models/messages/message_model.dart';
+import '../../../../data/repositories/message_repository_impl.dart';
 import '../../../../domain/repository/message_repository.dart';
 
 class MessageProvider with ChangeNotifier {

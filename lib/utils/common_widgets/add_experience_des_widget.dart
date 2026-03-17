@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../constants/app_text_style.dart';
 import '../constants/colors.dart';
 import '../constants/sizes.dart';
+import '../device/device_utility.dart';
 
 class AddExperienceDesWidget extends StatelessWidget {
   final String? hintText;

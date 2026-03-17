@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/offer_repo_impl.dart';
 
 import '../../../../data/models/offers/offer_model.dart';
+import '../../../../data/repositories/offer_repo_impl.dart';
 import '../../../../domain/repository/offer_repository.dart';
 
 class OfferProvider extends ChangeNotifier {

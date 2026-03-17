@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+
+import '../constants/colors.dart';
 
 class BackCircle extends StatelessWidget {
   const BackCircle({super.key, this.onTap, this.isDark});

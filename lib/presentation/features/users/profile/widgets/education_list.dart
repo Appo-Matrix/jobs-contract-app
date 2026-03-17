@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:job_contracts/presentation/features/users/profile/widgets/work_history_list.dart';
+import 'package:job_contract_app/presentation/features/users/profile/widgets/work_history_list.dart';
 
 class EducationList extends StatelessWidget {
   final bool isDark;

@@ -2,19 +2,22 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:job_contracts/utils/common_widgets/circular_avatar.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+
 import 'package:provider/provider.dart';
 import '../../../../data/models/jobs/job_list_item_model.dart';
 import '../../../../utils/common_widgets/blog_card.dart';
+import '../../../../utils/common_widgets/circular_avatar.dart';
 import '../../../../utils/common_widgets/job_card.dart';
 import '../../../../utils/common_widgets/main_button.dart';
 import '../../../../utils/constants/app_text_style.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_string.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
 import '../../../routes/app_routes.dart';
+import '../account_screen/provider/recent_job_provider.dart';
 import '../blog/blog_detail_screen.dart';
+import '../jobs/view_all_jobs_screen.dart';
 import '../myads/create_ad_screen.dart';
 import '../providers/ad_provider.dart';
 import '../providers/job_provider.dart';
@@ -34,7 +37,30 @@ class _HomeScreenState extends State<HomeScreen>
   late TabController _tabController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Map<String, List<String>> selectedFilters = {};
-
+  final List<Map<String, dynamic>> jobs = [
+    {
+      "title": "Flutter Developer",
+      "location": "Remote",
+      "workType": "Full Time",
+      "salary": "\$2000 - \$3000",
+      "category": "Development",
+      "duration": "6 Months",
+      "skills": ["Flutter", "Dart", "Firebase"],
+      "experience": "2+ Years",
+      "postedAgo": "2 days ago",
+    },
+    {
+      "title": "Mobile App Developer",
+      "location": "Lahore",
+      "workType": "Part Time",
+      "salary": "\$1500",
+      "category": "Mobile Development",
+      "duration": "3 Months",
+      "skills": ["Flutter", "REST API"],
+      "experience": "1+ Years",
+      "postedAgo": "1 day ago",
+    },
+  ];
   @override
   void initState() {
     super.initState();
@@ -42,7 +68,8 @@ class _HomeScreenState extends State<HomeScreen>
 
     // Fetch jobs when screen initializes
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<JobProvider>().fetchJobs(page: 1, limit: 10);
+      // Fetch recent jobs (won't re-fetch if already loaded)
+      context.read<JobProvider>().fetchJobs();
     });
   }
 
@@ -254,24 +281,38 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                     ).tr(),
                     const Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to view all recent jobs
-                      },
-                      child: Text(
-                        'viewAllRecent',
-                        style: AppTextStyle.dmSans(
-                          fontSize: 14.0,
-                          weight: FontWeight.w500,
-                          color: isDark ? Colors.white : JAppColors.lightGray900,
+                    Container(
+                      padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: JAppColors.primary,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ViewAllJobsScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'View All Recent',
+                          style: AppTextStyle.dmSans(
+                            fontSize: 12.0,
+                            weight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
                         ),
-                      ).tr(),
+                      ),
                     ),
+
                   ],
                 ),
                 const SizedBox(height: 12),
 
-                // Recently Posted Jobs Section with Provider
+                /// Recently Posted Jobs Section with Provider
                 Consumer<JobProvider>(
                   builder: (context, jobProvider, child) {
                     if (jobProvider.isLoading) {
@@ -290,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen>
                           child: Column(
                             children: [
                               Text(
-                                'Error loading jobs',
+                                'Internet Issue',
                                 style: AppTextStyle.dmSans(
                                   fontSize: 14.0,
                                   weight: FontWeight.w500,
@@ -300,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen>
                               const SizedBox(height: 8),
                               ElevatedButton(
                                 onPressed: () {
-                                  jobProvider.fetchJobs(page: 1, limit: 10);
+                                  jobProvider.fetchJobs();
                                 },
                                 child: const Text('Retry'),
                               ),
@@ -329,7 +370,7 @@ class _HomeScreenState extends State<HomeScreen>
                     }
 
                     // Display first 4 jobs
-                    final displayJobs = jobs.take(4).toList();
+                    final displayJobs = jobs.take(5).toList();
 
                     return ListView.builder(
                       shrinkWrap: true,
@@ -342,14 +383,14 @@ class _HomeScreenState extends State<HomeScreen>
                         try {
                           return JobCard(
                             isDark: isDark,
-                            title: job.title ?? 'No Title',
+                            title: job.title,
                             location: _getLocationString(job.jobLocation),
-                            workType: job.jobType ?? 'N/A',
-                            salary: job.salary ?? 'N/A',
-                            category: job.jobCategory ?? 'N/A',
-                            duration: job.jobDuration ?? 'N/A',
-                            skills: job.skillsRequired.map((s) => s.name ?? '').toList(),
-                            experience: job.experience ?? 'N/A',
+                            workType: job.jobType,
+                            salary: job.salary,
+                            category: job.jobCategory,
+                            duration: job.jobDuration ,
+                            skills: job.skillsRequired.map((s) => s.name).toList(),
+                            experience: job.experience,
                             postedAgo: _getTimeAgo(job.createdAt),
                             onViewDetails: () {
                               Navigator.push(
@@ -358,18 +399,18 @@ class _HomeScreenState extends State<HomeScreen>
                                   builder: (context) => JobDetailScreen(
                                     jobId: job.id,
                                     jobData: {
-                                      'title': job.title ?? 'Job Title',
-                                      'description': job.description ?? 'No description available',
-                                      'responsibilities': '' ?? [],
-                                      'skillsRequired': job.skillsRequired.map((s) => s.name ?? '').toList(),
-                                      'category': job.jobCategory ?? 'N/A',
-                                      'duration': job.jobDuration ?? 'N/A',
-                                      'experience': job.experience ?? 'N/A',
-                                      'salary': job.salary ?? 'N/A',
-                                      'workType': job.jobType ?? 'N/A',
+                                      'title': job.title,
+                                      'description': job.description,
+                                      'responsibilities': '',
+                                      'skillsRequired': job.skillsRequired.map((s) => s.name).toList(),
+                                      'category': job.jobCategory,
+                                      'duration': job.jobDuration,
+                                      'experience': job.experience,
+                                      'salary': job.salary,
+                                      'workType': job.jobType,
                                       'location': _getLocationString(job.jobLocation),
-                                      'clientHistory': '' ?? [],
-                                      'isSaved': true ?? false,
+                                      'clientHistory': '',
+                                      'isSaved': true,
                                     },
                                   ),
                                 ),
@@ -420,6 +461,7 @@ class _HomeScreenState extends State<HomeScreen>
                     );
                   },
                 ),
+
                 const SizedBox(height: 12),
 
                 // Latest from Our Blog Section
@@ -464,6 +506,7 @@ class _HomeScreenState extends State<HomeScreen>
                 ListView(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
+
                   children: [
                     BlogCard(
                       isDark: isDark,

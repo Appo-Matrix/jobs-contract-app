@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/upgrade/widgets/membership_plan_card.dart';
+import 'package:job_contract_app/presentation/features/users/upgrade/widgets/membership_plan_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';

@@ -1,19 +1,19 @@
-import 'package:job_contracts/data/models/auth/foget_pass_res.dart';
-import 'package:job_contracts/data/models/auth/forget_pass_req.dart';
-import 'package:job_contracts/data/models/auth/register_user_req.dart';
-import 'package:job_contracts/data/models/auth/register_user_res.dart';
-import 'package:job_contracts/data/models/auth/reset_password_req.dart';
-import 'package:job_contracts/data/models/auth/reset_password_res.dart';
-import 'package:job_contracts/data/models/auth/send_otp_email_req.dart';
-import 'package:job_contracts/data/models/auth/send_otp_email_res.dart';
 
 import '../../domain/repository/auth_repository.dart';
 import '../data_source/remote/auth_rds.dart';
 import '../models/auth/fcm_token_req.dart';
+import '../models/auth/foget_pass_res.dart';
+import '../models/auth/forget_pass_req.dart';
 import '../models/auth/google_sigin_res.dart';
 import '../models/auth/google_signin_req.dart';
 import '../models/auth/login_req.dart';
 import '../models/auth/login_res.dart';
+import '../models/auth/register_user_req.dart';
+import '../models/auth/register_user_res.dart';
+import '../models/auth/reset_password_req.dart';
+import '../models/auth/reset_password_res.dart';
+import '../models/auth/send_otp_email_req.dart';
+import '../models/auth/send_otp_email_res.dart';
 import '../models/auth/send_otp_sms_req.dart';
 import '../models/auth/send_otp_sms_res.dart';
 import '../models/auth/update_password_req.dart';

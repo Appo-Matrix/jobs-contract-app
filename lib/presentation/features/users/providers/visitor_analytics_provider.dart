@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/visitor_analytics_repository_impl.dart';
 
 import '../../../../data/models/visitor_analytics/visitor_analytics_filter.dart';
 import '../../../../data/models/visitor_analytics/visitor_analytics_res.dart';
+import '../../../../data/repositories/visitor_analytics_repository_impl.dart';
 import '../../../../domain/repository/visitor_analytics_repository.dart';
 
 class VisitorAnalyticsProvider with ChangeNotifier {

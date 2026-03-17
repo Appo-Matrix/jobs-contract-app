@@ -1,8 +1,7 @@
 // provider/location_provider.dart
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/location_repository_impl.dart';
-
 import '../../../../data/models/locations/location_model.dart';
+import '../../../../data/repositories/location_repository_impl.dart';
 import '../../../../domain/repository/location_repository.dart';
 
 class LocationProvider with ChangeNotifier {

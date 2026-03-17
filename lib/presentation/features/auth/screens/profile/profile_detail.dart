@@ -1,19 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/awarded_year_row.dart';
-import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/certificate_input_section.dart';
-import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/profile_photo_section.dart';
-import 'package:job_contracts/presentation/features/auth/screens/profile/widgets/resume_upload_section.dart';
-import 'package:job_contracts/utils/common_widgets/appbar2.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/profile/widgets/awarded_year_row.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/profile/widgets/certificate_input_section.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/profile/widgets/profile_photo_section.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/profile/widgets/resume_upload_section.dart';
+
+import '../../../../../utils/common_widgets/appbar2.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-
 import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 
 class ProfileDetailsScreen extends StatefulWidget {
   const ProfileDetailsScreen({super.key});

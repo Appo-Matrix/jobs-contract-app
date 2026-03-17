@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+
 import 'package:provider/provider.dart';
 
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../../providers/contract_provider.dart';
 import '../widgets/contract_card.dart';
 import '../widgets/deliver_contract_dialog.dart';

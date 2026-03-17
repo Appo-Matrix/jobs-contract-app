@@ -1,17 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/proposalScreen/tab_screen/active_proposals_screen.dart';
-import 'package:job_contracts/presentation/features/users/proposalScreen/tab_screen/closed_proposals_screen.dart';
-import 'package:job_contracts/presentation/features/users/proposalScreen/tab_screen/view_proposals_screen.dart';
-import 'package:job_contracts/presentation/features/users/proposalScreen/widgets/proposal_card.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+import 'package:job_contract_app/presentation/features/users/proposalScreen/tab_screen/active_proposals_screen.dart';
+import 'package:job_contract_app/presentation/features/users/proposalScreen/tab_screen/closed_proposals_screen.dart';
+import 'package:job_contract_app/presentation/features/users/proposalScreen/tab_screen/view_proposals_screen.dart';
+import 'package:job_contract_app/presentation/features/users/proposalScreen/widgets/proposal_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/device/device_utility.dart';
 
 class ProposalScreen extends StatefulWidget {
   const ProposalScreen({super.key});

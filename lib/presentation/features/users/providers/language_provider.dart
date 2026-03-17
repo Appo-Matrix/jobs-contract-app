@@ -1,8 +1,8 @@
 // lib/presentation/providers/language_provider.dart
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/language_repository_impl.dart';
 
 import '../../../../data/models/language/language_model.dart';
+import '../../../../data/repositories/language_repository_impl.dart';
 import '../../../../domain/repository/language_repository.dart';
 
 

@@ -1,8 +1,6 @@
 
-
-import 'package:job_contracts/core/constants/api_endpoints.dart';
-import 'package:job_contracts/core/network/api_client.dart';
-
+import '../../../core/constants/api_endpoints.dart';
+import '../../../core/network/api_client.dart';
 import '../../models/payments/bank_account_request_model.dart';
 import '../../models/payments/bank_account_response_model.dart';
 import '../../models/payments/create_payment_intent_request_model.dart';

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/proposal_and_offer/widgets/contract_detail_row_widget.dart';
-import 'package:job_contracts/presentation/features/users/proposal_and_offer/widgets/contract_details_card_widget.dart';
-import 'package:job_contracts/presentation/features/users/proposal_and_offer/widgets/expandable_text_card_widget.dart';
-import 'package:job_contracts/presentation/features/users/proposal_and_offer/widgets/job_card_widget.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contract_app/presentation/features/users/proposal_and_offer/widgets/contract_detail_row_widget.dart';
+import 'package:job_contract_app/presentation/features/users/proposal_and_offer/widgets/contract_details_card_widget.dart';
+import 'package:job_contract_app/presentation/features/users/proposal_and_offer/widgets/expandable_text_card_widget.dart';
+import 'package:job_contract_app/presentation/features/users/proposal_and_offer/widgets/job_card_widget.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
@@ -12,6 +11,7 @@ import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../../../routes/app_routes.dart';
 
 class ProposalOfferDetailScreen extends StatefulWidget {
   final bool isReceivedOffer; // true = received offer, false = sent proposal

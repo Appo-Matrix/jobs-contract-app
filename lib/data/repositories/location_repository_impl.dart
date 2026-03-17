@@ -1,6 +1,5 @@
 
 
-import 'package:job_contracts/data/data_source/remote/language_rds.dart';
 
 import '../../domain/repository/location_repository.dart';
 import '../data_source/remote/location_rds.dart';

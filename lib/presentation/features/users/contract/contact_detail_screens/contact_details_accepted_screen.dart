@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
+
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../widgets/contact_details_widget.dart';
 import '../widgets/contact_first_widget.dart';

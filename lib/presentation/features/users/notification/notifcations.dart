@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationDialog.dart';
-import 'package:job_contracts/presentation/features/users/notification/widgets/NotificationsContainer.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+import 'package:job_contract_app/presentation/features/users/notification/widgets/NotificationDialog.dart';
+import 'package:job_contract_app/presentation/features/users/notification/widgets/NotificationsContainer.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
@@ -11,6 +10,7 @@ import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
+import '../../../../utils/device/device_utility.dart';
 import '../../../routes/app_routes.dart';
 import '../home/drawer/custom_navigation_drawer.dart';
 import '../home/drawer/widgets/drawer_item.dart';

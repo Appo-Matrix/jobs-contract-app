@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/proposal_and_offer/widgets/proposal-item.dart';
+import 'package:job_contract_app/presentation/features/users/proposal_and_offer/widgets/proposal-item.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';

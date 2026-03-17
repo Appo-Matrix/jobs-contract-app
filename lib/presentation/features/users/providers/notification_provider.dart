@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/notification_repo_impl.dart';
 
 import '../../../../data/models/notification/notification.dart';
 import '../../../../data/models/notification/notification_setting_model.dart';
+import '../../../../data/repositories/notification_repo_impl.dart';
 import '../../../../domain/repository/notification_repository.dart';
 
 class NotificationProvider extends ChangeNotifier {

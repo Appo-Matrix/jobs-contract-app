@@ -1,4 +1,4 @@
-# job_contracts
+# job_contract_app
 
 A new Flutter project.
 

@@ -35,7 +35,7 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../constants/colors.dart';
 
 class FancyCircularLoader extends StatelessWidget {
   const FancyCircularLoader({super.key});

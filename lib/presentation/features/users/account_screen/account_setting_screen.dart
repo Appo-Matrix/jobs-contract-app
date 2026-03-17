@@ -1,16 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/account_screen/widgets/account_widget.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/common_widgets/back_circle.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:job_contract_app/presentation/features/users/account_screen/widgets/account_widget.dart';
+
 
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/image_string.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../routes/app_routes.dart';
 import '../home/bottom_sheet/app_bottom_sheets.dart';
 
 class AccountSettingScreen extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:job_contracts/core/constants/api_endpoints.dart';
-import 'package:job_contracts/core/network/api_client.dart';
-
+import '../../../core/constants/api_endpoints.dart';
+import '../../../core/network/api_client.dart';
 import '../../models/portfolios/portfolio_create_req.dart';
 import '../../models/portfolios/portfolio_entry_model.dart';
 import '../../models/portfolios/update_portfolio_req.dart';

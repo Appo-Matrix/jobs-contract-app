@@ -1,10 +1,10 @@
 // providers/chat_provider.dart
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/data/repositories/chat_repository_impl.dart';
 
 import '../../../../data/models/chat/chat_model.dart';
 import '../../../../data/models/chat/create_chat_req.dart';
+import '../../../../data/repositories/chat_repository_impl.dart';
 import '../../../../domain/repository/chat_repository.dart';
 
 

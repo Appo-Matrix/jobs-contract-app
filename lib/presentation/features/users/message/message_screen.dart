@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/presentation/features/users/message/widgets/message_card.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contract_app/presentation/features/users/message/widgets/message_card.dart';
 
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
@@ -12,6 +11,7 @@ import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../../../routes/app_routes.dart';
 import '../home/drawer/custom_navigation_drawer.dart';
 import '../home/drawer/widgets/drawer_item.dart';
 import 'model/message_data.dart';

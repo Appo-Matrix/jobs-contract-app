@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/back_circle.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
 
 class DeliverContractScreen extends StatefulWidget {

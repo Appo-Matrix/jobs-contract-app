@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
+
+import '../constants/app_text_style.dart';
+import '../constants/colors.dart';
+import '../device/device_utility.dart';
+
 
 class JAppBar2 extends StatelessWidget implements PreferredSizeWidget {
   final String title;

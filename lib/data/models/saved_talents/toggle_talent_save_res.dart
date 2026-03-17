@@ -1,4 +1,5 @@
-import 'package:job_contracts/data/models/saved_talents/saved_talent_res.dart';
+
+import 'package:job_contract_app/data/models/saved_talents/saved_talent_res.dart';
 
 class ToggleTalentSaveResponse {
   final bool success;

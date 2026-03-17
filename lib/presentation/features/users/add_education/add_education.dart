@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/add_education/searchable_bottomsheet_content.dart';
-import 'package:job_contracts/presentation/features/users/add_education/widgets/text_title_education_widget.dart';
-
+import 'package:job_contract_app/presentation/features/users/add_education/searchable_bottomsheet_content.dart';
+import 'package:job_contract_app/presentation/features/users/add_education/widgets/text_title_education_widget.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';

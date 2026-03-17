@@ -3,12 +3,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:job_contracts/data/repositories/user_repository_impl.dart';
-import 'package:job_contracts/domain/repository/user_repository.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
 import '../../../../data/models/user/update_user_profile_req.dart';
 import '../../../../data/models/user/upload_resume_req.dart';
+import '../../../../data/repositories/user_repository_impl.dart';
+import '../../../../domain/repository/user_repository.dart';
 import '../../../../utils/constants/colors.dart';
 
 

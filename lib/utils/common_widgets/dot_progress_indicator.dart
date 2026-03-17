@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../constants/colors.dart';
 
 /// A customizable dot progress indicator widget for showing loading states
 class DotProgressIndicator extends StatefulWidget {

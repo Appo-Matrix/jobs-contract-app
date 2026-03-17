@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:job_contracts/data/data_source/remote/bank_account_rds.dart';
 
 import '../../domain/repository/bank_account_repository.dart';
+import '../data_source/remote/bank_account_rds.dart';
 import '../models/payments/bank_account_request_model.dart';
 import '../models/payments/bank_account_response_model.dart';
 import '../models/payments/create_payment_intent_request_model.dart';

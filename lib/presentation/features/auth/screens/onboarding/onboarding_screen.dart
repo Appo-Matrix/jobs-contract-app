@@ -1,12 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/expanded_effect.dart';
-import 'package:job_contracts/presentation/features/auth/screens/onboarding/widgets/smooth_page_indicator.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/onboarding/widgets/expanded_effect.dart';
+import 'package:job_contract_app/presentation/features/auth/screens/onboarding/widgets/smooth_page_indicator.dart';
+
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import 'models/onboarding_item.dart';
 
 

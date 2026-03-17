@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../widget/client_history_card_widget.dart';
 import '../widget/job_details_row_ridget.dart';
 import 'job_detail_page.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 
 import '../../../../core/constants/api_endpoints.dart';
 import '../../../../core/constants/keys/secure_storage_keys.dart';

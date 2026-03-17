@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
 
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
 import 'JBottomSheet.dart';
 
 void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/skill_repository_impl.dart';
 
 import '../../../../data/models/skills/add_skill_req.dart';
 import '../../../../data/models/skills/skill_model.dart';
+import '../../../../data/repositories/skill_repository_impl.dart';
 import '../../../../domain/repository/skill_repository.dart';
 
 class SkillProvider with ChangeNotifier {

@@ -64,10 +64,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
+import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/image_string.dart';
+import '../../../../../../utils/constants/sizes.dart';
 
 class TopHeader extends StatelessWidget {
   final String logo;

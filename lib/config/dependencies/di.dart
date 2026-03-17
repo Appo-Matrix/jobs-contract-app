@@ -1,7 +1,8 @@
 
 
 
-import 'package:job_contracts/config/dependencies/src/notifiers_di.dart';
+
+import 'package:job_contract_app/config/dependencies/src/notifiers_di.dart';
 
 import '../../core/constants/global.dart';
 import '../../data/repositories/auth_repository_impl.dart';

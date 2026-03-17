@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/common_widgets/text_field_widget.dart'; // Import your TextFieldWidget
+// Import your TextFieldWidget
 
 import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/device/device_utility.dart';
 import 'JBottomSheet.dart';
 
 void showEducationBottomSheet(BuildContext context) {

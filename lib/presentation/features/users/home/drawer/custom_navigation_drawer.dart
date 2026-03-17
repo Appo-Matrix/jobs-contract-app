@@ -1,14 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/home/drawer/widgets/drawer_item.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/common_widgets/circular_avatar.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/image_string.dart';
-import 'package:job_contracts/utils/constants/sizes.dart';
+import 'package:job_contract_app/presentation/features/users/home/drawer/widgets/drawer_item.dart';
+
 import 'package:provider/provider.dart';
 
+import '../../../../../utils/common_widgets/circular_avatar.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/image_string.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../routes/app_routes.dart';
 import '../../providers/current_user_provider.dart';
 import '../bottom_sheet/app_bottom_sheets.dart';
 

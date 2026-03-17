@@ -1,6 +1,6 @@
-import 'package:job_contracts/data/data_source/remote/offer_rds.dart';
 
 import '../../domain/repository/offer_repository.dart';
+import '../data_source/remote/offer_rds.dart';
 import '../models/offers/offer_model.dart';
 
 class OfferRepositoryImpl implements OfferRepository {

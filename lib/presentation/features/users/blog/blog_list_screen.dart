@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
+import '../../../../data/models/jobs/job_list_item_model.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/blog_card.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
+import '../../../../utils/common_widgets/job_card.dart';
 import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../home/job_details/JobDetailScreen.dart';
+import '../providers/job_provider.dart';
 import 'blog_detail_screen.dart';
 
 
@@ -98,7 +103,6 @@ class BlogListScreen extends StatelessWidget {
       ),
     );
   }
-
   String _getBlogImage(int index) {
     final images = [
       'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800',

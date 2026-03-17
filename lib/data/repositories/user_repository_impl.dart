@@ -1,12 +1,12 @@
 
 
-import 'package:job_contracts/data/models/user/delete_user_res.dart';
 
 import '../../domain/repository/user_repository.dart';
 import '../data_source/remote/user_rds.dart';
 import '../models/user/contractor_by_speciality_res.dart';
 import '../models/user/current_user_res.dart';
 import '../models/user/delete_resume_res.dart';
+import '../models/user/delete_user_res.dart';
 import '../models/user/featured_company_res.dart';
 import '../models/user/top_performer_res.dart';
 import '../models/user/update_current_user_profile_req.dart';

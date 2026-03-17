@@ -1,7 +1,7 @@
 
-import 'package:job_contracts/data/data_source/remote/qualifications_rds.dart';
 
 import '../../domain/repository/qualification_repository.dart';
+import '../data_source/remote/qualifications_rds.dart';
 import '../models/education/education_model.dart';
 import '../models/education/qualification_model.dart';
 import '../models/education/qualification_request.dart';

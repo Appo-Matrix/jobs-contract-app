@@ -1,6 +1,5 @@
   import 'package:flutter/cupertino.dart';
   import 'package:flutter/material.dart';
-  import 'package:job_contracts/utils/constants/sizes.dart';
 
   import '../../../../../../utils/common_widgets/appbar.dart';
   import '../../../../../../utils/common_widgets/circular_shape.dart';
@@ -8,7 +7,8 @@
   import '../../../../../../utils/common_widgets/international_phone_widget.dart';
   import '../../../../../../utils/constants/app_text_style.dart';
   import '../../../../../../utils/constants/colors.dart';
-  import '../../../../../../utils/constants/text_strings.dart';
+  import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../../utils/constants/text_strings.dart';
   import '../../../../../../utils/device/device_utility.dart';
   import '../../../../../routes/app_routes.dart';
 

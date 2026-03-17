@@ -1,7 +1,7 @@
 
-import 'package:job_contracts/core/constants/api_endpoints.dart';
-
+import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+
 import '../../models/preferences/delete_preferences_response_model.dart';
 import '../../models/preferences/real_estate_preferences_model.dart';
 import '../../models/preferences/user_preference_user_model.dart';

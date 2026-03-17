@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/device/device_utility.dart';
 
 import '../../../../../utils/common_widgets/main_button.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 class VerificationHelpDialog extends StatelessWidget {
   final String title;

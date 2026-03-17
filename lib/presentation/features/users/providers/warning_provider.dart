@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/data/repositories/warning_repository_impl.dart';
-
 import '../../../../data/models/warnings/delete_warning_res.dart';
 import '../../../../data/models/warnings/issue_warning_req.dart';
 import '../../../../data/models/warnings/issue_warning_res.dart';
 import '../../../../data/models/warnings/user_warning.dart';
 import '../../../../data/models/warnings/warning_model.dart';
+import '../../../../data/repositories/warning_repository_impl.dart';
 import '../../../../domain/repository/warning_repository.dart';
 
 class WarningProvider with ChangeNotifier {

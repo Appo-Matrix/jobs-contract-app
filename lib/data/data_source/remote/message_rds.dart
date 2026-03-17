@@ -1,7 +1,7 @@
 // data/remote/message_remote_data_source.dart
-import 'package:job_contracts/core/constants/api_endpoints.dart';
-import 'package:job_contracts/core/network/api_client.dart';
 
+import '../../../core/constants/api_endpoints.dart';
+import '../../../core/network/api_client.dart';
 import '../../models/messages/message_model.dart';
 
 

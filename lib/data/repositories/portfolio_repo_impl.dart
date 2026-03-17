@@ -1,6 +1,6 @@
-import 'package:job_contracts/data/data_source/remote/portfolio_rds.dart';
 
 import '../../domain/repository/portfolio_repository.dart';
+import '../data_source/remote/portfolio_rds.dart';
 import '../models/portfolios/portfolio_create_req.dart';
 import '../models/portfolios/portfolio_entry_model.dart';
 import '../models/portfolios/update_portfolio_req.dart';

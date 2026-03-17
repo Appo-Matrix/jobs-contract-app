@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:job_contracts/data/repositories/bank_account_repository_impl.dart';
-import 'package:job_contracts/domain/repository/bank_account_repository.dart';
 
 import '../../../../data/models/payments/bank_account_request_model.dart';
 import '../../../../data/models/payments/bank_account_response_model.dart';
@@ -17,6 +15,8 @@ import '../../../../data/models/payments/verify_payment_method_response_model.da
 import '../../../../data/models/payments/web_hook_res.dart';
 import '../../../../data/models/payments/withdraw_req.dart';
 import '../../../../data/models/payments/withdraw_res.dart';
+import '../../../../data/repositories/bank_account_repository_impl.dart';
+import '../../../../domain/repository/bank_account_repository.dart';
 
 class BankAccountProvider extends ChangeNotifier {
   final BankAccountRepository paymentRepository = BankAccountRepositoryImpl();

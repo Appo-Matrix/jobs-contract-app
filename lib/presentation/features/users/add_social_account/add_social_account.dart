@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/add_social_account/widgets/button_widget.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:job_contract_app/presentation/features/users/add_social_account/widgets/button_widget.dart';
+import '../../../../utils/common_widgets/main_button.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/text_strings.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/circular_shape.dart';
 import '../../../../utils/constants/app_text_style.dart';

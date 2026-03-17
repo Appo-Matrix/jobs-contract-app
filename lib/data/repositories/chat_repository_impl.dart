@@ -1,7 +1,7 @@
 // data/repositories/chat_repository_impl.dart
-import 'package:job_contracts/data/data_source/remote/chat_rds.dart';
 
 import '../../domain/repository/chat_repository.dart';
+import '../data_source/remote/chat_rds.dart';
 import '../models/chat/chat_model.dart';
 import '../models/chat/create_chat_req.dart';
 import '../models/chat/create_chat_res.dart';

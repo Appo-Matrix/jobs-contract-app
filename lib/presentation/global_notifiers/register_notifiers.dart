@@ -1,6 +1,12 @@
-import 'package:job_contracts/core/constants/global.dart';
-import 'package:job_contracts/presentation/features/auth/providers/register_provider.dart';
-import 'package:job_contracts/presentation/global_notifiers/app_config_notifier.dart';
+
+import 'package:job_contract_app/presentation/features/users/account_screen/provider/change_password_provider.dart';
+import 'package:job_contract_app/presentation/features/users/blog/provider/blog_provider.dart';
+
+import '../../core/constants/global.dart';
+import '../features/auth/providers/register_provider.dart';
+import '../features/users/account_screen/provider/recent_job_provider.dart';
+import '../features/users/home/job_details/provider/job_application_provider.dart';
+import '../global_notifiers/app_config_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -21,6 +27,10 @@ List<SingleChildWidget> registerGlobalNotifiers() {
     ChangeNotifierProvider(create: (_) => getIt<ApplicationProvider>()),
     ChangeNotifierProvider(create: (_) => getIt<AdProvider>()),
     ChangeNotifierProvider(create: (_) => getIt<CurrentUserProvider>()),
+    ChangeNotifierProvider(create: (_) => getIt<BlogProvider>()),
+    ChangeNotifierProvider(create: (_) => getIt<JobApplicationProvider>()),
+    ChangeNotifierProvider(create: (_) => getIt<ChangePasswordProvider>()),
+    ChangeNotifierProvider(create: (_) => getIt<RecentJobProvider>()),
   ];
 }
 

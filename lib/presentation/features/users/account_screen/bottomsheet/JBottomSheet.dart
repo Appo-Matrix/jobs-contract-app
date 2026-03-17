@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+
 
 import '../../../../../../utils/common_widgets/main_button.dart';
 import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/constants/colors.dart';
 
 class JBottomSheet extends StatelessWidget {
   final String title;

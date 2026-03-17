@@ -344,7 +344,6 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/common_widgets/text_field_widget.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
 import '../../../../utils/common_widgets/main_button.dart';

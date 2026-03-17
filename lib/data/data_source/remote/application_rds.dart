@@ -1,7 +1,7 @@
 
 
-import 'package:job_contracts/core/constants/api_endpoints.dart';
 
+import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
 import '../../models/job_applications/job_application_model.dart';
 import '../../models/job_applications/job_application_response.dart';

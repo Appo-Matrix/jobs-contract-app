@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
 
+import '../../../../../../utils/constants/app_text_style.dart';
+import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/constants/image_string.dart';
 
 class UploadContainerWidget extends StatelessWidget {

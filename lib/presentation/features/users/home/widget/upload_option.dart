@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
-import 'package:job_contracts/utils/constants/app_text_style.dart';
+
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
 
 class UploadOption extends StatelessWidget {
   final IconData icon;

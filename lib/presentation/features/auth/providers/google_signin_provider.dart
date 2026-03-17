@@ -5,7 +5,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import '../../../../data/models/auth/google_signin_req.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
 import '../../../../domain/repository/auth_repository.dart';
-import 'package:job_contracts/utils/constants/colors.dart';
+import '../../../../utils/constants/colors.dart';
 import '../../../../core/constants/keys/secure_storage_keys.dart';
 import '../../../../domain/services/secure_storage_service.dart';
 

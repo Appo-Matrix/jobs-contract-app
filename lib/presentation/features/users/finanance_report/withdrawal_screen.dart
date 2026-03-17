@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:job_contracts/presentation/features/users/finanance_report/widgets/payment_method_card.dart';
-import 'package:job_contracts/presentation/routes/app_routes.dart';
-import 'package:job_contracts/utils/constants/text_strings.dart';
+import 'package:job_contract_app/presentation/features/users/finanance_report/widgets/payment_method_card.dart';
+
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/back_circle.dart';
+import '../../../../utils/constants/text_strings.dart';
+import '../../../routes/app_routes.dart';
 
 class WithdrawalScreen extends StatefulWidget {
   const WithdrawalScreen({super.key});
