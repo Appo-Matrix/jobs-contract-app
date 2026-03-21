@@ -651,6 +651,13 @@
   "blogs": "Blogs",
   "continueWithoutAccounts": "Continuar sin cuenta",
   "viewAllRecent": "Ver recientes",
-  "reports": "Informes"
+  "reports": "Informes",
+
+  "signInWithGoogle": "Iniciar sesión con Google",
+  "tapToGetLocation": "Toca para obtener la ubicación",
+  "getLocation": "Obtener ubicación",
+  "searchCountry": "Buscar país",
+  "invalidPhoneNumber": "Número de teléfono inválido"
+
 
 }

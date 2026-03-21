@@ -626,5 +626,12 @@
 
   "continueWithoutAccounts": "Continue without an account",
   "viewAllRecent": "View all recent",
-  "reports": "Reports"
+  "reports": "Reports",
+
+
+  "signInWithGoogle": "Sign in with Google",
+  "tapToGetLocation": "Tap to get location",
+  "getLocation": "Get Location",
+  "searchCountry": "Search country",
+  "invalidPhoneNumber": "Invalid phone number"
 }

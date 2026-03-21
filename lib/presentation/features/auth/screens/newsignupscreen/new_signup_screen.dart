@@ -5,6 +5,7 @@ import 'package:job_contract_app/presentation/features/auth/screens/newsignupscr
 import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/basic_details_screen.dart';
 import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/role_selection_screen.dart';
 import 'package:job_contract_app/presentation/features/auth/screens/newsignupscreen/pageview/terms_conditionsS_screen.dart';
+import 'package:job_contract_app/presentation/routes/routes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,7 @@ import '../../../../../utils/common_widgets/arqui_match_logo.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../routes/app_routes.dart';
 import '../../providers/register_provider.dart';
 
 // Main Onboarding Flow Controller
@@ -82,55 +84,89 @@ class _NewSignupScreenState extends State<NewSignupScreen> {
   }
 
   Future<void> _completeSignup() async {
-    // Validate all required data
-    if (!_validateAllData()) {
-      return;
-    }
+    if (!_validateAllData()) return;
 
     context.loaderOverlay.show();
 
     try {
-      // Update RegisterProvider with all collected data
       _registerProvider.fullNameController.text = fullName ?? '';
       _registerProvider.emailController.text = email ?? '';
       _registerProvider.passwordController.text = password ?? '';
       _registerProvider.phoneNumberController.text = phoneNumber ?? '';
       _registerProvider.userTypeController.text = selectedRole ?? '';
 
-      // Set location before calling registerUser
       if (latitude != null && longitude != null) {
         _registerProvider.setLocation(latitude!, longitude!);
       }
 
-      debugPrint('🔐 Final data before API call:');
-      debugPrint('   fullName: $fullName');
-      debugPrint('   email: $email');
-      debugPrint('   phoneNumber: $phoneNumber');
-      debugPrint('   userType: $selectedRole');
-      debugPrint('   location: ($latitude, $longitude)');
-
-      // Call registerUser which will hit the API
       await _registerProvider.registerUser(context);
 
-      // Show success and navigate
       if (!mounted) return;
+      context.loaderOverlay.hide();
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('accountCreatedSuccess'.tr()),
-          backgroundColor: JAppColors.primary,
-          duration: const Duration(seconds: 3),
+      // Show success dialog
+      await showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: JAppColors.primary.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(Icons.check_circle_rounded,
+                    color: JAppColors.primary, size: 60),
+              ),
+              const SizedBox(height: 16),
+              Text(
+                'Account Created!',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Your account has been created successfully. Please log in to continue.',
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.grey),
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: JAppColors.primary,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // close dialog
+                    AppRouter.router.goNamed(Routes.loginScreen.name); // go to login
+                  },
+                  child: const Text(
+                    'Go to Login',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
-
-      // Navigate to home or next screen after a delay
-      Future.delayed(const Duration(seconds: 2), () {
-        if (mounted) {
-          // AppRouter.router.push('/navigationMenu');
-        }
-      });
     } catch (e) {
       debugPrint('❌ Signup error: $e');
+      if (mounted) context.loaderOverlay.hide();
       Fluttertoast.showToast(
         msg: 'Error: $e',
         toastLength: Toast.LENGTH_SHORT,
@@ -138,12 +174,71 @@ class _NewSignupScreenState extends State<NewSignupScreen> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
-    } finally {
-      if (mounted) {
-        context.loaderOverlay.hide();
-      }
     }
   }
+  // Future<void> _completeSignup() async {
+  //   // Validate all required data
+  //   if (!_validateAllData()) {
+  //     return;
+  //   }
+  //
+  //   context.loaderOverlay.show();
+  //
+  //   try {
+  //     // Update RegisterProvider with all collected data
+  //     _registerProvider.fullNameController.text = fullName ?? '';
+  //     _registerProvider.emailController.text = email ?? '';
+  //     _registerProvider.passwordController.text = password ?? '';
+  //     _registerProvider.phoneNumberController.text = phoneNumber ?? '';
+  //     _registerProvider.userTypeController.text = selectedRole ?? '';
+  //
+  //     // Set location before calling registerUser
+  //     if (latitude != null && longitude != null) {
+  //       _registerProvider.setLocation(latitude!, longitude!);
+  //     }
+  //
+  //     debugPrint('🔐 Final data before API call:');
+  //     debugPrint('   fullName: $fullName');
+  //     debugPrint('   email: $email');
+  //     debugPrint('   phoneNumber: $phoneNumber');
+  //     debugPrint('   userType: $selectedRole');
+  //     debugPrint('   location: ($latitude, $longitude)');
+  //
+  //     // Call registerUser which will hit the API
+  //     await _registerProvider.registerUser(context);
+  //
+  //     // Show success and navigate
+  //     if (!mounted) return;
+  //
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('accountCreatedSuccess'.tr()),
+  //         backgroundColor: JAppColors.primary,
+  //         duration: const Duration(seconds: 3),
+  //       ),
+  //     );
+  //
+  //     // Navigate to home or next screen after a delay
+  //     Future.delayed(const Duration(seconds: 2), () {
+  //       if (mounted) {
+  //         AppRouter.router.go('/navigationMenu');
+  //       }
+  //     });
+  //   } catch (e) {
+  //     debugPrint('❌ Signup error: $e');
+  //     Fluttertoast.showToast(
+  //       msg: 'Error: $e',
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //   } finally {
+  //     if (mounted) {
+  //       context.loaderOverlay.hide();
+  //     }
+  //   }
+  // }
 
   bool _validateAllData() {
     debugPrint('🔍 Validating all signup data:');

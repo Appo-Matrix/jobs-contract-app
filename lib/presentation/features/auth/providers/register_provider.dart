@@ -45,18 +45,9 @@ class RegisterProvider with ChangeNotifier {
 
   Future<void> registerUser(BuildContext context) async {
     if (!_validateInputs()) {
-      Fluttertoast.showToast(
-        msg: _errorMessage,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
-      notifyListeners();
-      return;
+      throw Exception(_errorMessage); // let caller handle it
     }
 
-    context.loaderOverlay.show();
     _isLoading = true;
     _errorMessage = '';
     notifyListeners();
@@ -85,48 +76,125 @@ class RegisterProvider with ChangeNotifier {
 
       final response = await _authRepository.registerUser(request);
 
-      // Save token if the registration response includes one
+      // Save token if returned
       if (response.token != null && response.token!.isNotEmpty) {
-        // Save to SecureStorageService
         await SecureStorageService.save(
           SecureStorageKeys.authToken,
           response.token!,
         );
-
-        // Save to ApiClient's secure storage
         await _apiClient.saveToken(response.token!);
-
         debugPrint('✅ Token saved successfully');
       }
 
       debugPrint('✅ Registration successful: ${response.message}');
+      resetFields(); // only reset on success
 
-      Fluttertoast.showToast(
-        msg: response.message ?? 'Account created successfully',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        textColor: Colors.white,
-        fontSize: 16.0,
-      );
     } catch (error) {
-      _errorMessage = 'Error: $error';
-      debugPrint('❌ Registration error: $_errorMessage');
+      // Extract clean message from the error
+      String message = error.toString()
+          .replaceAll('Exception: ', '')
+          .replaceAll('Error: ', '');
 
-      Fluttertoast.showToast(
-        msg: 'Something went wrong => $_errorMessage',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-        textColor: JAppColors.white,
-        fontSize: 16.0,
-      );
+      // If it still says Unknown error, use a fallback
+      if (message.contains('Unknown error') || message.isEmpty) {
+        message = 'Registration failed. Please try again.';
+      }
+
+      _errorMessage = message;
+      debugPrint('❌ Registration error: $message');
+      _isLoading = false;
+      notifyListeners();
+      throw Exception(message); // rethrow so _completeSignup shows the dialog
+
     } finally {
-      context.loaderOverlay.hide();
       _isLoading = false;
       notifyListeners();
     }
-
-    resetFields();
   }
+  // Future<void> registerUser(BuildContext context) async {
+  //   if (!_validateInputs()) {
+  //     Fluttertoast.showToast(
+  //       msg: _errorMessage,
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //     notifyListeners();
+  //     return;
+  //   }
+  //
+  //   context.loaderOverlay.show();
+  //   _isLoading = true;
+  //   _errorMessage = '';
+  //   notifyListeners();
+  //
+  //   try {
+  //     debugPrint('🔐 Creating registration request with:');
+  //     debugPrint('   fullName: ${fullNameController.text}');
+  //     debugPrint('   email: ${emailController.text}');
+  //     debugPrint('   phoneNumber: ${phoneNumberController.text}');
+  //     debugPrint('   userType: ${userTypeController.text}');
+  //     debugPrint('   location: ($_latitude, $_longitude)');
+  //
+  //     final request = RegisterUserRequest(
+  //       fullName: fullNameController.text.trim(),
+  //       email: emailController.text.trim(),
+  //       phoneNumber: phoneNumberController.text.trim(),
+  //       userType: userTypeController.text.trim(),
+  //       password: passwordController.text,
+  //       location: Location(
+  //         type: "Point",
+  //         coordinates: [_longitude ?? 0.0, _latitude ?? 0.0],
+  //       ),
+  //     );
+  //
+  //     debugPrint('📡 API Request Payload: ${request.toJson()}');
+  //
+  //     final response = await _authRepository.registerUser(request);
+  //
+  //     // Save token if the registration response includes one
+  //     if (response.token != null && response.token!.isNotEmpty) {
+  //       // Save to SecureStorageService
+  //       await SecureStorageService.save(
+  //         SecureStorageKeys.authToken,
+  //         response.token!,
+  //       );
+  //
+  //       // Save to ApiClient's secure storage
+  //       await _apiClient.saveToken(response.token!);
+  //
+  //       debugPrint('✅ Token saved successfully');
+  //     }
+  //
+  //     debugPrint('✅ Registration successful: ${response.message}');
+  //
+  //     Fluttertoast.showToast(
+  //       msg: response.message ?? 'Account created successfully',
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       textColor: Colors.white,
+  //       fontSize: 16.0,
+  //     );
+  //   } catch (error) {
+  //     _errorMessage = 'Error: $error';
+  //     debugPrint('❌ Registration error: $_errorMessage');
+  //
+  //     Fluttertoast.showToast(
+  //       msg: 'Something went wrong => $_errorMessage',
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //       textColor: JAppColors.white,
+  //       fontSize: 16.0,
+  //     );
+  //   } finally {
+  //     context.loaderOverlay.hide();
+  //     _isLoading = false;
+  //     notifyListeners();
+  //   }
+  //
+  //   resetFields();
+  // }
 
   bool _validateInputs() {
     debugPrint('🔍 Validating RegisterProvider inputs:');
