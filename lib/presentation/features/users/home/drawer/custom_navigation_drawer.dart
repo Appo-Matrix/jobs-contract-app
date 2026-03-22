@@ -139,7 +139,7 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
                   : JAppColors.lightGray800,
               onTap: () {
                 Navigator.pop(context);
-                AppRouter.router.push('/proposalScreen');
+                AppRouter.router.push('/proposalsOffersScreen');
               },
             ),
             DrawerItem(

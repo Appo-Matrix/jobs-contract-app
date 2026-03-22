@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
+import '../../../../data/data_source/local/AuthPreferences.dart';
 import '../../../../data/models/auth/google_signin_req.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
 import '../../../../domain/repository/auth_repository.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../core/constants/keys/secure_storage_keys.dart';
-import '../../../../domain/services/secure_storage_service.dart';
 
 class GoogleSignInProvider with ChangeNotifier {
   final AuthRepository authRepository = AuthRepositoryImpl();
@@ -35,7 +34,9 @@ class GoogleSignInProvider with ChangeNotifier {
       return;
     }
 
-    context.loaderOverlay.show();
+    // Capture overlay before async gap
+    final overlay = context.loaderOverlay;
+    overlay.show();
     _isLoading = true;
     _errorMessage = '';
     notifyListeners();
@@ -48,7 +49,14 @@ class GoogleSignInProvider with ChangeNotifier {
       );
 
       final response = await authRepository.signInWithGoogle(request);
-      SecureStorageService.save(SecureStorageKeys.authToken, response.accessToken);
+
+      // Save token + user via AuthPreferences
+      await AuthPreferences.saveSession(
+        token: response.accessToken,
+        user: response.user.toUser(),
+      );
+
+      debugPrint('✅ Google Sign-In session saved: ${emailController.text}');
 
       Fluttertoast.showToast(
         msg: response.message,
@@ -57,17 +65,21 @@ class GoogleSignInProvider with ChangeNotifier {
         textColor: Colors.white,
         fontSize: 16.0,
       );
+
+      resetFields();
+
     } catch (error) {
-      _errorMessage = 'Error: $error';
+      _errorMessage = error.toString().replaceFirst('Exception: ', '');
       Fluttertoast.showToast(
-        msg: 'Something went wrong => $_errorMessage',
+        msg: 'Sign-in failed: $_errorMessage',
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         textColor: JAppColors.white,
         fontSize: 16.0,
       );
+
     } finally {
-      context.loaderOverlay.hide();
+      overlay.hide();
       _isLoading = false;
       notifyListeners();
     }

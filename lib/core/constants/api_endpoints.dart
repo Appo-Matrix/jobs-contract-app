@@ -246,4 +246,14 @@ class ApiPath{
   static String updateExperience(String id) => '/experiences/$id';
 
 
+
+  static const String createBlog      = '/blogs/';
+  static const String getAllBlogs     = '/blogs/';
+  static String getBlogById(String id)   => '/blogs/$id';
+  static String updateBlog(String id)    => '/blogs/$id';
+  static String deleteBlog(String id)    => '/blogs/$id';
+  static String getBlogsByUser(String id) => '/blogs/user/$id';
+
+
+
 }

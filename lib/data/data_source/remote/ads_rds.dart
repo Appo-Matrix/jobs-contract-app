@@ -7,7 +7,7 @@ import '../../models/ads/create_ad_model.dart';
 
 class AdsRemoteDataSource{
 
-  late final ApiClient apiClient;
+  final ApiClient apiClient = ApiClient(ApiPath.baseUrl);
 
   Future<String> createAd(CreateAdModel adData) async {
     final response = await apiClient.post(

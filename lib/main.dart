@@ -14,10 +14,9 @@ import 'package:provider/provider.dart';
 
 import 'config/dependencies/src/InjectionContainer.dart';
 import 'core/constants/api_endpoints.dart';
-import 'core/constants/keys/secure_storage_keys.dart';
 import 'core/network/api_client.dart';
 import 'core/services/auth_service.dart';
-import 'domain/services/secure_storage_service.dart';
+import 'data/data_source/local/AuthPreferences.dart';
 
 // ✅ Global variable to store initial route
 String? globalInitialRoute;
@@ -31,30 +30,35 @@ Future<void> main() async {
   // ── Initialize DI ─────────────────────────────────────────────────────────
   await injectionContainer.init();
 
-  // ── Auth Service ──────────────────────────────────────────────────────────
-  final authService = AuthService();
-  await authService.init();
-  debugPrint('✅ AuthService initialized');
 
-  // ── Check saved token ─────────────────────────────────────────────────────
+  // ── Check saved session (token + user) ────────────────────────────────────
   final apiClient = ApiClient(ApiPath.baseUrl);
   try {
-    final token = await SecureStorageService.get(SecureStorageKeys.authToken);
+    final isLoggedIn = await AuthPreferences.isLoggedIn();
 
-    if (token != null && token.isNotEmpty) {
-      debugPrint("✅ Token found during startup: ${token.substring(0, 10)}...");
-      await apiClient.saveToken(token);
+    if (isLoggedIn) {
+      final token = await AuthPreferences.getToken();
+      final user  = await AuthPreferences.getUser();
+
+      // Restore token to ApiClient for outgoing requests
+      if (token != null) await apiClient.saveToken(token);
+
+      debugPrint('✅ Session restored:');
+      debugPrint('   email:    ${user?.email}');
+      debugPrint('   userType: ${user?.userType}');
+      debugPrint('   token:    ${token?.substring(0, 20)}...');
+
       globalInitialRoute = '/navigationMenu';
     } else {
-      debugPrint("❌ No token found during startup");
+      debugPrint('❌ No session found — redirecting to onboarding');
       globalInitialRoute = '/onboardingScreen';
     }
   } catch (e) {
-    debugPrint("❌ Error checking token: $e");
+    debugPrint('❌ Error restoring session: $e');
     globalInitialRoute = '/onboardingScreen';
   }
 
-  debugPrint("📍 Global initial route set to: $globalInitialRoute");
+  debugPrint('📍 Initial route: $globalInitialRoute');
 
   // ── Theme ─────────────────────────────────────────────────────────────────
   final isDarkMode = await ThemePrefHelper.loadThemeMode();
@@ -73,7 +77,6 @@ Future<void> main() async {
           ChangeNotifierProvider(
             create: (_) => ThemeNotifier()..toggleTheme(isDarkMode ?? false),
           ),
-          // ✅ All app providers registered here
           ...AppProviders.getProviders(),
         ],
         child: const JobContractsApp(),

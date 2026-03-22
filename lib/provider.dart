@@ -1,6 +1,7 @@
 // lib/config/providers/app_providers.dart
 
 import 'package:flutter/material.dart';
+import 'package:job_contract_app/presentation/features/users/providers/BlogProvider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/ad_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/application_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/bank_account_provider.dart';
@@ -14,6 +15,7 @@ import 'package:job_contract_app/presentation/features/users/providers/featured_
 import 'package:job_contract_app/presentation/features/users/providers/feedback_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/hired_talent_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/invitation_provider.dart';
+import 'package:job_contract_app/presentation/features/users/providers/job_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/job_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/language_provider.dart';
 import 'package:job_contract_app/presentation/features/users/providers/location_provider.dart';
@@ -315,6 +317,11 @@ import 'package:job_contract_app/presentation/features/auth/providers/update_pas
 
       ChangeNotifierProvider<UserProvider>(
         create: (_) => UserProvider(),
+      ),
+      ChangeNotifierProvider<BlogProvider>(
+        create: (_) => BlogProvider(),
+      ),    ChangeNotifierProvider<BlogProvider>(
+        create: (_) => BlogProvider(),
       ),
 
       // ======================================================================

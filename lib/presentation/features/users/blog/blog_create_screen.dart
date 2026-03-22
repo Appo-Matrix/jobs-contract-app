@@ -5,6 +5,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../data/data_source/local/AuthPreferences.dart';
+import '../../../../data/models/blog/CreateBlogRequest.dart';
 import '../../../../utils/common_widgets/appbar.dart';
 import '../../../../utils/common_widgets/main_button.dart';
 import '../../../../utils/common_widgets/circular_avatar.dart';
@@ -14,6 +16,7 @@ import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../providers/BlogProvider.dart';
 import 'provider/blog_provider.dart';
 
 class BlogCreateScreen extends StatefulWidget {
@@ -29,7 +32,6 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
   final _contentController = TextEditingController();
   final _tagsController = TextEditingController();
 
-  // ✅ Image picker and file
   File? _selectedImage;
   final ImagePicker _imagePicker = ImagePicker();
 
@@ -41,28 +43,73 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
     super.dispose();
   }
 
-  // ✅ Pick image from gallery
   Future<void> _pickImageFromGallery() async {
     try {
       final pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
-        imageQuality: 80, // Compress image to 80% quality
+        imageQuality: 80,
       );
-
       if (pickedFile != null) {
-        setState(() {
-          _selectedImage = File(pickedFile.path);
-        });
-        debugPrint('✅ Image selected: ${pickedFile.path}');
-      } else {
-        debugPrint('❌ No image selected');
+        setState(() => _selectedImage = File(pickedFile.path));
       }
     } catch (e) {
-      debugPrint('❌ Error picking image: $e');
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error picking image: $e'),
+          backgroundColor: JAppColors.error600,
+        ),
+      );
+    }
+  }
+
+  Future<void> _submit(BlogProvider blogProvider) async {
+    if (!_formKey.currentState!.validate()) return;
+
+    // ── Get authorId from stored user ──────────────────────────────────────
+    final user = await AuthPreferences.getUser();
+    if (user == null) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('User not logged in. Please login again.'),
+          backgroundColor: JAppColors.error600,
+        ),
+      );
+      return;
+    }
+
+    final tags = _tagsController.text
+        .split(',')
+        .map((e) => e.trim())
+        .where((e) => e.isNotEmpty)
+        .toList();
+
+    // ✅ Use CreateBlogRequest — matches BlogProvider.createBlog()
+    final request = CreateBlogRequest(
+      authorId: user.id,
+      title: _titleController.text.trim(),
+      content: _contentController.text.trim(),
+      tags: tags,
+      image: _selectedImage, // nullable — OK if no image selected
+    );
+
+    final success = await blogProvider.createBlog(request);
+
+    if (!mounted) return;
+
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('blog_created_success'.tr()),
+          backgroundColor: Colors.green,
+        ),
+      );
+      Navigator.pop(context);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(blogProvider.errorMessage ?? 'blog_create_failed'.tr()),
           backgroundColor: JAppColors.error600,
         ),
       );
@@ -75,7 +122,6 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
 
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkBackground : Colors.white,
-
       appBar: JAppbar(
         leadingIcon: GestureDetector(
           onTap: () => Navigator.pop(context),
@@ -88,15 +134,14 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
             ),
           ),
         ),
-
         title: Text(
-          'Edit Blog',
+          'Create Blog',
           style: AppTextStyle.dmSans(
             fontSize: 18.0,
             weight: FontWeight.w600,
             color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray900,
           ),
-        ).tr(),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 12),
@@ -116,22 +161,25 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
             key: _formKey,
             child: Consumer<BlogProvider>(
               builder: (context, blogProvider, _) {
+                // ✅ Use isCreating (not isLoading) for submit button state
+                final isBusy = blogProvider.isCreating;
+
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Edit Blog",
+                      'Create Blog',
                       style: AppTextStyle.dmSans(
                         fontSize: 20.0,
                         weight: FontWeight.w700,
-                        color:
-                        isDark
+                        color: isDark
                             ? JAppColors.lightGray100
                             : JAppColors.darkGray900,
                       ),
-                    ).tr(),
+                    ),
                     const SizedBox(height: 24),
 
+                    // ── Title ────────────────────────────────────────────────
                     TextFieldWidget(
                       subTitle: 'Blog Title',
                       hintText: 'Enter your Blog Title...',
@@ -143,13 +191,15 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
                         }
                         return null;
                       },
-                      subtitleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                      titleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                      subtitleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
+                      titleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
                     ),
 
-                    /// --- Blog Content ---
+                    // ── Content ──────────────────────────────────────────────
                     const SizedBox(height: 12),
                     TextFieldWidget(
                       subTitle: 'Blog Content',
@@ -163,97 +213,58 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
                         }
                         return null;
                       },
-                      subtitleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                      titleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                      subtitleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
+                      titleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
                     ),
 
+                    // ── Tags ─────────────────────────────────────────────────
                     const SizedBox(height: 20),
-
-                    /// --- Blog Tags ---
                     TextFieldWidget(
-                      subTitle: 'log Tags (Max 5)',
-                      hintText: 'Type a Blog Tags',
+                      subTitle: 'Blog Tags (Max 5, comma separated)',
+                      hintText: 'e.g. flutter, dart, mobile',
                       textEditingController: _tagsController,
-                      subtitleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                      titleColor:
-                      isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                      subtitleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
+                      titleColor: isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
                     ),
 
+                    // ── Featured Image ───────────────────────────────────────
                     const SizedBox(height: 20),
-
-                    /// --- Featured Image ---
                     Text(
                       'Featured Image',
                       style: AppTextStyle.dmSans(
                         fontSize: 14.0,
                         weight: FontWeight.w600,
-                        color:
-                        isDark
+                        color: isDark
                             ? JAppColors.darkGray100
                             : JAppColors.darkGray800,
                       ),
-                    ).tr(),
+                    ),
                     const SizedBox(height: 16),
 
-                    // ✅ Display selected image or upload box
                     _selectedImage != null
                         ? _buildSelectedImageWidget(isDark)
                         : _buildImageUploadBox(isDark),
 
                     const SizedBox(height: 20),
 
-                    // ✅ Create Blog Button
+                    // ── Submit Button ────────────────────────────────────────
                     MainButton(
-                      btn_title: "Create Blog",
+                      btn_title: isBusy ? 'Creating...' : 'Create Blog',
                       btn_radius: 12,
                       buttonType: MainButtonType.primary,
                       title_color: Colors.white,
                       text_fontweight: FontWeight.w700,
                       image_value: false,
-                      onTap: blogProvider.isLoading ? null : () async {
-                        if (!_formKey.currentState!.validate()) return;
-
-                        final tags = _tagsController.text
-                            .split(',')
-                            .map((e) => e.trim())
-                            .where((e) => e.isNotEmpty)
-                            .toList();
-
-                        debugPrint('🖼️ Selected Image: ${_selectedImage?.path}');
-                        debugPrint('📤 Creating blog with image...');
-
-                        // ✅ Create blog with image file
-                        final success = await blogProvider.createBlogWithImage(
-                          title: _titleController.text.trim(),
-                          content: _contentController.text.trim(),
-                          tags: tags,
-                          imageFile: _selectedImage, // Pass the image file
-                        );
-
-                        if (!mounted) return;
-
-                        if (success) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('blog_created_success'.tr()),
-                              backgroundColor: Colors.green,
-                            ),
-                          );
-                          Navigator.pop(context);
-                        } else {
-                          final error = blogProvider.errorMessage ??
-                              'blog_create_failed'.tr();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(error),
-                              backgroundColor: JAppColors.error600,
-                            ),
-                          );
-                        }
-                      },
+                      // ✅ disable while creating
+                      onTap: isBusy ? null : () => _submit(blogProvider),
                       text_size: JSizes.fontSizeMd,
                     ),
 
@@ -268,10 +279,9 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
     );
   }
 
-  // ✅ Widget to display selected image
   Widget _buildSelectedImageWidget(bool isDark) {
     return GestureDetector(
-      onTap: _pickImageFromGallery, // Allow changing image
+      onTap: _pickImageFromGallery,
       child: Container(
         width: double.infinity,
         height: 200,
@@ -284,7 +294,6 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
         ),
         child: Stack(
           children: [
-            // Display the image
             Container(
               width: double.infinity,
               height: double.infinity,
@@ -296,8 +305,6 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
                 ),
               ),
             ),
-
-            // ✅ Change button overlay
             Positioned(
               bottom: 12,
               right: 12,
@@ -307,11 +314,7 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
                   color: JAppColors.primary,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                  size: 18,
-                ),
+                child: const Icon(Icons.edit, color: Colors.white, size: 18),
               ),
             ),
           ],
@@ -320,11 +323,9 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
     );
   }
 
-  // ✅ Widget for image upload box
   Widget _buildImageUploadBox(bool isDark) {
     return DottedBorder(
-      color:
-      isDark ? JAppColors.darkGray300 : JAppColors.lightGray400,
+      color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray400,
       strokeWidth: 1.2,
       dashPattern: const [6, 4],
       borderType: BorderType.RRect,
@@ -333,10 +334,7 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
         width: double.infinity,
         height: 180,
         decoration: BoxDecoration(
-          color:
-          isDark
-              ? JAppColors.darkGray700
-              : JAppColors.lightGray100,
+          color: isDark ? JAppColors.darkGray700 : JAppColors.lightGray100,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
@@ -346,42 +344,32 @@ class _BlogCreateScreenState extends State<BlogCreateScreen> {
               Icon(
                 Icons.cloud_upload_outlined,
                 size: 42,
-                color:
-                isDark
-                    ? JAppColors.darkGray200
-                    : JAppColors.lightGray600,
+                color: isDark ? JAppColors.darkGray200 : JAppColors.lightGray600,
               ),
               const SizedBox(height: 12),
               Text(
-                "Drag Drop Here",
-                textAlign: TextAlign.center,
+                'Drag & Drop or Select',
                 style: AppTextStyle.dmSans(
                   fontSize: 13.0,
                   weight: FontWeight.w400,
-                  color:
-                  isDark
-                      ? JAppColors.darkGray200
-                      : JAppColors.lightGray700,
+                  color: isDark ? JAppColors.darkGray200 : JAppColors.lightGray700,
                 ),
-              ).tr(),
+              ),
               const SizedBox(height: 12),
               MainButton(
                 width: 150,
                 height: 40,
-                btn_title: "Select Image",
+                btn_title: 'Select Image',
                 btn_radius: 12,
                 buttonType: MainButtonType.primary,
-                btn_color:
-                isDark
+                btn_color: isDark
                     ? JAppColors.darkGray400
                     : JAppColors.lightGray300,
                 title_color:
-                isDark
-                    ? JAppColors.darkGray100
-                    : JAppColors.darkGray900,
+                isDark ? JAppColors.darkGray100 : JAppColors.darkGray900,
                 text_fontweight: FontWeight.w700,
                 image_value: false,
-                onTap: _pickImageFromGallery, // ✅ Call image picker
+                onTap: _pickImageFromGallery,
                 text_size: JSizes.fontSizeMd,
               ),
             ],

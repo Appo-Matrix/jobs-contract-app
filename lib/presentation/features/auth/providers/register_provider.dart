@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:loader_overlay/loader_overlay.dart';
-import '../../../../utils/constants/colors.dart';
 
 import '../../../../core/constants/api_endpoints.dart';
-import '../../../../core/constants/keys/secure_storage_keys.dart';
 import '../../../../core/network/api_client.dart';
+import '../../../../data/data_source/local/AuthPreferences.dart';
 import '../../../../data/models/auth/register_user_req.dart';
-import '../../../../domain/repository/auth_repository.dart';
 import '../../../../data/repositories/auth_repository_impl.dart';
-import '../../../../domain/services/secure_storage_service.dart';
+import '../../../../domain/repository/auth_repository.dart';
 
 class RegisterProvider with ChangeNotifier {
   final AuthRepository _authRepository = AuthRepositoryImpl();
@@ -31,6 +27,8 @@ class RegisterProvider with ChangeNotifier {
   double? get latitude => _latitude;
   double? get longitude => _longitude;
 
+  // ── Helpers ───────────────────────────────────────────────────────────────
+
   void setLocation(double latitude, double longitude) {
     _latitude = latitude;
     _longitude = longitude;
@@ -43,9 +41,11 @@ class RegisterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> registerUser(BuildContext context) async {
+  // ── Register ──────────────────────────────────────────────────────────────
+
+  Future<void> registerUser() async {
     if (!_validateInputs()) {
-      throw Exception(_errorMessage); // let caller handle it
+      throw Exception(_errorMessage);
     }
 
     _isLoading = true;
@@ -53,12 +53,12 @@ class RegisterProvider with ChangeNotifier {
     notifyListeners();
 
     try {
-      debugPrint('🔐 Creating registration request with:');
-      debugPrint('   fullName: ${fullNameController.text}');
-      debugPrint('   email: ${emailController.text}');
-      debugPrint('   phoneNumber: ${phoneNumberController.text}');
-      debugPrint('   userType: ${userTypeController.text}');
-      debugPrint('   location: ($_latitude, $_longitude)');
+      debugPrint('🔐 Creating registration request:');
+      debugPrint('   fullName    : ${fullNameController.text}');
+      debugPrint('   email       : ${emailController.text}');
+      debugPrint('   phoneNumber : ${phoneNumberController.text}');
+      debugPrint('   userType    : ${userTypeController.text}');
+      debugPrint('   location    : ($_latitude, $_longitude)');
 
       final request = RegisterUserRequest(
         fullName: fullNameController.text.trim(),
@@ -67,7 +67,7 @@ class RegisterProvider with ChangeNotifier {
         userType: userTypeController.text.trim(),
         password: passwordController.text,
         location: Location(
-          type: "Point",
+          type: 'Point',
           coordinates: [_longitude ?? 0.0, _latitude ?? 0.0],
         ),
       );
@@ -76,26 +76,20 @@ class RegisterProvider with ChangeNotifier {
 
       final response = await _authRepository.registerUser(request);
 
-      // Save token if returned
+      // Save token + user if registration returns them
       if (response.token != null && response.token!.isNotEmpty) {
-        await SecureStorageService.save(
-          SecureStorageKeys.authToken,
-          response.token!,
-        );
         await _apiClient.saveToken(response.token!);
-        debugPrint('✅ Token saved successfully');
       }
 
       debugPrint('✅ Registration successful: ${response.message}');
-      resetFields(); // only reset on success
+      resetFields();
 
     } catch (error) {
-      // Extract clean message from the error
-      String message = error.toString()
+      String message = error
+          .toString()
           .replaceAll('Exception: ', '')
           .replaceAll('Error: ', '');
 
-      // If it still says Unknown error, use a fallback
       if (message.contains('Unknown error') || message.isEmpty) {
         message = 'Registration failed. Please try again.';
       }
@@ -104,106 +98,24 @@ class RegisterProvider with ChangeNotifier {
       debugPrint('❌ Registration error: $message');
       _isLoading = false;
       notifyListeners();
-      throw Exception(message); // rethrow so _completeSignup shows the dialog
+      throw Exception(message); // rethrow so caller can show dialog
 
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
-  // Future<void> registerUser(BuildContext context) async {
-  //   if (!_validateInputs()) {
-  //     Fluttertoast.showToast(
-  //       msg: _errorMessage,
-  //       toastLength: Toast.LENGTH_SHORT,
-  //       gravity: ToastGravity.CENTER,
-  //       textColor: Colors.white,
-  //       fontSize: 16.0,
-  //     );
-  //     notifyListeners();
-  //     return;
-  //   }
-  //
-  //   context.loaderOverlay.show();
-  //   _isLoading = true;
-  //   _errorMessage = '';
-  //   notifyListeners();
-  //
-  //   try {
-  //     debugPrint('🔐 Creating registration request with:');
-  //     debugPrint('   fullName: ${fullNameController.text}');
-  //     debugPrint('   email: ${emailController.text}');
-  //     debugPrint('   phoneNumber: ${phoneNumberController.text}');
-  //     debugPrint('   userType: ${userTypeController.text}');
-  //     debugPrint('   location: ($_latitude, $_longitude)');
-  //
-  //     final request = RegisterUserRequest(
-  //       fullName: fullNameController.text.trim(),
-  //       email: emailController.text.trim(),
-  //       phoneNumber: phoneNumberController.text.trim(),
-  //       userType: userTypeController.text.trim(),
-  //       password: passwordController.text,
-  //       location: Location(
-  //         type: "Point",
-  //         coordinates: [_longitude ?? 0.0, _latitude ?? 0.0],
-  //       ),
-  //     );
-  //
-  //     debugPrint('📡 API Request Payload: ${request.toJson()}');
-  //
-  //     final response = await _authRepository.registerUser(request);
-  //
-  //     // Save token if the registration response includes one
-  //     if (response.token != null && response.token!.isNotEmpty) {
-  //       // Save to SecureStorageService
-  //       await SecureStorageService.save(
-  //         SecureStorageKeys.authToken,
-  //         response.token!,
-  //       );
-  //
-  //       // Save to ApiClient's secure storage
-  //       await _apiClient.saveToken(response.token!);
-  //
-  //       debugPrint('✅ Token saved successfully');
-  //     }
-  //
-  //     debugPrint('✅ Registration successful: ${response.message}');
-  //
-  //     Fluttertoast.showToast(
-  //       msg: response.message ?? 'Account created successfully',
-  //       toastLength: Toast.LENGTH_SHORT,
-  //       gravity: ToastGravity.CENTER,
-  //       textColor: Colors.white,
-  //       fontSize: 16.0,
-  //     );
-  //   } catch (error) {
-  //     _errorMessage = 'Error: $error';
-  //     debugPrint('❌ Registration error: $_errorMessage');
-  //
-  //     Fluttertoast.showToast(
-  //       msg: 'Something went wrong => $_errorMessage',
-  //       toastLength: Toast.LENGTH_SHORT,
-  //       gravity: ToastGravity.CENTER,
-  //       textColor: JAppColors.white,
-  //       fontSize: 16.0,
-  //     );
-  //   } finally {
-  //     context.loaderOverlay.hide();
-  //     _isLoading = false;
-  //     notifyListeners();
-  //   }
-  //
-  //   resetFields();
-  // }
+
+  // ── Validation ────────────────────────────────────────────────────────────
 
   bool _validateInputs() {
     debugPrint('🔍 Validating RegisterProvider inputs:');
-    debugPrint('   fullName: ${fullNameController.text}');
-    debugPrint('   email: ${emailController.text}');
-    debugPrint('   phoneNumber: ${phoneNumberController.text}');
-    debugPrint('   password: ${passwordController.text}');
-    debugPrint('   userType: ${userTypeController.text}');
-    debugPrint('   latitude: $_latitude, longitude: $_longitude');
+    debugPrint('   fullName    : ${fullNameController.text}');
+    debugPrint('   email       : ${emailController.text}');
+    debugPrint('   phoneNumber : ${phoneNumberController.text}');
+    debugPrint('   password    : ${passwordController.text}');
+    debugPrint('   userType    : ${userTypeController.text}');
+    debugPrint('   location    : ($_latitude, $_longitude)');
 
     if (fullNameController.text.trim().isEmpty) {
       _errorMessage = 'Please enter full name';
@@ -221,7 +133,8 @@ class RegisterProvider with ChangeNotifier {
       return false;
     }
 
-    if (passwordController.text.isEmpty || passwordController.text.length < 6) {
+    if (passwordController.text.isEmpty ||
+        passwordController.text.length < 6) {
       _errorMessage = 'Password must be at least 6 characters';
       return false;
     }
@@ -244,6 +157,8 @@ class RegisterProvider with ChangeNotifier {
     return RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
         .hasMatch(email);
   }
+
+  // ── Misc ──────────────────────────────────────────────────────────────────
 
   void resetFields() {
     fullNameController.clear();

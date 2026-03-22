@@ -99,7 +99,7 @@ class _NewSignupScreenState extends State<NewSignupScreen> {
         _registerProvider.setLocation(latitude!, longitude!);
       }
 
-      await _registerProvider.registerUser(context);
+      await _registerProvider.registerUser();
 
       if (!mounted) return;
       context.loaderOverlay.hide();
@@ -176,69 +176,6 @@ class _NewSignupScreenState extends State<NewSignupScreen> {
       );
     }
   }
-  // Future<void> _completeSignup() async {
-  //   // Validate all required data
-  //   if (!_validateAllData()) {
-  //     return;
-  //   }
-  //
-  //   context.loaderOverlay.show();
-  //
-  //   try {
-  //     // Update RegisterProvider with all collected data
-  //     _registerProvider.fullNameController.text = fullName ?? '';
-  //     _registerProvider.emailController.text = email ?? '';
-  //     _registerProvider.passwordController.text = password ?? '';
-  //     _registerProvider.phoneNumberController.text = phoneNumber ?? '';
-  //     _registerProvider.userTypeController.text = selectedRole ?? '';
-  //
-  //     // Set location before calling registerUser
-  //     if (latitude != null && longitude != null) {
-  //       _registerProvider.setLocation(latitude!, longitude!);
-  //     }
-  //
-  //     debugPrint('🔐 Final data before API call:');
-  //     debugPrint('   fullName: $fullName');
-  //     debugPrint('   email: $email');
-  //     debugPrint('   phoneNumber: $phoneNumber');
-  //     debugPrint('   userType: $selectedRole');
-  //     debugPrint('   location: ($latitude, $longitude)');
-  //
-  //     // Call registerUser which will hit the API
-  //     await _registerProvider.registerUser(context);
-  //
-  //     // Show success and navigate
-  //     if (!mounted) return;
-  //
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text('accountCreatedSuccess'.tr()),
-  //         backgroundColor: JAppColors.primary,
-  //         duration: const Duration(seconds: 3),
-  //       ),
-  //     );
-  //
-  //     // Navigate to home or next screen after a delay
-  //     Future.delayed(const Duration(seconds: 2), () {
-  //       if (mounted) {
-  //         AppRouter.router.go('/navigationMenu');
-  //       }
-  //     });
-  //   } catch (e) {
-  //     debugPrint('❌ Signup error: $e');
-  //     Fluttertoast.showToast(
-  //       msg: 'Error: $e',
-  //       toastLength: Toast.LENGTH_SHORT,
-  //       gravity: ToastGravity.CENTER,
-  //       textColor: Colors.white,
-  //       fontSize: 16.0,
-  //     );
-  //   } finally {
-  //     if (mounted) {
-  //       context.loaderOverlay.hide();
-  //     }
-  //   }
-  // }
 
   bool _validateAllData() {
     debugPrint('🔍 Validating all signup data:');

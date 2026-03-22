@@ -1,6 +1,8 @@
 // lib/config/dependencies/di.dart
 
 import 'package:flutter/material.dart';
+import 'package:job_contract_app/data/repositories/BlogRepositoryImpl.dart';
+import 'package:job_contract_app/domain/repository/BlogRepository.dart';
 
 
 
@@ -75,6 +77,7 @@ class InjectionContainer {
 
   // ─── Abstract Repositories ────────────────────────────────────────────────
   late final AdRepository _adsRepository;
+  late final BlogRepository _blogRepository;
   late final ApplicationRepository _applicationRepository;
   late final AuthRepository _authRepository;
   late final BankAccountRepository _bankAccountRepository;
@@ -107,6 +110,7 @@ class InjectionContainer {
 
   // ─── Getters — Repositories ───────────────────────────────────────────────
   AdRepository get adsRepository => _adsRepository;
+  BlogRepository get blogRepository => _blogRepository;
   ApplicationRepository get applicationRepository => _applicationRepository;
   AuthRepository get authRepository => _authRepository;
   BankAccountRepository get bankAccountRepository => _bankAccountRepository;
@@ -144,6 +148,7 @@ class InjectionContainer {
     debugPrint('');
 
     await _initAdsModule();
+    await _initBlogModule();
     await _initApplicationModule();
     await _initAuthModule();
     await _initBankAccountModule();
@@ -191,6 +196,12 @@ class InjectionContainer {
   Future<void> _initApplicationModule() async {
     debugPrint('📋 Initializing Application Module...');
     _applicationRepository = ApplicationRepositoryImpl();
+    debugPrint('   ✔ ApplicationRepository initialized');
+    debugPrint('');
+  }
+  Future<void> _initBlogModule() async {
+    debugPrint('📋 Initializing Application Module...');
+    _blogRepository = BlogRepositoryImpl();
     debugPrint('   ✔ ApplicationRepository initialized');
     debugPrint('');
   }

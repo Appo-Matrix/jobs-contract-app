@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/easy_localization.dart' as easy;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:job_contract_app/presentation/routes/routes.dart';
 
 import 'package:provider/provider.dart';
 import '../../../../data/models/jobs/job_list_item_model.dart';
@@ -19,8 +20,10 @@ import '../account_screen/provider/recent_job_provider.dart';
 import '../blog/blog_detail_screen.dart';
 import '../jobs/view_all_jobs_screen.dart';
 import '../myads/create_ad_screen.dart';
+import '../providers/BlogProvider.dart' show BlogProvider;
 import '../providers/ad_provider.dart';
 import '../providers/job_provider.dart';
+import '../../../../data/models/blog/BlogModel.dart';
 import 'bottom_sheet/FilterSelectionBottomSheet.dart';
 import 'drawer/custom_navigation_drawer.dart';
 import 'job_details/JobDetailScreen.dart';
@@ -37,39 +40,24 @@ class _HomeScreenState extends State<HomeScreen>
   late TabController _tabController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Map<String, List<String>> selectedFilters = {};
-  final List<Map<String, dynamic>> jobs = [
-    {
-      "title": "Flutter Developer",
-      "location": "Remote",
-      "workType": "Full Time",
-      "salary": "\$2000 - \$3000",
-      "category": "Development",
-      "duration": "6 Months",
-      "skills": ["Flutter", "Dart", "Firebase"],
-      "experience": "2+ Years",
-      "postedAgo": "2 days ago",
-    },
-    {
-      "title": "Mobile App Developer",
-      "location": "Lahore",
-      "workType": "Part Time",
-      "salary": "\$1500",
-      "category": "Mobile Development",
-      "duration": "3 Months",
-      "skills": ["Flutter", "REST API"],
-      "experience": "1+ Years",
-      "postedAgo": "1 day ago",
-    },
-  ];
+
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
 
-    // Fetch jobs when screen initializes
+    // Fetch latest jobs sorted by createdAt descending
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Fetch recent jobs (won't re-fetch if already loaded)
-      context.read<JobProvider>().fetchJobs();
+      context.read<JobProvider>().fetchJobs(
+        sortBy: 'createdAt',
+        sortOrder: 'desc',
+      );
+
+      // ✅ Fetch ads once here — NOT inside Consumer build
+      context.read<AdProvider>().fetchAds(page: 1, limit: 10);
+
+      // ✅ Fetch blogs once here
+      context.read<BlogProvider>().fetchBlogs();
     });
   }
 
@@ -167,7 +155,6 @@ class _HomeScreenState extends State<HomeScreen>
                       GestureDetector(
                         onTap: () {
                           AppRouter.router.push('/notifcationsScreen');
-                          print("Notifications tapped");
                         },
                         child: Stack(
                           children: [
@@ -180,7 +167,6 @@ class _HomeScreenState extends State<HomeScreen>
                                 BlendMode.srcIn,
                               ),
                             ),
-                            // Badge
                             Positioned(
                               right: 0,
                               top: 0,
@@ -198,7 +184,6 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(width: 12),
 
-                      // Profile
                       CircularAvatar(
                         isDark: isDark,
                         radius: 20,
@@ -217,17 +202,17 @@ class _HomeScreenState extends State<HomeScreen>
           child: SingleChildScrollView(
             child: Column(
               children: [
+                // ── Search Bar ──────────────────────────────────────────────
                 GestureDetector(
-                  onTap: () {
-                    // Navigate to full search screen
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 52,
                     decoration: BoxDecoration(
                       color: isDark ? JAppColors.darkGray700 : Colors.grey[200],
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                     child: Row(
                       children: [
                         SvgPicture.asset(
@@ -235,7 +220,9 @@ class _HomeScreenState extends State<HomeScreen>
                           width: 18,
                           height: 18,
                           colorFilter: ColorFilter.mode(
-                            isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                            isDark
+                                ? JAppColors.lightGray100
+                                : JAppColors.darkGray800,
                             BlendMode.srcIn,
                           ),
                         ),
@@ -246,7 +233,9 @@ class _HomeScreenState extends State<HomeScreen>
                             style: AppTextStyle.dmSans(
                               fontSize: JSizes.fontSizeSm.toDouble(),
                               weight: FontWeight.w400,
-                              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
+                              color: isDark
+                                  ? JAppColors.darkGray100
+                                  : JAppColors.lightGray500,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -259,7 +248,9 @@ class _HomeScreenState extends State<HomeScreen>
                             width: 18,
                             height: 18,
                             colorFilter: ColorFilter.mode(
-                              isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
+                              isDark
+                                  ? JAppColors.lightGray100
+                                  : JAppColors.darkGray800,
                               BlendMode.srcIn,
                             ),
                           ),
@@ -270,6 +261,8 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
 
                 const SizedBox(height: 12),
+
+                // ── Section Header: Latest Jobs ─────────────────────────────
                 Row(
                   children: [
                     Text(
@@ -282,8 +275,8 @@ class _HomeScreenState extends State<HomeScreen>
                     ).tr(),
                     const Spacer(),
                     Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: JAppColors.primary,
                         borderRadius: BorderRadius.circular(8),
@@ -307,14 +300,15 @@ class _HomeScreenState extends State<HomeScreen>
                         ),
                       ),
                     ),
-
                   ],
                 ),
+
                 const SizedBox(height: 12),
 
-                /// Recently Posted Jobs Section with Provider
+                // ── Latest Jobs List from JobProvider ───────────────────────
                 Consumer<JobProvider>(
                   builder: (context, jobProvider, child) {
+                    // ── Loading ──
                     if (jobProvider.isLoading) {
                       return const Center(
                         child: Padding(
@@ -324,6 +318,7 @@ class _HomeScreenState extends State<HomeScreen>
                       );
                     }
 
+                    // ── Error ──
                     if (jobProvider.errorMessage != null) {
                       return Center(
                         child: Padding(
@@ -340,9 +335,10 @@ class _HomeScreenState extends State<HomeScreen>
                               ),
                               const SizedBox(height: 8),
                               ElevatedButton(
-                                onPressed: () {
-                                  jobProvider.fetchJobs();
-                                },
+                                onPressed: () => jobProvider.fetchJobs(
+                                  sortBy: 'createdAt',
+                                  sortOrder: 'desc',
+                                ),
                                 child: const Text('Retry'),
                               ),
                             ],
@@ -351,9 +347,10 @@ class _HomeScreenState extends State<HomeScreen>
                       );
                     }
 
-                    final jobs = jobProvider.paginatedJobs?.jobs ?? [];
+                    // ── Jobs already sorted desc by createdAt from provider ──
+                    final allJobs = jobProvider.paginatedJobs?.jobs ?? [];
 
-                    if (jobs.isEmpty) {
+                    if (allJobs.isEmpty) {
                       return Center(
                         child: Padding(
                           padding: const EdgeInsets.all(32.0),
@@ -362,15 +359,17 @@ class _HomeScreenState extends State<HomeScreen>
                             style: AppTextStyle.dmSans(
                               fontSize: 14.0,
                               weight: FontWeight.w400,
-                              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
+                              color: isDark
+                                  ? JAppColors.darkGray100
+                                  : JAppColors.lightGray500,
                             ),
                           ),
                         ),
                       );
                     }
 
-                    // Display first 4 jobs
-                    final displayJobs = jobs.take(5).toList();
+                    // ── Show latest 5 jobs (already sorted desc) ────────────
+                    final displayJobs = allJobs.take(5).toList();
 
                     return ListView.builder(
                       shrinkWrap: true,
@@ -379,7 +378,6 @@ class _HomeScreenState extends State<HomeScreen>
                       itemBuilder: (context, index) {
                         final job = displayJobs[index];
 
-                        // Wrap in try-catch to identify the exact error
                         try {
                           return JobCard(
                             isDark: isDark,
@@ -388,8 +386,10 @@ class _HomeScreenState extends State<HomeScreen>
                             workType: job.jobType,
                             salary: job.salary,
                             category: job.jobCategory,
-                            duration: job.jobDuration ,
-                            skills: job.skillsRequired.map((s) => s.name).toList(),
+                            duration: job.jobDuration,
+                            skills: job.skillsRequired
+                                .map((s) => s.name)
+                                .toList(),
                             experience: job.experience,
                             postedAgo: _getTimeAgo(job.createdAt),
                             onViewDetails: () {
@@ -402,15 +402,18 @@ class _HomeScreenState extends State<HomeScreen>
                                       'title': job.title,
                                       'description': job.description,
                                       'responsibilities': '',
-                                      'skillsRequired': job.skillsRequired.map((s) => s.name).toList(),
+                                      'skillsRequired': job.skillsRequired
+                                          .map((s) => s.name)
+                                          .toList(),
                                       'category': job.jobCategory,
                                       'duration': job.jobDuration,
                                       'experience': job.experience,
                                       'salary': job.salary,
                                       'workType': job.jobType,
-                                      'location': _getLocationString(job.jobLocation),
+                                      'location':
+                                      _getLocationString(job.jobLocation),
                                       'clientHistory': '',
-                                      'isSaved': true,
+                                      'isSaved': false,
                                     },
                                   ),
                                 ),
@@ -418,7 +421,6 @@ class _HomeScreenState extends State<HomeScreen>
                             },
                           );
                         } catch (e) {
-                          // Fallback card to show error details
                           return Container(
                             margin: const EdgeInsets.only(bottom: 12),
                             padding: const EdgeInsets.all(16),
@@ -430,7 +432,7 @@ class _HomeScreenState extends State<HomeScreen>
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Error loading job card',
                                   style: TextStyle(
                                     color: Colors.red,
@@ -446,12 +448,9 @@ class _HomeScreenState extends State<HomeScreen>
                                     fontSize: 12.0,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
                                 Text(
                                   'Job Title: ${job.title}',
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                  ),
+                                  style: const TextStyle(fontSize: 12.0),
                                 ),
                               ],
                             ),
@@ -464,7 +463,7 @@ class _HomeScreenState extends State<HomeScreen>
 
                 const SizedBox(height: 12),
 
-                // Latest from Our Blog Section
+                // ── Blog Section ────────────────────────────────────────────
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -479,8 +478,8 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                     ),
                     Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
                         color: JAppColors.primary,
                         borderRadius: BorderRadius.circular(8),
@@ -503,59 +502,99 @@ class _HomeScreenState extends State<HomeScreen>
                 ),
 
                 const SizedBox(height: 16),
-                ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
 
-                  children: [
-                    BlogCard(
-                      isDark: isDark,
-                      imageUrl: 'https://via.placeholder.com/400x200',
-                      title: 'How Technology is Reshaping the Construction Industry',
-                      description:
-                      'Construction has always been about building the future. Today, that future is being transformed by digital tools and automation...',
-                      tags: ['Tech', 'Innovation', 'Construction'],
-                      onReadMore: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BlogDetailScreen(
-                              imageUrl: "https://via.placeholder.com/400x200",
-                              title:
-                              "How Technology is Reshaping the Construction Industry",
-                              tags: ['Tech', 'Innovation', 'Construction'],
+                // ── Blog List from BlogProvider ─────────────────────────────
+                Consumer<BlogProvider>(
+                  builder: (context, blogProvider, child) {
+                    if (blogProvider.isLoading) {
+                      return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(32.0),
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    }
+
+                    if (blogProvider.errorMessage != null) {
+                      return Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              'Failed to load blogs',
+                              style: AppTextStyle.dmSans(
+                                fontSize: 14.0,
+                                weight: FontWeight.w500,
+                                color: Colors.red,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            ElevatedButton(
+                              onPressed: () => blogProvider.fetchBlogs(),
+                              child: const Text('Retry'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+
+                    if (blogProvider.blogs.isEmpty) {
+                      return Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: Text(
+                            'No blogs available',
+                            style: AppTextStyle.dmSans(
+                              fontSize: 14.0,
+                              weight: FontWeight.w400,
+                              color: isDark
+                                  ? JAppColors.darkGray100
+                                  : JAppColors.lightGray500,
                             ),
                           ),
+                        ),
+                      );
+                    }
+
+                    final displayBlogs = blogProvider.blogs.take(3).toList();
+
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: displayBlogs.length,
+                      itemBuilder: (context, index) {
+                        final blog = displayBlogs[index];
+                        return BlogCard(
+                          isDark: isDark,
+                          imageUrl: blog.image.isNotEmpty
+                              ? blog.image
+                              : 'https://via.placeholder.com/400x200',
+                          title: blog.title,
+                          description: blog.content.length > 100
+                              ? '${blog.content.substring(0, 100)}...'
+                              : blog.content,
+                          tags: blog.tags,
+                          onReadMore: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BlogDetailScreen(
+                                  imageUrl: blog.image.isNotEmpty
+                                      ? blog.image
+                                      : 'https://via.placeholder.com/400x200',
+                                  title: blog.title,
+                                  tags: blog.tags,
+                                ),
+                              ),
+                            );
+                          },
                         );
                       },
-                    ),
-                    BlogCard(
-                      isDark: isDark,
-                      imageUrl: 'https://via.placeholder.com/400x200',
-                      title: 'How Technology is Reshaping the Construction Industry',
-                      description:
-                      'Construction has always been about building the future. Today, that future is being transformed by digital tools and automation...',
-                      tags: ['Tech', 'Innovation', 'Construction'],
-                      onReadMore: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BlogDetailScreen(
-                              imageUrl: "https://via.placeholder.com/400x200",
-                              title:
-                              "How Technology is Reshaping the Construction Industry",
-                              tags: ['Tech', 'Innovation', 'Construction'],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+                    );
+                  },
                 ),
 
                 const SizedBox(height: 16),
 
-                // Create your own Blog button
                 MainButton(
                   btn_title: 'Create your own Blog',
                   btn_radius: 10.0,
@@ -563,15 +602,17 @@ class _HomeScreenState extends State<HomeScreen>
                   title_color: Colors.white,
                   text_fontweight: FontWeight.w600,
                   image_value: false,
-                  onTap: () {},
+                  onTap: () {
+
+                    AppRouter.router.goNamed(Routes.myBlogScreen.name);
+
+                  },
                   isDark: isDark,
                 ),
 
                 const SizedBox(height: 24),
 
-
-                // Featured Ads
-                // Featured Ads Section
+                // ── Featured Ads Section ────────────────────────────────────
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -587,10 +628,14 @@ class _HomeScreenState extends State<HomeScreen>
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CreateAdScreen(),));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CreateAdScreen()));
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
                           color: JAppColors.primary,
                           borderRadius: BorderRadius.circular(8),
@@ -610,22 +655,14 @@ class _HomeScreenState extends State<HomeScreen>
 
                 const SizedBox(height: 16),
 
-// Featured Ads with Provider
                 Consumer<AdProvider>(
                   builder: (context, adProvider, child) {
-                    // Fetch ads on first build
-                    if (adProvider.ads.isEmpty && !adProvider.isLoading) {
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        adProvider.fetchAds(page: 1, limit: 10);
-                      });
-                    }
+                    // ✅ No fetchAds here — called once in initState above
 
                     if (adProvider.isLoading) {
                       return const SizedBox(
                         height: 200,
-                        child: Center(
-                          child: CircularProgressIndicator(),
-                        ),
+                        child: Center(child: CircularProgressIndicator()),
                       );
                     }
 
@@ -646,9 +683,8 @@ class _HomeScreenState extends State<HomeScreen>
                               ),
                               const SizedBox(height: 8),
                               ElevatedButton(
-                                onPressed: () {
-                                  adProvider.fetchAds(page: 1, limit: 10);
-                                },
+                                onPressed: () =>
+                                    adProvider.fetchAds(page: 1, limit: 10),
                                 child: const Text('Retry'),
                               ),
                             ],
@@ -668,7 +704,9 @@ class _HomeScreenState extends State<HomeScreen>
                             style: AppTextStyle.dmSans(
                               fontSize: 14.0,
                               weight: FontWeight.w400,
-                              color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
+                              color: isDark
+                                  ? JAppColors.darkGray100
+                                  : JAppColors.lightGray500,
                             ),
                           ),
                         ),
@@ -679,11 +717,11 @@ class _HomeScreenState extends State<HomeScreen>
                       height: 200,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        padding:
+                        const EdgeInsets.symmetric(horizontal: 16.0),
                         itemCount: ads.length,
                         itemBuilder: (context, index) {
                           final ad = ads[index];
-
                           return Container(
                             width: 160,
                             margin: const EdgeInsets.only(right: 12),
@@ -692,11 +730,10 @@ class _HomeScreenState extends State<HomeScreen>
                               image: DecorationImage(
                                 image: ad.image.isNotEmpty
                                     ? NetworkImage(ad.image)
-                                    : const NetworkImage('https://via.placeholder.com/160x200'),
+                                    : const NetworkImage(
+                                    'https://via.placeholder.com/160x200'),
                                 fit: BoxFit.cover,
-                                onError: (exception, stackTrace) {
-                                  // Fallback if image fails to load
-                                },
+                                onError: (exception, stackTrace) {},
                               ),
                             ),
                             child: Container(
@@ -755,20 +792,22 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  // Helper method to get location string from coordinates
+  // ── Helper: human-readable location ────────────────────────────────────────
+  // Uses city field if available, falls back to country, then coordinates
   String _getLocationString(JobLocation location) {
-    if (location.coordinates.isNotEmpty) {
-      return 'Lat: ${location.coordinates[1].toStringAsFixed(2)}, Lng: ${location.coordinates[0].toStringAsFixed(2)}';
+    if (location.coordinates.length >= 2) {
+      final lat = location.coordinates[1].toStringAsFixed(4);
+      final lng = location.coordinates[0].toStringAsFixed(4);
+      return 'Lat: $lat, Lng: $lng';
     }
     return 'Location not available';
   }
 
-  // Helper method to calculate time ago from createdAt timestamp
+  // ── Helper: relative time string ────────────────────────────────────────────
   String _getTimeAgo(String createdAt) {
     try {
       final dateTime = DateTime.parse(createdAt);
-      final now = DateTime.now();
-      final difference = now.difference(dateTime);
+      final difference = DateTime.now().difference(dateTime);
 
       if (difference.inDays > 365) {
         final years = (difference.inDays / 365).floor();
@@ -785,483 +824,8 @@ class _HomeScreenState extends State<HomeScreen>
       } else {
         return 'Just now';
       }
-    } catch (e) {
+    } catch (_) {
       return 'Recently';
     }
   }
 }
-
-
-
-// import 'package:easy_localization/easy_localization.dart';
-// import 'package:easy_localization/easy_localization.dart' as easy;
-// import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:job_contracts/utils/common_widgets/circular_avatar.dart';
-// import 'package:job_contracts/utils/constants/colors.dart';
-// import 'package:job_contracts/utils/constants/image_string.dart';
-// import 'package:job_contracts/utils/constants/sizes.dart';
-// import 'package:job_contracts/utils/device/device_utility.dart';
-// import '../../../../utils/common_widgets/blog_card.dart';
-// import '../../../../utils/common_widgets/job_card.dart';
-// import '../../../../utils/common_widgets/main_button.dart';
-// import '../../../../utils/constants/app_text_style.dart';
-// import '../../../routes/app_routes.dart';
-// import '../blog/blog_detail_screen.dart';
-// import 'bottom_sheet/FilterSelectionBottomSheet.dart';
-// import 'drawer/custom_navigation_drawer.dart';
-//
-// class HomeScreen extends StatefulWidget {
-//   const HomeScreen({super.key});
-//
-//   @override
-//   State<HomeScreen> createState() => _HomeScreenState();
-// }
-//
-// class _HomeScreenState extends State<HomeScreen>
-//     with SingleTickerProviderStateMixin {
-//   late TabController _tabController;
-//   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-//   Map<String, List<String>> selectedFilters = {};
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     _tabController = TabController(length: 3, vsync: this);
-//   }
-//
-//   @override
-//   void dispose() {
-//     _tabController.dispose();
-//     super.dispose();
-//   }
-//
-//   void updateFilters(Map<String, List<String>> newFilters) {
-//     setState(() {
-//       selectedFilters = newFilters;
-//     });
-//     print('Applied filters: $selectedFilters');
-//   }
-//
-//   void showFilterBottomSheet() async {
-//     final result = await FilterSelectionBottomSheet.show(
-//       context,
-//       initialFilters: selectedFilters,
-//     );
-//
-//     if (result != null) {
-//       updateFilters(result);
-//     }
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final isDark = JDeviceUtils.isDarkMode(context);
-//
-//     return SafeArea(
-//
-//       child: Scaffold(
-//         key: _scaffoldKey,
-//         drawer: CustomNavigationDrawer(isDark: isDark),
-//         appBar: PreferredSize(
-//           preferredSize: const Size.fromHeight(60),
-//           child: Container(
-//             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-//             decoration: BoxDecoration(
-//               color: isDark ? JAppColors.darkGray900 : Colors.white,
-//               boxShadow: [
-//                 BoxShadow(
-//                   color: isDark
-//                       ? Colors.black.withValues(alpha: 0.3)  // 3x stronger for dark mode
-//                       : Colors.black.withValues(alpha: 0.1),
-//                   blurRadius: isDark ? 8 : 4,  // Larger blur radius in dark mode
-//                   offset: const Offset(0, 2),
-//                 ),
-//               ],            ),
-//             child: Stack(
-//               alignment: Alignment.center,
-//               children: [
-//                 // Left: Drawer icon
-//                 Align(
-//                   alignment: Alignment.centerLeft,
-//                   child: GestureDetector(
-//                     onTap: () => _scaffoldKey.currentState?.openDrawer(),
-//                     child: Container(
-//                       padding: const EdgeInsets.all(8),
-//                       child: SvgPicture.asset(
-//                         JImages.drawer,
-//                         colorFilter: ColorFilter.mode(
-//                           isDark ? Colors.white : JAppColors.primary,
-//                           BlendMode.srcIn,
-//                         ),
-//                         height: 24,
-//                         width: 24,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//
-//                 // Center: Title
-//                 Padding(
-//                   padding: const EdgeInsets.only(right: 24),
-//                   child: Text(
-//                     "Home",
-//                     style: TextStyle(
-//                       color: isDark ? Colors.white : Colors.black,
-//                       fontWeight: FontWeight.bold,
-//                       fontSize: 18,
-//                     ),
-//                   ),
-//                 ),
-//
-//                 // Right: Notification + Profile
-//                 Align(
-//                   alignment: Alignment.centerRight,
-//                   child: Row(
-//                     mainAxisSize: MainAxisSize.min,
-//                     children: [
-//                       // Notification Icon
-//                       GestureDetector(
-//                         onTap: () {
-//                           AppRouter.router.push('/notifcationsScreen');
-//
-//                           print("Notifications tapped");
-//                         },
-//                         child: Stack(
-//                           children: [
-//                             SvgPicture.asset(
-//                               JImages.notificationsvg,
-//                               height: 24,
-//                               width: 24,
-//                               colorFilter: ColorFilter.mode(
-//                                 isDark ? Colors.white : JAppColors.primary,
-//                                 BlendMode.srcIn,
-//                               ),
-//                             ),
-//                             // Badge
-//                             Positioned(
-//                               right: 0,
-//                               top: 0,
-//                               child: Container(
-//                                 width: 8,
-//                                 height: 8,
-//                                 decoration: const BoxDecoration(
-//                                   color: Colors.red,
-//                                   shape: BoxShape.circle,
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       const SizedBox(width: 12),
-//
-//                       // Profile
-//                       CircularAvatar(
-//                         isDark: isDark,
-//                         radius: 20,
-//                         imageUrl: JImages.image,
-//                       ),
-//                       const SizedBox(width: 12),
-//
-//                     ],
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//         body: Padding(
-//           padding: const EdgeInsets.symmetric(vertical: 16.0 ,horizontal: 16.0),
-//           child: SingleChildScrollView(
-//             child: Column(
-//               children: [
-//
-//                 GestureDetector(
-//                   onTap: () {
-//                     // Navigate to full search screen
-//                   },
-//                   child: Container(
-//                     height: 52,
-//
-//                     decoration: BoxDecoration(
-//                       color: isDark ? JAppColors.darkGray700 : Colors.grey[200],
-//                       borderRadius: BorderRadius.circular(10),
-//                     ),
-//                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-//                     child: Row(
-//                       children: [
-//                         SvgPicture.asset(
-//                           JImages.search,
-//                           width: 18,
-//                           height: 18,
-//                           colorFilter: ColorFilter.mode(
-//                             isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-//                             BlendMode.srcIn,
-//                           ),
-//                         ),
-//                         const SizedBox(width: 10),
-//                         Expanded(
-//                           child: Text(
-//                             easy.tr('searchJob'),
-//                             style: AppTextStyle.dmSans(
-//                               fontSize: JSizes.fontSizeSm,
-//                               weight: FontWeight.w400,
-//                               color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray500,
-//                             ),
-//                             overflow: TextOverflow.ellipsis,
-//                           ),
-//                         ),
-//                         const SizedBox(width: 10),
-//                         GestureDetector(
-//                           onTap: () => showFilterBottomSheet(),
-//                           child: SvgPicture.asset(
-//                             JImages.filters,
-//                             width: 18,
-//                             height: 18,
-//                             colorFilter: ColorFilter.mode(
-//                               isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-//                               BlendMode.srcIn,
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//
-//                 SizedBox(height: 12,),
-//                 Row(
-//                   children: [
-//                     Text(
-//                       'recentPotJob',
-//                       style: AppTextStyle.dmSans(
-//                         fontSize: 16.0,
-//                         weight: FontWeight.w700,
-//                         color: isDark ? Colors.white : JAppColors.lightGray900,
-//                       ),
-//                     ).tr(),
-//                     Spacer(),
-//                     Text(
-//                       'viewAllRecent',
-//                       style: AppTextStyle.dmSans(
-//                         fontSize: 14.0,
-//                         weight: FontWeight.w500,
-//                         color: isDark ? Colors.white : JAppColors.lightGray900,
-//                       ),
-//                     ).tr(),
-//                   ],
-//                 ),
-//                 SizedBox(height: 12,),
-//
-//                 ListView.builder(
-//                   shrinkWrap: true,
-//                   physics: const NeverScrollableScrollPhysics(),
-//                   itemCount: 4,
-//                   itemBuilder: (context, index) {
-//                     return JobCard(
-//                       isDark: isDark,
-//                       title: 'Electrician Needed',
-//                       location: 'United States',
-//                       workType: 'Hybrid',
-//                       salary: '\$20,000 - \$25,000',
-//                       category: 'Residential',
-//                       duration: '2 weeks',
-//                       skills: ['Plumber', 'Electrical'],
-//                       experience: '2+ Years',
-//                       postedAgo: '3 days ago',
-//                       onViewDetails: () {
-//                         AppRouter.router.push('/jobDetailScreen');
-//
-//                         // ContractDetailScreen
-//                         // Handle navigation
-//                       },
-//                     );
-//                   },
-//                 ),
-//                 const SizedBox(height: 12),
-//
-//                 // Latest from Our Blog Section
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       'Latest from Our Blog',
-//                       style: AppTextStyle.dmSans(
-//                         fontSize: 18.0,
-//                         weight: FontWeight.w700,
-//                         color: isDark
-//                             ? JAppColors.darkGray100
-//                             : JAppColors.darkGray800,
-//                       ),
-//                     ),
-//                     Container(
-//                       padding:
-//                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-//                       decoration: BoxDecoration(
-//                         color: JAppColors.primary,
-//                         borderRadius: BorderRadius.circular(8),
-//                       ),
-//                       child: GestureDetector(
-//                         onTap: (){
-//                           AppRouter.router.push('/blogListScreen');
-//
-//                         },
-//                         child: Text(
-//                           'Explore',
-//                           style: AppTextStyle.dmSans(
-//                             fontSize: 12.0,
-//                             weight: FontWeight.w600,
-//                             color: Colors.white,
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//
-//                 const SizedBox(height: 16),
-//                 ListView(
-//                   shrinkWrap: true,
-//                   physics: const NeverScrollableScrollPhysics(),
-//                   children: [
-//                     BlogCard(
-//                       isDark: isDark,
-//                       imageUrl: 'https://via.placeholder.com/400x200',
-//                       title: 'How Technology is Reshaping the Construction Industry',
-//                       description:
-//                       'Construction has always been about building the future. Today, that future is being transformed by digital tools and automation...',
-//                       tags: ['Tech', 'Innovation', 'Construction'],
-//                       onReadMore: () {
-//
-//                         Navigator.push(
-//                           context,
-//                           MaterialPageRoute(
-//                             builder: (context) => BlogDetailScreen(
-//                               imageUrl: "https://via.placeholder.com/400x200",
-//                               title: "How Technology is Reshaping the Construction Industry",
-//                               tags: ['Tech', 'Innovation', 'Construction'],
-//                             ),
-//                           ),
-//                         );
-//
-//                         // Navigate to blog details
-//                       },
-//                     ),
-//                   ],
-//                 ),
-//
-//                 const SizedBox(height: 16),
-//
-//                 // Create your own Blog button
-//                 MainButton(
-//                   btn_title: 'Create your own Blog',
-//                   btn_radius: 10,
-//                   btn_color: JAppColors.primary,
-//
-//                   title_color: Colors.white,
-//                   text_fontweight: FontWeight.w600,
-//                   image_value: false,
-//                   onTap: (){
-//
-//                   }, isDark: isDark,
-//                 ),
-//
-//
-//
-//
-//                 const SizedBox(height: 24),
-//
-//                 // Featured Ads Section
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       'Featured Ads',
-//                       style: AppTextStyle.dmSans(
-//                         fontSize: 18.0,
-//                         weight: FontWeight.w700,
-//                         color: isDark
-//                             ? JAppColors.darkGray100
-//                             : JAppColors.darkGray800,
-//                       ),
-//                     ),
-//                     Container(
-//                       padding:
-//                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-//                       decoration: BoxDecoration(
-//                         color: JAppColors.primary,
-//                         borderRadius: BorderRadius.circular(8),
-//                       ),
-//                       child: Text(
-//                         'Create Ad',
-//                         style: AppTextStyle.dmSans(
-//                           fontSize: 12.0,
-//                           weight: FontWeight.w600,
-//                           color: Colors.white,
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//
-//                 const SizedBox(height: 16),
-//
-//                 // Featured Ads
-//                 SizedBox(
-//                   height: 200,
-//                   child: ListView.builder(
-//                     scrollDirection: Axis.horizontal,
-//                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//                     itemCount: 3,
-//                     itemBuilder: (context, index) {
-//                       return Container(
-//                         width: 160,
-//                         margin: const EdgeInsets.only(right: 12),
-//                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(12),
-//                           image: DecorationImage(
-//                             image: NetworkImage('https://via.placeholder.com/160x200'),
-//                             fit: BoxFit.cover,
-//                           ),
-//                         ),
-//                         child: Container(
-//                           decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(12),
-//                             gradient: LinearGradient(
-//                               begin: Alignment.topCenter,
-//                               end: Alignment.bottomCenter,
-//                               colors: [
-//                                 Colors.transparent,
-//                                 Colors.black.withOpacity(0.7),
-//                               ],
-//                             ),
-//                           ),
-//                           padding: const EdgeInsets.all(12),
-//                           alignment: Alignment.bottomLeft,
-//                           child: Text(
-//                             index == 0
-//                                 ? 'Plumber And Electrican Needed'
-//                                 : 'Plumber And Electrician Needed',
-//                             style: AppTextStyle.dmSans(
-//                               fontSize: 13.0,
-//                               weight: FontWeight.w600,
-//                               color: Colors.white,
-//                             ),
-//                           ),
-//                         ),
-//                       );
-//                     },
-//                   ),
-//                 ),
-//
-//                 const SizedBox(height: 24),
-//
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
