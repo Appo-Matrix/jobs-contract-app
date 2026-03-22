@@ -1,18 +1,31 @@
-// data/models/chat/create_chat_request.dart
+// // data/models/chat/create_chat_request.dart
+// class CreateChatRequest {
+//   final String senderId;
+//   final String receiverId;
+//   final String message;
+//
+//   CreateChatRequest({
+//     required this.senderId,
+//     required this.receiverId,
+//     required this.message,
+//   });
+//
+//   Map<String, dynamic> toJson() => {
+//     "senderId": senderId,
+//     "receiverId": receiverId,
+//     "message": message,
+//   };
+// }
+
+
 class CreateChatRequest {
-  final String senderId;
-  final String receiverId;
-  final String message;
+  final String otherUserId;
 
-  CreateChatRequest({
-    required this.senderId,
-    required this.receiverId,
-    required this.message,
-  });
+  CreateChatRequest({required this.otherUserId});
 
-  Map<String, dynamic> toJson() => {
-    "senderId": senderId,
-    "receiverId": receiverId,
-    "message": message,
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      "otherUserId": otherUserId,
+    };
+  }
 }

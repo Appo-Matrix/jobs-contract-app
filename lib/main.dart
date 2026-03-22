@@ -12,6 +12,7 @@ import 'package:job_contract_app/utils/themes/themes.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
+import 'config/dependencies/SocketService.dart';
 import 'config/dependencies/src/InjectionContainer.dart';
 import 'core/constants/api_endpoints.dart';
 import 'core/network/api_client.dart';
@@ -47,7 +48,10 @@ Future<void> main() async {
       debugPrint('   email:    ${user?.email}');
       debugPrint('   userType: ${user?.userType}');
       debugPrint('   token:    ${token?.substring(0, 20)}...');
+      // ✅ ADD THIS
+      if (token != null) SocketService().connect(token);
 
+      debugPrint('✅ Session restored:');
       globalInitialRoute = '/navigationMenu';
     } else {
       debugPrint('❌ No session found — redirecting to onboarding');

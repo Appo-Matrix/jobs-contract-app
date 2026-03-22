@@ -3,6 +3,7 @@
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/global.dart';
+import '../../data/models/chat/ChatModel2.dart';
 import '../features/auth/screens/forget_password/forget_password_screen.dart';
 import '../features/auth/screens/onboarding/onboarding_screen.dart';
 import '../routes/routes.dart';
@@ -323,13 +324,13 @@ class AppRouter {
           );
         },
       ),
+// In your GoRouter setup
       GoRoute(
         path: '/chatScreen',
-        name: Routes.chatScreen.name,
-        builder: (context, state) => ChatScreen(),
+        builder: (context, state) => ChatScreen(
+          chat: state.extra as ChatModel2,
+        ),
       ),
-
-
 
 
       GoRoute(

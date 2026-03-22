@@ -19,7 +19,8 @@ class ApiPath{
   static const String deleteUserBlog = '/blogs/';
   static const String jobsByUser = '/jobs/me';
   static const String getAllJob = '/jobs/all';
-
+  // static const String createConversation = "/conversations";
+  // static const String getConversations = "/chats/conversations";
 
   // User
   static String deleteResume = "/users/delete-resume";
@@ -164,11 +165,11 @@ class ApiPath{
   static const String getUserLocation = '/locations/me';
 
   // Messages
-  static const String sendMessage = '/messages/';
-  static String deleteMessage(String id) => '/messages/$id';
-  static String updateMessage(String id) => '/messages/$id';
-  static String getMessagesByChatId(String chatId) => '/messages/$chatId';
-  static const String markMessageAsRead = '/messages/read';
+  // static const String sendMessage = '/messages/';
+  // static String deleteMessage(String id) => '/messages/$id';
+  // static String updateMessage(String id) => '/messages/$id';
+  // static String getMessagesByChatId(String chatId) => '/messages/$chatId';
+  // static const String markMessageAsRead = '/messages/read';
 
   // Notifications
   static const String getNotificationsByUser = '/notifications';
@@ -255,5 +256,25 @@ class ApiPath{
   static String getBlogsByUser(String id) => '/blogs/user/$id';
 
 
+
+  // ✅ All corrected endpoints
+
+  static const String sendMessage = '/chats/messages';
+
+
+  static const String createConversation = '/chats/conversations';
+
+  static const String getConversations = '/chats/conversations';
+
+  static String deleteMessage(String id) =>
+      '/chats/conversations/messages/$id';
+
+  static String updateMessage(String id) =>
+      '/chats/conversations/messages/$id';
+
+  static String getMessagesByChatId(String chatId) =>
+      '/chats/conversations/$chatId/messages';
+
+  static const String markMessageAsRead = '/chats/conversations/messages/read';
 
 }

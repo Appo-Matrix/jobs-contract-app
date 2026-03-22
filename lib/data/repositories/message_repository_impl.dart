@@ -1,7 +1,11 @@
 
 
+import 'package:job_contract_app/data/models/chat/chat_model.dart';
+import 'package:job_contract_app/data/models/chat/create_chat_res.dart';
+
 import '../../domain/repository/message_repository.dart';
 import '../data_source/remote/message_rds.dart';
+import '../models/chat/ChatModel2.dart';
 import '../models/messages/message_model.dart';
 
 
@@ -17,6 +21,24 @@ class MessageRepositoryImpl implements MessageRepository {
       throw Exception('Error sending message: $e');
     }
   }
+
+  @override
+  Future<CreateChatResponse> createConversation(String otherUserId) async {
+    try {
+      return await remoteDataSource.createConversation(otherUserId);
+    } catch (e) {
+      throw Exception("Repository Error: $e");
+    }
+  }  @override
+  Future<List<ChatModel2>> getConversations() async {
+    try {
+      return await remoteDataSource.getConversations();
+    } catch (e) {
+      throw Exception("Repository Error: $e");
+    }
+  }
+
+
 
   @override
   Future<void> deleteMessage(String messageId) async {

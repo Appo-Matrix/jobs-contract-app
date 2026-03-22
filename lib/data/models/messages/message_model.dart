@@ -1,67 +1,124 @@
-class MessageMedia {
-  final String fileType;
-  final String fileUrl;
-  final String fileName;
 
-  MessageMedia({
-    required this.fileType,
-    required this.fileUrl,
-    required this.fileName,
-  });
-
-  factory MessageMedia.fromJson(Map<String, dynamic> json) {
-    return MessageMedia(
-      fileType: json['fileType'] ?? '',
-      fileUrl: json['fileUrl'] ?? '',
-      fileName: json['fileName'] ?? '',
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'fileType': fileType,
-      'fileUrl': fileUrl,
-      'fileName': fileName,
-    };
-  }
-}
 
 class MessageModel {
   final String id;
-  final String chatId;
-  final String? messageText;
-  final List<MessageMedia>? media;
-  final DateTime? timestamp;
-  final bool readStatus;
+  final String conversationId;  // ← was 'chatId'
+  final String sender;          // ← new
+  final String receiver;        // ← new
+  final String text;            // ← was 'messageText'
+  final List<MediaFile> images;
+  final List<MediaFile> videos;
+  final List<MediaFile> files;
+  final List<MediaFile> audios;
+  final bool isDelivered;
+  final bool isRead;
+  final DateTime? dateTime;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   MessageModel({
     required this.id,
-    required this.chatId,
-    this.messageText,
-    this.media,
-    this.timestamp,
-    this.readStatus = false,
+    required this.conversationId,
+    required this.sender,
+    required this.receiver,
+    required this.text,
+    required this.images,
+    required this.videos,
+    required this.files,
+    required this.audios,
+    required this.isDelivered,
+    required this.isRead,
+    this.dateTime,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  factory MessageModel.fromJson(Map<String, dynamic> json) {
-    return MessageModel(
-      id: json['_id'] ?? '',
-      chatId: json['chatId'] ?? '',
-      messageText: json['messageText'],
-      media: (json['media'] as List?)?.map((e) => MessageMedia.fromJson(e)).toList(),
-      timestamp: json['timestamp'] != null ? DateTime.tryParse(json['timestamp']) : null,
-      readStatus: json['readStatus'] ?? false,
-    );
+  /// Preview for conversation list
+  String get preview {
+    if (text.isNotEmpty) return text;
+    if (images.isNotEmpty) return '📷 Image';
+    if (videos.isNotEmpty) return '🎥 Video';
+    if (files.isNotEmpty) return '📎 File';
+    if (audios.isNotEmpty) return '🎵 Audio';
+    return '';
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'chatId': chatId,
-      if (messageText != null) 'messageText': messageText,
-      if (media != null) 'media': media!.map((e) => e.toJson()).toList(),
-      if (timestamp != null) 'timestamp': timestamp!.toIso8601String(),
-      'readStatus': readStatus,
-    };
+  factory MessageModel.fromJson(Map<String, dynamic> json) => MessageModel(
+    id: json['_id'] ?? '',
+    conversationId: json['conversationId'] ?? '',
+    sender: json['sender'] ?? '',
+    receiver: json['receiver'] ?? '',
+    text: json['text'] ?? '',
+    images: _parseMedia(json['images']),
+    videos: _parseMedia(json['videos']),
+    files: _parseMedia(json['files']),
+    audios: _parseMedia(json['audios']),
+    isDelivered: json['isDelivered'] ?? false,
+    isRead: json['isRead'] ?? false,
+    dateTime: DateTime.tryParse(json['dateTime'] ?? ''),
+    createdAt: DateTime.tryParse(json['createdAt'] ?? ''),
+    updatedAt: DateTime.tryParse(json['updatedAt'] ?? ''),
+  );
+  MessageModel copyWith({
+    String? id,
+    String? conversationId,
+    String? sender,
+    String? receiver,
+    String? text,
+    List<MediaFile>? images,
+    List<MediaFile>? videos,
+    List<MediaFile>? files,
+    List<MediaFile>? audios,
+    bool? isDelivered,
+    bool? isRead,
+    DateTime? dateTime,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return MessageModel(
+      id: id ?? this.id,
+      conversationId: conversationId ?? this.conversationId,
+      sender: sender ?? this.sender,
+      receiver: receiver ?? this.receiver,
+      text: text ?? this.text,
+      images: images ?? this.images,
+      videos: videos ?? this.videos,
+      files: files ?? this.files,
+      audios: audios ?? this.audios,
+      isDelivered: isDelivered ?? this.isDelivered,
+      isRead: isRead ?? this.isRead,
+      dateTime: dateTime ?? this.dateTime,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
   }
+  static List<MediaFile> _parseMedia(dynamic list) =>
+      (list as List?)?.map((e) => MediaFile.fromJson(e)).toList() ?? [];
+
+  Map<String, dynamic> toJson() => {
+    'conversationId': conversationId,
+    'receiverId': receiver,
+    'text': text,
+  };
+}
+
+class MediaFile {
+  final String url;
+  final String publicId;
+  final int size;
+  final String mimeType;
+
+  MediaFile({
+    required this.url,
+    required this.publicId,
+    required this.size,
+    required this.mimeType,
+  });
+
+  factory MediaFile.fromJson(Map<String, dynamic> json) => MediaFile(
+    url: json['url'] ?? '',
+    publicId: json['publicId'] ?? '',
+    size: json['size'] ?? 0,
+    mimeType: json['mimeType'] ?? '',
+  );
 }

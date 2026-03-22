@@ -1,7 +1,12 @@
 // data/remote/message_remote_data_source.dart
 
+import 'package:job_contract_app/data/models/chat/chat_model.dart';
+
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
+import '../../models/chat/ChatModel2.dart';
+import '../../models/chat/create_chat_req.dart';
+import '../../models/chat/create_chat_res.dart' show CreateChatResponse;
 import '../../models/messages/message_model.dart';
 
 
@@ -13,17 +18,71 @@ class MessageRemoteDataSource {
 
 
   Future<MessageModel> sendMessage(MessageModel message) async {
+    // 👇 Add this to see what's being sent
+    print('📤 Sending message body: ${message.toJson()}');
+
     final response = await apiClient.post(
       endpoint: ApiPath.sendMessage,
       data: message.toJson(),
     );
 
-    if (response.statusCode == 200) {
-      return MessageModel.fromJson(response.data['data']);
+    print('📥 Send message response: ${response.data}');  // 👇 see full response
+
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      return MessageModel.fromJson(response.data['message']);
+    } else if (response.statusCode == 400) {
+      throw Exception(response.data['message'] ?? 'Validation error');
+    } else {
+      throw Exception(response.data['message'] ?? 'Failed to send message');
+    }
+  }
+  // Future<MessageModel> sendMessage(MessageModel message) async {
+  //   final response = await apiClient.post(
+  //     endpoint: ApiPath.sendMessage,
+  //     data: message.toJson(),
+  //   );
+  //
+  //   if (response.statusCode == 200) {
+  //     return MessageModel.fromJson(response.data['data']);
+  //   } else if (response.statusCode == 400) {
+  //     throw Exception(response.data['message'] ?? "Validation error");
+  //   } else {
+  //     throw Exception(response.data['message'] ?? "Failed to send message");
+  //   }
+  // }
+  Future<CreateChatResponse> createConversation(String otherUserId) async {
+    final response = await apiClient.post(
+      endpoint: ApiPath.createConversation, // make sure this endpoint exists
+      data: {
+        "otherUserId": otherUserId,
+      },
+    );
+
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      return CreateChatResponse.fromJson(response.data);
     } else if (response.statusCode == 400) {
       throw Exception(response.data['message'] ?? "Validation error");
     } else {
-      throw Exception(response.data['message'] ?? "Failed to send message");
+      throw Exception(response.data['message'] ?? "Failed to create conversation");
+    }
+  }
+
+
+
+
+  // ✅ Fixed
+  Future<List<ChatModel2>> getConversations() async {
+    final response = await apiClient.get(ApiPath.getConversations);
+
+    if (response.statusCode == 200) {
+      final List data = response.data['conversations'];
+      return data
+          .map((json) => ChatModel2.fromJson(json))  // ← correct class
+          .toList();
+    } else {
+      throw Exception(
+        response.data['message'] ?? "Failed to fetch conversations",
+      );
     }
   }
 
@@ -58,11 +117,11 @@ class MessageRemoteDataSource {
 
   Future<List<MessageModel>> getMessagesByChatId(String chatId) async {
     final response = await apiClient.get(
-       ApiPath.getMessagesByChatId(chatId),
+      ApiPath.getMessagesByChatId(chatId),
     );
 
     if (response.statusCode == 200) {
-      final List data = response.data['data'];
+      final List data = response.data['messages'];  // ← correct key
       return data.map((json) => MessageModel.fromJson(json)).toList();
     } else {
       throw Exception(response.data['message'] ?? "Failed to fetch messages");
