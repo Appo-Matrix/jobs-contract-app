@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:go_router/go_router.dart';
-import 'package:job_contract_app/presentation/features/users/blog/provider/blog_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../../utils/common_widgets/appbar.dart';
 import '../../../../../utils/common_widgets/blog_card.dart';
@@ -133,7 +132,7 @@ class _BlogScreenState extends State<BlogScreen> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: blogs.length,
                       itemBuilder: (context, index) {
-                        final BlogModel blog = blogs[index] as BlogModel;
+                        final BlogModel blog = blogs[index];
 
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
@@ -154,7 +153,7 @@ class _BlogScreenState extends State<BlogScreen> {
                                 MaterialPageRoute(
                                   builder: (context) => BlogDetailScreen(
                                     imageUrl: blog.image!.isNotEmpty
-                                        ? blog.image!
+                                        ? blog.image
                                         : 'https://via.placeholder.com/400x200',
                                     title: blog.title,
                                     tags: blog.tags,

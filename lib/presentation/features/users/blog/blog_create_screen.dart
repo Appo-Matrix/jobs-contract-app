@@ -17,7 +17,6 @@ import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
 import '../providers/BlogProvider.dart';
-import 'provider/blog_provider.dart';
 
 class BlogCreateScreen extends StatefulWidget {
   const BlogCreateScreen({super.key});

@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:job_contract_app/presentation/features/users/profile/profile_detail.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/image_string.dart';
@@ -171,6 +172,6 @@ class NavigationController extends GetxController {
     ContractsScreen(),
     MessageScreen(),
     BlogScreen(),
-    FinanceReportScreen(),
+    ProfileScreen(),
   ];
 }

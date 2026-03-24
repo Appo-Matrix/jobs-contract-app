@@ -76,10 +76,7 @@ class RegisterProvider with ChangeNotifier {
 
       final response = await _authRepository.registerUser(request);
 
-      // Save token + user if registration returns them
-      if (response.token != null && response.token!.isNotEmpty) {
-        await _apiClient.saveToken(response.token!);
-      }
+
 
       debugPrint('✅ Registration successful: ${response.message}');
       resetFields();

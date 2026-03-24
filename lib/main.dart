@@ -42,7 +42,6 @@ Future<void> main() async {
       final user  = await AuthPreferences.getUser();
 
       // Restore token to ApiClient for outgoing requests
-      if (token != null) await apiClient.saveToken(token);
 
       debugPrint('✅ Session restored:');
       debugPrint('   email:    ${user?.email}');

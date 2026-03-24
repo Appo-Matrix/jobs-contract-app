@@ -45,16 +45,7 @@ class _ProposalsOffersScreenState extends State<ProposalsOffersScreen>
 
     return Scaffold(
       appBar: JAppbar(
-        leadingIcon: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.arrow_back,
-              color: isDark ? JAppColors.darkGray100 : JAppColors.darkGray800,
-            ),
-          ),
-        ),
+        showBackArrow: true,
         title: Text(
           'Proposals & Offers',
           style: AppTextStyle.dmSans(

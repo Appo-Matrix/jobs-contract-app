@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:job_contract_app/presentation/features/users/blog/provider/blog_provider.dart';
 import 'package:job_contract_app/presentation/features/users/blog/widgets/EmptyStateWidget.dart';
 import 'package:job_contract_app/presentation/features/users/blog/widgets/blog_card_widget.dart';
 import 'package:provider/provider.dart';

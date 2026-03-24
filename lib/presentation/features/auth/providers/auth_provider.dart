@@ -92,7 +92,6 @@ class AuthProvider with ChangeNotifier {
       final response = await authRepository.login(loginRequest);
 
       // Save token to ApiClient for outgoing requests
-      await _apiClient.saveToken(response.token);
 
       // Save full session (token + user) via AuthPreferences
       await AuthPreferences.saveSession(
@@ -175,7 +174,6 @@ class AuthProvider with ChangeNotifier {
     try {
       final success = await authRepository.logout();
       if (success) {
-        await _apiClient.clearToken();
         await AuthPreferences.clearSession();
 
         _isAuthenticated = false;
