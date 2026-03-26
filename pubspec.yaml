@@ -63,6 +63,8 @@ dependencies:
   geolocator: ^14.0.2
   cached_network_image: ^3.4.1
   socket_io_client: ^3.1.4
+  language_picker: ^0.4.5
+  custom_language_picker: ^0.0.3
 
 dev_dependencies:
   flutter_test:
