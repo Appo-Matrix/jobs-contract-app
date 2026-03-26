@@ -1,7 +1,10 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../providers/auth_provider.dart';
+import '../../providers/user_provider.dart';
 
 class ProfileBio extends StatelessWidget {
   final bool isDark;
@@ -13,11 +16,24 @@ class ProfileBio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bio = context.watch<AuthProvider>().currentUser?.bio ?? '';
+
+    if (bio.isEmpty) {
+      return Text(
+        'Not yet added',
+        style: AppTextStyle.dmSans(
+          fontSize: 14.0,
+          weight: FontWeight.w400,
+          color: isDark ? JAppColors.darkGray500 : JAppColors.lightGray400,
+        ),
+      );
+    }
+
     return Text(
-      "Hello, I'm Alina Abbas, a passionate Drywall Installer with 3+ years of experience in transforming construction spaces with precision and efficiency. I specialize in seamless drywall installation, finishing, and repairs, ensuring durable and aesthetically pleasing results. My expertise lies in turning complex designs into smooth, high-quality surfaces, enhancing both residential and commercial projects.",
+      bio,
       style: AppTextStyle.dmSans(
         fontSize: 14.0,
-        height: 1.0,
+        height: 1.5,
         weight: FontWeight.w400,
         color: isDark ? JAppColors.darkGray300 : JAppColors.lightGray600,
       ),

@@ -15,7 +15,7 @@ import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../../utils/messages/messages.dart';
 import '../../../../routes/app_routes.dart';
-import '../../providers/auth_provider.dart';
+import '../../../users/providers/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
       final success = await authProvider.loginWithEmail(context);
       if (success && mounted) {
         // Navigate to home/navigation menu
-        AppRouter.router.push('/navigationMenu');
+        AppRouter.router.pushReplacement('/navigationMenu');
       }
     } else {
       Messages.flashBarErrorMessage(

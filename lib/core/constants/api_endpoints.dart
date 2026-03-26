@@ -12,16 +12,18 @@ class ApiPath{
   static String sendOtpSms = "/users/send-otp-sms";
   static String googleSignIn = "/auth/google";
   static String updatePassword = "/users/update-password";
-  static const String registerFcmToken = '/auth/register-token';
+  static const String registerFcmToken = '/notifications/device-token';
   static const String postBlog = '/blogs/';
   static const String getBlogByUser = '/blogs/user';
   static const String getAllBlog = '/blogs/';
   static const String deleteUserBlog = '/blogs/';
   static const String jobsByUser = '/jobs/me';
+  static const String me = '/users/me';
   static const String getAllJob = '/jobs/all';
   // static const String createConversation = "/conversations";
   // static const String getConversations = "/chats/conversations";
-
+// api_endpoints.dart
+  static const String getMySkills = '/skills/me'; // ✅ add this
   // User
   static String deleteResume = "/users/delete-resume";
   static const String deleteUser = "/users"; // will use /users/{userId}

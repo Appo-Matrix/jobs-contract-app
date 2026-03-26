@@ -76,6 +76,7 @@ class ExperienceProvider with ChangeNotifier {
 
     try {
       deletionMessage = await repository.deleteExperienceById(id);
+      experiences.removeWhere((e) => e.id == id); // ✅ remove from local list
     } catch (e) {
       error = e.toString();
     } finally {
@@ -83,7 +84,6 @@ class ExperienceProvider with ChangeNotifier {
       notifyListeners();
     }
   }
-
   Future<void> updateExperience(String id, Map<String, dynamic> data) async {
     isLoading = true;
     error = null;
@@ -91,11 +91,22 @@ class ExperienceProvider with ChangeNotifier {
 
     try {
       updatedExperience = await repository.updateExperience(id, data);
+
+      // ✅ Update local list instantly using copyWith
+      final index = experiences.indexWhere((e) => e.id == id);
+      if (index != -1) {
+        experiences[index] = experiences[index].copyWith(
+          jobTitle:    data['jobTitle'],
+          company:     data['company'],
+          startDate:   data['startDate'],
+          endDate:     data['endDate'],
+          description: data['description'],
+        );
+      }
     } catch (e) {
       error = e.toString();
     } finally {
       isLoading = false;
       notifyListeners();
     }
-  }
-}
+  }}

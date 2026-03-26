@@ -1,3 +1,4 @@
+// work_experience.dart
 class WorkExperience {
   final String id;
   final String userId;
@@ -19,13 +20,40 @@ class WorkExperience {
 
   factory WorkExperience.fromJson(Map<String, dynamic> json) {
     return WorkExperience(
-      id: json['_id'],
-      userId: json['userId'],
-      jobTitle: json['jobTitle'],
-      company: json['company'],
-      startDate: json['startDate'],
-      endDate: json['endDate'],
-      description: json['description'],
+      id:          json['_id']?.toString()          ?? '',
+      userId:      json['userId']?.toString()       ?? '',
+      jobTitle:    json['jobTitle']?.toString()     ?? '',
+      company:     json['company']?.toString()      ?? '',
+      startDate:   json['startDate']?.toString()    ?? '',
+      endDate:     json['endDate']?.toString()      ?? '',
+      description: json['description']?.toString()  ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'jobTitle':    jobTitle,
+    'company':     company,
+    'startDate':   startDate,
+    'endDate':     endDate,
+    'description': description,
+  };
+
+  // ✅ copyWith for local list updates after edit
+  WorkExperience copyWith({
+    String? jobTitle,
+    String? company,
+    String? startDate,
+    String? endDate,
+    String? description,
+  }) {
+    return WorkExperience(
+      id:          id,
+      userId:      userId,
+      jobTitle:    jobTitle    ?? this.jobTitle,
+      company:     company     ?? this.company,
+      startDate:   startDate   ?? this.startDate,
+      endDate:     endDate     ?? this.endDate,
+      description: description ?? this.description,
     );
   }
 }

@@ -1,141 +1,191 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// Import your TextFieldWidget
+import 'package:provider/provider.dart';
 
-import '../../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/app_text_style.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/device/device_utility.dart';
+import '../../../../../data/models/education/qualification_request.dart';
+import '../../providers/qualification_provider.dart';
 import 'JBottomSheet.dart';
 
-void showEducationBottomSheet(BuildContext context) {
-  // Form controllers
+Future<void> showEducationBottomSheet(BuildContext context) {
   final universityController = TextEditingController();
-  final degreeController = TextEditingController();
-  final startDateController = TextEditingController();
-  final endDateController = TextEditingController();
-  final graduationDateController = TextEditingController();
+  final degreeController     = TextEditingController();
+  final startDateController  = TextEditingController();
+  final endDateController    = TextEditingController();
 
   final bool isDark = JDeviceUtils.isDarkMode(context);
+  bool isCurrentPosition = false;
 
-  JBottomSheet.show(
+  return JBottomSheet.show(
     context: context,
     title: JText.education,
     subtitle: JText.educationSubtitle,
     isDark: isDark,
-    content: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TextFieldWidget(
-          subTitle: JText.universityName,
-          hintText:  JText.universityName,
-          prefixIcon: Icons.school,
-          subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-          titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-        ),
+    content: StatefulBuilder(
+      builder: (context, setState) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // ── Degree ──────────────────────────────────────────────────────────
+          TextFieldWidget(
+            subTitle: JText.degree,
+            hintText: JText.exBBA,
+            prefixIcon: Icons.card_membership,
+            textEditingController: degreeController,
+            isRequired: true,
+            textInputAction: TextInputAction.next,
+          ),
+          const SizedBox(height: 16),
 
-        const SizedBox(height: 16),
-        TextFieldWidget(
-          subTitle: JText.degree,
-          hintText: JText.exBBA,
-          prefixIcon: Icons.card_membership,
-          subtitleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-          titleColor: isDark ? JAppColors.lightGray300 : JAppColors.grayBlue800,
-        ),
+          // ── Institution Name ─────────────────────────────────────────────────
+          TextFieldWidget(
+            subTitle: JText.universityName,
+            hintText: JText.universityName,
+            prefixIcon: Icons.school,
+            textEditingController: universityController,
+            isRequired: true,
+            textInputAction: TextInputAction.next,
+          ),
+          const SizedBox(height: 16),
 
-        const SizedBox(height: 16),
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    JText.startDate,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 16.0,
-                      weight: FontWeight.w600,
-                      color: isDark ? Colors.white : JAppColors.lightGray700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: startDateController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      suffixIcon: Icon(
-                        Icons.calendar_today,
-                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
-                      ),
-                    ),
-                    readOnly: true, // Makes the text field clickable but not editable
-                    onTap: () {
-                      // Show date picker when tapped
-                      _selectDate(context, startDateController);
-                    },
-                  ),
-                ],
+          // ── Start & End Date ─────────────────────────────────────────────────
+// ── Start & End Date ─────────────────────────────────────────────────
+          Row(
+            children: [
+              Expanded(
+                child: TextFieldWidget(
+                  subTitle: JText.startDate,
+                  hintText: JText.startDate,
+                  textEditingController: startDateController,
+                  isRequired: true,
+                  readOnly: true,
+                  suffixIconData: Icons.calendar_today,
+                  onTap: () => _showCupertinoDate(context, startDateController),
+                ),
               ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    JText.endDate,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 16.0,
-                      weight: FontWeight.w600,
-                      color: isDark ? Colors.white : JAppColors.lightGray700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: endDateController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      suffixIcon: Icon(
-                        Icons.calendar_today,
-                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
-                      ),
-                    ),
-                    readOnly: true, // Makes the text field clickable but not editable
-                    onTap: () {
-                      // Show date picker when tapped
-                      _selectDate(context, endDateController);
-                    },
-                  ),
-                ],
+              const SizedBox(width: 16),
+              Expanded(
+                child: TextFieldWidget(
+                  subTitle: JText.endDate,
+                  hintText: JText.endDate,
+                  textEditingController: endDateController,
+                  readOnly: true,
+                  suffixIconData: Icons.calendar_today,
+                  onTap: isCurrentPosition
+                      ? null
+                      : () => _showCupertinoDate(context, endDateController),
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),          const SizedBox(height: 12),
 
-        const SizedBox(height: 16),
-
-      ],
+          // ── Currently Studying Toggle ────────────────────────────────────────
+          Row(
+            children: [
+              Switch(
+                value: isCurrentPosition,
+                activeColor: JAppColors.primary,
+                onChanged: (val) {
+                  setState(() {
+                    isCurrentPosition = val;
+                    if (val) endDateController.clear();
+                  });
+                },
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Currently studying here',
+                style: AppTextStyle.dmSans(
+                  fontSize: 14.0,
+                  weight: FontWeight.w500,
+                  color: isDark
+                      ? JAppColors.lightGray300
+                      : JAppColors.darkGray700,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     ),
-    onSave: () {
-      // Save education data
+    onSave: () async {
+      // ✅ Validate required fields
+      if (degreeController.text.trim().isEmpty ||
+          universityController.text.trim().isEmpty ||
+          startDateController.text.trim().isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please fill in all required fields')),
+        );
+        return;
+      }
+
+      final request = QualificationRequest(
+        degree:            degreeController.text.trim(),
+        institutionName:   universityController.text.trim(),
+        startDate:         startDateController.text.trim(),
+        endDate:           isCurrentPosition ? '' : endDateController.text.trim(),
+        isCurrentPosition: isCurrentPosition,
+      );
+
       Navigator.pop(context);
+
+      // ✅ Save then refresh list
+      await context.read<QualificationProvider>().addQualification(request);
+      await context.read<QualificationProvider>().fetchMyQualifications();
     },
   );
 }
 
-Future<void> _selectDate(BuildContext context, TextEditingController controller) async {
-  final DateTime? picked = await showDatePicker(
+void _showCupertinoDate(
+    BuildContext context,
+    TextEditingController controller,
+    ) {
+  DateTime tempDate = DateTime.now();
+
+  showModalBottomSheet(
     context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2101),
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (_) => SizedBox(
+      height: 300,
+      child: Column(
+        children: [
+          // ── Done button ───────────────────────────────────────────
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
+                onPressed: () {
+                  controller.text =
+                  '${tempDate.year}-${tempDate.month.toString().padLeft(2, '0')}-${tempDate.day.toString().padLeft(2, '0')}';
+                  Navigator.pop(context);
+                },
+                child: const Text('Done'),
+              ),
+            ],
+          ),
+          // ── Picker ────────────────────────────────────────────────
+          Expanded(
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: tempDate,
+              minimumDate: DateTime(2000),
+              maximumDate: DateTime(2101),
+              onDateTimeChanged: (date) => tempDate = date,
+            ),
+          ),
+        ],
+      ),
+    ),
   );
-  if (picked != null) {
-    // Format the date as needed
-    controller.text = "${picked.day}/${picked.month}/${picked.year}";
-  }
 }
+

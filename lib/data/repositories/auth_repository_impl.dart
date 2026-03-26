@@ -123,4 +123,26 @@ class AuthRepositoryImpl implements AuthRepository{
   }
 
 
+
+  @override
+  Future<User> getMe() async {
+
+    try {
+      return await authRemoteDataSource.getMe();
+    } catch (e) {
+      throw Exception('Error uploading resume :$e');
+    }
+  }
+
+  @override
+  Future<User> updateProfile(UpdateProfileRequest request) async {
+    try {
+      return await authRemoteDataSource.updateProfile(request);
+    } catch (e) {
+      throw Exception('Error uploading resume :$e');
+    }
+  }
+
+
+
 }

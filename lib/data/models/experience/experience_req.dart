@@ -1,5 +1,4 @@
 class ExperienceRequest {
-  final String userId;
   final String jobTitle;
   final String company;
   final String startDate;
@@ -7,7 +6,6 @@ class ExperienceRequest {
   final String description;
 
   ExperienceRequest({
-    required this.userId,
     required this.jobTitle,
     required this.company,
     required this.startDate,
@@ -16,7 +14,6 @@ class ExperienceRequest {
   });
 
   Map<String, dynamic> toJson() => {
-    "userId": userId,
     "jobTitle": jobTitle,
     "company": company,
     "startDate": startDate,

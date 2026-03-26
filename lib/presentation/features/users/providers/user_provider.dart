@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
+import '../../../../data/models/auth/login_res.dart';
 import '../../../../data/models/user/update_user_profile_req.dart';
 import '../../../../data/models/user/upload_resume_req.dart';
 import '../../../../data/repositories/user_repository_impl.dart';
@@ -86,35 +87,7 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> updateProfile(
-      BuildContext context,
-      String userId,
-      UpdateUserProfileRequest request,
-      ) async {
-    try {
-      context.loaderOverlay.show();
-      _isLoading = true;
-      notifyListeners();
 
-      final response = await userRepository.updateUserProfile(userId, request);
-
-      Fluttertoast.showToast(
-        msg: "Profile updated: ${response.name}",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-      );
-    } catch (e) {
-      Fluttertoast.showToast(
-        msg: "Error: $e",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-      );
-    } finally {
-      context.loaderOverlay.hide();
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
 
   Future<void> uploadResume({
     required BuildContext context,
@@ -149,4 +122,9 @@ class UserProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+
+
+
+
 }

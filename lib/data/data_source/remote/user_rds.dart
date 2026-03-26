@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:job_contract_app/data/models/auth/login_res.dart';
 
 import '../../../core/constants/api_endpoints.dart';
 import '../../../core/network/api_client.dart';
@@ -309,9 +310,6 @@ class UserRemoteDataSource {
       throw Exception('Failed to upload resume');
     }
   }
-
-
-
 
 
 

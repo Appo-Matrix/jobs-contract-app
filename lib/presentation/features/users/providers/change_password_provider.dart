@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 
-import '../repos/change_password_repository.dart';
+import '../account_screen/repos/change_password_repository.dart';
 
 enum ChangePasswordStatus { idle, loading, success, error }
 

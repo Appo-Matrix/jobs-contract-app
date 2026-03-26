@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:job_contract_app/presentation/features/users/account_screen/provider/change_password_provider.dart';
+import 'package:job_contract_app/presentation/features/users/providers/change_password_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/common_widgets/main_button.dart';

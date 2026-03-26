@@ -301,3 +301,99 @@ class Location {
   }
 }
 
+
+
+
+class UpdateProfileRequest {
+  // ── Basic Info ─────────────────────────────────────────────────────────────
+  final String? fullName;
+  final String? bio;
+  final String? profile; // profile image URL
+
+  // ── Contact ────────────────────────────────────────────────────────────────
+  final String? phoneNumber;
+  final String? email;
+
+  // ── Location ───────────────────────────────────────────────────────────────
+  final String? country;
+  final String? city;
+  final String? stateOrProvince;
+  final String? streetAndNumber;
+  final String? neighbourhoodArea;
+  final String? postalCode;
+  final String? serviceRange;
+
+  // Geo-coordinates (backend converts to GeoJSON Point)
+  final String? lat;
+  final String? lng;
+
+  // ── Professional ───────────────────────────────────────────────────────────
+  final String? serviceType;
+  final String? specialty;
+  final int?    yearsOfExperience;
+  final String? title;
+
+  // ── Consent ────────────────────────────────────────────────────────────────
+  final bool? agreeToPrivacy;
+  final bool? infoConsent;
+
+  UpdateProfileRequest({
+    this.fullName,
+    this.bio,
+    this.profile,
+    this.phoneNumber,
+    this.email,
+    this.country,
+    this.city,
+    this.stateOrProvince,
+    this.streetAndNumber,
+    this.neighbourhoodArea,
+    this.postalCode,
+    this.serviceRange,
+    this.lat,
+    this.lng,
+    this.serviceType,
+    this.specialty,
+    this.yearsOfExperience,
+    this.title,
+    this.agreeToPrivacy,
+    this.infoConsent,
+  });
+
+  /// Only non-null fields are included — safe for single-field partial updates.
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+
+    // Basic Info
+    if (fullName != null)    map['fullName']    = fullName;
+    if (bio != null)         map['bio']         = bio;
+    if (profile != null)     map['profile']     = profile;
+
+    // Contact
+    if (phoneNumber != null) map['phoneNumber'] = phoneNumber;
+    if (email != null)       map['email']       = email;
+
+    // Location
+    if (country != null)           map['country']           = country;
+    if (city != null)              map['city']              = city;
+    if (stateOrProvince != null)   map['stateOrProvince']   = stateOrProvince;
+    if (streetAndNumber != null)   map['streetAndNumber']   = streetAndNumber;
+    if (neighbourhoodArea != null) map['neighbourhoodArea'] = neighbourhoodArea;
+    if (postalCode != null)        map['postalCode']        = postalCode;
+    if (serviceRange != null)      map['serviceRange']      = serviceRange;
+    if (lat != null)               map['lat']               = lat;
+    if (lng != null)               map['lng']               = lng;
+
+    // Professional
+    if (serviceType != null)       map['serviceType']       = serviceType;
+    if (specialty != null)         map['specialty']         = specialty;
+    if (yearsOfExperience != null) map['yearsOfExperience'] = yearsOfExperience;
+    if (title != null)             map['title']             = title;
+
+    // Consent
+    if (agreeToPrivacy != null) map['agreeToPrivacy'] = agreeToPrivacy;
+    if (infoConsent != null)    map['infoConsent']    = infoConsent;
+
+    return map;
+  }
+}

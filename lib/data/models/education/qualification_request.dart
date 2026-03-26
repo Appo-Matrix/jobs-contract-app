@@ -1,26 +1,24 @@
+// qualification_request.dart
 class QualificationRequest {
-  final String school;
   final String degree;
-  final String fieldOfStudy;
+  final String institutionName;
   final String startDate;
   final String endDate;
-  final String description;
+  final bool isCurrentPosition;
 
   QualificationRequest({
-    required this.school,
     required this.degree,
-    required this.fieldOfStudy,
+    required this.institutionName,
     required this.startDate,
     required this.endDate,
-    required this.description,
+    this.isCurrentPosition = false,
   });
 
   Map<String, dynamic> toJson() => {
-    'school': school,
-    'degree': degree,
-    'fieldOfStudy': fieldOfStudy,
-    'startDate': startDate,
-    'endDate': endDate,
-    'description': description,
+    'degree':            degree,
+    'institutionName':   institutionName,
+    'startDate':         startDate,
+    'endDate':           endDate,
+    'isCurrentPosition': isCurrentPosition,
   };
 }

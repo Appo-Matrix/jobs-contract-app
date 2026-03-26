@@ -3,6 +3,7 @@
 
 import '../../domain/repository/user_repository.dart';
 import '../data_source/remote/user_rds.dart';
+import '../models/auth/login_res.dart';
 import '../models/user/contractor_by_speciality_res.dart';
 import '../models/user/current_user_res.dart';
 import '../models/user/delete_resume_res.dart';
@@ -142,6 +143,7 @@ class UserRepositoryImpl implements UserRepository {
       throw Exception('Error uploading resume :$e');
     }
   }
+
 
 
 

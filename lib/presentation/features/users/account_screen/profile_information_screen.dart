@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import '../../../../data/models/auth/login_res.dart';
 import '../../../../data/models/user/update_current_user_profile_req.dart';
 import '../../../../utils/common_widgets/main_button.dart';
 import '../../../../utils/constants/colors.dart';
@@ -11,7 +12,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../data/repositories/user_repository_impl.dart';
 import '../../../../utils/common_widgets/text_field_widget.dart';
-import '../providers/current_user_provider.dart';
+import '../providers/auth_provider.dart';
+import '../providers/user_provider.dart';
 
 class ProfileInformationScreen extends StatefulWidget {
   const ProfileInformationScreen({super.key});
@@ -72,18 +74,20 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
     }
   }
 
+// 2. _loadCurrentUserData() — replace repository call with provider:
   Future<void> _loadCurrentUserData() async {
     try {
       setState(() => _isLoading = true);
 
-      final currentUser = await _userRepository.getCurrentUser();
+      // was: final currentUser = await _userRepository.getCurrentUser();
+      await context.read<AuthProvider>().getMe();
+      final currentUser = context.read<AuthProvider>().currentUser;
 
-      if (!mounted) return;
+      if (!mounted || currentUser == null) return;
 
       setState(() {
-        // Split fullName if it exists
-        if (currentUser.name != null && currentUser.name!.isNotEmpty) {
-          final names = currentUser.name!.split(' ');
+        if (currentUser.fullName.isNotEmpty) {
+          final names = currentUser.fullName.split(' ');
           _firstNameController.text = names.first;
           _originalFirstName = names.first;
 
@@ -95,34 +99,19 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
 
         _dobController.text = currentUser.dob ?? '';
         _originalDob = currentUser.dob ?? '';
-
         _emailController.text = currentUser.email ?? '';
         _originalEmail = currentUser.email ?? '';
-
         _phoneNumber = currentUser.phoneNumber ?? '';
         _originalPhone = currentUser.phoneNumber ?? '';
-
         _currentProfileUrl = currentUser.profile;
-
         _isLoading = false;
       });
-
-      debugPrint('✅ User data loaded successfully');
-      debugPrint('Name: ${currentUser.name}');
-      debugPrint('Email: ${currentUser.email}');
-      debugPrint('Phone: ${currentUser.phoneNumber}');
-      debugPrint('DOB: ${currentUser.dob}');
-      debugPrint('Profile URL: ${currentUser.profile}');
     } catch (e) {
       if (!mounted) return;
-
       setState(() => _isLoading = false);
-      debugPrint('❌ Error loading profile: $e');
-
       _showErrorSnackBar("Error loading profile: $e");
     }
   }
-
   Future<void> _pickImage() async {
     try {
       // Show image source selection dialog
@@ -301,8 +290,15 @@ class _ProfileInformationScreenState extends State<ProfileInformationScreen> {
       // Try to use Provider if available, otherwise use repository directly
       bool success = false;
       try {
-        final provider = Provider.of<CurrentUserProvider>(context, listen: false);
-        success = await provider.updateCurrentUserProfile(request);
+        final provider = Provider.of<AuthProvider>(context, listen: false);
+        await provider.updateProfile(
+          UpdateProfileRequest(
+            fullName: fullName,
+            email: _emailController.text.trim(),
+            phoneNumber: _phoneNumber.isNotEmpty ? _phoneNumber : null,
+          ),
+        );
+        success = provider.errorMessage == null;
       } catch (e) {
         debugPrint('Provider not found, using repository directly: $e');
         final updatedUser = await _userRepository.updateCurrentUserProfile(request);

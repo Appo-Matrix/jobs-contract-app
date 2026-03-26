@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 
-import '../models/recent_job_model.dart';
-import '../repos/recent_job_repo.dart';
-import '../repos/recent_job_repo_impl.dart';
+import '../account_screen/models/recent_job_model.dart';
+import '../account_screen/repos/recent_job_repo.dart';
+import '../account_screen/repos/recent_job_repo_impl.dart';
 
 class RecentJobProvider extends ChangeNotifier {
   final RecentJobRepo _repo;

@@ -1,4 +1,5 @@
 
+import '../../data/models/auth/login_res.dart';
 import '../../data/models/user/contractor_by_speciality_res.dart';
 import '../../data/models/user/current_user_res.dart';
 import '../../data/models/user/delete_resume_res.dart';

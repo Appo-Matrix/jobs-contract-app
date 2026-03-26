@@ -16,7 +16,7 @@ import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
 import '../../../routes/app_routes.dart';
-import '../account_screen/provider/recent_job_provider.dart';
+import '../providers/recent_job_provider.dart';
 import '../blog/blog_detail_screen.dart';
 import '../jobs/view_all_jobs_screen.dart';
 import '../myads/create_ad_screen.dart';
@@ -137,9 +137,9 @@ class _HomeScreenState extends State<HomeScreen>
                   padding: const EdgeInsets.only(right: 24),
                   child: Text(
                     "Home",
-                    style: TextStyle(
+                    style: AppTextStyle.dmSans(
                       color: isDark ? Colors.white : Colors.black,
-                      fontWeight: FontWeight.bold,
+                      weight: FontWeight.bold,
                       fontSize: 18.0,
                     ),
                   ),
@@ -184,12 +184,7 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       const SizedBox(width: 12),
 
-                      CircularAvatar(
-                        isDark: isDark,
-                        radius: 20,
-                        imageUrl: JImages.image,
-                      ),
-                      const SizedBox(width: 12),
+
                     ],
                   ),
                 ),

@@ -1,43 +1,38 @@
-// data/models/qualification/education_model.dart
 class EducationModel {
   final String id;
-  final String institution;
+  final String institutionName;  // ✅ was 'institution'
   final String degree;
-  final String fieldOfStudy;
   final String startDate;
   final String endDate;
-  final String description;
+  final bool isCurrentPosition;  // ✅ was missing
 
   EducationModel({
     required this.id,
-    required this.institution,
+    required this.institutionName,
     required this.degree,
-    required this.fieldOfStudy,
     required this.startDate,
     required this.endDate,
-    required this.description,
+    this.isCurrentPosition = false,
   });
 
   factory EducationModel.fromJson(Map<String, dynamic> json) {
     return EducationModel(
-      id: json['_id'],
-      institution: json['institution'],
-      degree: json['degree'],
-      fieldOfStudy: json['fieldOfStudy'],
-      startDate: json['startDate'],
-      endDate: json['endDate'],
-      description: json['description'],
+      id:                json['_id']?.toString()             ?? '',
+      institutionName:   json['institutionName']?.toString() ?? '', // ✅ fixed key
+      degree:            json['degree']?.toString()          ?? '',
+      startDate:         json['startDate']?.toString()       ?? '',
+      endDate:           json['endDate']?.toString()         ?? '',
+      isCurrentPosition: json['isCurrentPosition']           ?? false,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "institution": institution,
-      "degree": degree,
-      "fieldOfStudy": fieldOfStudy,
-      "startDate": startDate,
-      "endDate": endDate,
-      "description": description,
+      'institutionName':   institutionName,  // ✅ fixed key
+      'degree':            degree,
+      'startDate':         startDate,
+      'endDate':           endDate,
+      'isCurrentPosition': isCurrentPosition,
     };
   }
 }

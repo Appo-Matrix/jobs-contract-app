@@ -1,174 +1,176 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../../../../../utils/constants/app_text_style.dart';
-import '../../../../../../utils/constants/colors.dart';
+import '../../../../../utils/common_widgets/text_field_widget.dart';
+import '../../../../../utils/constants/app_text_style.dart';
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../../data/models/experience/experience_req.dart';
+import '../../providers/experience_provider.dart';
 import 'JBottomSheet.dart';
 
-void showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
-  // Form controllers
+Future<void> showWorkExperienceBottomSheet(BuildContext context, bool isDark) {
   final jobTitleController = TextEditingController();
   final companyController = TextEditingController();
   final startDateController = TextEditingController();
   final endDateController = TextEditingController();
   final descriptionController = TextEditingController();
 
-  JBottomSheet.show(
+  return JBottomSheet.show(
     context: context,
     title: JText.addWorkExperience,
     subtitle: JText.addWorkExperienceDesc,
+    isDark: isDark,
     content: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          JText.jobTitle,
-          style: AppTextStyle.dmSans(
-            fontSize: 16.0,
-            weight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray700,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: jobTitleController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          JText.company,
-          style: AppTextStyle.dmSans(
-            fontSize: 16.0,
-            weight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray700,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: companyController,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-
-          ),
+        // ── Job Title ──────────────────────────────────────────────────────
+        TextFieldWidget(
+          subTitle: JText.jobTitle,
+          hintText: 'e.g. Sr Software Engineer',
+          prefixIcon: Icons.work_outline,
+          textEditingController: jobTitleController,
+          isRequired: true,
+          textInputAction: TextInputAction.next,
         ),
         const SizedBox(height: 16),
 
+        // ── Company ───────────────────────────────────────────────────────
+        TextFieldWidget(
+          subTitle: JText.company,
+          hintText: 'e.g. TechCorp Ltd.',
+          prefixIcon: Icons.business_outlined,
+          textEditingController: companyController,
+          isRequired: true,
+          textInputAction: TextInputAction.next,
+        ),
+        const SizedBox(height: 16),
 
+        // ── Dates ─────────────────────────────────────────────────────────
         Row(
           children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    JText.startDate,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 16.0,
-                      weight: FontWeight.w600,
-                      color: isDark ? Colors.white : JAppColors.lightGray700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: startDateController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      suffixIcon: Icon(
-                        Icons.calendar_today,
-                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
-                      ),
-                    ),
-                    readOnly: true, // Makes the text field clickable but not editable
-                    onTap: () {
-                      // Show date picker when tapped
-                      _selectDate(context, startDateController);
-                    },
-                  ),
-                ],
+              child: TextFieldWidget(
+                subTitle: JText.startDate,
+                hintText: JText.startDate,
+                textEditingController: startDateController,
+                isRequired: true,
+                readOnly: true,
+                suffixIconData: Icons.calendar_today,
+                onTap: () => _showCupertinoDate(context, startDateController),
               ),
             ),
             const SizedBox(width: 16),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    JText.endDate,
-                    style: AppTextStyle.dmSans(
-                      fontSize: 16.0,
-                      weight: FontWeight.w600,
-                      color: isDark ? Colors.white : JAppColors.lightGray700,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: endDateController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      suffixIcon: Icon(
-                        Icons.calendar_today,
-                        color: isDark ? Colors.white70 : JAppColors.lightGray500,
-                      ),
-                    ),
-                    readOnly: true, // Makes the text field clickable but not editable
-                    onTap: () {
-                      // Show date picker when tapped
-                      _selectDate(context, endDateController);
-                    },
-                  ),
-                ],
+              child: TextFieldWidget(
+                subTitle: JText.endDate,
+                hintText: JText.endDate,
+                textEditingController: endDateController,
+                readOnly: true,
+                suffixIconData: Icons.calendar_today,
+                onTap: () => _showCupertinoDate(context, endDateController),
               ),
             ),
           ],
         ),
         const SizedBox(height: 16),
-        Text(
-          JText.description,
-          style: AppTextStyle.dmSans(
-            fontSize: 16.0,
-            weight: FontWeight.w600,
-            color: isDark ? Colors.white : JAppColors.lightGray700,
-          ),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: descriptionController,
+
+        // ── Description ───────────────────────────────────────────────────
+        TextFieldWidget(
+          subTitle: JText.description,
+          hintText: JText.writeInformationDetail,
+          textEditingController: descriptionController,
           maxLines: 4,
-          decoration: InputDecoration(
-            hintText: JText.writeInformationDetail,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-          ),
+          textInputAction: TextInputAction.done,
         ),
       ],
     ),
-    onSave: () {
-      // Save work experience
+    onSave: () async {
+      if (jobTitleController.text.trim().isEmpty ||
+          companyController.text.trim().isEmpty ||
+          startDateController.text.trim().isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please fill in all required fields')),
+        );
+        return;
+      }
+
+      final request = ExperienceRequest(
+        jobTitle: jobTitleController.text.trim(),
+        company: companyController.text.trim(),
+        startDate: startDateController.text.trim(),
+        endDate: endDateController.text.trim(),
+        description: descriptionController.text.trim(),
+      );
+
+      // ✅ removed Navigator.pop — JBottomSheet handles it
+
       Navigator.pop(context);
+
+      // ✅ Save then refresh list
+      await context.read<ExperienceProvider>().createExperience(request);
+
+      await context.read<ExperienceProvider>().loadExperiences();
     },
   );
-
-  // Helper function to show date picker
 }
-Future<void> _selectDate(BuildContext context, TextEditingController controller) async {
-  final DateTime? picked = await showDatePicker(
+
+// ── Cupertino date picker ─────────────────────────────────────────────────────
+
+void _showCupertinoDate(
+  BuildContext context,
+  TextEditingController controller,
+) {
+  DateTime tempDate = DateTime.now();
+
+  showModalBottomSheet(
     context: context,
-    initialDate: DateTime.now(),
-    firstDate: DateTime(2000),
-    lastDate: DateTime(2101),
+    backgroundColor: Colors.white,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (_) => StatefulBuilder(
+      builder: (ctx, setState) => SizedBox(
+        height: 300,
+        child: Column(
+          children: [
+            // ── Cancel / Done ──────────────────────────────────────────────
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    controller.text =
+                        '${tempDate.year}-'
+                        '${tempDate.month.toString().padLeft(2, '0')}-'
+                        '${tempDate.day.toString().padLeft(2, '0')}';
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Done'),
+                ),
+              ],
+            ),
+            // ── Picker ────────────────────────────────────────────────────
+            Expanded(
+              child: CupertinoDatePicker(
+                mode: CupertinoDatePickerMode.date,
+                initialDateTime: tempDate,
+                minimumDate: DateTime(2000),
+                maximumDate: DateTime(2101),
+                onDateTimeChanged: (date) {
+                  setState(() => tempDate = date);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
   );
-  if (picked != null) {
-    // Format the date as needed
-    controller.text = "${picked.day}/${picked.month}/${picked.year}";
-  }
 }

@@ -72,7 +72,7 @@ class OptionCard extends StatelessWidget {
               title,
               style: AppTextStyle.dmSans(
                 color: textColor ?? defaultTextColor,
-                fontSize: fontSize,
+                fontSize: 16,
                 weight: fontWeight!,
               ),
               textAlign: TextAlign.center,

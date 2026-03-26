@@ -9,7 +9,7 @@ import '../../../../utils/constants/app_text_style.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/device/device_utility.dart';
-import '../account_screen/provider/recent_job_provider.dart';
+import '../providers/recent_job_provider.dart';
 import '../home/job_details/JobDetailScreen.dart';
 import '../providers/job_provider.dart';
 

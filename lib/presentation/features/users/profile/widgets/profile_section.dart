@@ -1,7 +1,5 @@
-
-// Generic Profile Section Widget
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../utils/constants/app_text_style.dart';
@@ -11,15 +9,18 @@ class ProfileSection extends StatelessWidget {
   final String title;
   final Widget content;
   final bool isDark;
-  final VoidCallback? voidCallback;
+  final Future<void> Function()? voidCallback; // ✅ async compatible
   final String? iconPath;
-
+  final Future<void> Function()? onDelete;     // ✅ optional delete action
 
   const ProfileSection({
     super.key,
     required this.title,
     required this.content,
-    required this.isDark,  this.voidCallback, this.iconPath,
+    required this.isDark,
+    this.voidCallback,
+    this.iconPath,
+    this.onDelete,
   });
 
   @override
@@ -36,23 +37,45 @@ class ProfileSection extends StatelessWidget {
                 style: AppTextStyle.dmSans(
                   fontSize: 18.0,
                   weight: FontWeight.w600,
-                  color: isDark ? JAppColors.darkGray100 : JAppColors.lightGray800,
+                  color: isDark
+                      ? JAppColors.darkGray100
+                      : JAppColors.lightGray800,
                 ),
               ).tr(),
-              Spacer(),
-              GestureDetector(
-                onTap: voidCallback,
-                child: SvgPicture.asset(
+              const Spacer(),
 
-                  color: isDark ? JAppColors.lightGray100 : JAppColors.darkGray800,
-                  iconPath!,
-                  width: 20,
-                  height: 20,
+              // ✅ Delete button — only shown if onDelete is provided
+              if (onDelete != null)
+                GestureDetector(
+                  onTap: onDelete,
+                  child: Icon(
+                    Icons.delete_outline,
+                    size: 20,
+                    color: JAppColors.error600,
+                  ),
                 ),
-              )
+
+              if (onDelete != null) const SizedBox(width: 8),
+
+              // ✅ Edit button — only shown if iconPath + voidCallback provided
+              if (iconPath != null && iconPath!.isNotEmpty)
+                GestureDetector(
+                  onTap: voidCallback,
+                  child: SvgPicture.asset(
+                    iconPath!,
+                    width: 20,
+                    height: 20,
+                    colorFilter: ColorFilter.mode(
+                      isDark
+                          ? JAppColors.lightGray100
+                          : JAppColors.darkGray800,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
             ],
           ),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           content,
         ],
       ),

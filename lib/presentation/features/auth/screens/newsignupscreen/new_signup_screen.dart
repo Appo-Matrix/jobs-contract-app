@@ -16,7 +16,7 @@ import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_string.dart';
 import '../../../../../utils/device/device_utility.dart';
 import '../../../../routes/app_routes.dart';
-import '../../providers/register_provider.dart';
+import '../../../users/providers/register_provider.dart';
 
 // Main Onboarding Flow Controller
 class NewSignupScreen extends StatefulWidget {

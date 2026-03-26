@@ -49,89 +49,167 @@ class _RoleSelectionScreenState extends State<RoleSelectionScreen> {
     return Scaffold(
       backgroundColor: isDark ? JAppColors.darkBackground : Colors.white,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        child: SingleChildScrollView( // ✅ FIX
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-
-              Text(
-                'selectYourRole'.tr(),
-                style: AppTextStyle.dmSans(
-                  fontSize: 26.0,
-                  weight: FontWeight.w700,
-                  color: isDark
-                      ? JAppColors.lightGray100
-                      : JAppColors.darkGray900,
+                Text(
+                  'selectYourRole'.tr(),
+                  style: AppTextStyle.dmSans(
+                    fontSize: 26,
+                    weight: FontWeight.w700,
+                    color: isDark
+                        ? JAppColors.lightGray100
+                        : JAppColors.darkGray900,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'selectRoleSubtitle'.tr(),
-                style: AppTextStyle.dmSans(
-                  fontSize: 15.0,
-                  color: isDark
-                      ? JAppColors.darkGray100
-                      : JAppColors.darkGray500,
-                  weight: FontWeight.w400,
+
+                const SizedBox(height: 8),
+
+                Text(
+                  'selectRoleSubtitle'.tr(),
+                  style: AppTextStyle.dmSans(
+                    fontSize: 15,
+                    weight: FontWeight.w400,
+                    color: isDark
+                        ? JAppColors.darkGray100
+                        : JAppColors.darkGray500,
+                  ),
                 ),
-              ),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-              /// --- Role Cards ---
-              RoleCard(
-                icon: Icons.person_outline,
-                title: 'contractor'.tr(),
-                subtitle: 'contractorDesc'.tr(),
-                isSelected: _localSelectedRole == 'contractor',
-                onTap: () => _handleRoleSelection('contractor'),
-                isDark: isDark,
-              ),
-              const SizedBox(height: 16),
-              // RoleCard(
-              //   icon: Icons.work_outline,
-              //   title: 'client'.tr(),
-              //   subtitle: 'clientDesc'.tr(),
-              //   isSelected: _localSelectedRole == 'client',
-              //   onTap: () => _handleRoleSelection('client'),
-              //   isDark: isDark,
-              // ),
-              // const SizedBox(height: 16),
-              RoleCard(
-                icon: Icons.business_outlined,
-                title: 'company'.tr(),
-                subtitle: 'companyDesc'.tr(),
-                isSelected: _localSelectedRole == 'company',
-                onTap: () => _handleRoleSelection('company'),
-                isDark: isDark,
-              ),
+                RoleCard(
+                  icon: Icons.person_outline,
+                  title: 'contractor'.tr(),
+                  subtitle: 'contractorDesc'.tr(),
+                  isSelected: _localSelectedRole == 'contractor',
+                  onTap: () => _handleRoleSelection('contractor'),
+                  isDark: isDark,
+                ),
 
-              const Spacer(),
+                const SizedBox(height: 16),
 
-              /// --- Continue Button ---
-              MainButton(
-                onTap: _localSelectedRole != null ? _handleContinue : null,
-                btn_color: _localSelectedRole != null
-                    ? JAppColors.primary
-                    : (isDark
-                    ? JAppColors.darkGray300
-                    : JAppColors.darkGray200),
-                btn_title: 'continue',
-                btn_radius: 12,
+                RoleCard(
+                  icon: Icons.business_outlined,
+                  title: 'company'.tr(),
+                  subtitle: 'companyDesc'.tr(),
+                  isSelected: _localSelectedRole == 'company',
+                  onTap: () => _handleRoleSelection('company'),
+                  isDark: isDark,
+                ),
 
-                title_color: Colors.white,
-                text_fontweight: FontWeight.w600,
-                image_value: false,
-                isDark: isDark,
-              ),
+                const SizedBox(height: 40),
 
-              const SizedBox(height: 24),
-            ],
+                /// ✅ Button (no Spacer)
+                MainButton(
+                  onTap: _localSelectedRole != null ? _handleContinue : null,
+                  btn_color: _localSelectedRole != null
+                      ? JAppColors.primary
+                      : (isDark
+                      ? JAppColors.darkGray300
+                      : JAppColors.darkGray200),
+                  btn_title: 'continue',
+                  btn_radius: 12,
+                  title_color: Colors.white,
+                  text_fontweight: FontWeight.w600,
+                  image_value: false,
+                  isDark: isDark,
+                ),
+
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),
+      // body: SafeArea(
+      //   child: Padding(
+      //     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      //     child: Column(
+      //       crossAxisAlignment: CrossAxisAlignment.start,
+      //       children: [
+      //
+      //
+      //         Text(
+      //           'selectYourRole'.tr(),
+      //           style: AppTextStyle.dmSans(
+      //             fontSize: 26.0,
+      //             weight: FontWeight.w700,
+      //             color: isDark
+      //                 ? JAppColors.lightGray100
+      //                 : JAppColors.darkGray900,
+      //           ),
+      //         ),
+      //         const SizedBox(height: 8),
+      //         Text(
+      //           'selectRoleSubtitle'.tr(),
+      //           style: AppTextStyle.dmSans(
+      //             fontSize: 15.0,
+      //             color: isDark
+      //                 ? JAppColors.darkGray100
+      //                 : JAppColors.darkGray500,
+      //             weight: FontWeight.w400,
+      //           ),
+      //         ),
+      //
+      //         const SizedBox(height: 40),
+      //
+      //         /// --- Role Cards ---
+      //         RoleCard(
+      //           icon: Icons.person_outline,
+      //           title: 'contractor'.tr(),
+      //           subtitle: 'contractorDesc'.tr(),
+      //           isSelected: _localSelectedRole == 'contractor',
+      //           onTap: () => _handleRoleSelection('contractor'),
+      //           isDark: isDark,
+      //         ),
+      //         const SizedBox(height: 16),
+      //         // RoleCard(
+      //         //   icon: Icons.work_outline,
+      //         //   title: 'client'.tr(),
+      //         //   subtitle: 'clientDesc'.tr(),
+      //         //   isSelected: _localSelectedRole == 'client',
+      //         //   onTap: () => _handleRoleSelection('client'),
+      //         //   isDark: isDark,
+      //         // ),
+      //         // const SizedBox(height: 16),
+      //         RoleCard(
+      //           icon: Icons.business_outlined,
+      //           title: 'company'.tr(),
+      //           subtitle: 'companyDesc'.tr(),
+      //           isSelected: _localSelectedRole == 'company',
+      //           onTap: () => _handleRoleSelection('company'),
+      //           isDark: isDark,
+      //         ),
+      //
+      //         const Spacer(),
+      //
+      //         /// --- Continue Button ---
+      //         MainButton(
+      //           onTap: _localSelectedRole != null ? _handleContinue : null,
+      //           btn_color: _localSelectedRole != null
+      //               ? JAppColors.primary
+      //               : (isDark
+      //               ? JAppColors.darkGray300
+      //               : JAppColors.darkGray200),
+      //           btn_title: 'continue',
+      //           btn_radius: 12,
+      //
+      //           title_color: Colors.white,
+      //           text_fontweight: FontWeight.w600,
+      //           image_value: false,
+      //           isDark: isDark,
+      //         ),
+      //
+      //         const SizedBox(height: 24),
+      //       ],
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

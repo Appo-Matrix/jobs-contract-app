@@ -46,10 +46,13 @@ class QualificationProvider with ChangeNotifier {
 
   Future<void> deleteQualification(String eduId) async {
     _isLoading = true;
+    _errorMessage = null;
     notifyListeners();
 
     try {
       await _repository.deleteQualification(eduId);
+      // ✅ Remove from local list instantly
+      _myQualifications.removeWhere((e) => e.id == eduId);
       Fluttertoast.showToast(msg: 'Education entry deleted successfully');
     } catch (e) {
       _errorMessage = e.toString();
@@ -59,6 +62,7 @@ class QualificationProvider with ChangeNotifier {
       notifyListeners();
     }
   }
+
   EducationModel? _qualification;
   EducationModel? get qualification => _qualification;
 
